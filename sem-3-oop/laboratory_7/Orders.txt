@@ -1,0 +1,24 @@
+ABC-12
+Chair
+DEF-32
+2025-07-11-02:14
+2
+
+ABC-78
+USB Mouse
+DEF-87
+2025-05-09-12:14
+2
+
+ABC-23
+USB Keyboard
+DEF-37
+2025-02-22-15:14
+1
+
+ABC-54
+Refrigerator
+DEF-64
+2025-01-30-23:14
+1
+

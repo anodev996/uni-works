@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Абрикос.kml</name>
+	<StyleMap id="msn_grocery">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grocery</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grocery</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grocery">
+		<IconStyle>
+			<color>ff00aaff</color>
+			<scale>2.33333</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/grocery.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grocery">
+		<IconStyle>
+			<color>ff00aaff</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/grocery.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Placemark>
+		<name>Абрикос</name>
+		<open>1</open>
+		<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Магазин</p>
+        <p>Адрес: ул.Сибирская, 9</p> 
+    </body>
+</html>]]></description>
+		<LookAt>
+			<longitude>84.96951237607841</longitude>
+			<latitude>56.48181176122698</latitude>
+			<altitude>0</altitude>
+			<heading>-0.01095526898065911</heading>
+			<tilt>26.1105716711998</tilt>
+			<range>568.8939563377238</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_grocery</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>84.96674776693385,56.48213527261022,0</coordinates>
+		</Point>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Placemark>
+</Document>
+</kml>

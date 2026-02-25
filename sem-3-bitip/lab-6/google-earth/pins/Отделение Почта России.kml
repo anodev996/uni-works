@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Отделение Почта России.kml</name>
+	<StyleMap id="msn_post_office">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_post_office</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_post_office</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_post_office">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/post_office.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_post_office">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/post_office.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Placemark>
+		<name>Отделение Почта России</name>
+		<open>1</open>
+		<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Здание</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+		<LookAt>
+			<longitude>84.9659210413673</longitude>
+			<latitude>56.4744033633816</latitude>
+			<altitude>0</altitude>
+			<heading>-0.01378626484919791</heading>
+			<tilt>29.1929956439005</tilt>
+			<range>357.1880578513639</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_post_office</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>84.96647178731438,56.47459486483714,0</coordinates>
+		</Point>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Placemark>
+</Document>
+</kml>

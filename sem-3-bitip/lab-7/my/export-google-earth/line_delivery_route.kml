@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <name>line_delivery_route.kml</name>
+    <StyleMap id="m_ylw-pushpin">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#s_ylw-pushpin</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#s_ylw-pushpin_hl</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="s_ylw-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" xunits="pixels" y="2" yunits="pixels"/>
+      </IconStyle>
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>2</width>
+      </LineStyle>
+    </Style>
+    <Style id="s_ylw-pushpin_hl">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" xunits="pixels" y="2" yunits="pixels"/>
+      </IconStyle>
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>2</width>
+      </LineStyle>
+    </Style>
+    <Schema id="line_delivery_route" name="line_delivery_route">
+      <SimpleField name="ID" type="float"/>
+      <SimpleField name="RSTRNT_ID" type="float"/>
+      <SimpleField name="CLIENT_ID" type="float"/>
+      <SimpleField name="PATH_LNGTH" type="float"/>
+    </Schema>
+    <Folder>
+      <name>line_delivery_route</name>
+      <open>1</open>
+      <atom:link href="https://www.google.com/earth/about/versions/#earth-pro" rel="app" title="Google Earth Pro 7.3.6.10441"/>
+      <Placemark id="line_delivery_route.1">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">0</SimpleData>
+            <SimpleData name="RSTRNT_ID">0</SimpleData>
+            <SimpleData name="CLIENT_ID">1</SimpleData>
+            <SimpleData name="PATH_LNGTH">12.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9815425816936,56.4801009013707,0
+              84.9815583200458,56.4824566120525,0
+              84.9856345532605,56.4823782358699,0
+              84.9857565254898,56.4823782358699,0
+              84.9857604600779,56.4830792615063,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.2">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">1</SimpleData>
+            <SimpleData name="RSTRNT_ID">1</SimpleData>
+            <SimpleData name="CLIENT_ID">3</SimpleData>
+            <SimpleData name="PATH_LNGTH">11.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9815425816936,56.4801009013707,0
+              84.9815583200458,56.4824566120525,0
+              84.9706319690449,56.4826133639301,0
+              84.9705060622274,56.4841285985623,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.3">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">2</SimpleData>
+            <SimpleData name="RSTRNT_ID">2</SimpleData>
+            <SimpleData name="CLIENT_ID">2</SimpleData>
+            <SimpleData name="PATH_LNGTH">2.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9739881726473,56.4520518793286,0
+              84.9720169440367,56.4520497004634,0
+              84.9719775981562,56.4524288211148,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.4">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">3</SimpleData>
+            <SimpleData name="RSTRNT_ID">3</SimpleData>
+            <SimpleData name="CLIENT_ID">4</SimpleData>
+            <SimpleData name="PATH_LNGTH">3.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9510180476406,56.4592153095961,0
+              84.9508921408232,56.4615592519465,0
+              84.9577855390779,56.461524398849,0
+              84.9578012774301,56.4609231778621,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.5">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">4</SimpleData>
+            <SimpleData name="RSTRNT_ID">4</SimpleData>
+            <SimpleData name="CLIENT_ID">0</SimpleData>
+            <SimpleData name="PATH_LNGTH">1.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9510180476406,56.4592153095961,0
+              84.951049524345,56.4588580416859,0
+              84.9625227830842,56.4587970443883,0
+              84.9625385214363,56.4584049165557,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.6">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">5</SimpleData>
+            <SimpleData name="RSTRNT_ID">5</SimpleData>
+            <SimpleData name="CLIENT_ID">6</SimpleData>
+            <SimpleData name="PATH_LNGTH">6.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9490035385616,56.4936409680977,0
+              84.9481143216634,56.4936322622183,0
+              84.9484684345875,56.4986029928851,0
+              84.9469890294825,56.4986465165344,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.7">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">6</SimpleData>
+            <SimpleData name="RSTRNT_ID">0</SimpleData>
+            <SimpleData name="CLIENT_ID">7</SimpleData>
+            <SimpleData name="PATH_LNGTH">7.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.979118875458,56.5166784004885,0
+              84.9796854561365,56.5170916752407,0
+              84.98891599969,56.5131197001278,0
+              84.9894196269598,56.5131893111758,0
+              84.9899704692861,56.512684628169,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.8">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">7</SimpleData>
+            <SimpleData name="RSTRNT_ID">1</SimpleData>
+            <SimpleData name="CLIENT_ID">1</SimpleData>
+            <SimpleData name="PATH_LNGTH">81.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              85.0269831390253,56.5112923642053,0
+              85.0265463997523,56.5116382595774,0
+              85.0253384812225,56.5111466086025,0
+              85.0228832982825,56.5133307082221,0
+              85.0342463885564,56.5173070113447,0
+              85.0451215899128,56.5203346373982,0
+              85.0452789734346,56.5198996485958,0
+              85.046711163483,56.5183249472056,0
+              85.0472462674571,56.5184380494955,0
+              85.0475767728529,56.5180291396143,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.9">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">8</SimpleData>
+            <SimpleData name="RSTRNT_ID">2</SimpleData>
+            <SimpleData name="CLIENT_ID">2</SimpleData>
+            <SimpleData name="PATH_LNGTH">11.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              84.9739881726473,56.4520518793286,0
+              84.9720169440367,56.4520497004634,0
+              84.9718272147134,56.455172030122,0
+              84.9758751024881,56.4551366392241,0
+              84.9724876595609,56.457920622055,0
+              84.975571510905,56.4588908391143,0
+              84.9787512332752,56.4588259621541,0
+              84.9786234052403,56.4594363909679,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark id="line_delivery_route.10">
+        <Style>
+          <LineStyle>
+            <color>ff0000ff</color>
+          </LineStyle>
+          <PolyStyle>
+            <fill>0</fill>
+          </PolyStyle>
+        </Style>
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="ID">9</SimpleData>
+            <SimpleData name="RSTRNT_ID">3</SimpleData>
+            <SimpleData name="CLIENT_ID">3</SimpleData>
+            <SimpleData name="PATH_LNGTH">3.000</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <MultiGeometry>
+          <LineString>
+            <coordinates>
+              85.0269831390253,56.5112923642053,0
+              85.0265463997523,56.5116382595774,0
+              85.0253384812225,56.5111466086025,0
+              85.0228832982825,56.5133307082221,0
+              85.0215294165167,56.5130581356479,0
+              85.0158912587085,56.5104989001081,0
+              85.0176360594625,56.5092869897298,0
+              85.0166843499603,56.5088325133085,0
+              85.0171746245524,56.5084577654774,0
+              85.0173476626436,56.5085135792198,0
+            </coordinates>
+          </LineString>
+        </MultiGeometry>
+      </Placemark>
+      <Placemark>
+        <name>Путь без названия</name>
+        <styleUrl>#m_ylw-pushpin</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            84.9834699890957,56.4643720678422,0
+            84.9837056502125,56.4645132012318,0
+            84.9882645433136,56.461819331845,0
+            84.9834122730123,56.4593157077492,0
+            84.9823893692163,56.4587707142991,0
+            84.9819459480989,56.4590135104895,0
+            84.982267689211,56.4591913336837,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Путь без названия</name>
+        <styleUrl>#m_ylw-pushpin</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            84.9529558458596,56.4713892717085,0
+            84.9533776753843,56.4713711090797,0
+            84.9534823337315,56.4692925421116,0
+            84.9579495963069,56.4692572336849,0
+            84.9578068255621,56.4674187281698,0
+            84.9586917061573,56.4674061610719,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Путь без названия</name>
+        <styleUrl>#m_ylw-pushpin</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            84.965870127682,56.464905738577,0
+            84.9652299594169,56.4649129760521,0
+            84.965179949763,56.4640451818952,0
+            84.9652232757118,56.4638706261954,0
+            84.9628871195515,56.4639625699671,0
+            84.962799515656,56.4638222443788,0
+            84.9626558778292,56.4608316580801,0
+            84.9626314663269,56.4604207546881,0
+            84.9621171524608,56.4604480889161,0
+            84.9621357300221,56.4610041440719,0
+            84.961362333291,56.4610217065994,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark id="10">
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="RSTRNT_ID">2</SimpleData>
+            <SimpleData name="CLIENT_ID">5</SimpleData>
+            <SimpleData name="PATH_LNGTH">22</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            84.9678734764722,56.4728761331785,0
+            84.9682581917478,56.4729891148536,0
+            84.9691061356203,56.4720591787114,0
+            84.9718855072025,56.4729978057377,0
+            84.9737698269192,56.4736018172884,0
+            84.9754657146643,56.4736496163515,0
+            84.9755991873108,56.4745925491517,0
+            84.9750809993887,56.4745968944097,0
+            84.9750495940601,56.4743318327575,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark id="11">
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="RSTRNT_ID">3</SimpleData>
+            <SimpleData name="CLIENT_ID">4</SimpleData>
+            <SimpleData name="PATH_LNGTH">12</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            84.9835824721199,56.4644394320565,0
+            84.9851189275464,56.4635735413622,0
+            84.9855900074756,56.4637604414623,0
+            84.982170752323,56.4657684726387,0
+            84.9822178603159,56.4664030230911,0
+            84.9819352123584,56.4665855630301,0
+            84.9820294283442,56.4711140098956,0
+            84.9918592961998,56.4709401831734,0
+            84.9918907015284,56.4741123950655,0
+            84.9913097029491,56.474099359123,0
+            84.9913097029491,56.4740341793427,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark id="12">
+        <ExtendedData>
+          <SchemaData schemaUrl="#line_delivery_route">
+            <SimpleData name="RSTRNT_ID">4</SimpleData>
+            <SimpleData name="CLIENT_ID">3</SimpleData>
+            <SimpleData name="PATH_LNGTH">5</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <LineString>
+          <coordinates>
+            84.9682581917478,56.4729891148536,0
+            84.9674338018717,56.473903819445,0
+            84.9658321301125,56.4738951287691,0
+            84.965855684109,56.4741254310036,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

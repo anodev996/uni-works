@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="point_store" id="point_store">
+	<SimpleField name="ID" type="float"></SimpleField>
+	<SimpleField name="ADDRESS" type="string"></SimpleField>
+	<SimpleField name="WRK_TIME" type="string"></SimpleField>
+	<SimpleField name="AVG_DL_TIM" type="float"></SimpleField>
+	<SimpleField name="CRS_NUM" type="int"></SimpleField>
+</Schema>
+<Folder><name>point_store</name>
+  <Placemark id="point_store.1">
+	<ExtendedData><SchemaData schemaUrl="#point_store">
+		<SimpleData name="ID">1</SimpleData>
+		<SimpleData name="ADDRESS">ул. Федора Лыткина 16/1</SimpleData>
+		<SimpleData name="WRK_TIME">8:00-20:00</SimpleData>
+		<SimpleData name="AVG_DL_TIM">24.00</SimpleData>
+		<SimpleData name="CRS_NUM">6</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>84.9741085435536,56.4518207076397</coordinates></Point>
+  </Placemark>
+  <Placemark id="point_store.2">
+	<ExtendedData><SchemaData schemaUrl="#point_store">
+		<SimpleData name="ID">0</SimpleData>
+		<SimpleData name="ADDRESS">Комсомольский проспект, 39/4</SimpleData>
+		<SimpleData name="WRK_TIME">8:00-23:00</SimpleData>
+		<SimpleData name="AVG_DL_TIM">25.00</SimpleData>
+		<SimpleData name="CRS_NUM">10</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>84.9811304956835,56.4800967977325</coordinates></Point>
+  </Placemark>
+  <Placemark id="point_store.3">
+	<ExtendedData><SchemaData schemaUrl="#point_store">
+		<SimpleData name="ID">2</SimpleData>
+		<SimpleData name="ADDRESS">ул. Cуворова 11/1</SimpleData>
+		<SimpleData name="WRK_TIME">9:00-23:00</SimpleData>
+		<SimpleData name="AVG_DL_TIM">15.00</SimpleData>
+		<SimpleData name="CRS_NUM">3</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>85.0272802261782,56.5113685825773</coordinates></Point>
+  </Placemark>
+  <Placemark id="point_store.4">
+	<ExtendedData><SchemaData schemaUrl="#point_store">
+		<SimpleData name="ID">3</SimpleData>
+		<SimpleData name="ADDRESS">проспект Мира 23</SimpleData>
+		<SimpleData name="WRK_TIME">8:00-22:30</SimpleData>
+		<SimpleData name="AVG_DL_TIM">16.00</SimpleData>
+		<SimpleData name="CRS_NUM">12</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>84.9795937331574,56.5164764707467</coordinates></Point>
+  </Placemark>
+  <Placemark id="point_store.5">
+	<ExtendedData><SchemaData schemaUrl="#point_store">
+		<SimpleData name="ID">4</SimpleData>
+		<SimpleData name="ADDRESS">переулок 1905 года, 7В</SimpleData>
+		<SimpleData name="WRK_TIME">10:00-20:00</SimpleData>
+		<SimpleData name="AVG_DL_TIM">33.00</SimpleData>
+		<SimpleData name="CRS_NUM">7</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>84.9489678055383,56.4934519364339</coordinates></Point>
+  </Placemark>
+  <Placemark id="point_store.6">
+	<ExtendedData><SchemaData schemaUrl="#point_store">
+		<SimpleData name="ID">5</SimpleData>
+		<SimpleData name="ADDRESS">ул. Ленина, 10А</SimpleData>
+		<SimpleData name="WRK_TIME">9:00-23:00</SimpleData>
+		<SimpleData name="AVG_DL_TIM">30.00</SimpleData>
+		<SimpleData name="CRS_NUM">17</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>84.9505430397025,56.4592347514109</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

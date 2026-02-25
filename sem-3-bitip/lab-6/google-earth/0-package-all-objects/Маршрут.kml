@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Маршрут.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_dining">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_electronics">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_electronics</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_electronics</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_flag">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_flag</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_flag</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grocery">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grocery</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grocery0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grocery0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grocery0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grocery</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_parks">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_parks</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_parks</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_police">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_police</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_police</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_post_office">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_post_office</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_post_office</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffff0000</color>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffff0000</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_dining">
+		<IconStyle>
+			<color>ff00ffff</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_electronics">
+		<IconStyle>
+			<color>ff00ffff</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/electronics.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_flag">
+		<IconStyle>
+			<color>ffff0000</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_grocery">
+		<IconStyle>
+			<color>ff00aaff</color>
+			<scale>2.33333</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/grocery.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_grocery0">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/grocery.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness0">
+		<IconStyle>
+			<color>ff00aa00</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_parks">
+		<IconStyle>
+			<color>ff00aa00</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_police">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/police.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_post_office">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/post_office.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000aa</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff0000aa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin0">
+		<IconStyle>
+			<color>ff00aaff</color>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffff0000</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin2">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00aa00</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff00aa00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin3">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7fffff</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff7fffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_dining">
+		<IconStyle>
+			<color>ff00ffff</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_electronics">
+		<IconStyle>
+			<color>ff00ffff</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/electronics.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_flag">
+		<IconStyle>
+			<color>ffff0000</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_grocery">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/grocery.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_grocery0">
+		<IconStyle>
+			<color>ff00aaff</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/grocery.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness0">
+		<IconStyle>
+			<color>ff00aa00</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_parks">
+		<IconStyle>
+			<color>ff00aa00</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_police">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/police.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_post_office">
+		<IconStyle>
+			<color>ffff5500</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/post_office.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7fffff</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff7fffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffff0000</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000aa</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff0000aa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin2">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00aa00</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ff00aa00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin3">
+		<IconStyle>
+			<color>ff00aaff</color>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Folder>
+		<name>Маршрут</name>
+		<open>1</open>
+		<Placemark>
+			<name>Путь от дома до ФЭТ</name>
+			<LookAt>
+				<longitude>84.98581753466759</longitude>
+				<latitude>56.4788355392285</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>45</tilt>
+				<range>1000</range>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					84.97048362905208,56.48430922048217,0 84.97053575138979,56.48413706328231,0 84.97054781129698,56.48394472480512,0 84.97061130407427,56.48365738639664,0 84.97060608880275,56.48309391529845,0 84.97057267465308,56.48259569588815,0 84.96897929913371,56.48262436220235,0 84.96745830350223,56.48262907074886,0 84.96615048739808,56.4826919358291,0 84.96607220222906,56.48171687086004,0 84.9659688343807,56.4802907963118,0 84.96585736596948,56.47878196903314,0 84.96578916749826,56.47738272251826,0 84.96567922363107,56.4749712142313,0 84.9656930409985,56.4735426441665,0 84.96550928040567,56.47156575599717,0 84.96547689441556,56.46914537520498,0 84.96535555109513,56.46913784624417,0 84.96501736471893,56.46914880834191,0 84.96358727613392,56.46916387101129,0 84.96306581225102,56.4691846933415,0 84.9629573889214,56.46775155153549,0 84.96287075121394,56.46657685506236,0 84.96281273952334,56.46533641394656,0 84.96275748030972,56.46421583016186,0 84.96274151032527,56.46262815344206,0 84.96267485974229,56.4612182506546,0 84.9626220629774,56.46006785619111,0 84.9625392888065,56.45873581213953,0 84.96256657758204,56.45732941041467,0 84.96253612835926,56.45591814780237,0 84.96255021454478,56.45455907172907,0 84.96252811258967,56.45325681722344,0 84.96254157530167,56.45198102083839,0 84.96254847734535,56.45174648287639,0 84.96263295663529,56.45169198527165,0 84.96284292049859,56.45165077673554,0 84.96285147855433,56.45165078899146,0 84.96338074298306,56.4516727453616,0 84.9636390585121,56.45165963919364,0 84.96363212545603,56.45147916269263,0 84.9637591347512,56.45147273784118,0 84.96377865071398,56.45123742356224,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>Мой дом</name>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Здание</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96994300333174</longitude>
+				<latitude>56.48419285777274</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01083742778685893</heading>
+				<tilt>24.29801752131347</tilt>
+				<range>524.4046361760542</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.97048012219985,56.48425433075374,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Абрикос</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Магазин</p>
+        <p>Адрес: ул.Сибирская, 9</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96951237607841</longitude>
+				<latitude>56.48181176122698</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01095526898065911</heading>
+				<tilt>26.1105716711998</tilt>
+				<range>568.8939563377238</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grocery0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96674776693385,56.48213527261022,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Антонов двор</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Кафе</p>
+        <p>Адрес: пр.Фрунзе, 86</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96704625124673</longitude>
+				<latitude>56.47613719525791</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01299835968115303</heading>
+				<tilt>25.05227605630555</tilt>
+				<range>449.3701486723148</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_dining</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96634896456457,56.47643573352643,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>УМВД России по Томской области</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Здание</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96462810477408</longitude>
+				<latitude>56.46757726300579</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01495213979182889</heading>
+				<tilt>26.46055859966652</tilt>
+				<range>624.9731904968116</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_police</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96107767796876,56.46698530622094,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Отделение Почта России</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Здание</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.9659210413673</longitude>
+				<latitude>56.4744033633816</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01378626484919791</heading>
+				<tilt>29.1929956439005</tilt>
+				<range>357.1880578513639</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_post_office</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96647178731438,56.47459486483714,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Корпус ФЭТ</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Здание</p>
+        <p>Адрес: ул.Вершинина, 74</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96545987146243</longitude>
+				<latitude>56.45158823377243</latitude>
+				<altitude>0</altitude>
+				<heading>-0.005032223397336153</heading>
+				<tilt>26.43582246223837</tilt>
+				<range>753.7910185543412</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_flag</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96400351171738,56.45113388925995,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Интант</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Магазин</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96382155875973</longitude>
+				<latitude>56.45534957654294</latitude>
+				<altitude>0</altitude>
+				<heading>-0.006211752247132042</heading>
+				<tilt>30.00290394336472</tilt>
+				<range>646.5150955640088</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_electronics</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.9620925745393,56.45597393831904,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Стройпарк</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Торговый центр</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96901716490095</longitude>
+				<latitude>56.45146684091042</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001884864408545</heading>
+				<tilt>29.91932677893281</tilt>
+				<range>945.8613558480357</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin3</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96596511928377,56.45094655592364,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Смайл сити</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Торговый центр</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.9664142293324</longitude>
+				<latitude>56.45842528548771</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01316952290533963</heading>
+				<tilt>29.43796893401242</tilt>
+				<range>1250.164504558599</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grocery</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96556504792976,56.46022505265332,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Общежития ТПУ</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Здание</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.96622744433068</longitude>
+				<latitude>56.46096289421359</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01348666801591043</heading>
+				<tilt>26.64638455684514</tilt>
+				<range>762.877257815489</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96164249985466,56.46048414320221,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Буфф сад</name>
+			<open>1</open>
+			<description><![CDATA[<html>
+    <head>
+        <style>p {font-size: 14px};</style>
+    </head>
+    <body>
+        <p>Парк</p>
+        <p>Адрес: ул.Тверская, 3</p> 
+    </body>
+</html>]]></description>
+			<LookAt>
+				<longitude>84.9661501063898</longitude>
+				<latitude>56.46804428272393</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01361940957972899</heading>
+				<tilt>25.34771320007686</tilt>
+				<range>1409.081546034918</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_parks</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>84.96213185969995,56.47032029967953,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Корпус ФЭТ</name>
+			<snippet></snippet>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<extrude>1</extrude>
+					<tessellate>1</tessellate>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								84.96407570707835,56.45135427541858,12 84.96407161048083,56.4507932434655,12 84.96508829838187,56.45079671007139,12 84.96509111373169,56.45092600902855,12 84.96440974328024,56.45092504771649,12 84.9644091846293,56.45134905546409,12 84.96407570707835,56.45135427541858,12 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+				<Polygon>
+					<extrude>1</extrude>
+					<tessellate>1</tessellate>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								84.96407633840728,56.45123118325148,4.999999999999999 84.96348894607789,56.45123088131832,4.999999999999999 84.96348864785737,56.45108360420147,4.999999999999999 84.96404028350324,56.45108480231464,4.999999999999999 84.96407338974956,56.45108353026491,4.999999999999999 84.96407633840728,56.45123118325148,4.999999999999999 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+				<Polygon>
+					<extrude>1</extrude>
+					<tessellate>1</tessellate>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								84.96509080866146,56.45092271687627,12 84.96509049445798,56.45135334343692,12 84.96440657963134,56.45135068770723,12 84.9644084439545,56.4512238994034,12 84.96474481047629,56.45122268962309,12 84.9647568741391,56.45092401497895,12 84.96509080866146,56.45092271687627,12 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+				<Polygon>
+					<extrude>1</extrude>
+					<tessellate>1</tessellate>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								84.96361172897747,56.45127954622738,3 84.96360592999248,56.45123389895558,3 84.96376029974739,56.45123302830829,3 84.96376440245758,56.45127970697607,3 84.96361172897747,56.45127954622738,3 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark>
+			<name>Смайл сити</name>
+			<styleUrl>#msn_ylw-pushpin1</styleUrl>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							84.96442161875564,56.4611720848569,8 84.9643295687022,56.45923310870845,8 84.96662725606508,56.45920929264294,8 84.96675054191854,56.46113417675574,8 84.96442161875564,56.4611720848569,8 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>Почта России</name>
+			<styleUrl>#msn_ylw-pushpin0</styleUrl>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							84.96657621809324,56.47423985958427,20 84.9666079663799,56.47474165215812,20 84.96627603099526,56.4747407324739,20 84.96624674121865,56.47423202951062,20 84.96657621809324,56.47423985958427,20 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>Мой дом</name>
+			<styleUrl>#msn_ylw-pushpin2</styleUrl>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							84.97001494561415,56.48418166114205,20 84.97002914142935,56.48388366118617,20 84.9703390770178,56.48388250452084,20 84.97035235835786,56.48418502530785,20 84.97026556229176,56.48418844926384,20 84.97024610041734,56.48430168338368,20 84.97007316548613,56.48430639282962,20 84.97006032816702,56.48436606274218,20 84.96959588872758,56.48436022814634,20 84.96959397580279,56.48417729623996,20 84.97001494561415,56.48418166114205,20 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>Общежитие ТПУ</name>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<Polygon>
+				<extrude>1</extrude>
+				<tessellate>1</tessellate>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							84.96243035040904,56.45968210772259,12 84.96246628989323,56.46039256627378,12 84.96219816287514,56.46040076020679,12 84.96215356805573,56.45968784955391,12 84.96243035040904,56.45968210772259,12 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10441"></atom:link>
+	</Folder>
+</Document>
+</kml>

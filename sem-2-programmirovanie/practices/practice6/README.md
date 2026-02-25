@@ -1,0 +1,1 @@
+gcc -Wall -Wextra -std=c99 -ggdb -I ./ -o main.exe ./main.c ./practice6.c  && ./main.exe
