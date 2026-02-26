@@ -1,26 +1,23 @@
-# images
+# Image
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.svg filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 
-# archives
+# Archive
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.7z filter=lfs diff=lfs merge=lfs -text
 *.rar filter=lfs diff=lfs merge=lfs -text
-
-# documents
+# Document
 *.docx filter=lfs diff=lfs merge=lfs -text
 *.doc filter=lfs diff=lfs merge=lfs -text
-
-# presentations
+*.pdf filter=lfs diff=lfs merge=lfs -text
+# Presentation
 *.pptx filter=lfs diff=lfs merge=lfs -text
 *.ppt filter=lfs diff=lfs merge=lfs -text
-
-# figma
+# Figma
 *.fig filter=lfs diff=lfs merge=lfs -text
-
-# qgis
+# QGIS
 *.qgz filter=lfs diff=lfs merge=lfs -text
 *.cpg filter=lfs diff=lfs merge=lfs -text
 *.dbf filter=lfs diff=lfs merge=lfs -text
