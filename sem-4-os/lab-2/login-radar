@@ -1,0 +1,49 @@
+#!/bin/sh
+
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+LIGHT_RED='\033[1;31m'
+BLUE='\033[0;34m'
+#BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+arg_time=${1:-2}
+arg_lines=${2:-20}
+arg_clear=${3:-10}
+
+if [ $# -lt 3 ]; then
+    printf "${YELLOW}Warning:${NC} Not enough arguments, using defaults where possible.\n"
+    printf "${YELLOW}Arguments:${NC} login-radar $arg_time(sec) $arg_lines(lines) $arg_clear(clear count)\n\n"
+    sleep 3
+fi
+
+
+login_radar(){
+
+    sec=$1
+    arg_n=$2
+    counter=0
+    counter_max=$3
+
+    while true; do
+
+        if [ $counter -eq $counter_max ]; then
+            clear
+            counter=0
+        fi
+
+        printf "[Clear count ${YELLOW}$(($counter + 1))/$counter_max${NC}]\n"
+        last -n $arg_n -S
+        counter=$((counter + 1))
+
+        printf "\nPress ${LIGHT_RED}'Ctrl+C'${NC} to exit: "
+        sleep $sec
+
+        # \033[2K erase whole line
+        # \r return carriage
+        printf "\033[2K"
+        printf "\r"
+    done
+}
+
+login_radar $arg_time $arg_lines $arg_clear
