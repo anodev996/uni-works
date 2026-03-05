@@ -1,35 +1,44 @@
-# vichislitelnaya matematika
-# variant 5
+#!/usr/bin/env python3
+# coding:utf-8
+
+# Вычислительная математика; вариант 5.
+#
+# Из 'config.py'в namespace копируются только указанные имена.
+from config import (
+      A, B, EPS,
+      ITERATION_MAX,
+      MSG_1, MSG_2, MSG_WARN, DELIM
+)
+# Из 'task_1.py'в namespace копируются все имена;
+# '__all__ = ['func_1', 'func_2']' контролирует импорт с '*',
+# используется в библиотеках.
+#from task_1 import *
+# Из 'task_1.py' в namespace добавляется только 't1' как объект
+# (поля=переменные, методы=функции).
 import task_1 as t1
-
-A: float = -1.0
-B: float = 1.0
-EPS: float = 0.00001
-ITERATION_MAX: int = 10
-
-MSG_1: str = "Variant: #5 (Secant method)"
-MSG_2: str = "Variant: #5 (Golden-section search)"
-MSG_3: str = f"Note: Method didn't find root in {ITERATION_MAX} iterations"
-DELIM: str = "-" * len(MSG_3)
+import task_2 as t2
 
 
-print(f"{DELIM}\n{MSG_1}")
+def main():
+      print(f"{DELIM}\n" +
+            f"{MSG_1}")
 
-success, root, iteration = t1.secant_method(A, B, EPS, ITERATION_MAX)
+      success, root, iteration = t1.secant_method(A, B, EPS, ITERATION_MAX)
 
-if success:
-    print(f"{DELIM}\nroot: {root:.10f}\n" +
-          f"epsilon: {EPS:.10f}\niterations done: {iteration}\n{DELIM}")
-else:
-    print(f"{DELIM}\n{MSG_3}\n{DELIM}\nlast approximation: {root:.10f}\n" +
-          f"epsilon: {EPS:.10f}\niterations done: {iteration}\n{DELIM}")
+      if success:
+            print(f"{DELIM}\n" +
+                  f"root: {root:.10f}\n" +
+                  f"epsilon: {EPS:.10f}\n" +
+                  f"iterations done: {iteration}\n" +
+                  f"{DELIM}")
+            
+      print(f"{DELIM}\n" +
+            f"{MSG_WARN}\n" +
+            f"{DELIM}\n" +
+            f"last approximation: {root:.10f}\n" +
+            f"epsilon: {EPS:.10f}\n" +
+            f"iterations done: {iteration}\n" +
+            f"{DELIM}")
 
-
-'''
-print(f"{DELIM}\n{MSG_2}")
-
-result = t1.secant_method(A, B, EPS, ITERATION_MAX)
-
-print(f"{DELIM}\nroot: {root:.10f}\neps: {EPS:.10f}\n" +
-      f"iterations: {iteration}\n{DELIM}")
-'''
+if __name__ == "__main__":
+      main()
