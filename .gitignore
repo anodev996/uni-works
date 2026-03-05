@@ -1,10 +1,13 @@
-# vscode
+# VSCode
 .vscode/
 
-# c projects
+# C/C++
 *.o
 *.a
 *.exe
 
-# java projects
+# Java
 *.class
+
+# Python
+*.pyc
