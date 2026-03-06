@@ -2,7 +2,10 @@
 """Docstring."""
 import math
 
-from config import EPS_DIVISION
+from config import (
+    EPS_DIVISION,
+    MSG_WRONG_MODULE
+)
 
 __all__ = ["secant_method"]
 
@@ -52,7 +55,7 @@ def secant_method(a: float, b: float, eps: float,
         iteration_max (int): Iteration limit.
 
     Returns:
-        tuple: Success flag, founded root, number of iterations.
+        tuple: Success flag, found root, number of iterations.
 
     Example:
         >>> print("omg!", end="")
@@ -70,3 +73,7 @@ def secant_method(a: float, b: float, eps: float,
         x0, x1 = x1, x2
 
     return (False, x2, iteration)
+
+
+if __name__ == "__main__":
+    print(MSG_WRONG_MODULE)
