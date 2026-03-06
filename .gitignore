@@ -11,3 +11,6 @@
 
 # Python
 *.pyc
+
+# Lock-file
+*.~lock*
