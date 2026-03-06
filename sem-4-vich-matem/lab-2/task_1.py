@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-# coding:utf-8
+"""Docstring."""
 import math
+
 from config import EPS_DIVISION
 
 __all__ = ["secant_method"]
@@ -18,16 +19,16 @@ def _f_double_prime(x: float) -> float:
     return math.e ** x
 
 
-def _initial_guess(a: float, b: float) -> float:
+def _initial_guess(a: float, b: float) -> tuple[float, float]:
     if _f(a) * _f_double_prime(a) > 0:
-        return a
-    return b
+        return (a, b)
+    return (b, a)
 
 
 def _delta_xn(x0: float, x1: float) -> float:
     # Проверка на деление на ноль
-    if abs(x1 - x0) < EPS_DIVISION:  # если разница очень мала
-        return _f_prime(x1)  # используем производную как предел
+    if abs(x1 - x0) < EPS_DIVISION:  # Если разница очень мала
+        return _f_prime(x1)  # Используем производную как предел
     return (_f(x1) - _f(x0)) / (x1 - x0)
 
 
@@ -42,13 +43,27 @@ def _iteration_formula(x0: float, x1: float) -> float:
 
 def secant_method(a: float, b: float, eps: float,
                   iteration_max: int) -> tuple[bool, float, int]:
-    x0: float = _initial_guess(a, b)
-    x1: float = _initial_guess(b, a)
+    """Find root of function given in the task using secant method.
+
+    Args:
+        a (float): Given left x-axis border.
+        b (float): Given right x-axis border.
+        eps (float): Accuracy of calculation.
+        iteration_max (int): Iteration limit.
+
+    Returns:
+        tuple: Success flag, founded root, number of iterations.
+
+    Example:
+        >>> print("omg!", end="")
+    """
+    x0, x1 = _initial_guess(a, b)
     x2: float = x1
+    iteration: int = 0
 
     for iteration in range(1, iteration_max + 1):
         x2 = _iteration_formula(x0, x1)
-        
+
         if abs(x2 - x1) < eps or abs(_f(x2)) < eps:
             return (True, x2, iteration)
 
