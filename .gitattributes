@@ -19,6 +19,7 @@
 # Presentation
 *.pptx filter=lfs diff=lfs merge=lfs -text
 *.ppt filter=lfs diff=lfs merge=lfs -text
+*.pps filter=lfs diff=lfs merge=lfs -text
 
 # Figma
 *.fig filter=lfs diff=lfs merge=lfs -text
