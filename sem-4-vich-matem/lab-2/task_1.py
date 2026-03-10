@@ -2,24 +2,21 @@
 """Docstring."""
 import math
 
-from config import (
-    EPS_DIVISION,
-    MSG_WRONG_MODULE
-)
+from config import EPS_DIVISION, MSG_WRONG_MODULE
 
 __all__ = ["secant_method"]
 
 
 def _f(x: float) -> float:
-    return 4 * x + math.e ** x
+    return 4 * x + math.e**x
 
 
 def _f_prime(x: float) -> float:
-    return 4 + math.e ** x
+    return 4 + math.e**x
 
 
 def _f_double_prime(x: float) -> float:
-    return math.e ** x
+    return math.e**x
 
 
 def _initial_guess(a: float, b: float) -> tuple[float, float]:
@@ -44,8 +41,9 @@ def _iteration_formula(x0: float, x1: float) -> float:
     return x1 - (_f(x1) / delta)
 
 
-def secant_method(a: float, b: float, eps: float,
-                  iteration_max: int) -> tuple[bool, float, int]:
+def secant_method(
+    a: float, b: float, eps: float, iteration_max: int
+) -> tuple[bool, float, int]:
     """Find root of function given in the task using secant method.
 
     Args:

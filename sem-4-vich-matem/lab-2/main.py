@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
-"""Vichislitelnaya matematika.  Laboratoy work #2, variant #5."""
-from config import (
-    T1_A, T1_B,
-    T2_A, T2_B,
-    EPS, ITERATION_MAX,
-    MSG_1, MSG_2
-)
+"""Vichislitelnaya matematika.  Laboratory work #2, variant #5."""
+from config import T1_A, T1_B, T2_A, T2_B, EPS, ITERATION_MAX, MSG_1, MSG_2
 import io_handler as io
 import task_1 as t1
 import task_2 as t2

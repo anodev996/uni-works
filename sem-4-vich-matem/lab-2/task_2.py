@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """Docstring."""
-from config import (
-    GR_X1, GR_X2,
-    MSG_WRONG_MODULE
-)
+from config import GR_X1, GR_X2, MSG_WRONG_MODULE
 
 __all__ = ["golden_section_search"]
 
@@ -12,8 +9,9 @@ def _f(x: float) -> float:
     return x * x - 9
 
 
-def golden_section_search(a: float, b: float, eps: float,
-                          iteration_max: int) -> tuple[bool, float, int]:
+def golden_section_search(
+    a: float, b: float, eps: float, iteration_max: int
+) -> tuple[bool, float, int]:
     """Docstring."""
     x1: float = a + (b - a) * GR_X1
     x2: float = a + (b - a) * GR_X2

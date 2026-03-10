@@ -8,7 +8,7 @@ T2_A: float = -100.0  # For golden_section_search left x-axis border
 T2_B: float = 100.0  # For golden_section_search right x-axis border
 EPS: float = 0.00001
 ITERATION_MAX: int = 50
-# Auxillary program constants
+# Auxiliary program constants
 EPS_DIVISION: float = 1e-15
 GR_X1: float = 0.382  # For x1, division of the x-axis by golden ratio
 GR_X2: float = 0.618  # Same for x2
@@ -23,7 +23,7 @@ UNDERLINE = "\033[4m"
 BLINK = "\033[5m"
 REVERSE = "\033[7m"  # Revert colors
 HIDDEN = "\033[8m"  # Invisible text
-# Standart text colors
+# Standard text colors
 BLACK = "\033[30m"
 RED = "\033[31m"
 GREEN = "\033[32m"
@@ -46,10 +46,14 @@ LIGHT_WHITE = "\033[97m"  # Light-white
 CLR_ACCENT: str = BOLD + LIGHT_YELLOW  # Color accent for reuse
 MSG_1: str = f"{CLR_ACCENT}Variant:{RESET} #5 (Secant method)"
 MSG_2: str = f"{CLR_ACCENT}Variant:{RESET} #5 (Golden-section search)"
-MSG_WARN: str = (f"{CLR_ACCENT}Warning:{RESET} Method didn't find root "
-                 + f"in {ITERATION_MAX} iterations")
-MSG_WRONG_MODULE: str = ("Wrong module was ran, you should run "
-                         + f"{CLR_ACCENT}main.py{RESET}, exiting...")
+MSG_WARN: str = (
+    f"{CLR_ACCENT}Warning:{RESET} Method didn't find root "
+    + f"in {ITERATION_MAX} iterations"
+)
+MSG_WRONG_MODULE: str = (
+    "Wrong module was ran, you should run"
+    + f"{CLR_ACCENT}main.py{RESET}, exiting..."
+)
 DELIM: str = DIM + CLR_ACCENT + "\"'" * 36 + RESET
 
 if __name__ == "__main__":
