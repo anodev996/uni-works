@@ -1,0 +1,13 @@
+# Linux core style but without: tab, indent 8.
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+UseTab: Never
+ColumnLimit: 100 # Changes often
+BreakBeforeBraces: Linux
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+KeepEmptyLinesAtTheStartOfBlocks: false
+InsertNewlineAtEOF: true
+...

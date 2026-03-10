@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/bubsage/220-tusur/uni-works/sem-4-os/lab-3/project",
+    "command": "gcc src/main.c -o build/main",
+    "file": "main.c"
+  }
+]
