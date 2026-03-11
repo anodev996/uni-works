@@ -1,9 +1,9 @@
 /* Build and run
-   gcc src/main.c -o build/main && ./build/main
+   gcc src/main.c -o build/prog && ./build/prog
 
    Create .iso for QNX
    genisoimage -o ~/Downloads/qnx_data.iso \
-    -J -R -V "QNX_DATA" ./src  */
+   -J -R -V "QNX_DATA" ./src  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -25,7 +25,8 @@ int main()
             long pid_orphan = strtol(buf, &end_ptr, 10);
             snprintf(cmd, sizeof(cmd), "kill -9 %ld", pid_orphan);
             system(cmd);
-            printf("(parent): Orphan child PID=%ld killed successfully!\n", pid_orphan);
+            printf("(parent): Orphan child PID=%ld killed successfully!\n",
+                   pid_orphan);
         };
 
         fclose(fp);
