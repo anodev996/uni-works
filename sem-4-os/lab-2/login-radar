@@ -6,45 +6,35 @@ LIGHT_RED='\033[1;31m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-arg_time=${1:-2}
-arg_lines=${2:-20}
-arg_clear=${3:-10}
 
+sec=${1:-2}
+lines=${2:-20}
+clear_count=${3:-10}
 
 if [ $# -lt 3 ]; then
-    printf "${YELLOW}Warning:${NC} Not enough arguments, using defaults where possible.\n"
-    printf "${YELLOW}Arguments:${NC} login-radar $arg_time(sec) $arg_lines(lines) $arg_clear(clear count)\n\n"
+    printf "${YELLOW}Warning:${NC} Not enough arguments, "
+    printf "using defaults where possible.\n"
+    printf "${YELLOW}Arguments:${NC} login-radar $sec(sec) "
+    printf "$lines(lines) $clear_count(clear count)\n\n"
     sleep 3
 fi
 
+counter=0
+while true; do
 
-login_radar(){
+    if [ $counter -eq $clear_count ]; then
+        clear
+        counter=0
+    fi
 
-    sec=$1
-    arg_n=$2
-    counter=0
-    counter_max=$3
+    counter=$((counter + 1))
+    printf "[Clear count ${YELLOW}${counter}/${clear_count}${NC}]\n"
 
-    while true; do
+    wtmpdb last -n $lines -Sa
 
-        if [ $counter -eq $counter_max ]; then
-            clear
-            counter=0
-        fi
+    printf "\nPress ${LIGHT_RED}'Ctrl+C'${NC} to exit: "
+    sleep $sec
 
-	counter=$((counter + 1))
-        printf "[Clear count ${YELLOW}${counter}/${counter_max}${NC}]\n"
-        wtmpdb last -n $arg_n -Sa
-
-        printf "\nPress ${LIGHT_RED}'Ctrl+C'${NC} to exit: "
-        sleep $sec
-
-        # \033[2K erase the whole line
-        # \r return carriage
-        printf "\033[2K"
-        printf "\r"
-    done
-}
-
-login_radar $arg_time $arg_lines $arg_clear
-
+    printf "\033[2K" # Erase the whole line
+    printf "\r" # Return carriage
+done
