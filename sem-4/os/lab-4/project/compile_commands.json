@@ -1,7 +1,17 @@
 [
   {
-    "directory": "/home/bubsage/220-tusur/uni-works/sem-4-os/lab-4/project",
-    "command": "gcc src/main.c -o build/main",
-    "file": "main.c"
+    "directory": "/home/bubsage/220-tusur/uni-works/sem-4/os/lab-4/project",
+    "arguments": [
+      "gcc",
+      "-I./lib/core/include",
+      "-o",
+      "bin/prog",
+      "src/main.c",
+      "lib/core/src/data_generate.c",
+      "lib/core/src/data_process.c",
+      "lib/core/src/io.c",
+      "-lpthread"
+    ],
+    "file": "src/main.c"
   }
 ]

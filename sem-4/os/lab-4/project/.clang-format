@@ -1,4 +1,4 @@
-# Linux core style but without: tab, indent 8.
+# Style of the Linux core project, but without: tabs, indent 8.
 ---
 BasedOnStyle: LLVM
 IndentWidth: 4
