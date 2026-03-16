@@ -12,8 +12,7 @@ int main(int argc, char **argv)
 
     // Можно и &process_file (это как с &arr[0] )
     for (thread_idx = 0; thread_idx < num_files; thread_idx++) {
-        pthread_create(&thread_ids[thread_idx], NULL, process_file,
-                       argv[thread_idx + 1]);
+        pthread_create(&thread_ids[thread_idx], NULL, process_file, argv[thread_idx + 1]);
     }
 
     for (thread_idx = 0; thread_idx < num_files; thread_idx++) {

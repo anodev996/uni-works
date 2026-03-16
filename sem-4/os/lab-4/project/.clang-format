@@ -3,7 +3,7 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
 UseTab: Never
-ColumnLimit: 80 # Changes often
+ColumnLimit: 100 # Modern standard is 100 or 120 with explicit variable names.
 BreakBeforeBraces: Linux
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: false
