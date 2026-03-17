@@ -4,13 +4,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void *process_file(void *arg)
-{
-    char *filename = (char *)arg;
-
-    return NULL;
-}
-
 float *read_data_file(const char *filename, int *out_size)
 {
     // Idiom: open file with check
@@ -51,7 +44,23 @@ float *read_data_file(const char *filename, int *out_size)
     return array;
 }
 
+// Maybe void* ?
 float *insertion_sort(float *array, int size)
 {
     //
+}
+
+FILE *write_data_file(const char *filename, float *array, int size)
+{
+    //
+}
+
+void *process_file(void *arg)
+{
+    char *filename = (char *)arg;
+    int size = 0;
+    float *array = read_data_file(filename, &size);
+    insertion_sort(array, size);
+    write_data_file(filename, array, size);
+    return NULL;
 }
