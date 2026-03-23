@@ -12,7 +12,7 @@ lib/core/src/data.c \
 lib/core/src/io.c \
 -o bin/prog \
 -lpthread \
-&& ./bin/prog f1 f2
+&& ./bin/prog /tmp/file_1 /tmp/file_2 /tmp/file_3
 ```
 
 ## Create .iso for QNX
