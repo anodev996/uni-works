@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 """Stores program constants"""
 
-# Main program constants
-T1_A: float = -1.0
-T1_B: float = 1.0
-EPS: float = 0.00001
-ITERATION_MAX: int = 50
-# Auxiliary program constants
-
 # Esc sequences for coloration
 RESET = "\033[0m"  # Reset color
 # Styles
