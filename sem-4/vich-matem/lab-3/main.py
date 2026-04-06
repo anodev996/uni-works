@@ -6,8 +6,12 @@ import task_1_2 as t1
 def main() -> None:
     """Doc."""
     try:
-        tolerance = float(input("Введите требуемую точность (например, 0.0001): "))
-        max_iterations = int(input("Введите максимальное количество итераций: "))
+        tolerance = float(
+            input("Введите требуемую точность (например, 0.0001): ")
+        )
+        max_iterations = int(
+            input("Введите максимальное количество итераций: ")
+        )
     except ValueError:
         print("Ошибка: Пожалуйста, введите корректные числовые значения.")
         return
@@ -18,14 +22,17 @@ def main() -> None:
 
     # Вычисление в заданных точках: x = 1.2 + 0.1 * k, где k = 0, 1, ..., 10
     for k in range(11):
-        x = 1.2 + 0.1 * k
+        x = 0.8 + 0.1 * k
         try:
-            derivative_val, iters = calc_second_derivative(x, tolerance, max_iterations)
+            derivative_val, iters = t1.calc_second_derivative(
+                x, tolerance, max_iterations
+            )
             # Аналитическая производная для f(x) = x^3 + 2x^2 - 44 равна f''(x) = 6x + 4
             # (вы можете использовать её для самопроверки, если захотите)
             print(f"{x:.1f}   | {derivative_val:<20.6f} | {iters:<10}")
         except ValueError:
             print(f"{x:.1f}   | {'-':<20} | {max_iterations:<10}")
+
 
 if __name__ == "__main__":
     main()
