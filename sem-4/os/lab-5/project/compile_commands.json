@@ -1,0 +1,15 @@
+[
+  {
+    "directory": "/home/bubsage/220-tusur/uni-works/sem-4/os/lab-4/project",
+    "arguments": [
+      "gcc",
+      "-I./lib/shared/include",
+      "src/server/main.c",
+      "src/server/server.c",
+      "-o",
+      "bin/server",
+      "-lpthread"
+    ],
+    "file": "src/main.c"
+  }
+]
