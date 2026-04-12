@@ -6,12 +6,16 @@
 gcc \
 -Wall \
 -Wextra \
-#-I./lib/core/include \
-#src/main.c \
-#lib/core/src/data.c \
-#lib/core/src/io.c \
--o bin/prog \
-#-lpthread \
+-I./lib/shared/include \
+src/client/main.c \
+-o bin/client \
+&&\
+gcc \
+-Wall \
+-Wextra \
+-I./lib/shared/include \
+src/server/main.c \
+-o bin/server
 ```
 
 ## Build .iso for QNX

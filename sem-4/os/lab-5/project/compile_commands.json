@@ -1,15 +1,13 @@
 [
   {
-    "directory": "/home/bubsage/220-tusur/uni-works/sem-4/os/lab-4/project",
+    "directory": "/home/bubsage/220-tusur/uni-works/sem-4/os/lab-5/project",
     "arguments": [
       "gcc",
       "-I./lib/shared/include",
-      "src/server/main.c",
-      "src/server/server.c",
+      "src/client/main.c",
       "-o",
-      "bin/server",
-      "-lpthread"
+      "bin/client"
     ],
-    "file": "src/main.c"
+    "file": "src/client/main.c"
   }
 ]

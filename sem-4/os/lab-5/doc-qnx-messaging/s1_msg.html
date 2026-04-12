@@ -1,0 +1,5204 @@
+<!--?php include "$HTDOCS/style/globals.php";
+$style_nav_name = "QNX Documentation Library";
+$style_right_sidebar = "developers/docs.html";
+
+
+
+$style_title = "Message Passing";
+include $HTDOCS."/style/header.php";
+
+?-->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"></head><body><center class="nav">
+<table align="center" width="40%">
+<tbody><tr>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html"><img src="s1_msg_files/prev.gif" width="51" height="54" alt="[Previous]"></a></td>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/about.html"><img src="s1_msg_files/contents.gif" width="51" height="54" alt="[Contents]"></a></td>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/keywords-all.html"><img src="s1_msg_files/keyword_index.gif" width="51" height="54" alt="[Index]"></a></td>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_timer.html"><img src="s1_msg_files/next.gif" width="51" height="54" alt="[Next]"></a></td>
+</tr>
+</tbody></table>
+</center>
+<hr class="nav">
+
+
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/caution.gif" alt="Caution:"></td>
+<td>This version of this document is no longer maintained.
+  For the latest documentation, see
+  <a href="http://www.qnx.com/developers/docs"><tt>http://www.qnx.com/developers/docs</tt></a>.
+</td></tr>
+</tbody></table>
+<hr>
+
+<h1><a name="id1" id="id1">Message Passing</a></h1>
+
+
+
+
+<p>This chapter includes:
+
+</p><ul>
+<li><a href="#Fundamentals" class="xref">Messaging fundamentals</a></li>
+<li><a href="#mpcs" class="xref">Message passing and client/server</a></li>
+<li><a href="#Network_distributed" class="xref">Network-distributed message passing</a></li>
+<li><a href="#What_it_means" class="xref">What it means for you</a></li>
+<li><a href="#Multiple_threads" class="xref">Multiple threads</a></li>
+<li><a href="#Using" class="xref">Using message passing</a></li>
+<li><a href="#Pulses" class="xref">Pulses</a></li>
+<li><a href="#network_msg" class="xref">Message passing over a network</a></li>
+<li><a href="#prio_interitance" class="xref">Priority inheritance</a></li>
+</ul>
+
+<h1 class="h1"><a name="Fundamentals" id="Fundamentals">Messaging fundamentals</a></h1>
+
+<p>In this chapter, we'll look at the most distinctive feature of Neutrino,
+<em>message passing</em>.
+Message passing lies at the heart of the operating system's
+microkernel architecture, giving the OS its modularity.
+
+</p>
+
+<h2 class="h2"><a name="id4" id="id4">A small microkernel and message passing</a></h2>
+
+<p>One of the principal advantages of Neutrino is that it's scalable.
+By <span class="quote">“scalable”</span> I mean that it can be tailored to work
+on tiny embedded boxes with tight memory constraints, right up to large networks
+of multiprocessor SMP boxes with almost unlimited memory.
+
+
+
+</p>
+<p>Neutrino achieves its scalability by making each service-providing
+component <em>modular</em>.
+This way, you can include only the components you need in the final system.
+By using threads in the design, you'll also help to make it scalable to
+SMP systems (we'll see some more uses for threads in this chapter).
+
+
+
+
+</p>
+<p>This is the philosophy that was used during the initial
+design of the QNX family of operating systems and has been carried through
+to this day.
+The key is a small <i class="dfn">microkernel</i> architecture, with modules 
+that would traditionally be incorporated into a monolithic kernel
+as optional components.
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx1.gif" alt="Modular Architecture" width="310" height="190" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Neutrino's modular architecture.</i></p>
+
+
+<p>You, the system architect, decide which modules you want.
+Do you need a filesystem in your project?
+If so, then add one.
+If you don't need one, then don't bother including one.
+Do you need a serial port driver?
+Whether the answer is yes or no, this doesn't affect (nor is
+it affected by) your previous decision about the filesystem.
+
+</p>
+<p>At run time, you can decide which system components are
+included in the running system.
+You can dynamically remove components from
+a live system and reinstall them, or others, at
+some other time.
+Is there anything special about these <span class="quote">“drivers”</span>?
+Nope, they're just regular, user-level programs that
+happen to perform a specific job with the hardware.
+In fact, we'll see how to write them in the Resource Managers
+chapter.
+
+
+
+
+</p>
+<p>The key to accomplishing this is message passing.
+Instead of having the OS modules bound directly into
+the kernel, and having some kind of <span class="quote">“special”</span>
+arrangement with the kernel, under Neutrino the modules communicate
+via message passing among themselves.
+The kernel is basically
+responsible only for thread-level services (e.g., scheduling).
+In fact, message passing isn't used just for this installation
+and deinstallation trick — it's the fundamental
+building block for almost all other services (for example, memory allocation
+is performed by a message to the process manager).
+Of course, some services are provided by direct kernel calls.
+
+
+</p>
+<p>Consider opening a file and writing a block of data to it.
+This is accomplished by a number of messages sent from the
+application to an installable component of Neutrino called
+the filesystem.
+The message tells the filesystem to open a file, and then another
+message tells it to write some data (and contains that data).
+Don't worry though — the Neutrino operating system performs message
+passing <em>very</em> quickly.
+
+</p>
+
+<h1 class="h1"><a name="mpcs" id="mpcs">Message passing and client/server</a></h1>
+
+<p>Imagine an application reading data from the filesystem.
+In QNX lingo, the application is a <i class="dfn">client</i> 
+requesting the data from a <i class="dfn">server</i>.
+
+
+
+</p>
+<p>This client/server model introduces several process states
+associated with message passing (we talked about these in the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html" class="xref">Processes and Threads</a> chapter).
+Initially, the server is waiting for a message to arrive from somewhere.
+At this point, the server is said to be <i class="dfn">receive-blocked</i> (also
+known as the <span class="const">RECV</span> state).
+Here's some sample
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/utilities/p/pidin.html" class="xref"><tt class="cmd">pidin</tt></a>
+output:
+ 
+
+
+
+
+
+
+
+  
+
+</p>
+<pre class="cmdsamp">pid    tid name               prio STATE       Blocked       
+     4   1 devc-pty            10r RECEIVE     1             </pre>
+
+<p>In the above sample, the pseudo-tty server (called
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/utilities/d/devc-pty.html" class="xref"><tt class="cmd">devc-pty</tt></a>) is
+process ID 4, has one thread (thread ID 1), is running at priority 10 Round-Robin,
+and is receive-blocked, waiting for a message from channel ID 1 (we'll see
+all about <span class="quote">“channels”</span> shortly).
+ 
+
+
+
+
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0521.gif" alt="State transitions of server" width="144" height="57" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>State transitions of server.</i></p>
+
+
+<p>When a message is received, the server goes into the <span class="const">READY</span>
+state, and is capable of running.
+If it happens to be the highest-priority <span class="const">READY</span> process,
+it gets the CPU and can perform some processing.
+Since it's a server, it looks at the message
+it just got and decides what to do about it.
+At some point, the server will complete whatever job the
+message told it to do, and then will <span class="quote">“reply”</span>
+to the client.
+  
+
+
+
+
+
+
+
+</p>
+<p>Let's switch over to the client.
+Initially the client was running along, consuming
+CPU, until it decided to send a message.
+The client changed from <span class="const">READY</span> to either 
+<i class="dfn">send-blocked</i> or <i class="dfn">reply-blocked</i>, depending on the 
+state of the server that it sent a message to.
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0531.gif" alt="State transitions of clients" width="150" height="133" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>State transitions of clients.</i></p>
+
+
+<p>Generally, you'll see the reply-blocked state much more often than the
+send-blocked state.
+That's because the reply-blocked state means:
+
+
+
+
+
+
+
+
+
+    </p>
+<blockquote>
+<p>    The server has received the message and is now processing it.
+    At some point, the server will complete processing and will reply
+    to the client.  The client is blocked waiting for this reply.
+    </p></blockquote>
+
+<p>Contrast that with the send-blocked state:
+
+
+
+
+
+
+
+
+
+
+
+    </p>
+<blockquote>
+<p>    The server hasn't yet received the message, most likely
+    because it was busy handling another message first.
+    When the server gets around to <span class="quote">“receiving”</span>
+    your (client) message, then you'll go from the send-blocked state
+    to the reply-blocked state.
+    </p></blockquote>
+
+<p>In practice, if you see a process that is send-blocked it means one of two 
+things:
+
+
+
+
+
+
+
+
+</p>
+<ol>
+
+<li>You happened to take a snapshot of the system in a situation
+        where the server was busy servicing a client, and a new
+        request arrived for that server.
+
+        <p>        This is a normal situation —
+        you can verify it by running <tt class="cmd">pidin</tt> again to get
+        a new snapshot. This time you'll probably see that the process is no
+        longer send-blocked.
+ 
+
+
+
+    </p></li>
+<li>The server has encountered a bug and for whatever reason isn't listening to requests
+        anymore.
+
+        <p>        When this happens, you'll see many
+        processes that are send-blocked on one server.  To verify
+        this, run <tt class="cmd">pidin</tt> again, observing that there's no
+        change in the blocked state of the client processes.
+ 
+
+
+
+</p></li>
+</ol>
+
+<p>Here's a sample showing a reply-blocked client and the server it's blocked
+on:
+
+
+
+
+
+
+
+
+
+
+</p>
+<pre class="cmdsamp">   pid tid name               prio STATE       Blocked      
+     1   1 to/x86/sys/procnto   0f READY                    
+     1   2 to/x86/sys/procnto  10r RECEIVE     1            
+     1   3 to/x86/sys/procnto  10r NANOSLEEP                
+     1   4 to/x86/sys/procnto  10r RUNNING                  
+     1   5 to/x86/sys/procnto  15r RECEIVE     1            
+ 16426   1 esh                 10r REPLY       1            </pre>
+
+<p>This shows that the program <tt class="cmd">esh</tt> (the embedded shell) has sent
+a message to process number 1 (the kernel and process manager, <tt class="cmd">procnto</tt>)
+and is now waiting for a reply.
+ 
+ 
+
+</p>
+<p>Now you know the basics of message passing in a client/server architecture.
+
+</p>
+<p>So now you might be thinking, <span class="quote">“Do I have to write special Neutrino 
+message-passing calls just to open a file or write some data?!?”</span>
+
+</p>
+<p>You don't have to write <em>any</em> message-passing functions, unless
+you want to get <span class="quote">“under the hood”</span> (which I'll talk
+about a little later).
+In fact, let me show you some client code that does message passing:
+
+
+
+</p>
+<pre class="codesamp">#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+int
+main (void)
+{
+    int     fd;
+
+    fd = open ("filename", O_WRONLY);
+    write (fd, "This is message passing\n", 24);
+    close (fd);
+
+    return (EXIT_SUCCESS);
+}</pre>
+
+<p>See?  Standard C code, nothing tricky.
+
+</p>
+<p>The message passing is done by the Neutrino C library.
+You simply issue standard POSIX 1003.1 or ANSI C function calls, and 
+the C library does the message-passing work for you.
+
+
+</p>
+<p>In the above example, we saw three functions being called and
+three distinct messages being sent:
+
+</p>
+<ul>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/o/open.html" class="xref"><i class="func">open()</i></a>
+  sent an <span class="quote">“open”</span> message
+ 
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/w/write.html" class="xref"><i class="func">write()</i></a>
+  sent a <span class="quote">“write”</span> message
+ 
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/close.html" class="xref"><i class="func">close()</i></a>
+  sent a <span class="quote">“close”</span> message
+ 
+
+</li>
+</ul>
+<p>We'll be discussing the messages themselves in a lot more detail when
+we look at resource managers (in the 
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_resmgr.html" class="xref">Resource Managers</a>
+chapter), but for now all you need to know is the fact that different
+types of messages were sent.
+
+
+
+</p>
+<p>Let's step back for a moment and contrast this to the
+way the example would have worked in a traditional operating system.
+
+
+
+</p>
+<p>The client code would remain the same and the differences would
+be hidden by the C library provided by the vendor.
+On such a system, the <i class="func">open()</i> function call would
+invoke a kernel function, which would then call directly into
+the filesystem, which would execute some code, and return a
+file descriptor.
+The <i class="func">write()</i> and <i class="func">close()</i> calls would do the same thing.
+ 
+ 
+ 
+
+</p>
+<p>So?
+Is there an advantage to doing things this way?
+Keep reading!
+
+</p>
+
+<h1 class="h1"><a name="Network_distributed" id="Network_distributed">Network-distributed message passing</a></h1>
+
+<p>Suppose we want to change our example above to talk
+to a different node on the network.
+You might think that we'll have to invoke special
+function calls to <span class="quote">“get networked.”</span>
+Here's the network version's code:
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+int
+main (void)
+{
+    int     fd;
+
+    fd = open ("/net/wintermute/home/rk/filename", O_WRONLY);
+    write (fd, "This is message passing\n", 24);
+    close (fd);
+
+    return (EXIT_SUCCESS);
+}</pre>
+
+<p>You're right if you think the code is almost the same in both versions.
+It is.
+
+
+
+</p>
+<p>In a traditional OS, the C library
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/o/open.html" class="xref"><i class="func">open()</i></a>
+calls into the kernel, which looks at the filename and says <span class="quote">“oops,
+this is on a different node.”</span>
+The kernel then calls into the network filesystem (NFS) code, which
+figures out where <tt class="fname">/net/wintermute/home/rk/filename</tt> actually
+is.
+Then, NFS calls into the network driver and <em>sends a message</em> to
+the kernel on node <tt class="host">wintermute</tt>, which then repeats the process that we
+described in our original example.
+Note that in this case, there are really two filesystems involved;
+one is the NFS client filesystem, and one is the remote filesystem.
+Unfortunately, depending on the implementation of the remote filesystem
+and NFS, certain operations may not work as expected (e.g., file
+locking) due to incompatibilities.
+
+
+ 
+
+
+
+</p>
+<p>Under Neutrino, the C library <i class="func">open()</i> creates the
+<em>same</em> message that it would have sent to the local filesystem
+and sends it to the filesystem on node <tt class="host">wintermute</tt>.
+In the local and remote cases, the <em>exact</em> same filesystem
+is used.
+ 
+
+
+</p>
+<p>This is another fundamental characteristic of Neutrino:  
+network-distributed operations are essentially <span class="quote">“free,”</span>
+as the work to decouple the functionality requirements of
+the clients from the services provided by the servers is already
+done, by virtue of message passing.
+
+
+
+</p>
+<p>On a traditional kernel there's
+a <span class="quote">“double standard”</span> where local services are implemented
+one way, and remote (network) services are implemented in a totally
+different way.
+
+</p>
+
+<h1 class="h1"><a name="What_it_means" id="What_it_means">What it means for you</a></h1>
+
+<p>Message passing is elegant and network-distributed.
+So what?
+What does it buy you, the programmer?
+
+</p>
+<p>Well, it means that your programs inherit those
+characteristics — they too can become network-distributed
+with far less work than on other systems.
+But the benefit that I find most useful is that they let you
+test software in a nice, modular manner.
+
+
+</p>
+<p>You've probably worked on large projects where many people have to
+provide different pieces of the software.
+Of course, some of these people are done sooner or later than
+others.
+
+</p>
+<p>These projects often have problems at two stages:
+initially at project definition time, when it's hard to decide
+where one person's development effort ends and another's
+begins, and then at testing/integration time, when it isn't possible
+to do full systems integration testing because all the
+pieces aren't available.
+
+</p>
+<p>With message passing, the individual components of a
+project can be decoupled very easily, leading to a very simple
+design and reasonably simple testing.
+If you want to think about this in terms of existing paradigms, 
+it's very similar to the concepts used in Object
+Oriented Programming (OOP).
+
+
+
+
+
+</p>
+<p>What this boils down to is that testing can be performed on a piece-by-piece
+basis.
+You can set up a simple program that sends messages to your server process,
+and since the inputs and outputs of that server process are (or should be!)
+well documented, you can determine if that process is functioning.
+Heck, these test cases can even be automated and placed in a regression
+suite that runs periodically!
+
+
+
+</p>
+
+<h2 class="h2"><a name="id9" id="id9">The philosophy of Neutrino</a></h2>
+
+<p>Message passing is at the heart of the philosophy of
+Neutrino.
+Understanding the uses and implications of message passing will be the
+key to making effective use of the OS.
+Before we go into the details, let's look at a little bit
+of theory first.
+
+
+
+</p>
+
+<h1 class="h1"><a name="Multiple_threads" id="Multiple_threads">Multiple threads</a></h1>
+
+<p>Although the client/server model is easy to understand, and the most 
+commonly used, there are two other variations on the theme.
+The first is the use of multiple threads (the topic of this section),
+and the second is a model called <i class="dfn">server/subserver</i>
+that's sometimes useful for general design, but really shines
+in network-distributed designs.
+The combination of the two can be extremely powerful, especially on a
+network of SMP boxes!
+
+
+
+
+
+
+
+
+
+</p>
+<p>As we discussed in the <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html" class="xref">Processes and Threads</a> chapter,
+Neutrino has the ability to run multiple threads of execution in the same process.
+How can we use this to our advantage when we combine this with message
+passing?
+
+</p>
+<p>The answer is fairly simple.
+We can start a <i class="dfn">pool of threads</i> (using the <i class="func">thread_pool_*()</i> functions
+that we talked about in the <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html#tpool" class="xref">Processes and Threads</a> chapter),
+each of which can handle a message from a client:
+
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx2.gif" alt="Clients accessing threads in a server." width="202" height="149" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Clients accessing threads in a server.</i></p>
+
+
+<p>This way, when a client sends us a message, we really don't care <em>which</em>
+thread gets it, as long as the work gets done.
+This has a number of advantages.
+The ability to service multiple clients with multiple threads,
+versus servicing multiple clients with just one thread,
+is a powerful concept.
+The main advantage is that the kernel can multitask the server among the various
+clients, without the server itself having to perform the multitasking.
+
+
+
+</p>
+<p>On a single-processor machine, having a bunch of threads running means
+that they're all competing with each other for CPU time.
+
+</p>
+<p>But, on an SMP box, we can have multiple threads competing for multiple
+CPUs, while sharing the same data area across those multiple CPUs.
+This means that we're limited only by the number of available CPUs
+on that particular machine.
+
+
+
+</p>
+
+<h2 class="h2"><a name="id12" id="id12">Server/subserver</a></h2>
+
+<p>Let's now look at the server/subserver model, and then we'll combine it
+with the multiple threads model.
+
+
+
+</p>
+<p>In this model, a server still provides a service to clients,
+but because these requests may take a long time to complete, we need to
+be able to start a request and still be able to handle
+new requests as they arrive from other clients.
+
+</p>
+<p>If we tried to do this with the traditional single-threaded client/server model, once
+one request was received and started, we wouldn't be able to receive any
+more requests unless we periodically stopped what we were doing, took a
+quick peek to see if there were any other requests pending, put those on
+a work queue, and then continued on, distributing our attention over the
+various jobs in the work queue.
+Not very efficient.
+You're practically duplicating the work of the
+kernel by <span class="quote">“time slicing”</span> between multiple jobs!
+
+
+
+</p>
+<p>Imagine what this would look like if <em>you</em> were doing it.
+You're at your desk, and someone walks up to you with a folder full of
+work.
+You start working on it.
+As you're busy working, you notice that someone else is standing
+in the doorway of your cubicle with more work of equally high priority 
+(of course)!
+Now you've got two piles of work on your desk.
+You're spending a few
+minutes on one pile, switching over to the other pile, and so on, all the
+while looking at your doorway to see if someone else is coming around with
+even more work.
+
+
+</p>
+<p>The server/subserver model would make a lot more sense here.
+In this model, we have a server that creates several other processes 
+(the subservers).
+These subservers each send a message to the server, but the server
+doesn't reply to them until it gets a request from a client.
+Then it passes the client's request to one of the subservers
+by replying to it with the job that it should perform.
+The following diagram illustrates this.
+Note the direction of the
+arrows — they indicate the direction of the sends!
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx3.gif" alt="Server/subserver model" width="280" height="150" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Server/subserver model.</i></p>
+
+
+<p>If you were doing a job like this, you'd start by hiring some extra employees.
+These employees would all come to you (just as the subservers send
+a message to the server — hence the note about the arrows in the diagram above),
+looking for work to do.
+Initially, you might not have any, so you wouldn't reply to their query.
+When someone comes into your office with a folder full of work, you
+say to one of your employees, <span class="quote">“Here's some work for you to do.”</span>
+That employee then goes off and does the work.
+As other jobs come in, you'd delegate them to the other employees.
+
+
+</p>
+<p>The trick to this model is that it's <i class="dfn">reply-driven</i> —
+the work starts when you <em>reply</em> to your subservers.
+The standard client/server model is <i class="dfn">send-driven</i> because the
+work starts when you send the server a message.
+
+
+
+
+
+</p>
+<p>So why would the clients march into <em>your</em> office, and not the offices
+of the employees that you hired?
+Why are you <span class="quote">“arbitrating”</span> the work?
+The answer is fairly simple: you're the coordinator responsible
+for performing a particular task.
+It's up to you to ensure that the work is done.
+The clients that come to you with their work know you, but they don't
+know the names or locations of your (perhaps temporary) employees.
+
+
+
+</p>
+<p>As you probably suspected, you can certainly mix multithreaded servers
+with the server/subserver model.
+The main trick is going to be determining which parts of the <span class="quote">“problem”</span>
+are best suited to being distributed over a network (generally those
+parts that won't use up the network bandwidth too much) and which
+parts are best suited to being distributed over the SMP architecture
+(generally those parts that want to use common data areas).
+
+
+
+
+
+</p>
+<p>So why would we use one over the other?
+Using the server/subserver approach, we can distribute the work over
+multiple machines on a network.
+This effectively means that we're limited only by the number of available
+machines on the network (and network bandwidth, of course).
+Combining this with multiple threads on a bunch of SMP boxes distributed
+over a network yields <span class="quote">“clusters of computing,”</span> where the
+central <span class="quote">“arbitrator”</span> delegates work (via the server/subserver
+model) to the SMP boxes on the network.
+
+
+
+</p>
+
+<h2 class="h2"><a name="id14" id="id14">Some examples</a></h2>
+
+<p>Now we'll consider a few examples of each method.
+
+</p>
+
+<h3 class="h3"><a name="id16" id="id16">Send-driven (client/server)</a></h3>
+
+<p>Filesystems, serial ports, consoles, and sound cards all use the
+client/server model.
+A C language application program takes on the role of the client
+and sends requests to these servers.
+The servers perform whatever work was specified, and reply with
+the answer.
+
+</p>
+<p>Some of these traditional <span class="quote">“client/server”</span> servers
+may in fact actually be reply-driven (server/subserver) servers!
+This is because, to the ultimate client, they <em>appear</em> as a standard
+server, even though the server itself uses server/subserver
+methods to get the work done.
+What I mean by that is, the client still sends a message to what it thinks
+is the <span class="quote">“service providing process.”</span>
+What actually happens is that the <span class="quote">“service providing process”</span> 
+simply delegates the client's work to a different process (the subserver).
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id18" id="id18">Reply-driven (server/subserver)</a></h3>
+
+<p>One of the more popular reply-driven programs is a fractal graphics 
+program distributed over the network.
+The master program divides the screen into several areas, for example,
+64 regions.
+At startup, the master program is given a list of nodes that can
+participate in this activity.
+The master program starts up worker (subserver) programs, one on each of the
+nodes, and then waits for the worker programs to send to
+the master.
+
+
+
+
+
+</p>
+<p>The master then repeatedly picks <span class="quote">“unfilled”</span> regions
+(of the 64 on screen) and delegates the fractal computation
+work to the worker program on another node by replying to it.
+When the worker program has completed the calculations, it sends the 
+results back to the master, which displays the result on the screen.
+
+</p>
+<p>Because the worker program sent to the master, it's now up to
+the master to again reply with more work.
+The master continues doing this until all 64 areas on the screen have
+been filled.
+
+</p>
+
+<h3 class="h3"><a name="id20" id="id20">An important subtlety</a></h3>
+
+<p>Because the master program is delegating work to worker programs, the master
+program can't afford to become blocked on any one program!
+In a traditional send-driven approach, you'd expect the master to
+create a program and then send to it.
+Unfortunately, the master program wouldn't be replied to until the worker 
+program was done,
+meaning that the master program couldn't send simultaneously to another
+worker program, effectively negating the advantages of having multiple
+worker nodes.
+
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0591.gif" alt="One master, multiple workers" width="356" height="168" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>One master, multiple workers.</i></p>
+
+
+<p>The solution to this problem is to have the worker programs start up, and
+<em>ask</em> the master program if there's any work to do by sending it
+a message.
+Once again, we've used the direction of the arrows in the diagram to indicate
+the direction of the send.
+Now the worker programs are waiting for the master to reply.
+When something tells the master program to do some work, it replies to one
+or more of the workers, which causes them to go off and do the work.
+This lets the workers go about their business; the master program can
+still respond to new requests (it's not blocked waiting for a reply from one
+of the workers).
+
+</p>
+
+<h3 class="h3"><a name="id22" id="id22">Multi-threaded server</a></h3>
+
+<p>Multi-threaded servers are indistinguishable from single-threaded servers
+from the client's point of view.
+In fact, the designer of a server can just <span class="quote">“turn on”</span> multi-threading
+by starting another thread.
+
+
+
+
+</p>
+<p>In any event, the server can still make use of multiple CPUs in an SMP
+configuration, even if it is servicing only one <span class="quote">“client.”</span>
+What does that mean?
+Let's revisit the fractal graphics example.
+When a subserver gets a
+request from the server to <span class="quote">“compute,”</span> there's absolutely
+nothing stopping the subserver from starting up multiple threads on
+multiple CPUs to service the one request.
+In fact, to make the application scale better across networks that have some SMP boxes
+and some single-CPU boxes, the server and subserver can initially exchange a message
+whereby the subserver tells the server how many CPUs it has — this
+lets it know how many requests it can service simultaneously.
+The server would then queue up more requests for SMP boxes, allowing the SMP
+boxes to do more work than single-CPU boxes.
+
+
+
+
+</p>
+
+<h1 class="h1"><a name="Using" id="Using">Using message passing</a></h1>
+
+<p>Now that we've seen the basic concepts involved in message passing, and 
+learned that even common everyday things like the C library use it, let's
+take a look at some of the details.
+
+</p>
+
+<h2 class="h2"><a name="id25" id="id25">Architecture &amp; structure</a></h2>
+
+<p>We've been talking about <span class="quote">“clients”</span> and <span class="quote">“servers.”</span>
+I've also used three key phrases:</p>
+<ul>
+<li><span class="quote">“The client <em>sends</em> to the server.”</span>
+    </li>
+<li><span class="quote">“The server <em>receives</em> from the client.”</span>
+    </li>
+<li><span class="quote">“The server <em>replies</em> to the client.”</span></li>
+</ul>
+<p>I specifically used those phrases because they closely reflect the actual
+function names used in Neutrino message-passing operations.
+
+</p>
+<p>Here's the complete list of functions dealing with message passing available
+under Neutrino (in alphabetical order):</p>
+<ul>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channelcreate.html" class="xref"><i class="func">ChannelCreate()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channeldestroy.html" class="xref"><i class="func">ChannelDestroy()</i></a>
+
+
+
+
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/connectattach.html" class="xref"><i class="func">ConnectAttach()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/connectdetach.html" class="xref"><i class="func">ConnectDetach()</i></a>
+
+
+
+
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgdeliverevent.html" class="xref"><i class="func">MsgDeliverEvent()</i></a>
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgerror.html" class="xref"><i class="func">MsgError()</i></a>
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgread.html" class="xref"><i class="func">MsgRead()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreadv.html" class="xref"><i class="func">MsgReadv()</i></a>
+
+
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceive.html" class="xref"><i class="func">MsgReceive()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceivepulse.html" class="xref"><i class="func">MsgReceivePulse()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceivev.html" class="xref"><i class="func">MsgReceivev()</i></a>
+
+
+
+
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreply.html" class="xref"><i class="func">MsgReply()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreplyv.html" class="xref"><i class="func">MsgReplyv()</i></a>
+
+
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsend.html" class="xref"><i class="func">MsgSend()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendnc.html" class="xref"><i class="func">MsgSendnc()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendsv.html" class="xref"><i class="func">MsgSendsv()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendsvnc.html" class="xref"><i class="func">MsgSendsvnc()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendv.html" class="xref"><i class="func">MsgSendv()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendvnc.html" class="xref"><i class="func">MsgSendvnc()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendvs.html" class="xref"><i class="func">MsgSendvs()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendvsnc.html" class="xref"><i class="func">MsgSendvsnc()</i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+<li><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwrite.html" class="xref"><i class="func">MsgWrite()</i></a>,
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwritev.html" class="xref"><i class="func">MsgWritev()</i></a>
+
+
+
+</li>
+</ul>
+<p>Don't let this list overwhelm you!
+You can write perfectly useful client/server applications using just a
+small subset of the calls from the list — as you get used to the ideas,
+you'll see that some of the other functions can be very useful in
+certain cases.
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td>A useful minimal set of functions is <i class="func">ChannelCreate()</i>,
+<i class="func">ConnectAttach()</i>, <i class="func">MsgReply()</i>, <i class="func">MsgSend()</i>, and
+<i class="func">MsgReceive()</i>.
+
+
+
+
+
+
+
+
+
+
+
+
+</td></tr>
+</tbody></table>
+<hr></div>
+
+
+<p>We'll break our discussion up into the functions that apply on the
+client side, and those that apply on the server side.
+
+</p>
+
+<h2 class="h2"><a name="id27" id="id27">The client</a></h2>
+
+<p>The client wants to send a request to a server, block until the
+server has completed the request, and then when the request is completed
+and the client is unblocked, to get at the <span class="quote">“answer.”</span>
+
+
+
+</p>
+<p>This implies two things: the client needs to be able to establish a connection
+to the server and then to transfer data via messages — a message from the client to the
+server (the <span class="quote">“send”</span> message) and a message back from the
+server to the client (the <span class="quote">“reply”</span> message, the
+server's reply).
+
+
+
+</p>
+
+<h3 class="h3"><a name="id29" id="id29">Establishing a connection</a></h3>
+
+<p>So, let's look at these functions in turn.
+The first thing we need to do is to establish a connection.
+We do this with the function
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/connectattach.html" class="xref"><i class="func">ConnectAttach()</i></a>,
+which
+looks like this:
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int ConnectAttach (int <i class="var">nd</i>,
+                   pid_t <i class="var">pid</i>,
+                   int <i class="var">chid</i>,
+                   unsigned <i class="var">index</i>,
+                   int <i class="var">flags</i>);</pre>
+
+<p><i class="func">ConnectAttach()</i> is given three identifiers:  the <i class="var">nd</i>, which
+is the Node Descriptor, the <i class="var">pid</i>, which is the process ID, and the <i class="var">chid</i>,
+which is the channel ID.
+These three IDs, commonly referred to as <span class="quote">“ND/PID/CHID,”</span> uniquely
+identify the server that the client wants to connect to.
+We'll ignore the <i class="var">index</i> and <i class="var">flags</i> (just set them to <span class="const">0</span>).
+ 
+ 
+ 
+ 
+
+
+</p>
+<p>So, let's assume that we want to connect to process ID 77, channel ID 1 on our
+node.
+Here's the code sample to do that:
+
+
+
+
+</p>
+<pre class="codesamp">int coid;
+
+coid = ConnectAttach (0, 77, 1, 0, 0);</pre>
+
+<p>As you can see, by specifying a <i class="var">nd</i> of zero, we're telling the
+kernel that we wish to make a connection on our node.
+
+
+
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td><p>How did I figure out I wanted to talk to process ID 77 and channel ID 1?
+We'll see that shortly (see <span class="quote">“<a href="#find77" class="xref">Finding the server's ND/PID/CHID,</a>”</span> below).</p></td></tr>
+</tbody></table>
+<hr></div>
+
+
+<p>At this point, I have a <i class="dfn">connection ID</i>
+— a small integer that uniquely identifies a connection from my client to a specific
+channel on a particular server.
+
+
+
+
+</p>
+<p>I can use this connection ID when sending to the server as many times as
+I like.
+When I'm done with it, I can destroy it via:
+
+
+
+
+
+</p>
+<pre class="codesamp">ConnectDetach (coid);</pre>
+
+<p>So let's see how I actually use it.
+
+</p>
+
+<h3 class="h3"><a name="sampcli" id="sampcli">Sending messages</a></h3>
+
+<p>Message passing on the client is achieved using some variant of the <i class="func">MsgSend*()</i>
+function family.
+We'll look at the simplest member,
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsend.html" class="xref"><i class="func">MsgSend()</i></a>:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int MsgSend (int <i class="var">coid</i>,
+             const void *<i class="var">smsg</i>,
+             int <i class="var">sbytes</i>,
+             void *<i class="var">rmsg</i>,
+             int <i class="var">rbytes</i>);</pre>
+
+<p><i class="func">MsgSend()</i>'s arguments are:</p>
+<ul>
+<li>the connection ID of the target server (<i class="var">coid</i>), 
+    </li>
+<li>a pointer to the send message (<i class="var">smsg</i>),
+    </li>
+<li>the size of the send message (<i class="var">sbytes</i>),
+    </li>
+<li>a pointer to the reply message (<i class="var">rmsg</i>), and
+    </li>
+<li>the size of the reply message (<i class="var">rbytes</i>).</li>
+</ul>
+<p>It couldn't get any simpler than that!
+ 
+
+</p>
+<p>Let's send a simple message to process ID <span class="const">77</span>,
+channel ID <span class="const">1</span>:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+char *smsg = "This is the outgoing buffer";
+char rmsg [200];
+int  coid;
+
+// establish a connection
+coid = ConnectAttach (0, 77, 1, 0, 0);
+if (coid == -1) {
+    fprintf (stderr, "Couldn't ConnectAttach to 0/77/1!\n");
+    perror (NULL);
+    exit (EXIT_FAILURE);
+}
+
+// send the message
+if (MsgSend (coid,
+             smsg, 
+             strlen (smsg) + 1, 
+             rmsg, 
+             sizeof (rmsg)) == -1) {
+    fprintf (stderr, "Error during MsgSend\n");
+    perror (NULL);
+    exit (EXIT_FAILURE);
+}
+
+if (strlen (rmsg) &gt; 0) {
+    printf ("Process ID 77 returns \"%s\"\n", rmsg);
+}</pre>
+
+<p>Let's assume that process ID <span class="const">77</span> was an active server expecting
+that particular format of message on its channel ID <span class="const">1</span>.
+After the server received the message, it would process it and at some point
+reply with a result.
+At that point, the <i class="func">MsgSend()</i> would return a <span class="const">0</span>
+indicating that everything went well.
+If the server sends us any data in the reply, we'd print it with the last line of code
+(we're assuming we're getting <span class="const">NUL</span>-terminated ASCII data back).
+
+
+
+
+
+</p>
+
+<h2 class="h2"><a name="the_server" id="the_server">The server</a></h2>
+
+<p>Now that we've seen the client, let's look at the server.
+The client used <i class="func">ConnectAttach()</i> to create a connection
+to a server, and then used <i class="func">MsgSend()</i> for all its message passing.
+
+
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id33" id="id33">Creating the channel</a></h3>
+
+<p>This implies that the server has to create a channel — this is the
+thing that the client connected to when it issued the <i class="func">ConnectAttach()</i>
+function call.
+Once the channel has been created, the server usually leaves it up forever.
+
+
+
+
+
+
+</p>
+<p>The channel gets created via the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channelcreate.html" class="xref"><i class="func">ChannelCreate()</i></a>
+function, and destroyed via the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channeldestroy.html" class="xref"><i class="func">ChannelDestroy()</i></a>
+function:
+
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int ChannelCreate  (unsigned <i class="var">flags</i>);
+
+int ChannelDestroy (int <i class="var">chid</i>);</pre>
+
+<p>We'll come back to the <i class="var">flags</i> argument later
+(in the <span class="quote">“<a href="#chanflags" class="xref">Channel flags</a>”</span> section, below).
+For now, let's just use a <span class="const">0</span>.
+Therefore, to create a channel, the server issues:
+
+</p>
+<pre class="codesamp">int  chid;
+
+chid = ChannelCreate (0);</pre>
+
+<p>So we have a channel.
+At this point, clients could connect (via <i class="func">ConnectAttach()</i>)
+to this channel and start sending messages:
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx4.gif" alt="Relationship of server channel and client connection." width="363" height="117" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Relationship between a server channel and a client connection.</i></p>
+
+
+
+<h3 class="h3"><a name="id35" id="id35">Message handling</a></h3>
+
+<p>As far as the message-passing aspects are concerned,
+the server handles message passing in two stages; a <span class="quote">“receive”</span>
+stage and a <span class="quote">“reply”</span> stage:
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx5.gif" alt="Relationship of client and server message-passing functions." width="406" height="153" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Relationship of client and server message-passing functions.</i></p>
+
+
+<p>We'll look initially at two simple versions of these functions,
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceive.html" class="xref"><i class="func">MsgReceive()</i></a>
+and
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreply.html" class="xref"><i class="func">MsgReply()</i></a>,
+and then later see
+some of the variants.
+
+
+
+
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int MsgReceive (int <i class="var">chid</i>,
+                void *<i class="var">rmsg</i>,
+                int <i class="var">rbytes</i>,
+                struct _msg_info *<i class="var">info</i>);
+
+int MsgReply (int <i class="var">rcvid</i>,
+              int <i class="var">status</i>,
+              const void *<i class="var">msg</i>,
+              int <i class="var">nbytes</i>);</pre>
+
+<p>Let's look at how the parameters relate:
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/srr.gif" alt="message data flow" width="374" height="193" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Message data flow.</i></p>
+
+
+<p>As you can see from the diagram, there are four things we need to
+talk about:
+
+</p>
+<ol>
+
+<li>The client issues a <i class="func">MsgSend()</i> and specifies its transmit
+        buffer (the <i class="var">smsg</i> pointer and the <i class="var">sbytes</i> length).
+        This gets transferred into the buffer provided by the server's
+        <i class="func">MsgReceive()</i> function, at <i class="var">rmsg</i> for <i class="var">rbytes</i>
+        in length.
+        The client is now blocked.
+ 
+ 
+
+
+
+
+    </li>
+<li>The server's <i class="func">MsgReceive()</i> function unblocks, and returns
+        with a <i class="var">rcvid</i>, which the server will use later for the reply.
+        At this point, the data is available for the server to use.
+ 
+
+
+
+
+
+
+    </li>
+<li>The server has completed the processing of the message, and now uses
+        the <i class="var">rcvid</i> it got from the <i class="func">MsgReceive()</i> by passing it
+        to the <i class="func">MsgReply()</i>.
+        Note that the <i class="func">MsgReply()</i> function takes a buffer (<i class="var">smsg</i>)
+        with a defined size (<i class="var">sbytes</i>) as the location of the data to transmit
+        to the client.  The data is now transferred by the kernel.
+ 
+ 
+
+
+
+    </li>
+<li>Finally, the <i class="var">sts</i> parameter is transferred by the kernel, and shows
+        up as the return value from the client's <i class="func">MsgSend()</i>.
+        The client now unblocks.
+ 
+
+
+</li>
+</ol>
+
+<p>You may have noticed that there are two sizes for every buffer transfer (in the
+client send case, there's <i class="var">sbytes</i> on the client side and <i class="var">rbytes</i>
+on the server side; in the server reply case, there's <i class="var">sbytes</i> on the
+server side and <i class="var">rbytes</i> on the client side.)
+The two sets of sizes are present so that the programmers of each component can
+specify the sizes of <em>their</em> buffers.
+This is done for added safety.
+
+</p>
+<p>In our example, the <i class="func">MsgSend()</i> buffer's size was the same as the
+message string's length.
+Let's look at the server and see how the size is used there.
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id37" id="id37">Server framework</a></h3>
+
+<p>Here's the overall structure of a server:
+
+
+
+
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+…
+
+void
+server (void)
+{
+    int     rcvid;         // indicates who we should reply to
+    int     chid;          // the channel ID
+    char    message [512]; // big enough for our purposes
+
+    // create a channel
+    chid = ChannelCreate (0);
+
+    // this is typical of a server:  it runs forever
+    while (1) {
+
+        // get the message, and print it
+        rcvid = MsgReceive (chid, message, sizeof (message),
+                            NULL);
+        printf ("Got a message, rcvid is %X\n", rcvid);
+        printf ("Message was \"%s\".\n", message);
+
+        // now, prepare the reply.  We reuse "message"
+        strcpy (message, "This is the reply");
+        MsgReply (rcvid, EOK, message, sizeof (message));
+    }
+}</pre>
+
+<p>As you can see, <i class="func">MsgReceive()</i> tells the kernel that
+it can handle messages up to <tt class="code">sizeof (message)</tt>
+(or 512 bytes).
+Our sample client (<a href="#sampcli" class="xref">above</a>)
+sent only 28 bytes (the length of the string).
+The following diagram illustrates:
+ 
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx6.gif" alt="Transferring less data than expected" width="228" height="125" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Transferring less data than expected.</i></p>
+
+
+<p>The kernel transfers the <em>minimum</em> specified by both sizes.
+In our case, the kernel would transfer 28 bytes.
+The server would be unblocked and print out the client's message.
+The remaining 484 bytes (of the 512 byte buffer) will remain unaffected.
+
+
+</p>
+<p>We run into the same situation again with <i class="func">MsgReply()</i>.
+The <i class="func">MsgReply()</i> function says that it wants to transfer 512 bytes,
+but our client's <i class="func">MsgSend()</i> function has specified that a maximum
+of 200 bytes can be transferred.
+So the kernel once again transfers the minimum.
+In this case, the 200 bytes that the client can accept limits the
+transfer size.
+(One interesting aspect here is that once the server transfers
+the data, if the client doesn't receive <em>all</em> of it, as in our example, there's no way
+to get the data back — it's gone forever.)
+
+
+
+
+
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td><p>Keep in mind that this <span class="quote">“trimming”</span> operation is normal and
+expected behavior.
+
+</p><p>When we discuss message passing over a network, you'll see that there's
+a tiny <span class="quote">“gotcha”</span> with the amount of data transferred.  We'll see
+this in <span class="quote">“<a href="#netdiff" class="xref">Networked message-passing differences,</a>”</span> below.
+
+</p></td></tr>
+</tbody></table>
+<hr></div>
+
+
+
+<h2 class="h2"><a name="sendhierarchy" id="sendhierarchy">The send-hierarchy</a></h2>
+
+<p>One thing that's perhaps not obvious in a message-passing environment is the need to follow
+a strict <i class="dfn">send-hierarchy</i>.
+What this means is that two threads should never send messages to each other;
+rather, they should be organized such that each thread occupies a <span class="quote">“level”</span>;
+all sends go from one level to a higher level, never to the same or lower level.
+The problem with having two threads send messages to each other is that eventually you'll
+run into the problem of deadlock — both threads are waiting for each other to reply
+to their respective messages.
+Since the threads are blocked, they'll never get a chance to run and perform the reply,
+so you end up with two (or more!) hung threads.
+
+
+
+
+</p>
+<p>The way to assign the levels to the threads is to put the outermost clients at the highest
+level, and work down from there.
+For example, if you have a graphical user interface that relies on some database server, and
+the database server in turn relies on the filesystem, and the filesystem in turn relies on
+a block filesystem driver, then you've got a natural hierarchy of different processes.
+The sends will flow from the outermost client (the graphical user interface) down to the
+lower servers; the replies will flow in the opposite direction.
+
+
+</p>
+<p>While this certainly works in the majority of cases, you <em>will</em> encounter situations where you
+need to <span class="quote">“break”</span> the send hierarchy.
+This is <em>never</em> done by simply violating the send hierarchy and sending a message
+<span class="quote">“against the flow,”</span> but rather by using the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgdeliverevent.html" class="xref"><i class="func">MsgDeliverEvent()</i></a>
+function, which we'll take a look at later.
+
+
+
+
+
+</p>
+
+<h2 class="h2"><a name="id40" id="id40">Receive IDs, channels, and other parameters</a></h2>
+
+<p>We haven't talked about the various parameters in the 
+examples above so that we could focus just on the message passing.
+Now let's take a look.
+
+</p>
+
+<h3 class="h3"><a name="id42" id="id42">More about channels</a></h3>
+
+<p>In the server example above, we saw that the server created just one
+channel.
+It could certainly have created more, but generally, servers don't
+do that.
+(The most obvious example of a server with two channels is the
+Transparent Distributed Processing (TDP, also known as Qnet)
+native network manager —
+definitely an <span class="quote">“odd”</span> piece of software!)
+
+
+
+
+
+
+
+
+</p>
+<p>As it turns out, there really isn't much need to create multiple channels
+in the real world.
+The main purpose
+of a channel is to give the server a well-defined place to <span class="quote">“listen”</span>
+for messages, and to give the clients a well-defined place to send their
+messages (via a connection).
+About the only time that you'd have multiple channels in a server is if
+the server wanted to provide either different services, or different
+classes of services, depending on which channel the message arrived on.
+The second channel could be used, for example, as a place to drop wake up
+pulses — this ensures that they're treated as a different <span class="quote">“class”</span>
+of service than messages arriving on the first channel.
+
+
+
+</p>
+<p>In a previous paragraph I had said that you could have a pool of
+threads running in a server, ready to accept messages from clients, and that it
+didn't really matter which thread got the request.
+This is another aspect of the channel abstraction.
+Under previous versions of the QNX family of operating systems (notably QNX 4), a client would target messages
+at a server identified by a node ID and process ID.
+Since QNX 4 is single-threaded, this means that there cannot be confusion
+about <span class="quote">“to whom”</span> the message is being sent.
+However, once you introduce threads into the picture, the design decision
+had to be made as to how you would address the threads (really, the
+<span class="quote">“service providers”</span>).
+Since threads are ephemeral,
+it really didn't make sense to have the client connect to a particular
+node ID, process ID, and <em>thread</em> ID.
+Also, what if that particular thread was busy?
+We'd have to provide some method to allow a client to select a <span class="quote">“non-busy
+thread within a defined pool of service-providing threads.”</span>
+
+
+
+
+</p>
+<p>Well, that's exactly what a channel is.
+It's the <span class="quote">“address”</span> of a <span class="quote">“pool of service-providing threads.”</span>
+The implication here is that a bunch of threads can issue a
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceive.html" class="xref"><i class="func">MsgReceive()</i></a>
+function call on a particular channel, and block, with only one thread getting
+a message at a time.
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="msginfo" id="msginfo">Who sent the message?</a></h3>
+
+<p>Often a server will need to know who sent it a message.
+There are a number of reasons for this:
+
+
+
+
+</p>
+<ul>
+<li>accounting
+    </li>
+<li>access control
+    </li>
+<li>context association
+    </li>
+<li>class of service
+    </li>
+<li>etc.</li>
+</ul>
+<p>It would be cumbersome (and a security hole) to have the client provide
+this information with each and every message sent.
+Therefore, there's a structure filled in by the
+kernel whenever the <i class="func">MsgReceive()</i> function unblocks
+because it got a message.
+This structure is of type
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/_msg_info.html" class="xref"><tt class="dtype">struct _msg_info</tt></a>,
+and
+contains the following:
+ 
+  
+
+</p>
+<pre class="codesamp">struct _msg_info
+{
+    int     <i class="var">nd</i>;
+    int     <i class="var">srcnd</i>;
+    pid_t   <i class="var">pid</i>;
+    int32_t <i class="var">chid</i>;
+    int32_t <i class="var">scoid</i>;
+    int32_t <i class="var">coid</i>;
+    int32_t <i class="var">msglen</i>;
+    int32_t <i class="var">tid</i>;
+    int16_t <i class="var">priority</i>;
+    int16_t <i class="var">flags</i>;
+    int32_t <i class="var">srcmsglen</i>;
+    int32_t <i class="var">dstmsglen</i>;
+};</pre>
+
+<p>You pass it to the <i class="func">MsgReceive()</i> function as the last argument.
+If you pass a <span class="const">NULL</span>, then nothing happens.
+(The information can be retrieved later via the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msginfo.html" class="xref"><i class="func">MsgInfo()</i></a>
+call, so it's not gone forever!)
+
+
+
+
+
+
+
+</p>
+<p>Let's look at the fields:
+</p>
+<dl compact="compact">
+
+<dt><i class="var">nd</i>, <i class="var">srcnd</i>, <i class="var">pid</i>, and <i class="var">tid</i>
+    </dt>
+<dd>Node Descriptors, process ID, and thread ID of the client.
+        (Note that <i class="var">nd</i> is the receiving node's node descriptor for
+        the transmitting node; <i class="var">srcnd</i> is the transmitting node's
+        node descriptor for the receiving node.  There's a very good reason
+        for this <tt>:-)</tt>, which we'll see below in <span class="quote">“<a href="#ndnotes" class="xref">Some notes on NDs</a>”</span>).
+
+
+
+
+
+
+
+
+    </dd>
+<dt><i class="var">priority</i>
+    </dt>
+<dd>The priority of the sending thread.
+
+
+
+    </dd>
+<dt><i class="var">chid</i>, <i class="var">coid</i>
+    </dt>
+<dd>Channel ID that the message was sent to, and the
+        connection ID used.
+
+
+
+
+
+
+
+    </dd>
+<dt><i class="var">scoid</i>
+    </dt>
+<dd>Server Connection ID.
+        This is an internal identifier used by the kernel to route
+        the message from the server back to the client.
+        You don't need to know about it, except for the interesting
+        fact that it will be a small integer that uniquely represents the
+        client.
+
+
+
+
+    </dd>
+<dt><i class="var">flags</i>
+    </dt>
+<dd>Contains a variety of flag bits,
+        <span class="const">_NTO_MI_ENDIAN_BIG</span>,
+        <span class="const">_NTO_MI_ENDIAN_DIFF</span>,
+        <span class="const">_NTO_MI_NET_CRED_DIRTY</span>, and
+        <span class="const">_NTO_MI_UNBLOCK_REQ</span>.
+        The <span class="const">_NTO_MI_ENDIAN_BIG</span> and <span class="const">_NTO_MI_ENDIAN_DIFF</span> tell you about the
+        endian-ness of the sending machine (in case the message came over the network from a machine
+        with a different endian-ness), <span class="const">_NTO_MI_NET_CRED_DIRTY</span> is used internally;
+        we'll look at <span class="const">_NTO_MI_UNBLOCK_REQ</span> in the section <a href="#nto_mi_unblock_req" class="xref"><span class="quote">“Using
+        the <span class="const">_NTO_MI_UNBLOCK_REQ</span>”</span></a>, below.
+
+
+
+
+
+
+
+
+    </dd>
+<dt><i class="var">msglen</i>
+    </dt>
+<dd>Number of bytes received.
+
+
+    </dd>
+<dt><i class="var">srcmsglen</i>
+    </dt>
+<dd>The length of the source message, in bytes, as sent by the client.
+        This may be greater than the value in <i class="var">msglen</i>, as would be
+        the case when receiving less data than what was sent.
+        Note that this member is valid only if <span class="const">_NTO_CHF_SENDER_LEN</span>
+        was set in the flags argument to
+        <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channelcreate.html" class="xref"><i class="func">ChannelCreate()</i></a>
+        for the
+        channel that the message was received on.
+ 
+
+
+
+
+
+    </dd>
+<dt><i class="var">dstmsglen</i>
+    </dt>
+<dd>The length of the client's reply buffer, in bytes.
+        This field is only valid if the <span class="const">_NTO_CHF_REPLY_LEN</span> flag is set in the
+        argument to <i class="func">ChannelCreate()</i> for the channel that the message was received on.
+ 
+
+
+
+
+</dd>
+</dl>
+
+
+<h3 class="h3"><a name="id45" id="id45">The receive ID (a.k.a. the client cookie)</a></h3>
+
+<p>In the code sample above, notice how we:
+
+</p>
+<pre class="codesamp">rcvid = MsgReceive (…);
+…
+MsgReply (rcvid, …);</pre>
+
+<p>This is a key snippet of code, because it illustrates the
+binding between receiving a message from a client, and then
+being able to (sometime later) reply to that particular client.
+The <i class="dfn">receive ID</i> is an integer that acts as a
+<span class="quote">“magic cookie”</span> that you'll need to hold onto
+if you want to interact with the client later.
+What if you lose it?
+It's gone.  The client will not unblock from the <i class="func">MsgSend()</i> until
+you (the server) die, or if the client has a timeout on the
+message-passing call (and even then it's tricky; see the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/t/timertimeout.html" class="xref"><i class="func">TimerTimeout()</i></a>
+function in the Neutrino <cite>Library Reference</cite>, and the discussion
+about its use
+in the <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_timer.html#kto" class="xref">Clocks, Timers, and Getting A Kick
+Every So Often</a> chapter, under <span class="quote">“Kernel timeouts”</span>).
+ 
+ 
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td>Don't depend on the value of the receive ID
+to have any particular meaning — it may change
+in future versions of the operating system.  You can
+assume that it will be unique, in that you'll never
+have two outstanding clients identified by the same
+receive IDs (in that case, the kernel couldn't tell them
+apart either when you do the <i class="func">MsgReply()</i>).
+ 
+
+
+<p>Also, note that except in one special case (the <i class="func">MsgDeliverEvent()</i>
+function which we'll look at later), once you've done the <i class="func">MsgReply()</i>,
+that particular receive ID ceases to have meaning.
+ 
+ 
+
+</p></td></tr>
+</tbody></table>
+<hr></div>
+
+
+<p>This brings us to the <i class="func">MsgReply()</i> function.
+
+
+
+</p>
+
+<h3 class="h3"><a name="id47" id="id47">Replying to the client</a></h3>
+
+<p><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreply.html" class="xref"><i class="func">MsgReply()</i></a>
+accepts a receive ID, a status, a message pointer,
+and a message size.
+We've just finished discussing the receive ID; it identifies who the reply message should be sent to.
+The status variable indicates the return status that should be passed
+to the client's
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsend.html" class="xref"><i class="func">MsgSend()</i></a>
+function.
+Finally, the message pointer and size indicate the location and size of the
+<em>optional</em> reply message that should be sent.
+
+
+
+
+ 
+
+
+
+</p>
+<p>The <i class="func">MsgReply()</i> function may appear to be very simple 
+(and it is), but its applications require some examination.
+
+
+
+</p>
+
+<h3 class="h3"><a name="id49" id="id49">Not replying to the client</a></h3>
+
+<p>There's absolutely no requirement that you reply to a client 
+<em>before</em> accepting new messages from other clients via 
+<i class="func">MsgReceive()</i>!
+This can be used in a number of different scenarios.
+
+ 
+
+
+</p>
+<p>In a typical device driver, a client may make a request that won't be serviced
+for a long time.
+For example, the client may ask an Analog-to-Digital Converter (ADC) device
+driver to <span class="quote">“Go out and collect 45 seconds worth of samples.”</span>
+In the meantime, the ADC driver shouldn't just close up shop for 45 seconds!
+Other clients might wish to have requests serviced (for example, there
+might be multiple analog channels, or there might be status information that should
+be available immediately, etc.).
+
+
+</p>
+<p>Architecturally, the ADC driver will simply queue the receive ID that it got
+from the <i class="func">MsgReceive()</i>, start up the 45-second accumulation process,
+and go off and handle other requests.
+When the 45 seconds are up and the samples have been accumulated, the ADC driver
+can find the receive ID associated with the request and <em>then</em>
+reply to the client.
+
+
+
+</p>
+<p>You'd also want to hold off replying to a client in
+the case of the reply-driven server/subserver model (where some of the
+<span class="quote">“clients”</span> are the subservers).
+Since the subservers are looking for work, you'd simply make a note
+of their receive IDs and store those away.
+When actual work arrived, then and only then would you reply to the subserver,
+thus indicating that it should do some work.
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id51" id="id51">Replying with no data, or an <i class="var">errno</i></a></h3>
+
+<p>When you finally reply to the client, there's no requirement that you
+transfer any data.
+This is used in two scenarios.
+
+</p>
+<p>You may choose to reply with no data if the sole purpose of the reply is
+to unblock the client.
+Let's say the client just wants to be blocked until some particular
+event occurs, but it doesn't need to know which event.
+In this case, no data is required by the <i class="func">MsgReply()</i> function; the
+receive ID is sufficient:
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">MsgReply (rcvid, EOK, NULL, 0);</pre>
+
+<p>This unblocks the client (but doesn't return any data) and returns the <span class="const">EOK</span>
+<span class="quote">“success”</span> indication.
+ 
+
+</p>
+<p>As a slight modification of that, you may wish to return an error
+status to the client.
+In this case, you can't do that with <i class="func">MsgReply()</i>, but instead <em>must</em>
+use
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgerror.html" class="xref"><i class="func">MsgError()</i></a>:
+
+
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">MsgError (rcvid, EROFS);</pre>
+
+<p>In the above example, the server detects that the client is attempting to
+write to a read-only filesystem, and, instead of returning any actual
+data, simply returns an <i class="var">errno</i> of <span class="const">EROFS</span>
+back to the client.
+ 
+
+</p>
+<p>Alternatively (and we'll look at the calls shortly), you may have already
+transferred the data (via
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwrite.html" class="xref"><i class="func">MsgWrite()</i></a>),
+and there's no additional
+data to transfer.
+
+
+
+</p>
+<p>Why the two calls?
+They're subtly different.
+While both <i class="func">MsgError()</i> and <i class="func">MsgReply()</i> will unblock the client,
+<i class="func">MsgError()</i> will <em>not</em> transfer any additional data, <em>will</em> cause the client's
+<i class="func">MsgSend()</i> function to return <span class="const">-1</span>, and <em>will</em> cause the client
+to have <i class="var">errno</i> set to whatever was passed as the second argument to <i class="func">MsgError()</i>.
+
+
+
+
+
+
+
+
+
+</p>
+<p>On the other hand, <i class="func">MsgReply()</i> <em>could</em> transfer data (as indicated by
+the third and fourth arguments), and <em>will</em> cause the client's <i class="func">MsgSend()</i> function to
+return whatever was passed as the second argument to <i class="func">MsgReply()</i>.
+<i class="func">MsgReply()</i> has <em>no</em> effect on the client's <i class="var">errno</i>.
+
+
+
+
+
+
+
+</p>
+<p>Generally, if you're returning only a pass/fail indication (and no data), you'd use
+<i class="func">MsgError()</i>, whereas if you're returning data, you'd use <i class="func">MsgReply()</i>.
+Traditionally, when you <em>do</em> return data, the second argument to <i class="func">MsgReply()</i>
+will be a positive integer indicating the number of bytes being returned.
+
+
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="find77" id="find77">Finding the server's ND/PID/CHID</a></h3>
+
+<p>You've noticed that in the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/connectattach.html" class="xref"><i class="func">ConnectAttach()</i></a>
+function, 
+we require a Node Descriptor (ND), a process ID (PID), and a channel
+ID (CHID) in order to be able to attach to a server.
+So far we haven't talked about how the client finds this
+ND/PID/CHID information.
+
+
+
+
+
+
+
+</p>
+<p>If one process creates the other, then it's easy — the
+process creation call returns with the process ID of the newly created
+process.
+Either the creating process can pass its own PID and CHID on the
+command line to the newly created process or the newly created process
+can issue the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/g/getppid.html" class="xref"><i class="func">getppid()</i></a>
+function call to get the PID
+of its parent and assume a <span class="quote">“well-known”</span> CHID.
+ 
+
+
+
+
+
+
+
+
+
+
+
+</p>
+<p>What if we have two perfect strangers?
+This would be the case if, for example, a third party created a server
+and an application that you wrote wanted to talk to that server.
+The real issue is, <span class="quote">“How does a server <em>advertise</em> its 
+location?”</span>
+
+</p>
+<p>There are many ways of doing this; we'll look at four of them, in
+increasing order of programming <span class="quote">“elegance”</span>:
+
+
+
+</p>
+<ol>
+
+<li>Open a well-known filename and store the ND/PID/CHID there.
+        This is the traditional approach taken by UNIX-style servers,
+        where they open a file (for example, <tt class="fname">/etc/httpd.pid</tt>),
+        write their process ID there as an ASCII string, and expect
+        that clients will open the file and fetch the process ID.
+
+
+
+    </li>
+<li>Use global variables to advertise the ND/PID/CHID information.
+        This is typically used in multi-threaded servers that need to
+        send themselves messages, and is, by its nature, a very limited
+        case.
+
+
+
+    </li>
+<li>Use the name-location functions
+     (<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/n/name_attach.html" class="xref"><i class="func">name_attach()</i></a>
+     and
+     <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/n/name_detach.html" class="xref"><i class="func">name_detach()</i></a>,
+     and then the
+     <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/n/name_open.html" class="xref"><i class="func">name_open()</i></a>
+     and
+     <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/n/name_close.html" class="xref"><i class="func">name_close()</i></a>
+     functions on the
+        client side).
+     
+
+
+
+
+
+
+    </li>
+<li>Take over a portion of the pathname space and become a resource manager.
+        We'll talk about this when we look at resource managers in the
+        <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_resmgr.html" class="xref">Resource Managers chapter</a>.
+
+
+
+
+</li>
+</ol>
+
+<p>The first approach is very simple, but can suffer from <span class="quote">“pathname
+pollution,”</span> where the <tt class="fname">/etc</tt> directory has all kinds of
+<tt class="fname">*.pid</tt> files in it.
+Since files are persistent (meaning they survive after the creating
+process dies and the machine reboots), there's no obvious method of cleaning
+up these files, except perhaps to have a <span class="quote">“grim reaper”</span> task that
+runs around seeing if these things are still valid.
+
+
+
+
+</p>
+<p>There's another related problem. Since the process that created the file
+can die without removing the file, there's no way of knowing whether
+or not the process is still alive until you try to send a message
+to it.
+Worse yet, the ND/PID/CHID specified in the file may be so stale that it 
+would have been reused by another program!
+The message that you send to that program will at best be rejected, and
+at worst may cause damage.
+So that approach is out.
+
+
+
+</p>
+<p>The second approach, where we use global variables to advertise the ND/PID/CHID
+values, is not a general solution, as it relies on the client's being able to
+access the global variables.
+And since this requires shared memory, it certainly won't work across a network!
+This generally gets used in either tiny test case programs or in very special
+cases, but always in the context of a multithreaded program.
+Effectively, all that happens is that one thread in the program is the client,
+and another thread is the server.
+The server thread creates the channel and then places the channel ID into a
+global variable (the node ID and process ID are the same for all threads in
+the process, so they don't need to be advertised.)
+The client thread then picks up the global channel ID and performs the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/connectattach.html" class="xref"><i class="func">ConnectAttach()</i></a>
+to it.
+
+
+
+
+
+
+</p>
+<p>The third approach, where we use the <i class="func">name_attach()</i> and <i class="func">name_detach()</i>
+functions, works well for simple client/server situations.
+
+</p>
+<p>The last approach, where the server becomes a resource manager, is
+definitely the cleanest and is the recommended general-purpose
+solution.
+The mechanics of <span class="quote">“how”</span> will become clear in the 
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_resmgr.html" class="xref">Resource Managers</a>
+chapter, but for now, all you need to know is that the server registers
+a particular pathname as its <span class="quote">“domain of authority,”</span> and
+a client performs a simple <i class="func">open()</i> of that pathname.
+ 
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td>I can't emphasize this enough:
+<p>POSIX file descriptors are implemented using connection IDs; that is,
+a file descriptor <em>is</em> a connection ID!
+The beauty of this scheme is that since the file descriptor that's
+returned from the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/o/open.html" class="xref"><i class="func">open()</i></a>
+is the connection ID, no
+further work is required on the client's end to be able to use that
+particular connection.
+For example, when the client calls
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/r/read.html" class="xref"><i class="func">read()</i></a>
+later, passing it
+the file descriptor, this translates with very little overhead into
+a
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsend.html" class="xref"><i class="func">MsgSend()</i></a>
+function.
+ 
+ 
+
+
+
+</p></td></tr>
+</tbody></table>
+<hr></div>
+
+
+
+<h3 class="h3"><a name="id54" id="id54">What about priorities?</a></h3>
+
+<p>What if a low-priority process and a high-priority process send a
+message to a server at the same time?
+
+
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td>Messages are <em>always</em> delivered in priority order.
+
+<p>If two processes send a message <span class="quote">“simultaneously,”</span> the entire
+message from the higher-priority process is delivered to the server first.
+
+</p><p>If both processes are at the same priority, then the
+messages will be delivered in time order (since there's no such
+thing as absolutely simultaneous on a single-processor
+machine — even on an SMP box there will be some ordering
+as the CPUs arbitrate kernel access among themselves).</p></td></tr>
+</tbody></table>
+<hr></div>
+
+
+<p>We'll come back to some of the other subtleties introduced by this question
+when we look at priority inversions later in this chapter.
+
+</p>
+
+<h3 class="h3"><a name="id56" id="id56">Reading and writing data</a></h3>
+
+<p>So far you've seen the basic message-passing primitives.
+As I mentioned earlier, these are all that you <em>need</em>.
+However, there are a few extra functions that make life much
+easier.
+
+</p>
+<p>Let's consider an example using a client and server where we
+might need other functions.
+
+</p>
+<p>The client issues a <i class="func">MsgSend()</i> to transfer some data to the server.
+After the client issues the <i class="func">MsgSend()</i> it blocks; it's
+now waiting for the server to reply.
+
+
+
+</p>
+<p>An interesting thing happens on the server side.
+The server has called <i class="func">MsgReceive()</i> to receive the message
+from the client.
+Depending on the design that you choose for your messages, the server
+may or may not know how big the client's message is.
+Why on earth would the server <em>not</em> know how big the message is?
+Consider the filesystem example that we've been using.
+Suppose the client does:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">write (fd, buf, 16);</pre>
+
+<p>This works as expected if the server does a <i class="func">MsgReceive()</i>
+and specifies a buffer size of, say, 1024 bytes.
+Since our client sent only a tiny message (28 bytes), we have no
+problems.
+
+
+
+
+
+</p>
+<p>However, what if the client sends something bigger than 1024 bytes, say
+1 megabyte?
+
+</p>
+<pre class="codesamp">write (fd, buf, 1000000);</pre>
+
+<p>How is the server going to gracefully handle this?
+We could, arbitrarily, say that the client isn't allowed to write more
+than <i class="var">n</i> bytes.
+Then, in the client-side C library code for
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/w/write.html" class="xref"><i class="func">write()</i></a>,
+we could look
+at this requirement and split up the write request into several requests
+of <i class="var">n</i> bytes each.
+This is awkward.
+ 
+
+
+
+</p>
+<p>The other problem with this example would be, <span class="quote">“How big
+should <i class="var">n</i> be?”</span>
+
+</p>
+<p>You can see that this approach has major disadvantages:
+
+</p>
+<ul>
+<li>All functions that use message transfer with a limited size
+        will have to be modified in the C library so that the function
+        packetizes the requests.
+        This in itself can be a fair amount of work.
+        Also, it can have unexpected side effects for
+        multi-threaded functions — what if the first part of the
+        message from one thread gets sent, and then another thread in
+        the client preempts the current thread and sends its own message.
+        Where does that leave the original thread?
+
+    </li>
+<li>All servers must now be prepared to handle the largest possible
+        message size that may arrive.  This means that all servers will
+        have to have a data area that's big, or the library will have
+        to break up big requests into many smaller ones, 
+        thereby impacting speed.</li>
+</ul>
+<p>Luckily, this problem has a fairly simple workaround that also
+gives us some advantages.
+
+</p>
+<p>Two functions,
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgread.html" class="xref"><i class="func">MsgRead()</i></a>
+and
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwrite.html" class="xref"><i class="func">MsgWrite()</i></a>,
+are especially useful here.
+The important fact to keep in mind is that <em>the client is blocked</em>.
+This means that the client isn't going to go and change data structures
+while the server is trying to examine them.
+
+
+
+
+
+
+
+
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td>In a multi-threaded client, the potential exists for another thread to
+mess around with the data area of a client thread that's blocked on a
+server.
+This is considered a bug (bad design) — the server thread assumes that it
+has exclusive access to a client's data area until the server thread
+unblocks the client.</td></tr>
+</tbody></table>
+<hr></div>
+
+
+<p>The <i class="func">MsgRead()</i> function looks like this:
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int MsgRead (int <i class="var">rcvid</i>,
+             void *<i class="var">msg</i>,
+             int <i class="var">nbytes</i>,
+             int <i class="var">offset</i>);</pre>
+
+<p><i class="func">MsgRead()</i> lets your server read data from
+the blocked client's address space, starting <i class="var">offset</i> bytes from the beginning
+of the client-specified <span class="quote">“send”</span> buffer, into 
+the buffer specified by <i class="var">msg</i> for <i class="var">nbytes</i>.
+The server doesn't block, and the client doesn't unblock.
+<i class="func">MsgRead()</i> returns the number of bytes it actually read,
+or <span class="const">-1</span> if there was an error.
+
+
+
+
+
+
+
+</p>
+<p>So let's think about how we'd use this in our <i class="func">write()</i> example.
+The C Library <i class="func">write()</i> function constructs a message with a header
+that it sends to the filesystem server, <tt class="cmd">fs-qnx4</tt>.
+The server receives a small portion of the message via <i class="func">MsgReceive()</i>,
+looks at it, and decides where it's going to put the rest of the message.
+The <tt class="cmd">fs-qnx4</tt> server may decide that the best place to put the data is into
+some cache buffers it's already allocated.
+ 
+ 
+
+
+
+
+</p>
+<p>Let's track an example:
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0721.gif" alt="The fs-qnx4 message example." width="276" height="217" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>The <tt class="cmd">fs-qnx4</tt> message example, showing contiguous data view.</i></p>
+
+
+<p>So, the client has decided to send 4 KB to the filesystem.
+(Notice how the C Library stuck a tiny header in front of the data so that
+the filesystem could tell just what kind of request it actually was —
+we'll come back to this when we look at multi-part messages, and in even more
+detail when we look at resource managers.)
+The filesystem reads just enough data (the header) to figure out what kind of a message
+it is:
+
+
+</p>
+<pre class="codesamp">// part of the headers, fictionalized for example purposes
+struct _io_write {
+    uint16_t    type;
+    uint16_t    combine_len;
+    int32_t     nbytes;
+    uint32_t    xtype;
+};
+
+typedef union {
+    uint16_t           type;
+    struct _io_read    io_read;
+    struct _io_write   io_write;
+    …
+} header_t;
+
+header_t    header;    // declare the header
+
+rcvid = MsgReceive (chid, &amp;header, sizeof (header), NULL);
+
+switch (header.type) {
+…
+case _IO_WRITE:
+    number_of_bytes = header.io_write.nbytes;
+    …</pre>
+
+<p>At this point, <tt class="cmd">fs-qnx4</tt> knows that 4 KB are sitting in the
+client's address
+space (because the message told it in the <i class="var">nbytes</i> member of the
+structure) and that it should be transferred to a cache buffer.
+The <tt class="cmd">fs-qnx4</tt> server could issue:
+ 
+
+
+
+
+
+</p>
+<pre class="codesamp">MsgRead (rcvid, cache_buffer [index].data,
+         cache_buffer [index].size, sizeof (header.io_write));</pre>
+
+<p>Notice that the message transfer has specified an offset of 
+<tt>sizeof (header.io_write)</tt>
+in order to skip the write header that was added by the client's C library.
+We're assuming here that <tt class="code">cache_buffer [index].size</tt> is actually 4096 (or more)
+bytes.
+
+
+
+</p>
+<p>Similarly, for writing data to the client's address space, we have:
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int MsgWrite (int <i class="var">rcvid</i>,
+              const void *<i class="var">msg</i>,
+              int <i class="var">nbytes</i>,
+              int <i class="var">offset</i>);</pre>
+
+<p><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwrite.html" class="xref"><i class="func">MsgWrite()</i></a>
+lets your server write data to
+the client's address space, starting <i class="var">offset</i> bytes from the beginning
+of the client-specified <span class="quote">“receive”</span> buffer.
+This function is most useful in cases where the server has
+limited space but the client wishes to get a lot of information from the
+server.
+
+
+
+
+
+
+
+</p>
+<p>For example, with a data acquisition driver, the client may specify a 
+4-megabyte data area and tell the driver to grab 4 megabytes of data.
+The driver really shouldn't need to have a big area like this lying around just
+in case someone asks for a huge data transfer.
+
+
+
+</p>
+<p>The driver might have a 128 KB area for DMA data
+transfers, and then message-pass it piecemeal into the client's address
+space using <i class="func">MsgWrite()</i> (incrementing the <i class="var">offset</i> by
+128 KB each time, of course).
+Then, when the last piece of data has been written, the driver will
+<i class="func">MsgReply()</i> to the client.
+
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0731.gif" alt="MsgWrite transferring several chunks" width="293" height="127" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Transferring several chunks with <i class="func">MsgWrite()</i>.</i></p>
+
+
+<p>Note that <i class="func">MsgWrite()</i> lets you
+write the data components at various places, and
+then either just wake up the client using <i class="func">MsgReply()</i>:
+
+
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">MsgReply (rcvid, EOK, NULL, 0);</pre>
+
+<p>or wake up the client after writing a header at the <em>start</em> of the client's buffer:
+
+
+
+</p>
+<pre class="codesamp">MsgReply (rcvid, EOK, &amp;header, sizeof (header));</pre>
+
+<p>This is a fairly elegant trick for writing unknown quantities of data, where
+you know how much data you wrote only when you're done writing it.
+If you're using this method of writing the header after the data's been
+transferred, you must remember to leave room for the header
+at the beginning of the client's data area!
+
+
+</p>
+
+<h2 class="h2"><a name="id58" id="id58">Multipart messages</a></h2>
+
+<p>Until now, we've shown only message transfers happening from one buffer
+in the client's address space into another buffer in the server's address 
+space.
+(And one buffer in the server's space into another buffer in the 
+client's space during the reply.)
+
+
+</p>
+<p>While this approach is good enough for most applications, it can lead to
+inefficiencies.
+Recall that our <i class="func">write()</i> C library code took the buffer that you
+passed to it, and stuck a small header on the front of it.
+Using what we've learned so far, you'd expect that the C library
+would implement <i class="func">write()</i> something like this
+(this isn't the real source):
+ 
+
+
+
+
+
+</p>
+<pre class="codesamp">ssize_t write (int fd, const void *buf, size_t nbytes)
+{
+    char        *newbuf;
+    io_write_t  *wptr;
+    int         nwritten;
+
+    newbuf = malloc (nbytes + sizeof (io_write_t));
+
+    // fill in the write_header at the beginning
+    wptr = (io_write_t *) newbuf;
+    wptr -&gt; type = _IO_WRITE;
+    wptr -&gt; nbytes = nbytes;
+
+    // store the actual data from the client
+    memcpy (newbuf + sizeof (io_write_t), buf, nbytes);
+
+    // send the message to the server
+    nwritten = MsgSend (fd,
+                        newbuf, 
+                        nbytes + sizeof (io_write_t), 
+                        newbuf, 
+                        sizeof (io_write_t));
+    free (newbuf);
+    return (nwritten);
+}</pre>
+
+<p>See what happened?
+A few bad things:
+
+</p>
+<ul>
+<li>The <i class="func">write()</i> now has to be able to <i class="func">malloc()</i>
+        a buffer big enough for both the client data (which can
+        be fairly big) and the header.
+        The size of the header isn't the issue — in this case,
+        it was 12 bytes.
+ 
+ 
+
+    </li>
+<li>We had to <em>copy</em> the data twice: once via the <i class="func">memcpy()</i>,
+        and then again during the message transfer.                 
+ 
+
+    </li>
+<li>We had to establish a pointer to the <tt class="dtype">io_write_t</tt>
+        type and point it to the beginning of the buffer, rather than
+        access it natively (this is a minor annoyance).</li>
+</ul>
+<p>Since the kernel is going to copy the data anyway, it would be
+nice if we could tell it that one part of the data (the header) is
+located at a certain address, and that the other part (the
+data itself) is located somewhere else, <em>without</em> the need for us to
+manually assemble the buffers and to copy the data.
+
+
+
+
+</p>
+<p>As luck would have it, Neutrino implements a mechanism that lets us do just that!
+The mechanism is something called an <i class="dfn">IOV</i>,
+standing for <span class="quote">“Input/Output Vector.”</span>
+
+
+
+</p>
+<p>Let's look at some code first, then we'll discuss what happens:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+ssize_t write (int fd, const void *buf, size_t nbytes)
+{
+    io_write_t  whdr;
+    iov_t       iov [2];
+
+    // set up the IOV to point to both parts:
+    SETIOV (iov + 0, &amp;whdr, sizeof (whdr));
+    SETIOV (iov + 1, buf, nbytes);
+
+    // fill in the io_write_t at the beginning
+    whdr.type = _IO_WRITE;
+    whdr.nbytes = nbytes;
+
+    // send the message to the server
+    return (MsgSendv (coid, iov, 2, iov, 1));
+}</pre>
+
+<p>First of all, notice there's no <i class="func">malloc()</i> and
+no <i class="func">memcpy()</i>.
+Next, notice the use of the <tt class="dtype">iov_t</tt> type.
+This is a structure that contains an address and length pair, and
+we've allocated two of them (named <i class="var">iov</i>).
+ 
+ 
+  
+
+
+
+
+</p>
+<p>The <tt class="dtype">iov_t</tt> type definition is automatically included
+by <tt class="fname">&lt;sys/neutrino.h&gt;</tt>, and is defined as:
+  
+
+
+
+</p>
+<pre class="codesamp">typedef struct iovec
+{
+    void    *<i class="var">iov_base</i>;
+    size_t   <i class="var">iov_len</i>;
+} iov_t;</pre>
+
+<p>Given this structure, we fill the address and length pairs with
+the write header (for the first part) and the data from the client (in the
+second part).
+There's a convenience macro called
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/s/setiov.html" class="xref"><i class="func">SETIOV()</i></a>
+that does the
+assignments for us.
+It's formally defined as:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+#define SETIOV(_iov, _addr, _len) \
+              ((_iov)-&gt;iov_base = (void *)(_addr), \
+               (_iov)-&gt;iov_len = (_len))</pre>
+
+<p><i class="func">SETIOV()</i> accepts an <tt class="dtype">iov_t</tt>, and the address and
+length data to be stuffed into the IOV.
+
+  
+
+
+
+</p>
+<p>Also notice that since we're creating an IOV to point to the header,
+we can allocate the header on the stack without using 
+<i class="func">malloc()</i>.
+This can be a blessing and a curse — it's a blessing when the
+header is quite small, because you avoid the headaches of dynamic memory allocation,
+but it can be a curse when the header is huge, because it can consume a fair
+chunk of stack space.
+Generally, the headers are quite small.
+ 
+
+</p>
+<p>In any event, the important work is done by <i class="func">MsgSendv()</i>,
+which takes almost the same arguments as the <i class="func">MsgSend()</i> function
+that we used in the previous example:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int MsgSendv (int <i class="var">coid</i>,
+              const iov_t *<i class="var">siov</i>,
+              int <i class="var">sparts</i>,
+              const iov_t *<i class="var">riov</i>,
+              int <i class="var">rparts</i>);</pre>
+
+<p>Let's examine the arguments:
+
+</p>
+<dl compact="compact">
+
+<dt><i class="var">coid</i>
+    </dt>
+<dd>The connection ID that we're sending to, just as with <i class="func">MsgSend()</i>.
+
+
+
+
+    </dd>
+<dt><i class="var">sparts</i> and <i class="var">rparts</i>
+    </dt>
+<dd>The number of send and receive parts specified by the
+        <tt class="dtype">iov_t</tt> parameters.
+        In our example, we set <i class="var">sparts</i> to 2
+        indicating that we're sending a 2-part message, and
+        <i class="var">rparts</i> to 1 indicating that we're receiving a 1-part
+        reply.
+  
+
+    </dd>
+<dt><i class="var">siov</i> and <i class="var">riov</i>
+    </dt>
+<dd>The <tt class="dtype">iov_t</tt> arrays indicate the address
+        and length pairs that we wish to send.
+        In the above example, we set up the 2 part <i class="var">siov</i> to point
+        to the header and the client data, and the 1 part <i class="var">riov</i>
+        to point to just the header.
+  </dd>
+</dl>
+
+<p>This is how the kernel views the data:
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0802.gif" alt="Kernel's view of multipart message" width="390" height="131" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>How the kernel sees a multipart message.</i></p>
+
+
+<p>The kernel just copies the data seamlessly from each part of the
+IOV in the client's space into the server's space (and back, for the
+reply).
+Effectively, the kernel is performing a gather-scatter operation.
+
+
+
+</p>
+<p>A few points to keep in mind:
+
+</p>
+<ul>
+<li>The number of parts is <span class="quote">“limited”</span> to 512 KB;
+        however, our example of 2 is typical.
+
+
+
+    </li>
+<li>The kernel simply copies the data specified in one IOV
+        from one address space into another.
+
+
+    </li>
+<li><em>The source and the target IOVs don't have
+        to be identical.</em>
+
+
+</li>
+</ul>
+<p>Why is the last point so important?
+To answer that, let's take a look at the big picture.
+On the client side, let's say we issued:
+
+</p>
+<pre class="codesamp">write (fd, buf, 12000);</pre>
+
+<p>which generated a two-part IOV of:
+
+</p>
+<ul>
+<li>header (12 bytes)
+    </li>
+<li>data (12000 bytes)</li>
+</ul>
+<p>On the server side, (let's say it's the filesystem, <tt class="cmd">fs-qnx4</tt>),
+we have a number of 4 KB cache blocks, and we'd like to efficiently
+receive the message directly into the cache blocks.
+Ideally, we'd like to write some code like this:
+ 
+
+
+
+
+
+</p>
+<pre class="codesamp">// set up the IOV structure to receive into:
+SETIOV (iov + 0, &amp;header, sizeof (header.io_write));
+SETIOV (iov + 1, &amp;cache_buffer [37], 4096);
+SETIOV (iov + 2, &amp;cache_buffer [16], 4096);
+SETIOV (iov + 3, &amp;cache_buffer [22], 4096);
+rcvid = MsgReceivev (chid, iov, 4, NULL);</pre>
+
+<p>This code does pretty much what you'd expect:
+it sets up a 4-part IOV structure, sets the first part of the
+structure to point to the header, and the next three parts
+to point to cache blocks 37, 16, and 22.
+(These numbers represent cache blocks that just happened to be
+available at that particular time.)
+Here's a graphical representation:
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx7.gif" alt="Decontiguization of data" width="444" height="249" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Converting contiguous data to separate buffers.</i></p>
+
+
+<p>Then the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceive.html" class="xref"><i class="func">MsgReceivev()</i></a>
+function is called, indicating
+that we'll receive a message from the specified channel (the <i class="var">chid</i> parameter) and
+that we're supplying a 4-part IOV structure.
+This also shows the IOV structure itself.
+
+
+
+
+</p>
+<p>(Apart from its IOV functionality, <i class="func">MsgReceivev()</i> operates just like <i class="func">MsgReceive()</i>.)
+
+
+
+
+
+
+
+</p>
+<p>Oops!
+We made the same mistake as we did before, when we introduced
+the <i class="func">MsgReceive()</i> function.
+
+
+
+How do we know what kind of message we're receiving, and how much data is associated
+with it, until we actually receive the message?
+
+</p>
+<p>We can solve this the same way as before:
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">rcvid = MsgReceive (chid, &amp;header, sizeof (header), NULL);
+switch (header.message_type) {
+…
+case    _IO_WRITE:
+    number_of_bytes = header.io_write.nbytes;
+    // allocate / find cache buffer entries
+    // fill 3-part IOV with cache buffers
+    MsgReadv (rcvid, iov, 3, sizeof (header.io_write));</pre>
+
+<p>This does the initial <i class="func">MsgReceive()</i> (note that we didn't
+use the IOV form for this — there's really no need to do
+that with a one-part message), figures out what kind of message
+it is, and then continues reading the data out of the client's
+address space (starting at offset <tt class="code">sizeof&nbsp;(header.io_write)</tt>) into
+the cache buffers specified by the 3-part IOV.
+
+
+
+
+
+</p>
+<p>Notice that we switched from using a 4-part IOV (in the first example) to a
+3-part IOV.
+That's because in the first example, the first part of the 4-part IOV was the header,
+which we read directly using <i class="func">MsgReceive()</i>, and the last three parts of
+the 4-part IOV are the same as the 3-part IOV — they specify where we'd like
+the data to go.
+
+</p>
+<p>You can imagine how we'd perform the reply for a read
+request:
+
+</p>
+<ol>
+
+<li>Find the cache entries that correspond to the
+        requested data.
+
+    </li>
+<li>Fill an IOV structure with those entries.
+
+    </li>
+<li>Use
+      <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwritev.html" class="xref"><i class="func">MsgWritev()</i></a>
+      (or
+      <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreplyv.html" class="xref"><i class="func">MsgReplyv()</i></a>)
+      to transfer
+        the data to the client.
+
+
+
+
+
+</li>
+</ol>
+
+<p>Note that if the data doesn't start right at the beginning of a cache block (or other data structure),
+this isn't a problem.  Simply offset the first IOV to point to where the data does start, and modify
+the size.
+
+
+
+</p>
+
+<h3 class="h3"><a name="id60" id="id60">What about the other versions?</a></h3>
+
+<p>All the message-passing functions except the <i class="func">MsgSend*()</i> family have the same
+general form:  if the function has a <span class="quote">“<tt>v</tt>”</span> at the end
+of it, it takes an IOV and a number-of-parts; otherwise, it takes a pointer and
+a length.
+
+
+
+
+</p>
+<p>The <i class="func">MsgSend*()</i> family has four major variations in terms of
+the source and destinations for the message buffers, combined with two
+variations of the kernel call itself.
+
+
+
+
+
+</p>
+<p>Look at the following table:
+          
+      
+      
+  
+      
+  
+        
+    
+
+</p>
+<table border="1" width="100%">
+
+<tbody><tr>
+<th>Function                    </th>
+<th>Send buffer     </th>
+<th>Receive buffer</th>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsend.html" class="xref"><i class="func">MsgSend()</i></a>
+    </td>
+<td>Linear
+    </td>
+<td>Linear</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendnc.html" class="xref"><i class="func">MsgSendnc()</i></a>
+    </td>
+<td>Linear
+    </td>
+<td>Linear</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendsv.html" class="xref"><i class="func">MsgSendsv()</i></a>
+    </td>
+<td>Linear
+    </td>
+<td>IOV</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendsvnc.html" class="xref"><i class="func">MsgSendsvnc()</i></a>
+    </td>
+<td>Linear
+    </td>
+<td>IOV</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendvs.html" class="xref"><i class="func">MsgSendvs()</i></a>
+    </td>
+<td>IOV
+    </td>
+<td>Linear</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendvsnc.html" class="xref"><i class="func">MsgSendvsnc()</i></a>
+    </td>
+<td>IOV
+    </td>
+<td>Linear</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendv.html" class="xref"><i class="func">MsgSendv()</i></a>
+    </td>
+<td>IOV
+    </td>
+<td>IOV</td>
+</tr>
+
+<tr>
+<td><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendvnc.html" class="xref"><i class="func">MsgSendvnc()</i></a>
+    </td>
+<td>IOV
+    </td>
+<td>IOV</td>
+</tr>
+
+</tbody></table>
+
+<p>By <span class="quote">“linear,”</span> I mean a single buffer of type <tt class="dtype">void *</tt>
+is passed, along with its length.
+The easy way to remember this is that the <span class="quote">“<tt>v</tt>”</span> stands for
+<span class="quote">“vector,”</span> and is in the same place as the appropriate parameter
+— first or second, referring to <span class="quote">“send”</span> or <span class="quote">“receive,”</span>
+respectively.
+
+
+</p>
+<p>Hmmm… looks like the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendsv.html" class="xref"><i class="func">MsgSendsv()</i></a>
+and
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgsendsvnc.html" class="xref"><i class="func">MsgSendsvnc()</i></a>
+functions are identical, doesn't it?
+Well, yes, as far as their parameters go, they indeed are.
+The difference lies in whether or not they are cancellation points.
+The <span class="quote">“<tt>nc</tt>”</span> versions are not cancellation points, whereas
+the non-<span class="quote">“<tt>nc</tt>”</span> versions are.
+(For more information about cancellation points and cancelability in general,
+please consult the Neutrino <cite>Library Reference,</cite> under
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/p/pthread_cancel.html" class="xref"><i class="func">pthread_cancel()</i></a>.)
+ 
+
+
+
+
+
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id62" id="id62">Implementation</a></h3>
+
+<p>You've probably already suspected that all the variants of the
+<i class="func">MsgRead()</i>, <i class="func">MsgReceive()</i>, <i class="func">MsgSend()</i>,
+and <i class="func">MsgWrite()</i> functions are closely related.
+(The only exception is <i class="func">MsgReceivePulse()</i> — we'll look at this
+one shortly.)
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+</p>
+<p>Which ones should you use?
+Well, that's a bit of a philosophical debate.
+My own personal preference is to mix and match.
+
+</p>
+<p>If I'm sending or receiving only one-part messages, why bother
+with the complexity of setting up IOVs?
+The tiny amount of CPU overhead in setting them up is basically
+the same regardless of whether you set it up yourself or let the
+kernel/library do it.
+The single-part message approach saves the kernel from having to do address space
+manipulations and is a little bit faster.
+
+
+</p>
+<p>Should you use the IOV functions?  Absolutely! Use them any time you
+find yourself dealing with multipart messages.
+<em>Never</em> copy the data when you can use a multipart message transfer
+with only a few lines of code.  This keeps the system screaming along by
+minimizing the number of times data gets copied around the system; passing
+the pointers is much faster than copying the data into a new buffer.
+
+</p>
+
+<h1 class="h1"><a name="Pulses" id="Pulses">Pulses</a></h1>
+
+<p>All the messaging we've talked about so far blocks
+the client.
+It's nap time for the client as soon as it calls <i class="func">MsgSend()</i>.
+The client sleeps until the server gets around to replying.
+
+
+
+
+</p>
+<p>However, there are instances where the sender of a message can't
+afford to block.
+We'll look at some examples in the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_inter.html" class="xref">Interrupts</a> and 
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_timer.html" class="xref">Clocks, Timers, and Getting a Kick
+Every So Often</a> chapters, but for now we should understand the
+concept.
+
+
+</p>
+<p>The mechanism that implements a non-blocking send is called
+a <i class="dfn">pulse</i>.
+A pulse is a tiny message that:
+
+
+</p>
+<ul>
+<li>can carry 40 bits of payload (an 8-bit code and 32 bits of data)
+    </li>
+<li>is non-blocking for the sender
+    </li>
+<li>can be received just like any other message
+    </li>
+<li>is queued if the receiver isn't blocked waiting for it.</li>
+</ul>
+
+<h2 class="h2"><a name="id65" id="id65">Receiving a pulse message</a></h2>
+
+<p>Receiving a pulse is very simple:
+a tiny, well-defined message is presented to the <i class="func">MsgReceive()</i>, <em>as if a
+thread had sent a normal message</em>.
+The only difference is that you can't <i class="func">MsgReply()</i> to this message —
+after all, the whole idea of a pulse is that it's asynchronous.
+In this section, we'll take a look at another function,
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceivepulse.html" class="xref"><i class="func">MsgReceivePulse()</i></a>,
+that's useful for dealing with pulses.
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+</p>
+<p>The only <span class="quote">“funny”</span> thing about a pulse is that the receive ID
+that comes back from the <i class="func">MsgReceive()</i> function is
+zero.
+That's your indication that this is a pulse, rather than a regular
+message from a client.
+You'll often see code in servers that looks like this:
+
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+    rcvid = MsgReceive (chid, …);
+    if (rcvid == 0) {   // it's a pulse
+        // determine the type of pulse
+
+        // handle it
+    } else {            // it's a regular message
+        // determine the type of message
+
+        // handle it
+    }</pre>
+
+
+<h3 class="h3"><a name="id67" id="id67">What's in a pulse?</a></h3>
+
+<p>Okay, so you receive this message with a receive ID of zero.
+What does it actually look like?
+From the <tt class="fname">&lt;sys/neutrino.h&gt;</tt> header file, here's the
+definition of the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/p/_pulse.html" class="xref"><tt class="dtype">_pulse</tt></a>
+structure:
+
+  
+
+
+
+</p>
+<pre class="codesamp">struct _pulse {
+    _uint16         <i class="var">type</i>;
+    _uint16         <i class="var">subtype</i>;
+    _int8           <i class="var">code</i>;
+    _uint8          <i class="var">zero</i> [3];
+    union sigval    <i class="var">value</i>;
+    _int32          <i class="var">scoid</i>;
+};</pre>
+
+<p>Both the <i class="var">type</i> and <i class="var">subtype</i> members are
+zero (a further indication that this is a pulse).
+The <i class="var">code</i> and <i class="var">value</i> members are set to
+whatever the sender of the pulse determined.
+Generally, the <i class="var">code</i> will be an indication of why
+the pulse was sent; the <i class="var">value</i> will be a 32-bit
+data value associated with the pulse.
+Those two fields are where the <span class="quote">“40 bits”</span> of content
+comes from; the other fields aren't user adjustable.
+
+
+</p>
+<p>The kernel reserves negative values of <i class="var">code</i>, leaving
+127 values for programmers to use as they see fit.
+
+
+
+</p>
+<p>The <i class="var">value</i> member is actually a union:
+  
+
+
+</p>
+<pre class="codesamp">union sigval {
+    int     <i class="var">sival_int</i>;
+    void    *<i class="var">sival_ptr</i>;
+};</pre>
+
+<p>Therefore (expanding on the server example above), you often see code like:
+
+
+
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+    rcvid = MsgReceive (chid, …
+
+    if (rcvid == 0) {   // it's a pulse
+
+        // determine the type of pulse
+        switch (msg.pulse.code) {
+
+        case    MY_PULSE_TIMER:
+            // One of your timers went off, do something 
+            // about it...
+
+            break;
+
+        case    MY_PULSE_HWINT:
+            // A hardware interrupt service routine sent 
+            // you a pulse.  There's a value in the "value" 
+            // member that you need to examine:
+
+            val = msg.pulse.value.sival_int;
+
+            // Do something about it...
+
+            break;
+
+        case    _PULSE_CODE_UNBLOCK:
+            // A pulse from the kernel, indicating a client 
+            // unblock was received, do something about it...
+
+            break;
+
+        // etc...
+
+    } else {            // it's a regular message
+
+        // determine the type of message
+        // handle it
+
+    }</pre>
+
+<p>This code assumes, of course, that you've set up your <i class="var">msg</i> structure
+to contain a <tt class="dtype">struct _pulse pulse;</tt> member, and that the manifest constants <span class="const">MY_PULSE_TIMER</span>
+and <span class="const">MY_PULSE_HWINT</span> are defined.
+The pulse code <span class="const">_PULSE_CODE_UNBLOCK</span> is one of those negative-numbered
+kernel pulses mentioned above.
+You can find a complete list of them in <tt class="fname">&lt;sys/neutrino.h&gt;</tt> along with
+a brief description of the value field.
+
+  
+ 
+
+</p>
+
+<h3 class="h3"><a name="id69" id="id69">The <i class="func">MsgReceivePulse()</i> function</a></h3>
+
+<p>The <i class="func">MsgReceive()</i> and <i class="func">MsgReceivev()</i> functions will
+receive either a <span class="quote">“regular”</span> message or a pulse.
+There may be situations where you want to receive only pulses.
+The best example of this is in a server where you've received a request from a client
+to do something, but can't complete the request just yet (perhaps you have to do
+a long hardware operation).
+In such a design, you'd generally set up the hardware (or a timer, or whatever) to send
+you a pulse whenever a significant event occurs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+<p>If you write your server using the classic <span class="quote">“wait in an infinite loop for messages”</span>
+design, you might run into a situation where one client sends you a request,
+and then, while you're waiting for the pulse to come in (to signal completion of the request),
+another client sends you another request.
+Generally, this is <em>exactly</em> what you want — after all, you want
+to be able to service multiple clients at the same time.
+However, there might be good reasons why this is not acceptable — servicing a client
+might be so resource-intensive that you want to limit the number of clients.
+
+</p>
+<p>In that case, you now need to be able to <span class="quote">“selectively”</span> receive only a pulse,
+and <em>not</em> a regular message.
+This is where
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceivepulse.html" class="xref"><i class="func">MsgReceivePulse()</i></a>
+comes into play:
+
+
+
+</p>
+<pre class="codesamp">#include &lt;sys/neutrino.h&gt;
+
+int MsgReceivePulse (int <i class="var">chid</i>,
+                     void *<i class="var">rmsg</i>,
+                     int <i class="var">rbytes</i>,
+                     struct _msg_info *<i class="var">info</i>);</pre>
+
+<p>As you can see, you use the same parameters as <i class="func">MsgReceive()</i>; the channel
+ID, the buffer (and its size), as well as the <i class="var">info</i> parameter.
+(We discussed the <i class="var">info</i> parameter above, in <span class="quote">“<a href="#msginfo" class="xref">Who sent the message?</a>”</span>.)
+Note that the <i class="var">info</i> parameter is not used in the case of a pulse; you might ask why
+it's present in the parameter list.
+Simple answer: it was easier to do it that
+way in the implementation.  Just pass a <span class="const">NULL</span>!
+
+
+
+
+</p>
+<p>The <i class="func">MsgReceivePulse()</i> function will receive <em>nothing but</em> pulses.
+So, if you had a channel with a number of threads blocked on it via <i class="func">MsgReceivePulse()</i>,
+(and <em>no</em> threads blocked on it via <i class="func">MsgReceive()</i>), and a client attempted
+to send your server a message, the client would remain SEND-blocked until a thread
+issued the <i class="func">MsgReceive()</i> call.
+Pulses would be transferred via the <i class="func">MsgReceivePulse()</i> functions in the meantime.
+
+  
+
+
+
+
+
+
+
+</p>
+<p>The only thing you can guarantee if you mix both <i class="func">MsgReceivePulse()</i> and <i class="func">MsgReceive()</i>
+is that the <i class="func">MsgReceivePulse()</i> will get pulses only.
+The <i class="func">MsgReceive()</i> could get pulses <em>or</em> messages!
+This is because, generally, the use of the <i class="func">MsgReceivePulse()</i> function is
+reserved for the cases where you want to <em>exclude</em> regular message delivery
+to the server.
+
+
+
+
+
+
+
+
+
+
+</p>
+<p>This does introduce a bit of confusion.
+Since the <i class="func">MsgReceive()</i> function can receive
+<em>both</em> a message and a pulse, but the <i class="func">MsgReceivePulse()</i> function can receive only a pulse,
+how do you deal with a server that makes use of both functions?
+Generally, the answer here is that you'd have a pool of threads that are performing
+<i class="func">MsgReceive()</i>.
+This pool of threads (one or more threads; the number depends on how many clients you're prepared
+to service concurrently) is responsible for handling client calls (requests for service).
+Since you're trying to control the number of <span class="quote">“service-providing threads,”</span>
+and since some of these threads may need to block, waiting for a pulse to arrive (for example,
+from some hardware or from another thread), you'd typically block the service-providing thread
+using <i class="func">MsgReceivePulse()</i>.
+This ensures that a client request won't <span class="quote">“sneak in”</span> while you're waiting for
+the pulse (since <i class="func">MsgReceivePulse()</i> will receive <em>only</em> a pulse).
+
+
+
+
+
+
+
+
+
+</p>
+
+<h2 class="h2"><a name="id71" id="id71">The <i class="func">MsgDeliverEvent()</i> function</a></h2>
+
+<p>As mentioned above in <a href="#sendhierarchy" class="xref"><span class="quote">“The send-hierarchy,”</span></a>
+there are cases when you need to break the natural flow of sends.
+
+
+
+
+
+</p>
+<p>Such a case might occur if you had a client that sent a message to the
+server, the result might not be available for a while, and the client didn't want
+to block.
+Of course, you could also partly solve this with threads, by having the client simply
+<span class="quote">“use up”</span> a thread on the blocking server call, but this may not scale well
+for larger systems (where you'd be using up lots of threads to wait for many different
+servers).
+Let's say you didn't want to use a thread, but instead wanted the server to reply immediately
+to the client, <span class="quote">“I'll get around to your request shortly.”</span>
+At this point, since the server replied, the client is now free to continue processing.
+Once the server has completed whatever task the client gave it, the server now needs some
+way to tell the client, <span class="quote">“Hey, wake up, I'm done.”</span>
+Obviously, as we saw in the send-hierarchy discussion above, you can't have the server
+send a message to the client, because this might cause deadlock if the client sent a message
+to the server at that exact same instant.
+So, how does the server <span class="quote">“send”</span> a message to a client <em>without</em> violating
+the send hierarchy?
+
+
+
+
+
+
+</p>
+<p>It's actually a multi-step operation.
+Here's how it works:
+
+
+</p>
+<ol>
+
+<li>The client creates a
+  <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/s/sigevent.html" class="xref"><tt class="dtype">struct sigevent</tt></a>
+  structure, and fills it in.
+
+
+
+    </li>
+<li>The client sends a message to the server, effectively stating, <span class="quote">“Perform this
+        specific task for me, reply right away, and by the way, here's a 
+        <tt class="dtype">struct sigevent</tt> that you should use to notify me when the work is completed.”</span>
+
+
+    </li>
+<li>The server receives the message (which includes the <tt class="dtype">struct sigevent</tt>),
+        stores the <tt class="dtype">struct sigevent</tt> and the receive ID away, and replies immediately to the client.
+
+    </li>
+<li>The client is now running, as is the server.
+
+    </li>
+<li>When the server completes the work, the server uses
+      <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgdeliverevent.html" class="xref"><i class="func">MsgDeliverEvent()</i></a>
+        to inform the client that the work is now complete.
+
+
+
+</li>
+</ol>
+
+<p>We'll take a look in detail at the <tt class="dtype">struct sigevent</tt> in the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_timer.html#how_sigev" class="xref">Clocks, Timers, and Getting a Kick
+Every So Often</a>
+chapter, under <span class="quote">“How to fill in the <tt class="dtype">struct sigevent</tt>.”</span>
+For now, just think of the <tt class="dtype">struct sigevent</tt> as a <span class="quote">“black box”</span> that
+somehow contains the event that the server uses to notify the client.
+
+
+
+</p>
+<p>Since the server stored the <tt class="dtype">struct sigevent</tt> and the receive ID from the client,
+the server can now call <i class="func">MsgDeliverEvent()</i> to deliver the event, <em>as selected by
+the client</em>, to the client:
+
+
+
+
+</p>
+<pre class="codesamp">int
+MsgDeliverEvent (int <i class="var">rcvid</i>,
+                 const struct sigevent *<i class="var">event</i>);</pre>
+
+<p>Notice that the <i class="func">MsgDeliverEvent()</i> function takes two parameters, the receive ID (in <i class="var">rcvid</i>)
+and the event to deliver in <i class="var">event</i>.
+The server <em>does not modify or examine the</em> <i class="var">event</i> <em>in any way!</em>
+This point is important, because it allows the server to deliver <em>whatever</em> kind of event the
+client chose, without any specific processing on the server's part.
+
+
+(The server can, however, <em>verify</em> that the event is valid by using the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgverifyevent.html" class="xref"><i class="func">MsgVerifyEvent()</i></a>
+function.)
+
+
+
+
+
+</p>
+<p>The <i class="var">rcvid</i> is a receive ID that the server got from the client.
+Note that this is indeed a special case.
+Generally, after the server has replied to a client,
+the receive ID ceases to have any meaning (the reasoning being that the client is unblocked, and the
+server couldn't unblock it <em>again</em>, or read or write data from/to the client, etc.).
+But in this case, the receive ID contains just enough information for the kernel to be able to
+decide which client the event should be delivered to.
+When the server calls the <i class="func">MsgDeliverEvent()</i> function, the server doesn't block —
+this is a non-blocking call for the server.
+The client has the event delivered to it (by the kernel), and may then perform whatever actions are
+appropriate.
+
+
+
+
+
+</p>
+
+<h2 class="h2"><a name="chanflags" id="chanflags">Channel flags</a></h2>
+
+<p>When we introduced the server (in <span class="quote">“<a href="#the_server" class="xref">The server</a>”</span>),
+we mentioned that the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channelcreate.html" class="xref"><i class="func">ChannelCreate()</i></a>
+function takes a <i class="var">flags</i> parameter
+and that we'd just leave it as zero.
+
+
+
+
+
+
+</p>
+<p>Now it's time to explain the <i class="var">flags</i>.
+We'll examine only a few of the possible <i class="var">flags</i> values:
+
+</p>
+<dl compact="compact">
+
+<dt><span class="const">_NTO_CHF_FIXED_PRIORITY</span>
+    </dt>
+<dd>The receiving thread will <em>not</em> change priority based on
+        the priority of the sender.
+        (We talk more about priority issues in the
+        <span class="quote">“<a href="#prio_interitance" class="xref">Priority inheritance</a>”</span>
+        section, below).
+        Ordinarily (i.e., if you don't specify this flag), the receiving
+        thread's priority is changed to that of the sender.
+
+
+
+
+
+
+
+    </dd>
+<dt><span class="const">_NTO_CHF_UNBLOCK</span>
+    </dt>
+<dd>The kernel delivers a pulse whenever a client thread
+        attempts to unblock.
+        The server <em>must</em> reply to the client in order to allow the
+        client to unblock.
+        We'll discuss this one below, because it has some very interesting consequences,
+        for both the client and the server.
+
+
+
+
+
+
+
+    </dd>
+<dt><span class="const">_NTO_CHF_THREAD_DEATH</span>
+    </dt>
+<dd>The kernel delivers a pulse whenever a thread blocked on this channel dies.
+        This is useful for servers that want to maintain a fixed 
+        <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html#tpool" class="xref"><span class="quote">“pool of threads”</span></a>
+        available to service requests at all times.
+
+
+
+
+
+
+
+    </dd>
+<dt><span class="const">_NTO_CHF_DISCONNECT</span>
+    </dt>
+<dd>The kernel delivers a pulse whenever <em>all</em> connections from a single client
+        have been disconnected from the server.
+
+
+
+
+
+
+
+    </dd>
+<dt><span class="const">_NTO_CHF_SENDER_LEN</span>
+    </dt>
+<dd>The kernel delivers the client's message size as part of the information
+        given to the server (the <i class="var">srcmsglen</i> member of the
+        <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/_msg_info.html" class="xref"><tt class="dtype">struct _msg_info</tt></a>
+        structure).
+
+
+
+
+
+
+
+
+    </dd>
+<dt><span class="const">_NTO_CHF_REPLY_LEN</span>
+    </dt>
+<dd>The kernel delivers the client's reply message buffer size as part of the information
+        given to the server (the <i class="var">dstmsglen</i> member of the <tt class="dtype">struct _msg_info</tt> structure).
+
+
+
+
+
+
+
+    </dd>
+<dt><span class="const">_NTO_CHF_COID_DISCONNECT</span>
+    </dt>
+<dd>The kernel delivers a pulse whenever any connection owned by this process is terminated due to the
+        channel on the other end going away.
+
+
+
+
+
+</dd>
+</dl>
+
+
+<h3 class="h3"><a name="ntochfunblock" id="ntochfunblock"><span class="const">_NTO_CHF_UNBLOCK</span></a></h3>
+
+<p>Let's look at the <span class="const">_NTO_CHF_UNBLOCK</span> flag; it has a few interesting
+wrinkles for both the client and the server.
+ 
+
+
+</p>
+<p>Normally (i.e., where the server does <em>not</em> specify the
+<span class="const">_NTO_CHF_UNBLOCK</span> flag) when a client wishes to unblock from a
+<i class="func">MsgSend()</i> (and related <i class="func">MsgSendv()</i>, <i class="func">MsgSendvs()</i>, etc.
+family of functions), the client simply unblocks.
+The client could wish to unblock due to receiving a signal or 
+a kernel timeout (see the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/t/timertimeout.html" class="xref"><i class="func">TimerTimeout()</i></a>
+function in the Neutrino <cite>Library Reference</cite>, and the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_timer.html" class="xref">Clocks, Timers, and Getting a Kick Every So Often</a>
+chapter).
+The unfortunate aspect to this is that the server has <em>no idea</em> that the client
+has unblocked and is no longer waiting for a reply.
+Note that it isn't possible to write a reliable server with this flag off, except in very
+special situations which require cooperation between the server and all its clients.
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+</p>
+<p>Let's assume that you have a server with multiple threads, all blocked on the server's
+<i class="func">MsgReceive()</i> function.
+The client sends a message to the server, and one of the server's threads receives it.
+At this point, the client is blocked, and a thread in the server is actively processing the request.
+Now, before the server thread has a chance to reply to the client, the client unblocks from
+the <i class="func">MsgSend()</i> (let's assume it was because of a signal).
+
+
+
+
+
+
+
+
+</p>
+<p>Remember, a server thread is <em>still</em> processing the request on behalf of the client.
+But since the client is now unblocked (the client's <i class="func">MsgSend()</i> would have
+returned with <span class="const">EINTR</span>), the client is free to send <em>another</em> request
+to the server.
+Thanks to the architecture of Neutrino servers, another thread would receive another message from the
+client, with the <em>exact same receive ID</em>!
+The server has no way to tell these two requests apart!
+When the first thread completes and replies to the client, it's really replying to the
+<em>second</em> message that the client sent, not the first message (as the thread
+actually believes that it's doing).
+So, the server's first thread replies to the client's second message.
+
+
+
+
+ 
+
+
+
+</p>
+<p>This is bad enough; but let's take this one step further.
+Now the server's second thread completes the request and tries to reply to the
+client.
+But since the server's first thread <em>already</em> replied to the client, the
+client is now unblocked and the server's second thread gets an error from
+its reply.
+
+
+</p>
+<p>This problem is limited to multithreaded servers, because in a single-threaded
+server, the server thread would still be busy working on the client's first request.
+This means that even though the client is now unblocked and sends again to the server,
+the client would now go into the SEND-blocked state (instead of the REPLY-blocked state),
+allowing the server to finish the processing, reply to the client (which would result in
+an error, because the client isn't REPLY-blocked any more), and <em>then</em> the server
+would receive the second message from the client.
+The real problem here is that the server is performing useless processing on behalf
+of the client (the client's first request).  The processing is useless because the
+client is no longer waiting for the results of that work.
+  
+  
+
+</p>
+<p>The solution (in the multithreaded server case) is to have the server specify the <span class="const">_NTO_CHF_UNBLOCK</span>
+flag to its
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channelcreate.html" class="xref"><i class="func">ChannelCreate()</i></a>
+call.
+This says to the kernel, <span class="quote">“Tell me when a client <em>tries</em> to unblock from me (by sending
+me a pulse), but <em>don't let the client unblock</em>!  I'll unblock the client myself.”</span>
+ 
+
+
+
+
+
+
+
+
+</p>
+<p>The key thing to keep in mind is that this server flag changes the behavior of the client
+by <em>not</em> allowing the client to unblock until the <em>server</em> says it's okay
+to do so.
+
+</p>
+<p>In a single-threaded server, the following happens:
+
+</p>
+<table border="1" width="100%">
+
+<tbody><tr>
+<th>Action
+    </th>
+<th>Client
+    </th>
+<th>Server</th>
+</tr>
+
+<tr>
+<td>Client sends to server
+    </td>
+<td>Blocked
+    </td>
+<td>Processing</td>
+</tr>
+
+<tr>
+<td>Client gets hit with signal
+    </td>
+<td>Blocked
+    </td>
+<td>Processing</td>
+</tr>
+
+<tr>
+<td>Kernel sends pulse to server
+    </td>
+<td>Blocked
+    </td>
+<td>Processing (first message)</td>
+</tr>
+
+<tr>
+<td>Server completes the first request, replies to client
+    </td>
+<td>Unblocked with correct data
+    </td>
+<td>Processing (pulse)</td>
+</tr>
+
+</tbody></table>
+
+<p>This didn't help the client unblock when it should have, but it <em>did</em>
+ensure that the server didn't get confused.
+In this kind of example, the server would most likely simply ignore the pulse
+that it got from the kernel.
+This is okay to do — the assumption being made here is that it's safe to
+let the client block until the server is ready with the data.
+
+
+</p>
+<p>If you want the server to act on the pulse that the kernel sent, there are
+two ways to do this:
+
+
+</p>
+<ul>
+<li>Create another thread in the server that listens for messages (specifically,
+        listening for the pulse from the kernel).  This second thread would be
+        responsible for canceling the operation that's under way in the first
+        thread.  One of the two threads would reply to the client.
+
+    </li>
+<li>Don't do the client's work in the thread itself, but rather queue up the work.
+        This is typically done in applications where the server is going to store
+        the client's work on a queue and the server is event driven.  Usually,
+        one of the messages arriving at the server indicates that the
+        client's work is now complete, and that the server should reply.
+        In this case, when the kernel pulse arrives, the server cancels the work
+        being performed on behalf of the client and replies.</li>
+</ul>
+<p>Which method you choose depends on the type of work the server does.
+In the first case, the server is actively performing the work on behalf of the client,
+so you really don't have a choice — you'll have to have a second thread that
+listens for unblock-pulses from the kernel (or you could poll periodically within
+the thread to see if a pulse has arrived, but polling is generally discouraged).
+
+
+</p>
+<p>In the second case, the server has something else doing the work — perhaps
+a piece of hardware has been commanded to <span class="quote">“go and collect data.”</span>
+In that case, the server's thread will be blocked on the <i class="func">MsgReceive()</i> function
+anyway, waiting for an indication from the hardware that the command has completed.
+
+
+
+
+
+</p>
+<p>In either case, the server <em>must</em> reply to the client, otherwise the client
+will remain blocked.
+
+
+
+
+</p>
+
+<h4 class="h4"><a name="id75" id="id75">Synchronization problem</a></h4>
+
+<p>Even if you use the <span class="const">_NTO_CHF_UNBLOCK</span> flag as described above, there's
+still one more synchronization problem to deal with.
+Suppose that you have multiple server threads blocked on the <i class="func">MsgReceive()</i>
+function, waiting for messages or pulses, and the client sends you a message.
+One thread goes off and begins the client's work.
+While that's happening, the client wishes to unblock, so the kernel generates the unblock pulse.
+Another thread in the server receives this pulse.
+At this point, there's a race condition — the first thread could be <em>just about</em>
+ready to reply to the client.
+If the second thread (that got the pulse) does the reply, then there's a chance that the client
+would unblock and send another message to the server, with the server's first thread
+now getting a chance to run and replying to the client's second request with the first
+request's data:
+ 
+
+
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mpx8.gif" alt="Confusion in a multithreaded server." width="389" height="417" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Confusion in a multithreaded server.</i></p>
+
+
+<p>Or, if the thread that got the pulse is <em>just about</em> to reply to the client, and
+the first thread does the reply, then you have the same situation — the first thread
+unblocks the client, who sends another request, and the second thread (that got the pulse)
+now unblocks the client's second request.
+
+</p>
+<p>The situation is that you have two parallel
+flows of execution (one caused by the message, and one caused by the pulse).
+Ordinarily, we'd immediately recognize this as a situation that requires a
+mutex.
+Unfortunately, this causes a problem — the mutex would have to be acquired
+immediately after the <i class="func">MsgReceive()</i> and released before the <i class="func">MsgReply()</i>.
+While this will indeed work, it defeats the whole purpose of the unblock pulse!
+(The server would either get the message and ignore the unblock pulse until after
+it had replied to the client, or the server would get the unblock pulse and cancel
+the client's second operation.)
+
+
+
+
+
+
+
+</p>
+<p>A solution that looks promising (but is ultimately doomed to failure) would
+be to have a fine-grained mutex.
+What I mean by that is a mutex that gets locked and unlocked only around small
+portions of the control flow (the way that you're supposed to use a mutex, instead
+of blocking the entire processing section, as proposed above).
+You'd set up a <span class="quote">“Have we replied yet?”</span> flag in the server, and
+this flag would be cleared when you received a message and set when
+you replied to a message.
+Just before you replied to the message, you'd check the flag.
+If the flag indicates that the message has already been replied to, you'd skip
+the reply.
+The mutex would be locked and unlocked around the checking and setting of the flag.
+
+</p>
+<p>Unfortunately, this won't work because we're not <em>always</em>
+dealing with two parallel flows of execution — the client won't always
+get hit with a signal during processing (causing an unblock pulse).
+Here's the scenario where it breaks:
+
+</p>
+<ul>
+<li>The client sends a message to the server; the client is now blocked, the server
+        is now running.
+    
+    </li>
+<li>Since the server received a request from the client, the flag is reset to 0, indicating
+        that we still need to reply to the client.
+        
+    </li>
+<li>The server replies normally to the client (because the flag was set to 0) and
+        sets the flag to 1 indicating that, if an unblock-pulse arrives, it should
+        be ignored.
+        
+    </li>
+<li><em>(Problems begin here.)</em>  The client sends a second message to the server, and
+        almost immediately after sending it gets hit with a signal; the
+        kernel sends an unblock-pulse to the server.
+        
+    </li>
+<li>The server thread that receives the message was about to acquire the mutex in order
+        to check the flag, but didn't quite get there (it got preempted).
+        
+    </li>
+<li>Another server thread now gets the pulse and, because the flag is still set to a 1
+        from the last time, ignores the pulse.
+        
+    </li>
+<li>Now the server's first thread gets the mutex and clears the flag.
+    
+    </li>
+<li>At this point, the unblock event has been lost.</li>
+</ul>
+<p>If you refine the flag to indicate more states (such as pulse received, pulse replied to,
+message received, message replied to), you'll still run into a synchronization race condition
+because there's no way for you to create an atomic binding between the flag and the receive
+and reply function calls.
+(Fundamentally, that's where the problem lies — the small timing windows after a <i class="func">MsgReceive()</i>
+and before the flag is adjusted, and after the flag is adjusted just before the <i class="func">MsgReply()</i>.)
+The only way to get around this is to have the kernel keep track of the flag for you.
+
+
+
+
+
+
+
+</p>
+
+<h4 class="h4"><a name="nto_mi_unblock_req" id="nto_mi_unblock_req">Using the <span class="const">_NTO_MI_UNBLOCK_REQ</span></a></h4>
+
+<p>Luckily, the kernel keeps track of the flag for you as a single bit
+in the message info structure (the <tt class="dtype">struct _msg_info</tt> that you pass
+as the last parameter to <i class="func">MsgReceive()</i>, or that you can fetch later,
+given the receive ID, by calling
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msginfo.html" class="xref"><i class="func">MsgInfo()</i></a>).
+  
+
+
+
+
+
+
+
+
+</p>
+<p>This flag is called <span class="const">_NTO_MI_UNBLOCK_REQ</span> and is set if the
+client wishes to unblock (for example, after receiving a signal).
+ 
+
+</p>
+<p>This means that in a multithreaded server, you'd typically have a <span class="quote">“worker”</span>
+thread that's performing the client's work, and another thread that's going
+to receive the unblock message (or some other message; we'll just focus on the
+unblock message for now).
+When you get the unblock message from the client, you'd set a flag to yourself,
+letting your program know that the thread wishes to unblock.
+
+
+
+</p>
+<p>There are two cases to consider:
+
+</p>
+<ul>
+<li>the <span class="quote">“worker”</span> thread is blocked; or
+    </li>
+<li>the <span class="quote">“worker”</span> thread is running.</li>
+</ul>
+<p>If the worker thread is blocked, you'll need to have the thread that
+got the unblock message awaken it.
+It might be blocked if it's waiting for a resource, for example.
+When the worker thread wakes up, it should examine the <span class="const">_NTO_MI_UNBLOCK_REQ</span>
+flag, and, if set, reply with an abort status.
+If the flag isn't set, then the thread can do whatever normal processing
+it does when it wakes up.
+ 
+
+</p>
+<p>Alternatively, if the worker thread is running, it should periodically check
+the <span class="quote">“flag to self”</span> that the unblock thread may have set, and if
+the flag is set, it should reply to the client with an abort status.
+Note that this is just an optimization: in the unoptimized case, the worker
+thread would constantly call <span class="quote">“MsgInfo”</span> on the receive ID and
+check the <span class="const">_NTO_MI_UNBLOCK_REQ</span> bit itself.
+ 
+
+</p>
+
+<h1 class="h1"><a name="network_msg" id="network_msg">Message passing over a network</a></h1>
+
+<p>To keep things clear, I've avoided talking about how you'd use message passing over a
+network, even though this is a crucial part of Neutrino's flexibility!
+
+
+
+</p>
+<p>Everything you've learned so far applies to message passing over the network.
+
+</p>
+<p>Earlier in this chapter, I showed you an example:
+
+</p>
+<pre class="codesamp">#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+int
+main (void)
+{
+    int     fd;
+
+    fd = open ("/net/wintermute/home/rk/filename", O_WRONLY);
+    write (fd, "This is message passing\n", 24);
+    close (fd);
+
+    return (EXIT_SUCCESS);
+}</pre>
+
+<p>At the time, I said that this was an example of <span class="quote">“using message passing
+over a network.”</span>
+The client creates a connection to a ND/PID/CHID (which just happens to be
+on a different node), and the server performs a <i class="func">MsgReceive()</i>
+on its channel.
+The client and server are identical in this case to the local, single-node
+case.
+You could stop reading right here — there really isn't anything
+<span class="quote">“tricky”</span> about message passing over the network.
+But for those readers who are curious about the <em>how</em> of this, read on!
+
+
+
+
+</p>
+<p>Now that we've seen some of the details of local message passing, we can
+discuss in a little more depth how message passing over a network works.
+While this discussion may seem complicated, it really boils down to two
+phases: name resolution, and once that's been taken care of, simple message passing.
+
+
+
+</p>
+<p>Here's a diagram that illustrates the steps we'll be talking about:
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/mp1.gif" alt="Message passing over a network." width="506" height="225" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Message passing over a network.  Notice that Qnet is divided into two sections.</i></p>
+
+
+<p>In the diagram, our node is called <tt class="host">magenta</tt>,
+and, as implied by the example, the target node is called <tt class="host">wintermute</tt>.
+
+</p>
+<p>Let's analyze the interactions that occur when a client program
+uses Qnet to access a server over the network:
+
+
+
+
+</p>
+<ol>
+
+<li>The client's <i class="func">open()</i> function was told to open a filename
+        that happened to have <tt class="fname">/net</tt> in front of it.
+        (The name <tt class="fname">/net</tt> is the default name manifested by
+        Qnet.)
+        This client has no idea who is responsible for that particular pathname,
+        so it connects to the process manager (step 1) in order to find out who actually
+        owns the resource.
+        This is done regardless of whether we're passing messages
+        over a network and happens automatically.
+        Since the native Neutrino network manager, Qnet, <span class="quote">“owns”</span>
+        all pathnames that begin with <tt class="fname">/net</tt>, the process manager
+        returns information to the client telling it to ask Qnet
+        about the pathname.
+ 
+
+
+
+    
+    </li>
+<li>The client now sends a message to Qnet's resource manager thread,
+        hoping that Qnet will be able to handle the request.
+        However, Qnet on this node isn't responsible for providing the
+        ultimate service that the client wants, so it tells the client that it should
+        actually contact the process manager on node <tt class="host">wintermute</tt>.
+        (The way this is done is via a <span class="quote">“redirect”</span> response, which gives
+        the client the ND/PID/CHID of a server that it should contact instead.)
+        This redirect response is also handled automatically by the client's library.
+
+    
+    </li>
+<li>The client now connects to the process manager on <tt class="host">wintermute</tt>.
+        This involves sending an off-node message through Qnet's network-handler
+        thread.
+        The Qnet process on the client's node gets the message and transports it over the
+        medium to the remote Qnet, which delivers it to the process
+        manager on <tt class="host">wintermute</tt>.
+        The process manager there resolves the rest of the pathname (in our example, that
+        would be the <span class="quote">“<tt class="fname">/home/rk/filename</tt>”</span> part) and sends a
+        redirect message back.
+        This redirect message follows the reverse path (from the server's Qnet
+        over the medium to the Qnet on the client's node, and finally back to
+        the client).
+        This redirect message now contains the location of the server that the client
+        wanted to contact in the first place, that is, the ND/PID/CHID of the server that's
+        going to service the client's requests.
+        (In our example, the server was a filesystem.)
+
+
+
+    
+    </li>
+<li>The client now sends the request to that server.  The path followed here
+        is identical to the path followed in step 3 above, except that the server is
+        contacted directly instead of going through the process manager.</li>
+</ol>
+
+<p>Once steps 1 through 3 have been established, step 4 is the model for all future communications.
+In our client example above, the <i class="func">open()</i>, <i class="func">read()</i>, and <i class="func">close()</i>
+messages all take path number 4.
+Note that the client's <i class="func">open()</i> is what triggered this sequence of events to happen
+in the first place — but the actual open <em>message</em> flows as described (through
+path number 4).
+ 
+ 
+ 
+
+</p>
+
+<div class="note"><hr>
+<table>
+<tbody><tr><td valign="top"><img src="s1_msg_files/pointing.gif" alt="Note:"></td>
+<td>For the <em>really</em> interested reader:  I've left out one step.
+During step 2, when the client asks Qnet about <tt class="host">wintermute</tt>,
+Qnet needs to figure out who <tt class="host">wintermute</tt> is.
+This may result in Qnet performing one more network transaction to resolve
+the nodename.
+The diagram presented above is correct if we assume that Qnet already
+knew about <tt class="host">wintermute</tt>.
+</td></tr>
+</tbody></table>
+<hr></div>
+
+
+<p>We'll come back to the messages used for the <i class="func">open()</i>, <i class="func">read()</i>,
+and <i class="func">close()</i> (and others) in the <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_resmgr.html" class="xref">Resource Managers</a>
+chapter.
+ 
+ 
+ 
+
+</p>
+
+<h2 class="h2"><a name="netdiff" id="netdiff">Networked message passing differences</a></h2>
+
+<p>So, once the connection is established, all further messaging flows using step 4 in the diagram
+above.
+This may lead you to the erroneous belief that message passing over a network is identical
+to message passing in the local case.
+Unfortunately, this is <em>not true</em>.
+Here are the differences:
+
+
+
+</p>
+<ul>
+<li>longer delays
+    
+    </li>
+<li><i class="func">ConnectAttach()</i> returns success regardless of whether the node is
+        alive or not — the real error indication happens on the first message pass
+
+
+
+
+
+        
+    </li>
+<li><i class="func">MsgDeliverEvent()</i> isn't guaranteed reliable
+
+
+
+
+    
+    </li>
+<li><i class="func">MsgReply()</i>, <i class="func">MsgRead()</i>, <i class="func">MsgWrite()</i> are now blocking calls,
+        whereas in the local case they are not
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </li>
+<li><i class="func">MsgReceive()</i> might not receive all the data sent by the
+      client; the server
+      might need to call <i class="func">MsgRead()</i> to get the rest.
+
+
+
+
+
+
+</li>
+</ul>
+
+<h3 class="h3"><a name="id80" id="id80">Longer delays</a></h3>
+
+<p>Since message passing is now being done over some medium, rather than a direct
+kernel-controlled memory-to-memory copy, you can expect that the amount of
+time taken to transfer messages will be significantly higher (100 MB Ethernet
+versus 100 MHz 64-bit wide DRAM is going to be an order of magnitude or two slower).
+Plus, on top of this will be protocol overhead (minimal) and retries on lossy
+networks.
+
+
+
+</p>
+
+<h3 class="h3"><a name="id82" id="id82">Impact on <i class="func">ConnectAttach()</i></a></h3>
+
+<p>When you call
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/connectattach.html" class="xref"><i class="func">ConnectAttach()</i></a>,
+you're specifying an ND, a PID, and a CHID.
+All that happens in Neutrino is that the kernel returns a connection ID to the Qnet
+<span class="quote">“network handler”</span> thread pictured in the diagram above.
+Since no message has been sent, you're not informed as to whether the node that you've
+just attached to is still alive or not.
+In normal use, this isn't a problem, because most clients won't be doing their own
+<i class="func">ConnectAttach()</i> — rather, they'll be using the services of the library
+call <i class="func">open()</i>, which does the <i class="func">ConnectAttach()</i> and then almost immediately
+sends out an <span class="quote">“open”</span> message.
+This has the effect of indicating almost immediately if the remote node is alive or not.
+
+
+
+
+
+ 
+
+
+
+</p>
+
+<h3 class="h3"><a name="id84" id="id84">Impact on <i class="func">MsgDeliverEvent()</i></a></h3>
+
+<p>When a server calls
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgdeliverevent.html" class="xref"><i class="func">MsgDeliverEvent()</i></a>
+locally, it's the kernel's
+responsibility to deliver the event to the target thread.
+With the network, the server still calls <i class="func">MsgDeliverEvent()</i>, but the
+kernel delivers a <span class="quote">“proxy”</span> of that event to Qnet, and it's
+up to Qnet to deliver the proxy to the other (client-side) Qnet,
+who'll then deliver the actual event to the client.
+Things can get screwed up on the server side, because the <i class="func">MsgDeliverEvent()</i>
+function call is non-blocking — this means that once the server has called
+<i class="func">MsgDeliverEvent()</i> it's running.
+It's too late to turn around and say, <span class="quote">“I hate to tell you this, but you know
+that <i class="func">MsgDeliverEvent()</i> that I said succeeded?  Well, it didn't!”</span>
+ 
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id86" id="id86">Impact on <i class="func">MsgReply()</i>, <i class="func">MsgRead()</i>, and <i class="func">MsgWrite()</i></a></h3>
+
+<p>To prevent the problem I just mentioned with <i class="func">MsgDeliverEvent()</i>
+from happening with
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreply.html" class="xref"><i class="func">MsgReply()</i></a>,
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgread.html" class="xref"><i class="func">MsgRead()</i></a>,
+and
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgwrite.html" class="xref"><i class="func">MsgWrite()</i></a>,
+these functions were transformed into blocking calls when used over the network.
+Locally they'd simply transfer the data and unblock immediately.
+On the network, we have to (in the case of <i class="func">MsgReply()</i>) ensure that the
+data has been delivered to the client or (in the case of the other two) to actually transfer
+the data to or from the client over the network.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
+
+<h3 class="h3"><a name="id88" id="id88">Impact on <i class="func">MsgReceive()</i></a></h3>
+
+<p>Finally,
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/m/msgreceive.html" class="xref"><i class="func">MsgReceive()</i></a>
+is affected as well (in the networked case).
+Not all the client's data may have been transferred over the network by Qnet
+when the server's <i class="func">MsgReceive()</i> unblocks.
+This is done for performance reasons.
+
+
+
+
+
+
+
+</p>
+<p>There are two flags in the <tt class="dtype">struct _msg_info</tt> that's passed as the
+last parameter to <i class="func">MsgReceive()</i> (we've seen this structure in
+detail in <span class="quote">“<a href="#msginfo" class="xref">Who sent the message?</a>”</span> above):
+  
+
+
+
+
+
+</p>
+<dl compact="compact">
+
+<dt><i class="var">msglen</i>
+    </dt>
+<dd>indicates how much data was actually transferred by the <i class="func">MsgReceive()</i>
+
+
+
+
+
+
+        (Qnet likes to transfer 8 KB).
+
+
+    </dd>
+<dt><i class="var">srcmsglen</i>
+    </dt>
+<dd>indicates how much data the client wanted to transfer (determined by
+        the client).
+
+</dd>
+</dl>
+
+<p>So, if the client wanted to transfer 1 megabyte of data over the network, the server's
+<i class="func">MsgReceive()</i> would unblock and <i class="var">msglen</i> would be set to <span class="const">8192</span>
+(indicating that 8192 bytes were available in the buffer), while <i class="var">srcmsglen</i> would
+be set to <span class="const">1048576</span> (indicating that the client tried to send 1 megabyte).
+
+
+
+
+</p>
+<p>The server then uses <i class="func">MsgRead()</i> to get the rest of the data from
+the client's address space.
+ 
+
+
+
+</p>
+
+<h2 class="h2"><a name="ndnotes" id="ndnotes">Some notes on NDs</a></h2>
+
+<p>The other <span class="quote">“funny”</span> thing that we haven't yet talked about when it comes
+to message passing is this whole business of a <span class="quote">“node descriptor”</span> or just
+<span class="quote">“ND”</span> for short.
+
+
+</p>
+<p>Recall that we used symbolic node names, like <tt class="host">/net/wintermute</tt> in our
+examples.
+Under QNX 4 (the previous version of the OS before Neutrino), native networking was
+based on the concept of a node ID, a small integer that was unique
+on the network.
+Thus, we'd talk about <span class="quote">“node 61,”</span> or <span class="quote">“node 1,”</span> and this
+was reflected in the function calls.
+
+</p>
+<p>Under Neutrino, all nodes are internally referred to by a 32-bit quantity,
+but it's <em>not</em> network unique!
+What I mean by that is that <tt class="host">wintermute</tt> might think of <tt class="host">spud</tt>
+as node descriptor number <span class="quote">“7,”</span> while <tt class="host">spud</tt> might think of
+<tt class="host">magenta</tt> as node descriptor number <span class="quote">“7”</span> as well.
+Let me expand that to give you a better picture.
+This table shows some sample node descriptors that might be used by three nodes,
+<tt class="host">wintermute</tt>, <tt class="host">spud</tt>, and <tt class="host">foobar</tt>:
+
+
+
+</p>
+<table border="1" width="100%">
+
+<tbody><tr>
+<th>Node                        </th>
+<th><tt class="host">wintermute</tt> </th>
+<th><tt class="host">spud</tt>       </th>
+<th><tt class="host">foobar</tt></th>
+</tr>
+
+<tr>
+<td><tt class="host">wintermute</tt> </td>
+<td>0                           </td>
+<td>7                       </td>
+<td>4</td>
+</tr>
+
+<tr>
+<td><tt class="host">spud</tt>           </td>
+<td>4                           </td>
+<td>0                       </td>
+<td>6</td>
+</tr>
+
+<tr>
+<td><tt class="host">foobar</tt>     </td>
+<td>5                           </td>
+<td>7                       </td>
+<td>0</td>
+</tr>
+
+</tbody></table>
+
+<p>Notice how each node's node descriptor for itself is zero.
+Also notice how <tt class="host">wintermute</tt>'s node descriptor for <tt class="host">spud</tt> is
+<span class="quote">“7,”</span> as is <tt class="host">foobar</tt>'s node descriptor for <tt class="host">spud</tt>.
+But <tt class="host">wintermute</tt>'s node descriptor for <tt class="host">foobar</tt>
+is <span class="quote">“4”</span> while <tt class="host">spud</tt>'s node descriptor for <tt class="host">foobar</tt>
+is <span class="quote">“6.”</span>
+As I said, they're not unique across the network, although they are unique
+on each node.
+You can effectively think of them as file descriptors — two processes might have the
+same file descriptor if they access the same file, but they might not; it just depends on
+who opened which file when.
+
+
+</p>
+<p>Fortunately, you don't have to worry about node descriptors, for a number of
+reasons:
+
+</p>
+<ol>
+
+<li>Most of the off-node message passing you'll typically be doing will be
+        through higher-level function calls (such as <i class="func">open()</i>, as shown in
+        the example above).
+ 
+
+    </li>
+<li>Node descriptors are not to be cached — if you get one, you're supposed to
+        use it immediately and then forget about it.
+
+    </li>
+<li>There are library calls to convert a pathname (like <tt class="fname">/net/magenta</tt>)
+        to a node descriptor.</li>
+</ol>
+
+<p>To work with node descriptors, you'll want to include the file <tt class="fname">&lt;sys/netmgr.h&gt;</tt>
+because it includes a bunch of <i class="func">netmgr_*()</i> functions.
+
+
+
+</p>
+<p>You'd use the function
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/n/netmgr_strtond.html" class="xref"><i class="func">netmgr_strtond()</i></a>
+to convert a string into a node descriptor.
+Once you have this node descriptor, you'd use it immediately in the <i class="func">ConnectAttach()</i>
+function call.
+Specifically, you shouldn't ever cache it in a data structure!
+The reason is that the native networking manager may decide to reuse it once all connections
+to that particular node are disconnected.
+So, if you got a node descriptor of <span class="quote">“7”</span> for <tt class="fname">/net/magenta</tt>, and you
+connected to it, sent a message, and then disconnected, there's a possibility that the native
+networking manager will return a node descriptor of <span class="quote">“7”</span> again for a <em>different</em>
+node.
+
+
+
+
+
+
+
+
+
+
+
+</p>
+<p>Since node descriptors aren't unique per network, the question that arises is, <span class="quote">“How do
+you pass these things around the network?”</span>
+Obviously, <tt class="fname">magenta</tt>'s view of what node descriptor <span class="quote">“7”</span> is will
+be radically different from <tt class="fname">wintermute</tt>'s.
+There are two solutions here:
+
+
+</p>
+<ul>
+<li>Don't pass around node descriptors; use the symbolic names (e.g.,
+        <tt class="fname">/net/wintermute</tt>) instead.
+    </li>
+<li>Use the
+      <a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/n/netmgr_remote_nd.html" class="xref"><i class="func">netmgr_remote_nd()</i></a>
+      function.
+
+
+
+
+</li>
+</ul>
+<p>The first is a good general-purpose solution.
+The second solution is reasonably simple to use:
+
+</p>
+<pre class="codesamp">int
+netmgr_remote_nd (int <i class="var">remote_nd</i>, int <i class="var">local_nd</i>);</pre>
+
+<p>This function takes two parameters: the <i class="var">remote_nd</i> is the node descriptor
+of the target machine, and <i class="var">local_nd</i> is the node descriptor (from the local
+machine's point of view) to be translated to the remote machine's point of
+view.
+The result is the node descriptor that is valid from the remote machine's point of
+view.
+
+</p>
+<p>For example, let's say <tt class="fname">wintermute</tt> is our local machine.
+We have a node descriptor of <span class="quote">“7”</span> that is valid on our local machine
+and points to <tt class="fname">magenta</tt>.
+What we'd like to find out is what node descriptor <tt class="fname">magenta</tt> uses to
+talk to us:
+
+
+
+
+
+
+
+</p>
+<pre class="codesamp">int     remote_nd;
+int     magenta_nd;
+
+magenta_nd = netmgr_strtond ("/net/magenta", NULL);
+printf ("Magenta's ND is %d\n", magenta_nd);
+remote_nd = netmgr_remote_nd (magenta_nd, ND_LOCAL_NODE);
+printf ("From magenta's point of view, we're ND %d\n",
+        remote_nd);</pre>
+
+<p>This might print something similar to:
+
+</p>
+<pre class="codesamp">Magenta's ND is 7
+From magenta's point of view, we're ND 4</pre>
+
+<p>This says that <em>on</em> <tt class="fname">magenta</tt>, the node descriptor <span class="quote">“4”</span>
+refers to our node.
+(Notice the use of the special constant <span class="const">ND_LOCAL_NODE</span>, which is really
+zero, to indicate <span class="quote">“this node.”</span>)
+ 
+
+
+</p>
+<p>Now, recall that we said (in <a href="#msginfo" class="xref"><span class="quote">“Who sent the message?”</span></a>)
+that the <tt class="dtype">struct _msg_info</tt> contains, among other
+things, two node descriptors:
+  
+
+
+
+</p>
+<pre class="codesamp">struct _msg_info
+{
+    int     <i class="var">nd</i>;
+    int     <i class="var">srcnd</i>;
+    …
+};</pre>
+
+<p>We stated in the description for those two fields that:
+
+</p>
+<ul>
+<li><i class="var">nd</i> is the receiving node's node descriptor for the transmitting node
+
+    </li>
+<li><i class="var">srcnd</i> is the transmitting node's node descriptor for the receiving node
+</li>
+</ul>
+<p>So, for our example above, where <tt class="fname">wintermute</tt> is the local node
+and <tt class="fname">magenta</tt> is the remote node, when <tt class="fname">magenta</tt> sends a message
+to us (<tt class="fname">wintermute</tt>), we'd expect that:</p>
+<ul>
+<li><i class="var">nd</i> would contain 7
+    </li>
+<li><i class="var">srcnd</i> would contain 4.</li>
+</ul>
+
+<h1 class="h1"><a name="prio_interitance" id="prio_interitance">Priority inheritance</a></h1>
+
+<p>One of the interesting issues in a realtime operating system is a
+phenomenon known as <i class="dfn">priority inversion</i>.
+
+
+
+
+</p>
+<p>Priority inversion manifests itself as, for example, a low-priority thread
+consuming all available CPU time, even though a higher-priority thread
+is ready to run.
+
+</p>
+<p>Now you're probably thinking, <span class="quote">“Wait a minute! You said that a higher-priority thread will
+<em>always</em> preempt a lower-priority thread! How can this be?”</span>
+
+</p>
+<p>This is true — a higher-priority thread will <em>always</em> preempt
+a lower-priority thread.
+But something interesting can happen.
+Let's look at a scenario where
+we have three threads (in three different processes, just to keep things simple), <span class="quote">“L”</span> is our low-priority thread,
+<span class="quote">“H”</span>
+is our high-priority thread, and <span class="quote">“S”</span> is a server.
+This diagram shows the three threads and their priorities:
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0861.gif" alt="Three threads at different priorities" width="168" height="138" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Three threads at different priorities.</i></p>
+
+
+<p>Currently, H is running. 
+S, a higher-priority
+server thread, doesn't have anything to do right now so it's waiting for 
+a message and is blocked in <i class="func">MsgReceive()</i>.
+L would like to run but is at a lower priority than H, which is 
+running.
+Everything is as you'd expect, right?
+
+
+
+
+</p>
+<p>Now H has decided that it would like to go to sleep for 100
+milliseconds — perhaps it needs to wait for some slow hardware.
+At this point, L is running.
+
+</p>
+<p>This is where things get interesting.
+
+</p>
+<p>As part of its normal operation, L sends a message to the
+server thread S, causing S to go <span class="const">READY</span>
+and (because it's the highest-priority thread that's <span class="const">READY</span>)
+to start running.
+Unfortunately, the message that L sent to S was
+<span class="quote">“Compute pi to 5000 decimal places.”</span>
+  
+
+</p>
+<p>Obviously, this takes more than 100 milliseconds.
+Therefore, when H's 100 milliseconds are up and H
+goes <span class="const">READY</span>, guess what?  It won't run, because S
+is <span class="const">READY</span> and at a higher priority!
+  
+
+</p>
+<p>What happened is that a low-priority thread prevented a 
+higher-priority thread from running by leveraging the CPU via an even 
+higher-priority thread.
+This is <i class="dfn">priority inversion</i>.
+
+
+</p>
+<p>To fix it, we need to talk about <i class="dfn">priority inheritance</i>.
+A simple fix is to have the server, S, <em>inherit</em>
+the priority of the client thread:
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0871.gif" alt="Blocked threads" width="180" height="163" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Blocked threads.</i></p>
+
+
+<p>In this scenario, when H's 100 millisecond sleep has completed,
+it goes <span class="const">READY</span> and, because it's the highest-priority
+<span class="const">READY</span> thread, runs.
+  
+
+</p>
+<p>Not bad, but there's one more <span class="quote">“gotcha.”</span>
+
+</p>
+<p>Suppose that H now decides that it too would like a computation
+performed.
+It wants to compute the 5,034th prime number, so it sends a 
+message to S and blocks.
+
+</p>
+<p>However, S is still computing pi, at a priority of 5!
+In our example system, there are lots of other threads running at priorities 
+higher
+than 5 that are making use of the CPU, effectively ensuring that S
+<em>isn't</em> getting much time to calculate pi.
+
+</p>
+<p>This is another form of priority inversion.
+In this case, a lower-priority thread has prevented a higher-priority thread
+from getting access to a resource.
+Contrast this with the first form of priority
+inversion, where the lower-priority thread was effectively <em>consuming</em>
+CPU —
+in this case it's only <em>preventing</em> a higher-priority thread from
+getting
+CPU — it's not consuming any CPU itself.
+
+
+</p>
+<p>Luckily, the solution is fairly simple here too.
+Boost the server's priority to be the highest of all blocked clients:
+
+
+
+
+</p>
+
+
+<hr>
+<p><img src="s1_msg_files/d0881.gif" alt="server's priority changes" width="180" height="163" class="img"></p>
+<hr>
+
+
+<p class="caption"><i>Boosting the server's priority.</i></p>
+
+
+<p>This way we take a minor hit by letting L's job run at
+a priority higher than L, but we do ensure that H
+gets a fair crack at the CPU.
+
+</p>
+
+<h2 class="h2"><a name="id92" id="id92">So what's the trick?</a></h2>
+
+<p>There's no trick!
+Neutrino does this automatically for you.
+(You can turn off priority inheritance if you don't want it; see the <span class="const">_NTO_CHF_FIXED_PRIORITY</span>
+flag in the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/c/channelcreate.html" class="xref"><i class="func">ChannelCreate()</i></a>
+function's documentation.)
+
+
+
+
+
+
+
+</p>
+<p>There's a minor design issue here, however.
+How do you revert the priority to what it was before it got changed?
+
+
+</p>
+<p>Your server is running along, servicing requests from clients, adjusting
+its priority automagically when it unblocks from the <i class="func">MsgReceive()</i> call.
+But when should it adjust its priority <em>back</em> to what it was before
+the <i class="func">MsgReceive()</i> call changed it?
+
+
+
+
+
+</p>
+<p>There are two cases to consider:
+
+</p>
+<ul>
+<li>The server performs some additional processing <em>after</em> 
+        it properly services the client.  This should be done at
+        the <em>server's</em> priority, not the client's.
+
+    </li>
+<li>The server immediately does another <i class="func">MsgReceive()</i> to
+        handle the next client request.
+
+
+
+</li>
+</ul>
+<p>In the first case, it would be incorrect for the server to run
+at the client's priority when it's no longer doing work for
+that client!
+The solution is fairly simple.
+Use the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/lib_ref/p/pthread_setschedparam.html" class="xref"><i class="func">pthread_setschedparam()</i></a>
+function (discussed in the
+<a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html" class="xref">Processes and Threads</a> chapter) to 
+revert the priority back to what it should be.
+ 
+
+
+</p>
+<p>What about the other case?
+The answer is subtly simple:  Who cares?
+
+</p>
+<p>Think about it.  What difference does it make if the server
+becomes <span class="const">RECEIVE</span>-blocked when it was priority 29 versus 
+when it was priority 2?
+The fact of the matter is it's <span class="const">RECEIVE</span>-blocked!
+It isn't getting any CPU time, so its priority is irrelevant.
+As soon as the <i class="func">MsgReceive()</i> function unblocks the server, the (new)
+client's priority is inherited by the server and everything works
+as expected.
+  
+
+
+
+
+
+</p>
+
+<h2 class="h2"><a name="id94" id="id94">Summary</a></h2>
+
+<p>Message passing is an extremely powerful concept and is one of the main
+features on which Neutrino (and indeed, all past QNX operating systems) is
+built.
+
+
+</p>
+<p>With message passing, a client and a server exchange messages (thread-to-thread in
+the same process, thread-to-thread in different processes on the same node, or thread-to-thread
+in different processes on different nodes in a network).
+The client sends a message and blocks until the server receives the message, processes
+it, and replies to the client.
+
+</p>
+<p>The main advantages of message passing are:
+
+</p>
+<ul>
+<li>The content of a message doesn't change based on the location of the destination (local versus
+        networked).
+
+        
+    </li>
+<li>A message provides a <span class="quote">“clean”</span> decoupling point for clients and servers.
+
+    
+    </li>
+<li>Implicit synchronization and serialization helps simplify the design of your applications.
+</li>
+</ul>
+
+
+<hr class="nav">
+<center class="nav">
+<table align="center" width="40%">
+<tbody><tr>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_procs.html"><img src="s1_msg_files/prev.gif" width="51" height="54" alt="[Previous]"></a></td>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/about.html"><img src="s1_msg_files/contents.gif" width="51" height="54" alt="[Contents]"></a></td>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/keywords-all.html"><img src="s1_msg_files/keyword_index.gif" width="51" height="54" alt="[Index]"></a></td>
+<td valign="middle" align="center"><a href="https://www.qnx.com/developers/docs/6.4.1/neutrino/getting_started/s1_timer.html"><img src="s1_msg_files/next.gif" width="51" height="54" alt="[Next]"></a></td>
+</tr>
+</tbody></table>
+</center>
+<!--?php include $HTDOCS."/style/footer.php"; ?-->
+
+
+
+<!-- Copyright 2009, QNX Software Systems GmbH & Co. KG. All rights reserved.   -->
+<!-- Published under license by QNX Software Systems International Corporation. -->
+
+<!-- QNX, Neutrino, Photon, Photon microGUI, Momentics, and "Build a More -->
+<!-- Reliable World" are trademarks, registered in certain jurisdictions, -->
+<!-- of QNX Software Systems GmbH & Co. KG and are used under license by  -->
+<!-- QNX Software Systems International Corporation. All other trademarks -->
+<!-- belong to their respective owners.                                   -->
+
+<!-- Document processed on May 12, 2009 (07:12:43 PM) -->
+
+
+
+</body></html>
