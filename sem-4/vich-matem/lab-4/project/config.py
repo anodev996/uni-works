@@ -32,14 +32,4 @@ LIGHT_WHITE = "\033[97m"  # Light-white
 
 # Text output
 CLR_ACCENT: str = BOLD + LIGHT_YELLOW  # Color accent for reuse
-MSG_1: str = f"{CLR_ACCENT}Variant:{RESET} #5 (Secant method)"
-MSG_2: str = f"{CLR_ACCENT}Variant:{RESET} #5 (Golden-section search)"
-MSG_WARN: str = (
-    f"{CLR_ACCENT}Warning:{RESET} Method didn't find root "
-    + f"in {ITERATION_MAX} iterations"
-)
-MSG_WRONG_MODULE: str = (
-    "Wrong module was ran, you should run"
-    + f"{CLR_ACCENT}main.py{RESET}, exiting..."
-)
-DELIM: str = DIM + CLR_ACCENT + "\"'" * 36 + RESET
+DELIM: str = DIM + CLR_ACCENT + "--" * 36 + RESET
