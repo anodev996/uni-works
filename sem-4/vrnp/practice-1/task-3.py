@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
 # task 2.1.1(e)
 
-arr = list( map( int, input( "enter sequence of integers: ").split() ) )
-#arr = [1, -5, -9, 10, 0, 123, -6, 5, 7, -1] # тут знак меняется 5 раз
+#arr = list( map( int, input( "enter sequence of integers: ").split() ) )
+arr = [1, -5, -9, 10, 0, 123, -6, 5, 7, -1] # тут знак меняется 5 раз
 
 
 sign = 0 if arr[0] >= 0 else 1 # 0 is plus, 1 is minus

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # task 2.2.3(a)
 
 MATRIX_NUM = 3
