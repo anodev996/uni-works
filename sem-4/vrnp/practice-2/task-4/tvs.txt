@@ -1,0 +1,4 @@
+Samsung | 500$ | 50" | Korea
+LG | 450$ | 45" | Korea
+Sony | 700$ | 55" | Japan
+TCL | 300$ | 40" | China
