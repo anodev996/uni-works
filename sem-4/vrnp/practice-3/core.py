@@ -83,4 +83,3 @@ class Polynomial:
         result = " + ".join(terms)
         result = result.replace("+ -", "- ")
         return result
-    
