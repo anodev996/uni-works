@@ -5,7 +5,6 @@
 *.o
 *.a
 *.so
-*.exe
 
 # Java
 *.class
@@ -14,4 +13,8 @@
 *.pyc
 
 # Lock-file
-*.~lock*
+*~*
+
+# Binaries
+*.exe
+!sem-4/oop-coursework/project/**/*.exe
