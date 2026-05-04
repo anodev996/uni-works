@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?validation-md5-digest 0f6307bd7f078512186086c1c25efe8b?>
+<?validation-md5-digest 39c0cdbd0b953ae1ecf7314b27da3656?>
 <worksheet version="3.0.3" xmlns="http://schemas.mathsoft.com/worksheet30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://schemas.mathsoft.com/worksheet30" xmlns:ml="http://schemas.mathsoft.com/math30" xmlns:u="http://schemas.mathsoft.com/units10" xmlns:p="http://schemas.mathsoft.com/provenance10">
 	<pointReleaseData/>
 	<metadata>
@@ -13,9 +13,9 @@
 			<revisedBy>anodev996@outlook.com</revisedBy>
 		</userData>
 		<identityInfo>
-			<revision>571</revision>
+			<revision>579</revision>
 			<documentID>5F476550-1807-4FAD-9528-C639B0BF909E</documentID>
-			<versionID>A3A0AF6A-E7BE-4DEE-9F47-A69A28EE25B8</versionID>
+			<versionID>CF6E6A84-0BC6-46EE-9F28-A5AD497DFA79</versionID>
 			<parentVersionID>00000000-0000-0000-0000-000000000000</parentVersionID>
 			<branchID>00000000-0000-0000-0000-000000000000</branchID>
 		</identityInfo>
@@ -96,7 +96,7 @@
 					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
 				</results>
 			</mathRendering>
-			<pageModel show-page-frame="false" show-header-frame="false" show-footer-frame="false" header-footer-start-page="1" paper-code="9" orientation="portrait" print-single-page-width="false" page-width="595.5" page-height="841.5">
+			<pageModel show-page-frame="false" show-header-frame="false" show-footer-frame="false" header-footer-start-page="1" paper-code="9" orientation="portrait" print-single-page-width="false" page-width="595.5" page-height="842.25">
 				<margins left="28.296" right="28.296" top="28.296" bottom="28.296"/>
 				<header use-full-page-width="false"/>
 				<footer use-full-page-width="false"/>
@@ -398,11 +398,8 @@
 		</region>
 		<region region-id="2776" left="570" top="918.75" width="379.5" height="34.5" align-x="575.25" align-y="930" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="0" margin-right="0" text-indent="0" text-align="left" list-style-type="none" tabs="inherit">H<sub>0</sub>:<sp count="2"/>r<sub>s </sub>
-					<inlineAttr>== 0 (Монотонная корреляционная связь между X и Y отсутствует).</inlineAttr>
-				</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">H<sub>1</sub>:<sp count="2"/>r<sub>s</sub>
-					<inlineAttr> !=</inlineAttr> 0 (Существует значимая монотонная связь).</p>
+				<p style="Normal" margin-left="0" margin-right="0" text-indent="0" text-align="left" list-style-type="none" tabs="inherit">H<sub>0</sub>:<sp count="2"/>r<sub>s </sub>== 0 (Монотонная корреляционная связь между X и Y отсутствует).</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">H<sub>1</sub>:<sp count="2"/>r<sub>s</sub> != 0 (Существует значимая монотонная связь).</p>
 			</text>
 		</region>
 		<region region-id="2775" left="570" top="978.75" width="57" height="15.75" align-x="595.5" align-y="990" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
@@ -459,7 +456,7 @@
 			</math>
 			<rendering item-idref="13"/>
 		</region>
-		<region region-id="2773" left="570" top="1074.75" width="183.75" height="15.75" align-x="611.25" align-y="1086" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+		<region region-id="2773" left="570" top="1066.5" width="197.25" height="33.75" align-x="611.25" align-y="1086" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:define xmlns:ml="http://schemas.mathsoft.com/math30">
 					<ml:id xml:space="preserve">K_tabl</ml:id>
@@ -470,7 +467,11 @@
 								<ml:apply>
 									<ml:minus/>
 									<ml:real>1</ml:real>
-									<ml:id xml:space="preserve">alfa</ml:id>
+									<ml:apply>
+										<ml:div/>
+										<ml:id xml:space="preserve">alfa</ml:id>
+										<ml:real>2</ml:real>
+									</ml:apply>
 								</ml:apply>
 								<ml:apply>
 									<ml:minus/>
@@ -480,7 +481,7 @@
 							</ml:sequence>
 						</ml:apply>
 						<result xmlns="http://schemas.mathsoft.com/math30">
-							<ml:real>2.6503088379121897</ml:real>
+							<ml:real>3.0122758387165751</ml:real>
 						</result>
 					</ml:eval>
 				</ml:define>
@@ -489,10 +490,10 @@
 		</region>
 		<region region-id="2772" left="570" top="1128.75" width="470.25" height="42.75" align-x="570" align-y="1140" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывол:</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывод:</p>
 				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">
 					<f family="Times New Roman" charset="0" size="12">
-						<inlineAttr font-weight="normal" font-style="normal" underline="false" line-through="false"> Так как K_nabl_S &gt; K_tabl --&gt; гипотеза H0 об отсутствии связи отвергается. Между переменными X и Y существует весьма тесная положительная монотонная связь</inlineAttr>
+						<inlineAttr font-weight="normal" font-style="normal" underline="false" line-through="false"> Так как |K_nabl_S| &gt; K_tabl --&gt; гипотеза H0 об отсутствии связи отвергается. Между переменными X и Y существует весьма тесная положительная монотонная связь</inlineAttr>
 					</f>
 				</p>
 			</text>
@@ -728,7 +729,7 @@
 			</math>
 			<rendering item-idref="18"/>
 		</region>
-		<region region-id="2563" left="762" top="1608.75" width="183.75" height="15.75" align-x="803.25" align-y="1620" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+		<region region-id="2563" left="762" top="1600.5" width="197.25" height="33.75" align-x="803.25" align-y="1620" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:define warning="WarnRedefinedUDScalar" xmlns:ml="http://schemas.mathsoft.com/math30">
 					<ml:id xml:space="preserve">K_tabl</ml:id>
@@ -739,7 +740,11 @@
 								<ml:apply>
 									<ml:minus/>
 									<ml:real>1</ml:real>
-									<ml:id xml:space="preserve">alfa</ml:id>
+									<ml:apply>
+										<ml:div/>
+										<ml:id xml:space="preserve">alfa</ml:id>
+										<ml:real>2</ml:real>
+									</ml:apply>
 								</ml:apply>
 								<ml:apply>
 									<ml:minus/>
@@ -749,7 +754,7 @@
 							</ml:sequence>
 						</ml:apply>
 						<result xmlns="http://schemas.mathsoft.com/math30">
-							<ml:real>2.6503088379121897</ml:real>
+							<ml:real>3.0122758387165751</ml:real>
 						</result>
 					</ml:eval>
 				</ml:define>
@@ -758,8 +763,8 @@
 		</region>
 		<region region-id="2764" left="570" top="1650.75" width="470.25" height="57" align-x="570" align-y="1662" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывол:</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">K_nabl_P<f family="Times New Roman" charset="0" size="12">
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывод:</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">|K_nabl_P|<f family="Times New Roman" charset="0" size="12">
 						<inlineAttr font-weight="normal" font-style="normal" underline="false" line-through="false"> &gt; K_tabl --&gt; Гипотеза H0​ отвергается. Есть наличие линейной положительной корреляционной зависимости между X и Y. </inlineAttr>
 					</f>
 				</p>
@@ -1663,7 +1668,7 @@
 			</math>
 			<rendering item-idref="44"/>
 		</region>
-		<region region-id="2572" left="762" top="3654.75" width="183.75" height="15.75" align-x="803.25" align-y="3666" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+		<region region-id="2572" left="762" top="3646.5" width="191.25" height="33.75" align-x="803.25" align-y="3666" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:define warning="WarnRedefinedUDScalar" xmlns:ml="http://schemas.mathsoft.com/math30">
 					<ml:id xml:space="preserve">K_tabl</ml:id>
@@ -1674,7 +1679,11 @@
 								<ml:apply>
 									<ml:minus/>
 									<ml:real>1</ml:real>
-									<ml:id xml:space="preserve">alfa</ml:id>
+									<ml:apply>
+										<ml:div/>
+										<ml:id xml:space="preserve">alfa</ml:id>
+										<ml:real>2</ml:real>
+									</ml:apply>
 								</ml:apply>
 								<ml:apply>
 									<ml:minus/>
@@ -1684,7 +1693,7 @@
 							</ml:sequence>
 						</ml:apply>
 						<result xmlns="http://schemas.mathsoft.com/math30">
-							<ml:real>2.3650024104869338</ml:real>
+							<ml:real>2.6269310957563836</ml:real>
 						</result>
 					</ml:eval>
 				</ml:define>
@@ -1696,10 +1705,10 @@
 			</math>
 			<rendering item-idref="45"/>
 		</region>
-		<region region-id="2742" left="570" top="3714.75" width="485.25" height="57" align-x="570" align-y="3726" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+		<region region-id="2742" left="570" top="3714.75" width="485.25" height="42.75" align-x="570" align-y="3726" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывол:</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">12.88 &gt; 2.37. Гипотеза H0​ отвергается. Между X и Y существует статистически значимая отрицательная линейная связь</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывод:</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">12.88 &gt; 2.63. Гипотеза H0​ отвергается. Между X и Y существует статистически значимая отрицательная линейная связь</p>
 			</text>
 		</region>
 		<region region-id="2741" left="570" top="3888.75" width="357.75" height="14.25" align-x="570" align-y="3900" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
@@ -1922,9 +1931,9 @@
 			</math>
 			<rendering item-idref="49"/>
 		</region>
-		<region region-id="2734" left="570" top="4314.75" width="483.75" height="42.75" align-x="570" align-y="4326" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+		<region region-id="2734" left="570" top="4314.75" width="483.75" height="28.5" align-x="570" align-y="4326" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывол:</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывод:</p>
 				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">53.8 &gt; 3.52. Гипотеза H0​ отвергается. Существует статистически значимая зависимость Y от X.</p>
 			</text>
 		</region>
@@ -1935,8 +1944,8 @@
 		</region>
 		<region region-id="2732" left="570" top="4437.75" width="495" height="66" align-x="575.25" align-y="4452" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="0" margin-right="0" text-indent="0" text-align="left" list-style-type="none" tabs="inherit">H<sub>0</sub>: Связь линейная (Разница ηyx<sup>2</sup>​ − rxy<sup>2</sup>​ статистически незначима, то есть вызвана случайностью выборки).</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">H<sub>1</sub>: Связь нелинейная (Разница статистически значима, кривая регрессии существенно отклоняется от прямой).</p>
+				<p style="Normal" margin-left="0" margin-right="0" text-indent="0" text-align="left" list-style-type="none" tabs="inherit">H<sub>0</sub>: η = |r<sub>xy</sub>| Связь линейная (Разница ηyx<sup>2</sup>​ − rxy<sup>2</sup>​ статистически незначима, то есть вызвана случайностью выборки).</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">H<sub>1</sub>: η &gt; |r<sub>xy</sub>| Связь нелинейная (Разница статистически значима, кривая регрессии существенно отклоняется от прямой).</p>
 			</text>
 		</region>
 		<region region-id="2731" left="570" top="4518.75" width="57" height="15.75" align-x="595.5" align-y="4530" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
@@ -2055,15 +2064,14 @@
 		</region>
 		<region region-id="2728" left="570" top="4668.75" width="471.75" height="28.5" align-x="570" align-y="4680" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывол:</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Так как F_lin ​&gt; F_tabl_lin​ (6.74 &gt; 3.99), нулевая гипотеза H0​ отвергается.</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Вывод:</p>
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="0" text-align="inherit" list-style-type="none" tabs="inherit">Так как F_lin ​&gt; F_tabl_lin​ (6.74 &gt; 3.99), нулевая гипотеза H0​ отвергается. </p>
 			</text>
 		</region>
-		<region region-id="2727" left="570" top="4740.75" width="525" height="85.5" align-x="570" align-y="4752" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+		<region region-id="2727" left="570" top="4740.75" width="525" height="42.75" align-x="570" align-y="4752" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
 				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Вывод по части 2:</p>
 				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Несмотря на то, что коэффициент Пирсона выявил сильную линейную компоненту (rxy​ = −0.793), проверка на линейность показала, что связь всё-таки носит нелинейный характер.</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Это логично, если посмотреть на групповые средние, при переходе от X=16 к X=20 значение Y почти не меняется (падает всего на 0.6), в то время как на других участках падение составляет около 4.5 – 5 пунктов. Это "искривляет" линию регрессии.</p>
 			</text>
 		</region>
 	</regions>
@@ -2251,25 +2259,25 @@ MqWu2wQXELCc/UGr9UB3SLLQ73mdg33UyXEXjpPiR4EPClqm89ig5Tw3YguJH+jRkFh8crt2
 24TPGDl6u0N4QWLLEcPgpyjdkfadk05d/NxxxvWAy9nH/M+NhEqDgh1bTjpae2ooLUd98HL2
 0dCNq/J8cB8foxFTOYqMM8ReV2cd6Xl+gZzjisr1Q53gegh5il8hx7Ef/P3rExHZnXm+Ro6j
 R0HveVonRYzjq+Q43su8zpmT+S7e6zJP61y42L5Ozkj8F8fNZEbQhc6eAAAAAElFTkSuQmCC</item>
-		<item item-id="5" content-encoding="gzip">H4sIAAAAAAAA/+xXy08TYRCf3dLaQqEUsEoBeYgKKogrIC9loYCPqJhiiPFieGygWii0a4Bb
-48kQNSQmnjUxXrzozXjxEWPiwddVPeh/YGJMjInUmW8+1l1ifBtjZJr5HvPN47ezX7+dzw8A
-CvIAcrYYq9hmmUnDKAEiDdk7MdI/fMIYMYUEosgdaKS7NM8HgHSWdu0eztxaCLu0Rzt7F7tV
-Wg51Xi1XF0Y+Oc/W1ADAqA/ApUZhFiCH9X1+reAxesnJZQU/gDsrCkMwCScB8rTzU6jkh4BY
-vZIHoCpHyW8+R80JMoj8Ag1QQQ/iUiHDCxZpAm0hwGrxdL7I4EDv9D7TmFAENAwFHrsgFzkk
-VL3GdNQYiyUm3WKhkaxHEyMsyxKyVitrntT4VHdilpN0AHkVCqJW2g4iv3ehTwxyG22Poc1q
-7K9zUOj2cq+Cuka8kwIrUpdpJmPDp0yDVduQA2CntW1VjnnxUtrDnPbiEs5q2Ep7Kac9XMZp
-L13HCmWOtJdz2suggtNebqW9Urt4H1dKqzjdlShaL4bpSgcQqBap8WPKI4mJ4QQlmRfyKUEo
-/iyhR+rATZjCpPgUfszD2GcypI2q/XEjEo8Zk6awwRWf3L2yRdunT4KvLt8Iv4ZltBtcsJjx
-gccmUyxrhqPK+WKGIjJlVuifoo/IizZeof+LopDAnwkV0ItHmAlJmFt+FHyVQuC2/vN0FpyG
-JqUq+CJ4IQ25gw/cYbvuQnrm0evnLxU80+GOPEgiGJ3iGqJN/VBsogI8YO3P8712Z5Rv63wv
-/Uz830m/Ep/SQOc4vRP6PtN3m878lbPg/yA3Fm/YwC1ZD2U7doY1pgmVG9VARaGgkByOQkzs
-noC0dkmbmM2eKsabyG8zzh26YAtyEGvqCuRxPAvi+KuAHmzHsKeS+g2886dnpnCLziIv7Jp3
-bcrjOcC8i/p3f9B3Bw2PnH24feRp8Oo5uFT9xP1sqRryLsvVl/IHiir/Z+S0CBk/tg7+WyRQ
-buBKtJAwKlxKDxjJ2FD8eE8sNRUfmjuUGDVYv18YbWSDfOlk0/I7So28o9RysVyzmRVqHcXy
-Fi6Wa2ErF8tbrGK5ju8oNfV8R6nbxkVzPS418B2lfjvfURpoD2qMpkHA1/tB2cGCOkbXKEE0
-MYhGB4hmBtEIOxlEswWiRYJoZRAtbQyCri/tDKK1g0G0E4hdHLPdArGbBS0CQ6d0ouvspRNl
-ehe76dS72Y/eRY70CBvSTLrSe2y+9F6bi74lF3ukiz7hYq900ffZxT6Hwn67Akk+AQAA//8D
-APH7RfTYDgAA</item>
+		<item item-id="5" content-encoding="gzip">H4sIAAAAAAAA/+xXS08TURQ+0xctLY/yUgrIQxQQQRgBeRQZKKAYsaYYYtwolAlUCy0wRtg1
+rgwBQ2LiWhPjxo3ujBsfISZuBNe40H9gYkiMidRz77kMM8QovmIMnObcx7nn8c3pnTvnegBA
+Qh5ATuVjC7Y2bUpVC4CRjOwcDweHL6thjUsghOxHI8UqOz4DJGzygxc4s8t52CUc8vxz7FJk
+N+uccprCjVxinipbMgBGXABWSwhmANyk7/LIWa/RizuNFDwAdlsIhmACrgCkyzfjqOSBDL56
+Lx3AIp1nfjMpqttLIDKzZEAFxYtL2QTPmyNztNkAufzpXIHBgZ7JPk0dlzg0DAUOoyANOY+r
+OtXJkDoaiU3Y+UIDsx6JhUlm47IWPWuO6bF4V2yGknQaOQUFIT1t/cifrOgTgzxF2wtok4v9
+QwoKXU76Kyxg2cMHWXqkTk2bigxf1VRSbUXOACPtbS0zzfM30u6jtOcXUFZ9etoLKe2+Ikp7
+4T5SKDKlvZjSXgQllPZiPe2l8u0lXCkso3SXomg/HyZKTUCgnKfGgykPxMaHYyzJtJDJEoTi
+TQl7JD9uwmlMikuixzyLfTLJtFE1GFUD0Yg6oXEbXHGJ3StatF1Z9r67+8j3HrbQcbDCetIF
+DoNM0q0JjkXM15MsIlFyl/4r+oK8buBd2lkUghj+NCiBHjzCNJiC2a1HwXcpD+z6O8/OguvQ
+KJV5V723EpA2+NLuM+peijmWFlbfSnimwzNxkAQwOour8nb6p2IzysID1vg827W7If1YZ7v0
+K/H/JP1OfPqA4lcOmX2f2Xebnfm7Z8HOIDsWb9jAE1EPpZp2hj5mE1ZulAMrCjnlieEIRPju
+yRDWVmETMdizivEx8sekeYcuGoL0Y01dgjyGZ0EUfyXQje0o9qyk/gBrnsS1OG7RGeTF9jlr
+RTrNAeasrF/7i779bHhu/lV9eMV7fwHulC/b32xUQ84tufpW/kCyiPeMOc1Bxo+tif8VcZQH
+qBLNZhglKqUH1KnIUPRid2Q6Hh2aPRMbUUk/yI0OkkGmcFKx9Y5SKe4oVVQsVx4ihSpTsVxN
+xXIVHKZiuVovlmvojlJZS3eUmiNUNNfiUh3dUWrr6Y5Sx/agTGjqOHwlCNJREtQQugYBopFA
+NJhANBGIBjhGIJp0EM0CRAuBaG4lEOz60kYgWvwEoo2BaKeYbTqI4yRo5hg6hBNFIS8dKFM6
+yU2H0kV+lE7mSAmQIZsJV0q3wZfSY3DRu+HihHDRy12cFC56N130mRROGRWY5CsAAAD//wMA
+JsIhgNgOAAA=</item>
 		<item item-id="6">iVBORw0KGgoAAAANSUhEUgAAAMcAAAFSCAYAAABG2cuCAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABO/SURBVHhe7Z3BcdvKEkUZlRaKRivm
 8VfaKg/tFYYScBIvA/4agCCB4cxgGjigb5n3VHW9J4O+blt9CIACBqeLMabIKf8F8+9yOp1e
@@ -2366,25 +2374,25 @@ UcuV15ADWZZjyfCo5cpryF64JCPPHjnG15T3HuRA9sgxvqa89yB74ZKMPJYjBpdk5AnJkZYB
 va1bNR1WfVy+H37vE+RIy4DOTBgPq86XghtoL1ySkackR32BhXFPcd9WFoOUo77AwrinuG8r
 i5GgeklwSUaekhxEkQO5F7IXLsnIYzlicElGHssRg0sy8liOGFySkcdyxOCSjDyWIwaXZORJ
 g/OvFwmbZsw/xP8BtTcONpvR1VcAAAAASUVORK5CYII=</item>
-		<item item-id="7" content-encoding="gzip">H4sIAAAAAAAA/+xXy08TYRCfbWlpoTwKiFJACqKACMIKyJuFAoqKmGJI9GJ4bKBaKI81wq3x
-ZAgaEhO9amK8eNGb8aTGmHhQ8Koe5A8wMTFcTKTOfLNddomJ4CPGwDTzPeabx29nv347nwcA
-JOR+5CQxtmGboE2rai4Qyciu8eG+oYvqsCYkEERuRiPFLju/AkQT5AfPceaQs7GLOuWFZ9gl
-ysnUueQURRi59XmSbEsDGHED2G1BmANIZn23R854g16SU1jBA+BICMIgTMAlgFT5xiQqeSBN
-rN5LBbBJ58hvOkdN9jKI9AwZUEHx4lImw/NmyQJtJsAu8XTuwEB/11SPpo5LAhqGAqdZkIKc
-LVRd6lRQHQ1FJhxioYasRyLDLEsQsgYja86ZscmOyCwn6RRyIgqCRtp6kZfRxoVBbqO/82jz
-CecPOSgEXNzbwLZbvJMMI1K7pk2Hhi5rKqs2IqeBmfY0FlnmOfG0+zjtObmcVZ+R9jxOuy+f
-0563lxXyLWkv4LTng5/TXmCkvVC+9QJX8oo43YUo2ieG0UILECgWqfFgygOR8aEIJZkX0ilB
-KF6X0CM14yY8iclxS/yYZ7CPxUgbVfvCaiAcUic0YSPFdyzEW5wuL3k/3n3kW4EN1Ap2WIu5
-wWmSSYY1w7Hp87UYRWSK7dB/Rd+Q10y8Q9uLghDBnwZ+6MIjTINpOuu2QNngMP7zdBZchVqp
-yPveezMKKQMvHT6z7nLe7OuVdx8kO46fxg9xjE5xVdHObCk2UQYesObn2azdNennOpulX4n/
-J+l34lMa6Bynd0LfZ/pu05m/cxZsD3Jg8YYNPNHroSTLzjDGNKFyoxioKBSUrQ9HICR2T5pu
-bddtQiZ7qhgfI3+JWXfooilIL9bUfuQxPAvC+PNDJ7aj2FNJ/RlWPdErk7hFZ5EXW+btJak8
-B5i3U7/6F3030/Dswqvq4WXv/etwp3jJ8TZeDbk25OpH+QPJpv/PyGkWMn5sLfyvSKDcz5Vo
-JmGUuJTuV6dDg+ELnaGZyfDg3OnIiMr6fcLoABuk605KNt5RSvU7ShkXy6UHWaHMUiyXc7Fc
-Boe4WC43iuUKvqOUVvIdpeIwF82VuFTFd5TKar6jVNEelBlNlYCv9IF0hAUVjK5GB1HLIGos
-IOoYRA0cZRB1Boh6HUQDg6hvZBB0fWliEA3NDKKJQLRwzCYDRCsL6gWGNt2JorCXNpQp7eym
-TelgP0o7OVICbEgz3ZXSafKldJlcdMddHNNddAsXx3UX3esueiwKJ8wKJPkOAAD//wMA+z+o
-ZNgOAAA=</item>
+		<item item-id="7" content-encoding="gzip">H4sIAAAAAAAA/+xXzU8TURCfbWlpaaG0YJUCUhAFRBBWQD5loYCiYk0xJHpRaDdQLbTAGuHW
+eDIEDImJXjUxXrzozXhSQ0y8CJ7xoH+AiYnhYiJ13pvtsktMBD9iDEwz72PefPx2+vbtPCcA
+CMiDyFl8bMI2Q5mS5UJgJCLbxsPBkatyWOESCCG3o5FkFq1fAZIZ4uNXOLOIXuySVnH+JXaZ
+ooN1NjFb4kZ2dZ4lmlwAETuA2RSCWQAH6dudouctenFkk4ITwJIRgmGYgGsAOeLtBCo5wcVX
+H+YAmISLzG8uRXW4CUSuRwRUkNy4lEfw3PkiR5sHsIc/nT0wNNg72a/I4wKHhqHAqhdkI3u5
+qk2eDMmj0fiEhS80MOtIPEyyDC5r0bJmnR5LdMdnKElnkTNRENLSNoC8gjY2DHIP/V1Cm084
+f0JBIWCjv8IEpr184NEidSnKVHTkuiKTaiuyC/S0r7XMMC9Ip91HaS8opKz6tLQXUdp9xZT2
+ov2kUGxIewmlvRj8lPYSLe2l4t0lXCkqo3SXougAHyZLDUCgnKfGiSkPxMdH4izJtJDLEoTi
+DQl7pHbchGcwOXaBHvM89qkU00bVYEwOxKLyhMJthPSOhXSL05Vl94cHT30fYROdADOsp+xg
+1ckEzZrgmNT5eopFJErt0n9F35DXdbxLO4tCEMefAn7oxSNMgSl21m2DvGDR3nl2FtyERqHM
+veq+k4TsodcWn173Sty6tLD6XjDj+EX6EMfoLK7M2+ltxWbkwQNW/zxbtbsl/Fxnq/Qr8f8k
+/U58+oDiVw6ZfZ/Zd5ud+btnwc4gCxZv2MBztR7KMuwMbcwmrNwoB1YUcvKqwwhE+e5xqdZm
+1Saqs2cV4zPkLynjDl3UBRnAmtqPPIZnQQx/fujBdhR7VlJ/hjVn8kYCt+gM8mLHnLkih+YA
+c2bWr/1F3+1seGH+TX14xf1oAe6XL1vepash26Zc/Sh/IJjU94w5zUfGj62B/xVxlAepEs1j
+GAUqpQflqehw7HJPdDoRG549F4/IpB/kRofIIFd1UrH5jlKp3lGqqFiuPEwKVYZiuZqK5So4
+QsVytVYs19AdpbKW7ig1R6lorsWlOrqj1NbTHaWO7UGR0NRx+FIQhGMkqCF0DSqIRgLRYADR
+RCAa4DiBaNJANKsgWghEcyuBYNeXNgLR0k4g2hiIDorZpoE4QYJmjqFTdSJJ5KUTZVIXuemU
+usmP1MUcSQEyZDPVldSj8yX16lz0pV2cVF30cRenVBd9Gy76DQqn9QpM8h0AAP//AwBQF96J
+2A4AAA==</item>
 		<item item-id="8">iVBORw0KGgoAAAANSUhEUgAAAMcAAAFSCAYAAABG2cuCAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABPpSURBVHhe7Z3RdaPIFkUVlT+UwcvC
 X0rFv52H/x2GE+gkJgO9VSAkKFUVdWEjnxmfvdZdMzbq07fbdwNSQ3G6GmOKnPJvmP8up9Pp
@@ -2590,26 +2598,35 @@ zJsC3BcGuekl0soriEca3EpV+ZxXIliCkdct/PPXc8FBPNKgGJxo3DZKinzea0HoIg1Hcu/I
 0d+dlH4HnCIeaVAELQGF20ZJke80nHzW9qC4IIt4pEFRbNlSxFNUkU+zp6ZiOUgmLdqgGGfk
 S3ot3lk4+U7+9VwQJi3aoBh58gVei3cJ7v6NgPR9Oej2LiEWbXADWrq4fKAnEO0HAPneCaL9
 AHQ6B94FIv4QIN/7QMQfAuR7Hz+1WSOwTwq4mgAAAABJRU5ErkJggg==</item>
-		<item item-id="14">iVBORw0KGgoAAAANSUhEUgAAAPUAAAAVCAYAAACe9ajnAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO1SURBVHhe7ZqLkYUgDEWty4Koh2ps
-xmLY4WuICQQVn7qcGWdWEUhCLh/fTmYwGHyKCT8YDAbvZoh6MPgYQ9SDwccYoh4MPkYS9aIm
-M03gmrVZfUH2fNbu6bWs2szTZNSCCyKLUcXyp2LtViY3ezV6BvG9lX0c4bi/K77el73tVMzv
-gLOnzqrnUA/ZHXSR9CdsNF+pSXH5JBS21w4wnO5jCxZd/lDcZIiTCwz87aLex9EKOk7STty3
-23QUm5NbbKMoUn64nJpNj/WHpmIPSxwTnCeeText+V8VtR1saWM5DZMB0W9GrfwnlPwrrxZu
-sH4hoCyO+1X7NSwaCTbsfqAzzld+DC5FYs+OIGj2ncUotqxMQdSlpJXQkDQ10dbKHXdva3n/
-4ApI8QhRi2L6HtxOAznj4vwjByl7IP7YU5h0wLG30AwJI+prBL1tHbzxeDuRnEb9+nKwffpl
-AqJvCt4u2r9QwajK1q+3qGtxnmdUHuxl64mIkxwYw6b6Z2Dy9c7VOoOxJ+FjNWsN8gjaCXXQ
-HktS1LGh0mpTBQvR3YNkd2IJ96nfrTybyXBbAnYf/vAlaMwnOT4r5TbvmiHP0jldRS2Is7MZ
-21+qVwVOcqFOU/2TWNvJePK7KcgVuZLB2hMIC4V9x7ccRUzlzSZwqRmkqG3l6OhhYeOkAWxB
-JJJte2sbELK8N0RCwMRnbMITAYVE1FckWjHOjP1kPQm4PTxJEFzho2VRXD9xRSQLu8HbE6Am
-/iB0zuXadh7CitpySth4kFPCh2fcCpIAA0KWd4ZKyhtFfQZRnAn72XoScHv4vhPWZr6P+0Vd
-tidAiZpaRCC2DluYUxS15bCwcVvYES7ZIgIBlTi9ClB9SmzCfhJ0FTXun4sztr9UTwJuD9/3
-YFF5Xq7a6Ky/ilACp3MlUrUnQtgFc4tiUVU/IlVRWw4JG7WVnUfx/a5f9JPArvwOiHOORNSC
-D2Uunp1ELY5zy/hIwPHA91cTtqv5hSZTZ0N5gr0MiT0AvKMrbq+tHw35Uv+Pst2XbGlCwi94
-1vi8nVkpN+j2b+tL3Pql8pRNxEcYkh4/aRG+Jxuwf6AW+5MWbq/kz1H4OLOXSya+Xp5r4b0s
-zmiMFi/oXj7iXMn9QO9xQrmQuj10bmaag3aGCTGVNeb0+N/vFmpbpER9tX47q1YP98+OAb9S
-fpkh6hbEom5893WsRqsnC4Y4s/4jjokabw921weTGZ2ZZAnzxdViNYvWZnns+H4x5m0cE/Vg
-MHgsQ9SDwcf4AzPsGwQe7CxfAAAAAElFTkSuQmCC</item>
+		<item item-id="14">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</item>
 		<item item-id="15">iVBORw0KGgoAAAANSUhEUgAAAeAAAACMCAYAAACklXoAAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABA8SURBVHhe7d2Jkas6EEDRicsZvETI
 42dANCTjYPglFgOtHYlF0j1VVI0Hg8FqdSOM8d8IAABu9yf/AQAArkcBBgDgARRgAAAeQAEG
@@ -2748,26 +2765,36 @@ QTlNmlQrktoT0yTFSEcCqAqVMUdMxT1ylv/r2yBOXjSAapyRk764uDiinOat5ivyW9C3gSDv
 ODhLXjSAahyTk7+mVGpi/oN7/tUz1tek725iBcTRv74N4qSiAVyAkTIt55PBQFBpWo6GbuhB
 TixsL0+70dARphnZInbtLMwsTpsR0SGtygnqgYh4CJATcH5ZIZIAIlFQLwAAAABJRU5ErkJg
 gg==</item>
-		<item item-id="19">iVBORw0KGgoAAAANSUhEUgAAAPUAAAAVCAYAAACe9ajnAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPNSURBVHhe7ZqLsawgDIaty4Ko45ZA
-NTZjMdzhaYgJBBVXPXwzzlkWgSTkB3TPZAaDwaeY8BeDweDdDFEPBh9jiHow+BhD1IPBx0ii
-XtRkpglcszarr8i+n7X79lpWbeZpMmrBFZHFqGL9U7F2K5ObvRo9g/jeyj6OcN7fFV/vy952
-KuZ3wNlTZ9VzaIfsDrpI+hN2mu/UpLh8Egr7awcYTo+xBYuufyhuMcTJBSb+dlHv42gFHRdp
-J+7bbTqKzckttlEUKT9cTs2mx/5DU7GHJc4JzhPPJva2/K+K2k62tLOchsWAGDejVv8TSv6V
-dws3Wb8QUBbH/a79GhaNBBtOP9AZ5ys/B5cisWdHEDR7z2IUW1emIOpS0kpoSJqaaGv1jruP
-tbx/cAekeISoRTF9D+6kgZxxcf6Rg5Q9EP/YU1h0wGNvoRsSRtTXCHo7Onjj8XEiOY3G9fXg
-+PTLBETvFLxdtH+hgVGVo19vUdfiPM+oPtjLthMRFzkwh03tz8Dk6527dQZjT8LHatYa5BG0
-E+qgPZakqGNHpd2mChaiK4Nkd2IJ5TTuVp+tZLgvAbsXf/gSdOaTHD8r5TbvuiGfpXO6iloQ
-Z2cztr/Urgpc5EKbpvYnsbaT8eRPU5ArciWDtScQNgp7j+85ipjKm03gUjNIUdvG0dHDwsZJ
-A9iCSCTbdtc2IWR9b4iEgInP2IQXAgqJqK9ItGKcGfvJdhJwf3iRILjCR8uiuHHijkhWdoO3
-J0At/EHonMu14zyEFbXllLDxJKeED99xO0gCTAhZ3xkqKW8U9RlEcSbsZ9tJwP3hcieszfwY
-94u6bE+AEjW1iUBsG7Yypyhqy2Fh476wI1yyRQQCKnF6F6DGlNiE/SToKmo8PhdnbH+pnQTc
-Hy73YFF5Xq7a6Gy8ilACp3MlUrUnQtgFc4tiUVU/IlVRWw4JG/WVPY/i8m5c9JPArv4OiOcc
-iagFL8pcPDuJWhznlvmRgOOBy1cTjqv5hRZTZ0N5gb0MiT0AfKIrHq+tHw35Uv+Pst2bbGlC
-wjd41vi8n1kpN+n2s/UlHv1Sfcom4iUMSY+ftAjfkw3YP9CK/UkL91fy5yh8nNnLJRPfLs+1
-cF8WZzRHixd0Lx9xruR+oPs4oVxI3R46NzPNQTvDgpjqGnN6/O93C7UjUqK+W7+dVauH+2fn
-gN8pv0wS9fQv1/fbyrcgFnXjva9jNVo9WTDEM+sfwinDCgSKRFpOxwOmjO/vVb4F9MwkS5gv
-7harWbQ2y2MXqy/GvI0k6jf/HQwGGxMUhv38tvJgMMj5DwMoVpeN7ZvkAAAAAElFTkSuQmCC</item>
+		<item item-id="19">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
+AElFTkSuQmCC</item>
 		<item item-id="20">iVBORw0KGgoAAAANSUhEUgAAAEgAAAAVCAYAAADl/ahuAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVFhH7ZbZDQQhCECty4Ksx2ps
 xmLY4DELyoh7xg9e4odHHHmKjgNjiRsbDI4JUjBBCiZI4VhBOXpwzpUS0tg7k0Idi8XHPHaz
@@ -3554,26 +3581,34 @@ CreMkiP1YUSpTR7XCjutNaarqpCOEnAbrsQ5QivukXppgUc9RRXeLy/71M+9858hwXXkRQq4
 hSNSi6+wLQErtflPEgu6/sD6dYAsWA6uIC9SwC3sk1p+hW0Z/PIXP8m99Cq9XodcWKahL7w/
 QCIVKeBmjMxpqZ8MBshq8uZI+QQtSI0vbNTlvZHyEUx3943YZ7thdFXeGS0f461Sg3tAtLwA
 SA328A8iYGA9eDfV5QAAAABJRU5ErkJggg==</item>
-		<item item-id="45">iVBORw0KGgoAAAANSUhEUgAAAPUAAAAVCAYAAACe9ajnAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPASURBVHhe7ZqBkawgDIaty4Ks45VA
-NTRjMbwJiJKQQHDFU4dvxrllEUhIfkD3JjcYDD7FRL8YDAbvZoh6MPgYQ9SDwccYoh4MPsYu
-artMbpqSazZuDRXo+9n4b69lNW6eJrdYWhGxbinWPxWwe3HY7NWZOZnfW8nnMY37u+Y3+JLb
-zs35HUj2SJTvX82M9eiv2Wnkh3dqVlwhCemgl7GNyTkWOJzn6x+KXwxpciWBvF3U+TyCoOMi
-7cV9u01ngZw85jYKYM8Pn1M6AVxDxZ4MvPCE+9NcwYLfL2V8qqKGYMvGlWhYDJhxEbX6P6Hk
-X3m38EFUBuhS0Dzmu/ZrsIYIdjv9pM54X+UYXIrGnpR1JbGHWCSLkLW53XZRn5ILoi4lrYaG
-pKmJtlbvuftYK/uX7oAcjxC1ak7fgz9pEGf8PP+Rg5w9IhCLyr120Z88BFFfI+jj6BBWzOw5
-IQ5Axs2eH/4yAck7hWAX79/WAK+6DL1FXZvneabPa8FesZ2KuMglMWxq/wtCvt65WyMEezjA
-xmouWLdU7zlgRR2DWtptqlAh+nJ6xACxbOV93KM+vMDZAkL7UpC9+KOXojP6rBPK2OasG/ZZ
-GtNV1Ip59jZT+0vtqqSL3Namqf2PiMKQT1MpV+QKQrQHgxfRQs40HL0BVtTgQ3S0pTMETZqE
-YxKZZDvuOgLC1veGSYg08QWb6ELAoRH1FYlWnGfBfradBtofXSQYrvARkI+mIYanc/gksj08
-UdySna39iaIGfhI2DXJivP9O2kF2koCw9Z3hkvJGUf+Cap4Z+8V2Gmh/tNwJsFke435Rl+2R
-CMd13s62ozdQFDVwWti0L3oslZItohBQiZ93AW5MjU3UT4auoqbjS/NM7S+100D7o+Ue0GPp
-apxB4zGnLYafcyVStUcGbGCHoX0qqIoaOCVs0hd6HqXlbFzyk0BWfwfxhU+S6BpRK16U+fns
-JGr1PLfERwOdD1q+muwFJokV4G0oL7CXobFHAuwU8qH16A3U/6Mse5OtTcj0TTY4h/uZl8UH
-HT5D4OPRb6/fPWFewrD0+EmL8X23gfqXtBJ/0qL9lfw5izzP4uWVJ7fDwtzuQ/NMYmSDoHv5
-SHMF+0Hu67aqHNTtIblJFwAxZ9uP3sD43+8W0p26SH23fjurWR7uH8RAuVN+jF3U0z+s77eV
-b0Et6sZ7X8fqzPJkweiepb+KVwYIJBWJtrwfH4Qyvb9X+RbIkUmXMF/cLVZnjXH2sYvVF+e8
-jV3Ub/47GAwOplQY8Plt5cFggPkPkNaDS81sqNMAAAAASUVORK5CYII=</item>
+		<item item-id="45">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</item>
 		<item item-id="46">iVBORw0KGgoAAAANSUhEUgAAASMAAACMCAYAAAA3Hc+iAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA3OSURBVHhe7d3LsZw6FAXQG9fN4aVB
 OQiH4AFjJ+AMmHnsGFyMPPTMGfDqqIEW+h0J/cVeVVS52/0BLme3ECA+NgCABnyoTwAA1IAw
