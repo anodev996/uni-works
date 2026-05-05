@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32E9CED6-B894-49E5-87D1-C9F2B05AE9A2}|project.csproj|d:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32E9CED6-B894-49E5-87D1-C9F2B05AE9A2}|project.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32E9CED6-B894-49E5-87D1-C9F2B05AE9A2}|project.csproj|d:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{32E9CED6-B894-49E5-87D1-C9F2B05AE9A2}|project.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{167854E8-7229-C63A-099E-C75E793CAF57}|project.csproj|d:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{167854E8-7229-C63A-099E-C75E793CAF57}|project.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +19,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\MainForm.cs",
+              "RelativeDocumentMoniker": "MainForm.cs",
+              "ToolTip": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\MainForm.cs [Design]",
+              "RelativeToolTip": "MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-28T15:18:48.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\desktop-bubsage\\220-tusur\\uni-works\\sem-4\\oop-coursework\\project\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-28T15:17:43.14Z",
+              "WhenOpened": "2026-05-05T17:49:38.536Z",
               "EditorCaption": " [Design]"
             }
           ]
