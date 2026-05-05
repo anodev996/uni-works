@@ -1,5 +1,6 @@
-# VSCode
+# VSCode & Visual Studio
 .vscode/
+.vs/
 
 # C/C++
 *.o
