@@ -16,7 +16,7 @@ namespace project
             DisksCount = disksCount;
             MoveCount = 0;
             MoveHistory = new List<Move>();
-            Rods = new Rod[3] { new Rod(), new Rod(), new Rod() };
+            Rods = [new Rod(), new Rod(), new Rod()];
 
             for (int i = disksCount; i >= 1; i--)
             {
@@ -34,7 +34,7 @@ namespace project
                 Disk diskToMove = Rods[fromIndex].Disks.Peek();
                 Disk topDiskAtDestination = Rods[toIndex].Disks.Peek();
 
-                if (diskToMove.Size > topDiskAtDestination.Size)
+                if (diskToMove.Number > topDiskAtDestination.Number)
                 {
                     return false;
                 }

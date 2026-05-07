@@ -2,11 +2,11 @@
 {
     public class Disk
     {
-        public int Size { get; }
+        public int Number { get; }
 
-        public Disk(int size)
+        public Disk(int number)
         {
-            Size = size;
+            Number = number;
         }
     }
 }

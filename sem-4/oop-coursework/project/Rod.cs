@@ -15,7 +15,7 @@ namespace project
 
         public void Push(Disk disk)
         {
-            if (Disks.Count > 0 && Disks.Peek().Size <= disk.Size)
+            if (Disks.Count > 0 && Disks.Peek().Number <= disk.Number)
             {
                 throw new InvalidOperationException("Нельзя класть больший диск на меньший!");
             }
