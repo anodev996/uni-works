@@ -61,11 +61,12 @@
             // 
             // btnDrawDisks
             // 
+            btnDrawDisks.Anchor = AnchorStyles.None;
             btnDrawDisks.BackColor = Color.FromArgb(133, 211, 109);
             btnDrawDisks.FlatStyle = FlatStyle.Flat;
             btnDrawDisks.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDrawDisks.ForeColor = Color.White;
-            btnDrawDisks.Location = new Point(34, 112);
+            btnDrawDisks.Location = new Point(34, 103);
             btnDrawDisks.Name = "btnDrawDisks";
             btnDrawDisks.Size = new Size(187, 35);
             btnDrawDisks.TabIndex = 0;
@@ -101,9 +102,11 @@
             pnlGame.Size = new Size(824, 608);
             pnlGame.TabIndex = 2;
             pnlGame.Paint += pnlGame_Paint;
+            pnlGame.MouseClick += pnlGame_MouseClick;
             // 
             // pnlGameControls
             // 
+            pnlGameControls.Anchor = AnchorStyles.None;
             pnlGameControls.BackColor = Color.FromArgb(235, 235, 239);
             pnlGameControls.Controls.Add(lblSettings);
             pnlGameControls.Controls.Add(lblDisks);
@@ -119,7 +122,6 @@
             pnlGameControls.Controls.Add(btnStop);
             pnlGameControls.Controls.Add(btnUndoMove);
             pnlGameControls.Controls.Add(btnRules);
-            pnlGameControls.Dock = DockStyle.Fill;
             pnlGameControls.Location = new Point(884, 20);
             pnlGameControls.Margin = new Padding(20);
             pnlGameControls.Name = "pnlGameControls";
@@ -128,10 +130,11 @@
             // 
             // lblSettings
             // 
+            lblSettings.Anchor = AnchorStyles.None;
             lblSettings.AutoSize = true;
             lblSettings.BackColor = Color.Transparent;
             lblSettings.Font = new Font("Calibri Light", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblSettings.Location = new Point(34, 34);
+            lblSettings.Location = new Point(34, 32);
             lblSettings.Name = "lblSettings";
             lblSettings.Size = new Size(95, 23);
             lblSettings.TabIndex = 1;
@@ -139,10 +142,11 @@
             // 
             // lblDisks
             // 
+            lblDisks.Anchor = AnchorStyles.None;
             lblDisks.AutoSize = true;
             lblDisks.BackColor = Color.Transparent;
             lblDisks.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDisks.Location = new Point(34, 73);
+            lblDisks.Location = new Point(34, 70);
             lblDisks.Name = "lblDisks";
             lblDisks.Size = new Size(64, 23);
             lblDisks.TabIndex = 2;
@@ -150,9 +154,10 @@
             // 
             // txtBxDisks
             // 
+            txtBxDisks.Anchor = AnchorStyles.None;
             txtBxDisks.BorderStyle = BorderStyle.None;
             txtBxDisks.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBxDisks.Location = new Point(104, 73);
+            txtBxDisks.Location = new Point(104, 70);
             txtBxDisks.Name = "txtBxDisks";
             txtBxDisks.Size = new Size(52, 24);
             txtBxDisks.TabIndex = 3;
@@ -161,10 +166,11 @@
             // 
             // lblStatistics
             // 
+            lblStatistics.Anchor = AnchorStyles.None;
             lblStatistics.AutoSize = true;
             lblStatistics.BackColor = Color.Transparent;
             lblStatistics.Font = new Font("Calibri Light", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblStatistics.Location = new Point(33, 170);
+            lblStatistics.Location = new Point(34, 168);
             lblStatistics.Name = "lblStatistics";
             lblStatistics.Size = new Size(96, 23);
             lblStatistics.TabIndex = 4;
@@ -172,10 +178,11 @@
             // 
             // lblCurrentMove
             // 
+            lblCurrentMove.Anchor = AnchorStyles.None;
             lblCurrentMove.AutoSize = true;
             lblCurrentMove.BackColor = Color.Transparent;
             lblCurrentMove.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCurrentMove.Location = new Point(26, 205);
+            lblCurrentMove.Location = new Point(34, 204);
             lblCurrentMove.Name = "lblCurrentMove";
             lblCurrentMove.Size = new Size(113, 23);
             lblCurrentMove.TabIndex = 7;
@@ -183,21 +190,24 @@
             // 
             // lblCurrentMoveCount
             // 
+            lblCurrentMoveCount.Anchor = AnchorStyles.None;
             lblCurrentMoveCount.AutoSize = true;
             lblCurrentMoveCount.BackColor = Color.Transparent;
             lblCurrentMoveCount.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCurrentMoveCount.Location = new Point(168, 205);
+            lblCurrentMoveCount.Location = new Point(153, 204);
             lblCurrentMoveCount.Name = "lblCurrentMoveCount";
+            lblCurrentMoveCount.RightToLeft = RightToLeft.No;
             lblCurrentMoveCount.Size = new Size(20, 23);
             lblCurrentMoveCount.TabIndex = 5;
             lblCurrentMoveCount.Text = "0";
             // 
             // lblOptimal
             // 
+            lblOptimal.Anchor = AnchorStyles.None;
             lblOptimal.AutoSize = true;
             lblOptimal.BackColor = Color.Transparent;
             lblOptimal.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOptimal.Location = new Point(26, 243);
+            lblOptimal.Location = new Point(34, 237);
             lblOptimal.Name = "lblOptimal";
             lblOptimal.Size = new Size(114, 23);
             lblOptimal.TabIndex = 6;
@@ -205,21 +215,24 @@
             // 
             // lblOptimalCount
             // 
+            lblOptimalCount.Anchor = AnchorStyles.None;
             lblOptimalCount.AutoSize = true;
             lblOptimalCount.BackColor = Color.Transparent;
             lblOptimalCount.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOptimalCount.Location = new Point(168, 243);
+            lblOptimalCount.Location = new Point(154, 237);
             lblOptimalCount.Name = "lblOptimalCount";
+            lblOptimalCount.RightToLeft = RightToLeft.No;
             lblOptimalCount.Size = new Size(20, 23);
             lblOptimalCount.TabIndex = 8;
             lblOptimalCount.Text = "0";
             // 
             // lblControls
             // 
+            lblControls.Anchor = AnchorStyles.None;
             lblControls.AutoSize = true;
             lblControls.BackColor = Color.Transparent;
             lblControls.Font = new Font("Calibri Light", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblControls.Location = new Point(33, 305);
+            lblControls.Location = new Point(34, 296);
             lblControls.Name = "lblControls";
             lblControls.Size = new Size(105, 23);
             lblControls.TabIndex = 9;
@@ -227,53 +240,60 @@
             // 
             // btnSolve
             // 
+            btnSolve.Anchor = AnchorStyles.None;
             btnSolve.BackColor = Color.FromArgb(133, 211, 109);
             btnSolve.Enabled = false;
             btnSolve.FlatStyle = FlatStyle.Flat;
             btnSolve.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSolve.ForeColor = Color.White;
-            btnSolve.Location = new Point(34, 348);
+            btnSolve.Location = new Point(34, 332);
             btnSolve.Name = "btnSolve";
             btnSolve.Size = new Size(187, 35);
             btnSolve.TabIndex = 10;
             btnSolve.Text = "Решить";
             btnSolve.UseVisualStyleBackColor = false;
+            btnSolve.Click += btnSolve_Click;
             // 
             // btnStop
             // 
+            btnStop.Anchor = AnchorStyles.None;
             btnStop.BackColor = Color.FromArgb(133, 211, 109);
             btnStop.Enabled = false;
             btnStop.FlatStyle = FlatStyle.Flat;
             btnStop.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnStop.ForeColor = Color.White;
-            btnStop.Location = new Point(33, 396);
+            btnStop.Location = new Point(34, 382);
             btnStop.Name = "btnStop";
             btnStop.Size = new Size(187, 35);
             btnStop.TabIndex = 11;
             btnStop.Text = "Стоп";
             btnStop.UseVisualStyleBackColor = false;
+            btnStop.Click += btnStop_Click;
             // 
             // btnUndoMove
             // 
+            btnUndoMove.Anchor = AnchorStyles.None;
             btnUndoMove.BackColor = Color.FromArgb(133, 211, 109);
             btnUndoMove.Enabled = false;
             btnUndoMove.FlatStyle = FlatStyle.Flat;
             btnUndoMove.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUndoMove.ForeColor = Color.White;
-            btnUndoMove.Location = new Point(33, 446);
+            btnUndoMove.Location = new Point(34, 429);
             btnUndoMove.Name = "btnUndoMove";
             btnUndoMove.Size = new Size(187, 35);
             btnUndoMove.TabIndex = 12;
             btnUndoMove.Text = "Отменить ход";
             btnUndoMove.UseVisualStyleBackColor = false;
+            btnUndoMove.Click += btnUndoMove_Click;
             // 
             // btnRules
             // 
+            btnRules.Anchor = AnchorStyles.None;
             btnRules.BackColor = Color.FromArgb(133, 211, 109);
             btnRules.FlatStyle = FlatStyle.Flat;
             btnRules.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRules.ForeColor = Color.White;
-            btnRules.Location = new Point(34, 552);
+            btnRules.Location = new Point(34, 521);
             btnRules.Name = "btnRules";
             btnRules.Size = new Size(187, 35);
             btnRules.TabIndex = 13;
@@ -336,7 +356,7 @@
             // 
             lblRulesTitle.AutoSize = true;
             lblRulesTitle.Font = new Font("Calibri", 24F);
-            lblRulesTitle.Location = new Point(423, 22);
+            lblRulesTitle.Location = new Point(423, 18);
             lblRulesTitle.Name = "lblRulesTitle";
             lblRulesTitle.Size = new Size(128, 39);
             lblRulesTitle.TabIndex = 4;
@@ -358,7 +378,7 @@
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(391, 475);
+            btnClose.Location = new Point(391, 488);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(193, 57);
             btnClose.TabIndex = 3;

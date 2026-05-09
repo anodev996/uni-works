@@ -1,12 +1,4 @@
-﻿namespace project
-{
-    public class Disk
-    {
-        public int Number { get; }
+﻿namespace project;
 
-        public Disk(int number)
-        {
-            Number = number;
-        }
-    }
-}
+// Represents a single disk. 'Number' implies its size (1 = largest).
+public readonly record struct Disk(int Number);
