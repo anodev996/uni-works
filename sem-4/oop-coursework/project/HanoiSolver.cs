@@ -1,31 +1,32 @@
 ﻿using System.Collections.Generic;
 
-namespace project;
-
-public static class HanoiSolver
+namespace project
 {
-    public static List<Move> GetSolution(int disksCount)
+    public static class HanoiSolver
     {
-        var solution = new List<Move>();
-
-        if (disksCount > 0)
-            CalculateMoves(disksCount, 0, 2, 1, solution);
-
-        return solution;
-    }
-
-    private static void CalculateMoves(int n, int fromRod, int toRod, int auxRod, List<Move> moves)
-    {
-        // Base case: Move a single disk
-        if (n == 1)
+        public static List<Move> GetSolution(int disksCount)
         {
-            moves.Add(new Move(fromRod, toRod));
-            return;
+            List<Move> solution = new List<Move>();
+
+            if (disksCount > 0)
+            {
+                CalculateMoves(disksCount, 0, 2, 1, solution);
+            }
+
+            return solution;
         }
 
-        // Recursive steps
-        CalculateMoves(n - 1, fromRod, auxRod, toRod, moves);
-        moves.Add(new Move(fromRod, toRod));
-        CalculateMoves(n - 1, auxRod, toRod, fromRod, moves);
+        private static void CalculateMoves(int n, int fromRod, int toRod, int auxRod, List<Move> moves)
+        {
+            if (n == 1)
+            {
+                moves.Add(new Move(fromRod, toRod));
+                return;
+            }
+
+            CalculateMoves(n - 1, fromRod, auxRod, toRod, moves);
+            moves.Add(new Move(fromRod, toRod));
+            CalculateMoves(n - 1, auxRod, toRod, fromRod, moves);
+        }
     }
 }

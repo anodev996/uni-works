@@ -1,4 +1,12 @@
-﻿namespace project;
+﻿namespace project
+{
+    public struct Disk
+    {
+        public int Number { get; private set; }
 
-// Represents a single disk. 'Number' implies its size (1 = largest).
-public readonly record struct Disk(int Number);
+        public Disk(int number)
+        {
+            Number = number;
+        }
+    }
+}

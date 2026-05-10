@@ -1,63 +1,68 @@
 ﻿using System.Collections.Generic;
 
-namespace project;
-
-/// TODO
-/// Поправить выбор диска. Пересобрать проект под win7
-public class HanoiGame
+namespace project
 {
-    public Rod[] Rods { get; }
-    public int DisksCount { get; }
-    public List<Move> MoveHistory { get; } = new();
-
-    // Bitwise shift is mathematically equivalent to 2^n and much faster than Math.Pow
-    public int OptimalMoveCount => (1 << DisksCount) - 1;
-    public bool IsGameWon => Rods[2].Disks.Count == DisksCount;
-
-    public HanoiGame(int disksCount)
+    public class HanoiGame
     {
-        DisksCount = disksCount;
-        Rods = [new Rod(), new Rod(), new Rod()];
+        public Rod[] Rods { get; private set; }
+        public int DisksCount { get; private set; }
+        public List<Move> MoveHistory { get; private set; }
 
-        // Fill the first rod (1 is the largest disk at the bottom)
-        for (int i = 1; i <= disksCount; i++)
-            Rods[0].Push(new Disk(i));
-    }
+        public int OptimalMoveCount
+        {
+            get { return (1 << DisksCount) - 1; }
+        }
 
-    public bool DoMove(int fromIndex, int toIndex)
-    {
-        // Validate indices using C# pattern matching
-        if (fromIndex is < 0 or > 2 || toIndex is < 0 or > 2 || fromIndex == toIndex)
-            return false;
+        public bool IsGameWon
+        {
+            get { return Rods[2].Disks.Count == DisksCount; }
+        }
 
-        var fromRod = Rods[fromIndex];
-        var toRod = Rods[toIndex];
+        public HanoiGame(int disksCount)
+        {
+            DisksCount = disksCount;
+            MoveHistory = new List<Move>();
+            Rods = new Rod[] { new Rod(), new Rod(), new Rod() };
 
-        // Check if source rod has disks
-        if (!fromRod.Disks.TryPeek(out Disk diskToMove))
-            return false;
+            for (int i = 1; i <= disksCount; i++)
+            {
+                Rods[0].Push(new Disk(i));
+            }
+        }
 
-        // Rule: Cannot place a larger disk (smaller number) on a smaller disk (larger number)
-        if (toRod.Disks.TryPeek(out Disk topDisk) && diskToMove.Number < topDisk.Number)
-            return false;
+        public bool DoMove(int fromIndex, int toIndex)
+        {
+            if (fromIndex < 0 || fromIndex > 2 || toIndex < 0 || toIndex > 2 || fromIndex == toIndex)
+                return false;
 
-        toRod.Push(fromRod.Pop());
+            Rod fromRod = Rods[fromIndex];
+            Rod toRod = Rods[toIndex];
 
-        MoveHistory.Add(new Move(fromIndex, toIndex));
+            if (fromRod.Disks.Count == 0)
+                return false;
 
-        return true;
-    }
+            Disk diskToMove = fromRod.Disks.Peek();
 
-    public void UndoMove()
-    {
-        if (MoveHistory.Count == 0) return;
+            if (toRod.Disks.Count > 0 && diskToMove.Number < toRod.Disks.Peek().Number)
+                return false;
 
-        // Use index from end operator (^1) to get the last element
-        Move lastMove = MoveHistory[^1];
+            toRod.Push(fromRod.Pop());
 
-        Disk disk = Rods[lastMove.ToRod].Pop();
-        Rods[lastMove.FromRod].Push(disk);
+            MoveHistory.Add(new Move(fromIndex, toIndex));
 
-        MoveHistory.RemoveAt(MoveHistory.Count - 1);
+            return true;
+        }
+
+        public void UndoMove()
+        {
+            if (MoveHistory.Count == 0) return;
+
+            Move lastMove = MoveHistory[MoveHistory.Count - 1];
+
+            Disk disk = Rods[lastMove.ToRod].Pop();
+            Rods[lastMove.FromRod].Push(disk);
+
+            MoveHistory.RemoveAt(MoveHistory.Count - 1);
+        }
     }
 }

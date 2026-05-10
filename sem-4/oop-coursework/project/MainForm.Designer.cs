@@ -1,4 +1,8 @@
-﻿namespace project
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace project
 {
     partial class MainForm
     {
@@ -29,383 +33,386 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            btnDrawDisks = new Button();
-            tblLtPnlGame = new TableLayoutPanel();
-            pnlGame = new Panel();
-            pnlGameControls = new Panel();
-            lblSettings = new Label();
-            lblDisks = new Label();
-            txtBxDisks = new TextBox();
-            lblStatistics = new Label();
-            lblCurrentMove = new Label();
-            lblCurrentMoveCount = new Label();
-            lblOptimal = new Label();
-            lblOptimalCount = new Label();
-            lblControls = new Label();
-            btnSolve = new Button();
-            btnStop = new Button();
-            btnUndoMove = new Button();
-            btnRules = new Button();
-            pnlGreet = new Panel();
-            lblGreet = new Label();
-            btnBegin = new Button();
-            pnlRules = new Panel();
-            lblRulesTitle = new Label();
-            lblRules = new Label();
-            btnClose = new Button();
-            tblLtPnlGame.SuspendLayout();
-            pnlGameControls.SuspendLayout();
-            pnlGreet.SuspendLayout();
-            pnlRules.SuspendLayout();
-            SuspendLayout();
+            this.btnDrawDisks = new System.Windows.Forms.Button();
+            this.tblLtPnlGame = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlGame = new System.Windows.Forms.Panel();
+            this.pnlGameControls = new System.Windows.Forms.Panel();
+            this.lblSettings = new System.Windows.Forms.Label();
+            this.lblDisks = new System.Windows.Forms.Label();
+            this.txtBxDisks = new System.Windows.Forms.TextBox();
+            this.lblStatistics = new System.Windows.Forms.Label();
+            this.lblCurrentMove = new System.Windows.Forms.Label();
+            this.lblCurrentMoveCount = new System.Windows.Forms.Label();
+            this.lblOptimal = new System.Windows.Forms.Label();
+            this.lblOptimalCount = new System.Windows.Forms.Label();
+            this.lblControls = new System.Windows.Forms.Label();
+            this.btnSolve = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnUndoMove = new System.Windows.Forms.Button();
+            this.btnRules = new System.Windows.Forms.Button();
+            this.pnlGreet = new System.Windows.Forms.Panel();
+            this.lblGreet = new System.Windows.Forms.Label();
+            this.btnBegin = new System.Windows.Forms.Button();
+            this.pnlRules = new System.Windows.Forms.Panel();
+            this.lblRulesTitle = new System.Windows.Forms.Label();
+            this.lblRules = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.tblLtPnlGame.SuspendLayout();
+            this.pnlGameControls.SuspendLayout();
+            this.pnlGreet.SuspendLayout();
+            this.pnlRules.SuspendLayout();
+            this.SuspendLayout();
             // 
             // btnDrawDisks
             // 
-            btnDrawDisks.Anchor = AnchorStyles.None;
-            btnDrawDisks.BackColor = Color.FromArgb(133, 211, 109);
-            btnDrawDisks.FlatStyle = FlatStyle.Flat;
-            btnDrawDisks.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDrawDisks.ForeColor = Color.White;
-            btnDrawDisks.Location = new Point(34, 103);
-            btnDrawDisks.Name = "btnDrawDisks";
-            btnDrawDisks.Size = new Size(187, 35);
-            btnDrawDisks.TabIndex = 0;
-            btnDrawDisks.Text = "Нарисовать";
-            btnDrawDisks.UseVisualStyleBackColor = false;
-            btnDrawDisks.Click += btnDrawDisks_Click;
+            this.btnDrawDisks.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDrawDisks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnDrawDisks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDrawDisks.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrawDisks.ForeColor = System.Drawing.Color.White;
+            this.btnDrawDisks.Location = new System.Drawing.Point(42, 120);
+            this.btnDrawDisks.Name = "btnDrawDisks";
+            this.btnDrawDisks.Size = new System.Drawing.Size(170, 35);
+            this.btnDrawDisks.TabIndex = 0;
+            this.btnDrawDisks.Text = "Нарисовать";
+            this.btnDrawDisks.UseVisualStyleBackColor = false;
+            this.btnDrawDisks.Click += new System.EventHandler(this.BtnDrawDisks_Click);
             // 
             // tblLtPnlGame
             // 
-            tblLtPnlGame.BackColor = Color.White;
-            tblLtPnlGame.ColumnCount = 2;
-            tblLtPnlGame.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            tblLtPnlGame.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tblLtPnlGame.Controls.Add(pnlGame, 0, 0);
-            tblLtPnlGame.Controls.Add(pnlGameControls, 1, 0);
-            tblLtPnlGame.Dock = DockStyle.Fill;
-            tblLtPnlGame.Location = new Point(0, 0);
-            tblLtPnlGame.MinimumSize = new Size(1152, 648);
-            tblLtPnlGame.Name = "tblLtPnlGame";
-            tblLtPnlGame.RowCount = 1;
-            tblLtPnlGame.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblLtPnlGame.Size = new Size(1152, 648);
-            tblLtPnlGame.TabIndex = 2;
-            tblLtPnlGame.Visible = false;
+            this.tblLtPnlGame.BackColor = System.Drawing.Color.White;
+            this.tblLtPnlGame.ColumnCount = 2;
+            this.tblLtPnlGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tblLtPnlGame.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblLtPnlGame.Controls.Add(this.pnlGame, 0, 0);
+            this.tblLtPnlGame.Controls.Add(this.pnlGameControls, 1, 0);
+            this.tblLtPnlGame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblLtPnlGame.Location = new System.Drawing.Point(0, 0);
+            this.tblLtPnlGame.MinimumSize = new System.Drawing.Size(1152, 648);
+            this.tblLtPnlGame.Name = "tblLtPnlGame";
+            this.tblLtPnlGame.RowCount = 1;
+            this.tblLtPnlGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblLtPnlGame.Size = new System.Drawing.Size(1152, 648);
+            this.tblLtPnlGame.TabIndex = 2;
+            this.tblLtPnlGame.Visible = false;
             // 
             // pnlGame
             // 
-            pnlGame.BackColor = Color.Transparent;
-            pnlGame.Dock = DockStyle.Fill;
-            pnlGame.Location = new Point(20, 20);
-            pnlGame.Margin = new Padding(20);
-            pnlGame.Name = "pnlGame";
-            pnlGame.Size = new Size(824, 608);
-            pnlGame.TabIndex = 2;
-            pnlGame.Paint += pnlGame_Paint;
-            pnlGame.MouseClick += pnlGame_MouseClick;
+            this.pnlGame.BackColor = System.Drawing.Color.Transparent;
+            this.pnlGame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlGame.Location = new System.Drawing.Point(17, 17);
+            this.pnlGame.Margin = new System.Windows.Forms.Padding(17);
+            this.pnlGame.Name = "pnlGame";
+            this.pnlGame.Size = new System.Drawing.Size(830, 614);
+            this.pnlGame.TabIndex = 2;
+            this.pnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
+            this.pnlGame.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PnlGame_MouseClick);
             // 
             // pnlGameControls
             // 
-            pnlGameControls.Anchor = AnchorStyles.None;
-            pnlGameControls.BackColor = Color.FromArgb(235, 235, 239);
-            pnlGameControls.Controls.Add(lblSettings);
-            pnlGameControls.Controls.Add(lblDisks);
-            pnlGameControls.Controls.Add(txtBxDisks);
-            pnlGameControls.Controls.Add(btnDrawDisks);
-            pnlGameControls.Controls.Add(lblStatistics);
-            pnlGameControls.Controls.Add(lblCurrentMove);
-            pnlGameControls.Controls.Add(lblCurrentMoveCount);
-            pnlGameControls.Controls.Add(lblOptimal);
-            pnlGameControls.Controls.Add(lblOptimalCount);
-            pnlGameControls.Controls.Add(lblControls);
-            pnlGameControls.Controls.Add(btnSolve);
-            pnlGameControls.Controls.Add(btnStop);
-            pnlGameControls.Controls.Add(btnUndoMove);
-            pnlGameControls.Controls.Add(btnRules);
-            pnlGameControls.Location = new Point(884, 20);
-            pnlGameControls.Margin = new Padding(20);
-            pnlGameControls.Name = "pnlGameControls";
-            pnlGameControls.Size = new Size(248, 608);
-            pnlGameControls.TabIndex = 1;
+            this.pnlGameControls.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlGameControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(239)))));
+            this.pnlGameControls.Controls.Add(this.lblSettings);
+            this.pnlGameControls.Controls.Add(this.lblDisks);
+            this.pnlGameControls.Controls.Add(this.txtBxDisks);
+            this.pnlGameControls.Controls.Add(this.btnDrawDisks);
+            this.pnlGameControls.Controls.Add(this.lblStatistics);
+            this.pnlGameControls.Controls.Add(this.lblCurrentMove);
+            this.pnlGameControls.Controls.Add(this.lblCurrentMoveCount);
+            this.pnlGameControls.Controls.Add(this.lblOptimal);
+            this.pnlGameControls.Controls.Add(this.lblOptimalCount);
+            this.pnlGameControls.Controls.Add(this.lblControls);
+            this.pnlGameControls.Controls.Add(this.btnSolve);
+            this.pnlGameControls.Controls.Add(this.btnStop);
+            this.pnlGameControls.Controls.Add(this.btnUndoMove);
+            this.pnlGameControls.Controls.Add(this.btnRules);
+            this.pnlGameControls.Location = new System.Drawing.Point(881, 17);
+            this.pnlGameControls.Margin = new System.Windows.Forms.Padding(17);
+            this.pnlGameControls.Name = "pnlGameControls";
+            this.pnlGameControls.Size = new System.Drawing.Size(254, 614);
+            this.pnlGameControls.TabIndex = 1;
             // 
             // lblSettings
             // 
-            lblSettings.Anchor = AnchorStyles.None;
-            lblSettings.AutoSize = true;
-            lblSettings.BackColor = Color.Transparent;
-            lblSettings.Font = new Font("Calibri Light", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblSettings.Location = new Point(34, 32);
-            lblSettings.Name = "lblSettings";
-            lblSettings.Size = new Size(95, 23);
-            lblSettings.TabIndex = 1;
-            lblSettings.Text = "Настройки";
+            this.lblSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblSettings.AutoSize = true;
+            this.lblSettings.BackColor = System.Drawing.Color.Transparent;
+            this.lblSettings.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSettings.Location = new System.Drawing.Point(38, 55);
+            this.lblSettings.Name = "lblSettings";
+            this.lblSettings.Size = new System.Drawing.Size(95, 23);
+            this.lblSettings.TabIndex = 1;
+            this.lblSettings.Text = "Настройки";
             // 
             // lblDisks
             // 
-            lblDisks.Anchor = AnchorStyles.None;
-            lblDisks.AutoSize = true;
-            lblDisks.BackColor = Color.Transparent;
-            lblDisks.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDisks.Location = new Point(34, 70);
-            lblDisks.Name = "lblDisks";
-            lblDisks.Size = new Size(64, 23);
-            lblDisks.TabIndex = 2;
-            lblDisks.Text = "Колец:";
+            this.lblDisks.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDisks.AutoSize = true;
+            this.lblDisks.BackColor = System.Drawing.Color.Transparent;
+            this.lblDisks.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisks.Location = new System.Drawing.Point(38, 88);
+            this.lblDisks.Name = "lblDisks";
+            this.lblDisks.Size = new System.Drawing.Size(64, 23);
+            this.lblDisks.TabIndex = 2;
+            this.lblDisks.Text = "Колец:";
             // 
             // txtBxDisks
             // 
-            txtBxDisks.Anchor = AnchorStyles.None;
-            txtBxDisks.BorderStyle = BorderStyle.None;
-            txtBxDisks.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBxDisks.Location = new Point(104, 70);
-            txtBxDisks.Name = "txtBxDisks";
-            txtBxDisks.Size = new Size(52, 24);
-            txtBxDisks.TabIndex = 3;
-            txtBxDisks.Text = "0";
-            txtBxDisks.TextAlign = HorizontalAlignment.Center;
+            this.txtBxDisks.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBxDisks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBxDisks.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxDisks.Location = new System.Drawing.Point(110, 88);
+            this.txtBxDisks.Name = "txtBxDisks";
+            this.txtBxDisks.Size = new System.Drawing.Size(45, 24);
+            this.txtBxDisks.TabIndex = 3;
+            this.txtBxDisks.Text = "0";
+            this.txtBxDisks.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblStatistics
             // 
-            lblStatistics.Anchor = AnchorStyles.None;
-            lblStatistics.AutoSize = true;
-            lblStatistics.BackColor = Color.Transparent;
-            lblStatistics.Font = new Font("Calibri Light", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblStatistics.Location = new Point(34, 168);
-            lblStatistics.Name = "lblStatistics";
-            lblStatistics.Size = new Size(96, 23);
-            lblStatistics.TabIndex = 4;
-            lblStatistics.Text = "Статистика";
+            this.lblStatistics.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblStatistics.AutoSize = true;
+            this.lblStatistics.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatistics.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatistics.Location = new System.Drawing.Point(38, 190);
+            this.lblStatistics.Name = "lblStatistics";
+            this.lblStatistics.Size = new System.Drawing.Size(96, 23);
+            this.lblStatistics.TabIndex = 4;
+            this.lblStatistics.Text = "Статистика";
             // 
             // lblCurrentMove
             // 
-            lblCurrentMove.Anchor = AnchorStyles.None;
-            lblCurrentMove.AutoSize = true;
-            lblCurrentMove.BackColor = Color.Transparent;
-            lblCurrentMove.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCurrentMove.Location = new Point(34, 204);
-            lblCurrentMove.Name = "lblCurrentMove";
-            lblCurrentMove.Size = new Size(113, 23);
-            lblCurrentMove.TabIndex = 7;
-            lblCurrentMove.Text = "Текущий ход:";
+            this.lblCurrentMove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCurrentMove.AutoSize = true;
+            this.lblCurrentMove.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentMove.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentMove.Location = new System.Drawing.Point(38, 221);
+            this.lblCurrentMove.Name = "lblCurrentMove";
+            this.lblCurrentMove.Size = new System.Drawing.Size(113, 23);
+            this.lblCurrentMove.TabIndex = 7;
+            this.lblCurrentMove.Text = "Текущий ход:";
             // 
             // lblCurrentMoveCount
             // 
-            lblCurrentMoveCount.Anchor = AnchorStyles.None;
-            lblCurrentMoveCount.AutoSize = true;
-            lblCurrentMoveCount.BackColor = Color.Transparent;
-            lblCurrentMoveCount.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCurrentMoveCount.Location = new Point(153, 204);
-            lblCurrentMoveCount.Name = "lblCurrentMoveCount";
-            lblCurrentMoveCount.RightToLeft = RightToLeft.No;
-            lblCurrentMoveCount.Size = new Size(20, 23);
-            lblCurrentMoveCount.TabIndex = 5;
-            lblCurrentMoveCount.Text = "0";
+            this.lblCurrentMoveCount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCurrentMoveCount.AutoSize = true;
+            this.lblCurrentMoveCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentMoveCount.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentMoveCount.Location = new System.Drawing.Point(158, 221);
+            this.lblCurrentMoveCount.Name = "lblCurrentMoveCount";
+            this.lblCurrentMoveCount.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCurrentMoveCount.Size = new System.Drawing.Size(20, 23);
+            this.lblCurrentMoveCount.TabIndex = 5;
+            this.lblCurrentMoveCount.Text = "0";
             // 
             // lblOptimal
             // 
-            lblOptimal.Anchor = AnchorStyles.None;
-            lblOptimal.AutoSize = true;
-            lblOptimal.BackColor = Color.Transparent;
-            lblOptimal.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOptimal.Location = new Point(34, 237);
-            lblOptimal.Name = "lblOptimal";
-            lblOptimal.Size = new Size(114, 23);
-            lblOptimal.TabIndex = 6;
-            lblOptimal.Text = "Оптимально:";
+            this.lblOptimal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblOptimal.AutoSize = true;
+            this.lblOptimal.BackColor = System.Drawing.Color.Transparent;
+            this.lblOptimal.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOptimal.Location = new System.Drawing.Point(38, 249);
+            this.lblOptimal.Name = "lblOptimal";
+            this.lblOptimal.Size = new System.Drawing.Size(114, 23);
+            this.lblOptimal.TabIndex = 6;
+            this.lblOptimal.Text = "Оптимально:";
             // 
             // lblOptimalCount
             // 
-            lblOptimalCount.Anchor = AnchorStyles.None;
-            lblOptimalCount.AutoSize = true;
-            lblOptimalCount.BackColor = Color.Transparent;
-            lblOptimalCount.Font = new Font("Calibri Light", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOptimalCount.Location = new Point(154, 237);
-            lblOptimalCount.Name = "lblOptimalCount";
-            lblOptimalCount.RightToLeft = RightToLeft.No;
-            lblOptimalCount.Size = new Size(20, 23);
-            lblOptimalCount.TabIndex = 8;
-            lblOptimalCount.Text = "0";
+            this.lblOptimalCount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblOptimalCount.AutoSize = true;
+            this.lblOptimalCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblOptimalCount.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOptimalCount.Location = new System.Drawing.Point(158, 249);
+            this.lblOptimalCount.Name = "lblOptimalCount";
+            this.lblOptimalCount.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblOptimalCount.Size = new System.Drawing.Size(20, 23);
+            this.lblOptimalCount.TabIndex = 8;
+            this.lblOptimalCount.Text = "0";
             // 
             // lblControls
             // 
-            lblControls.Anchor = AnchorStyles.None;
-            lblControls.AutoSize = true;
-            lblControls.BackColor = Color.Transparent;
-            lblControls.Font = new Font("Calibri Light", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblControls.Location = new Point(34, 296);
-            lblControls.Name = "lblControls";
-            lblControls.Size = new Size(105, 23);
-            lblControls.TabIndex = 9;
-            lblControls.Text = "Управление";
+            this.lblControls.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblControls.AutoSize = true;
+            this.lblControls.BackColor = System.Drawing.Color.Transparent;
+            this.lblControls.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblControls.Location = new System.Drawing.Point(38, 307);
+            this.lblControls.Name = "lblControls";
+            this.lblControls.Size = new System.Drawing.Size(105, 23);
+            this.lblControls.TabIndex = 9;
+            this.lblControls.Text = "Управление";
             // 
             // btnSolve
             // 
-            btnSolve.Anchor = AnchorStyles.None;
-            btnSolve.BackColor = Color.FromArgb(133, 211, 109);
-            btnSolve.Enabled = false;
-            btnSolve.FlatStyle = FlatStyle.Flat;
-            btnSolve.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSolve.ForeColor = Color.White;
-            btnSolve.Location = new Point(34, 332);
-            btnSolve.Name = "btnSolve";
-            btnSolve.Size = new Size(187, 35);
-            btnSolve.TabIndex = 10;
-            btnSolve.Text = "Решить";
-            btnSolve.UseVisualStyleBackColor = false;
-            btnSolve.Click += btnSolve_Click;
+            this.btnSolve.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSolve.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnSolve.Enabled = false;
+            this.btnSolve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSolve.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSolve.ForeColor = System.Drawing.Color.White;
+            this.btnSolve.Location = new System.Drawing.Point(42, 339);
+            this.btnSolve.Name = "btnSolve";
+            this.btnSolve.Size = new System.Drawing.Size(170, 35);
+            this.btnSolve.TabIndex = 10;
+            this.btnSolve.Text = "Решить";
+            this.btnSolve.UseVisualStyleBackColor = false;
+            this.btnSolve.Click += new System.EventHandler(this.BtnSolve_Click);
             // 
             // btnStop
             // 
-            btnStop.Anchor = AnchorStyles.None;
-            btnStop.BackColor = Color.FromArgb(133, 211, 109);
-            btnStop.Enabled = false;
-            btnStop.FlatStyle = FlatStyle.Flat;
-            btnStop.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnStop.ForeColor = Color.White;
-            btnStop.Location = new Point(34, 382);
-            btnStop.Name = "btnStop";
-            btnStop.Size = new Size(187, 35);
-            btnStop.TabIndex = 11;
-            btnStop.Text = "Стоп";
-            btnStop.UseVisualStyleBackColor = false;
-            btnStop.Click += btnStop_Click;
+            this.btnStop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnStop.Enabled = false;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.ForeColor = System.Drawing.Color.White;
+            this.btnStop.Location = new System.Drawing.Point(42, 387);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(170, 35);
+            this.btnStop.TabIndex = 11;
+            this.btnStop.Text = "Стоп";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // btnUndoMove
             // 
-            btnUndoMove.Anchor = AnchorStyles.None;
-            btnUndoMove.BackColor = Color.FromArgb(133, 211, 109);
-            btnUndoMove.Enabled = false;
-            btnUndoMove.FlatStyle = FlatStyle.Flat;
-            btnUndoMove.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUndoMove.ForeColor = Color.White;
-            btnUndoMove.Location = new Point(34, 429);
-            btnUndoMove.Name = "btnUndoMove";
-            btnUndoMove.Size = new Size(187, 35);
-            btnUndoMove.TabIndex = 12;
-            btnUndoMove.Text = "Отменить ход";
-            btnUndoMove.UseVisualStyleBackColor = false;
-            btnUndoMove.Click += btnUndoMove_Click;
+            this.btnUndoMove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnUndoMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnUndoMove.Enabled = false;
+            this.btnUndoMove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUndoMove.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUndoMove.ForeColor = System.Drawing.Color.White;
+            this.btnUndoMove.Location = new System.Drawing.Point(42, 433);
+            this.btnUndoMove.Name = "btnUndoMove";
+            this.btnUndoMove.Size = new System.Drawing.Size(170, 35);
+            this.btnUndoMove.TabIndex = 12;
+            this.btnUndoMove.Text = "Отменить ход";
+            this.btnUndoMove.UseVisualStyleBackColor = false;
+            this.btnUndoMove.Click += new System.EventHandler(this.BtnUndoMove_Click);
             // 
             // btnRules
             // 
-            btnRules.Anchor = AnchorStyles.None;
-            btnRules.BackColor = Color.FromArgb(133, 211, 109);
-            btnRules.FlatStyle = FlatStyle.Flat;
-            btnRules.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRules.ForeColor = Color.White;
-            btnRules.Location = new Point(34, 521);
-            btnRules.Name = "btnRules";
-            btnRules.Size = new Size(187, 35);
-            btnRules.TabIndex = 13;
-            btnRules.Text = "Справка";
-            btnRules.UseVisualStyleBackColor = false;
-            btnRules.Click += btnRules_Click;
+            this.btnRules.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnRules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRules.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRules.ForeColor = System.Drawing.Color.White;
+            this.btnRules.Location = new System.Drawing.Point(42, 513);
+            this.btnRules.Name = "btnRules";
+            this.btnRules.Size = new System.Drawing.Size(170, 35);
+            this.btnRules.TabIndex = 13;
+            this.btnRules.Text = "Справка";
+            this.btnRules.UseVisualStyleBackColor = false;
+            this.btnRules.Click += new System.EventHandler(this.BtnRules_Click);
             // 
             // pnlGreet
             // 
-            pnlGreet.Anchor = AnchorStyles.None;
-            pnlGreet.BackColor = Color.FromArgb(235, 235, 239);
-            pnlGreet.Controls.Add(lblGreet);
-            pnlGreet.Controls.Add(btnBegin);
-            pnlGreet.Location = new Point(256, 146);
-            pnlGreet.Margin = new Padding(0);
-            pnlGreet.Name = "pnlGreet";
-            pnlGreet.Size = new Size(641, 356);
-            pnlGreet.TabIndex = 4;
+            this.pnlGreet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlGreet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(239)))));
+            this.pnlGreet.Controls.Add(this.lblGreet);
+            this.pnlGreet.Controls.Add(this.btnBegin);
+            this.pnlGreet.Location = new System.Drawing.Point(257, 154);
+            this.pnlGreet.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlGreet.Name = "pnlGreet";
+            this.pnlGreet.Size = new System.Drawing.Size(639, 341);
+            this.pnlGreet.TabIndex = 4;
             // 
             // lblGreet
             // 
-            lblGreet.AutoSize = true;
-            lblGreet.Font = new Font("Calibri Light", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGreet.Location = new Point(51, 41);
-            lblGreet.Name = "lblGreet";
-            lblGreet.Size = new Size(538, 195);
-            lblGreet.TabIndex = 3;
-            lblGreet.Text = "Курсовая работа\r\n\r\nРазработка игры \"Ханойские башни\"\r\n\r\nВыполнил: студент Бадулин И.А., 424-1";
-            lblGreet.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblGreet.AutoSize = true;
+            this.lblGreet.Font = new System.Drawing.Font("Calibri Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGreet.Location = new System.Drawing.Point(50, 36);
+            this.lblGreet.Name = "lblGreet";
+            this.lblGreet.Size = new System.Drawing.Size(538, 195);
+            this.lblGreet.TabIndex = 3;
+            this.lblGreet.Text = "Курсовая работа\r\n\r\nРазработка игры \"Ханойские башни\"\r\n\r\nВыполнил: студент Бадулин" +
+    " И.А., 424-1";
+            this.lblGreet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBegin
             // 
-            btnBegin.BackColor = Color.FromArgb(133, 211, 109);
-            btnBegin.FlatStyle = FlatStyle.Flat;
-            btnBegin.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBegin.ForeColor = Color.White;
-            btnBegin.Location = new Point(224, 269);
-            btnBegin.Name = "btnBegin";
-            btnBegin.Size = new Size(193, 57);
-            btnBegin.TabIndex = 3;
-            btnBegin.Text = "Начать";
-            btnBegin.UseVisualStyleBackColor = false;
-            btnBegin.Click += btnBegin_Click;
+            this.btnBegin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnBegin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBegin.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBegin.ForeColor = System.Drawing.Color.White;
+            this.btnBegin.Location = new System.Drawing.Point(237, 254);
+            this.btnBegin.Name = "btnBegin";
+            this.btnBegin.Size = new System.Drawing.Size(165, 49);
+            this.btnBegin.TabIndex = 3;
+            this.btnBegin.Text = "Начать";
+            this.btnBegin.UseVisualStyleBackColor = false;
+            this.btnBegin.Click += new System.EventHandler(this.BtnBegin_Click);
             // 
             // pnlRules
             // 
-            pnlRules.Anchor = AnchorStyles.None;
-            pnlRules.BackColor = Color.FromArgb(235, 235, 239);
-            pnlRules.Controls.Add(lblRulesTitle);
-            pnlRules.Controls.Add(lblRules);
-            pnlRules.Controls.Add(btnClose);
-            pnlRules.Location = new Point(89, 42);
-            pnlRules.Margin = new Padding(0);
-            pnlRules.Name = "pnlRules";
-            pnlRules.Size = new Size(974, 565);
-            pnlRules.TabIndex = 5;
-            pnlRules.Visible = false;
+            this.pnlRules.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlRules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(239)))));
+            this.pnlRules.Controls.Add(this.lblRulesTitle);
+            this.pnlRules.Controls.Add(this.lblRules);
+            this.pnlRules.Controls.Add(this.btnClose);
+            this.pnlRules.Location = new System.Drawing.Point(111, 48);
+            this.pnlRules.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlRules.Name = "pnlRules";
+            this.pnlRules.Size = new System.Drawing.Size(931, 552);
+            this.pnlRules.TabIndex = 5;
+            this.pnlRules.Visible = false;
             // 
             // lblRulesTitle
             // 
-            lblRulesTitle.AutoSize = true;
-            lblRulesTitle.Font = new Font("Calibri", 24F);
-            lblRulesTitle.Location = new Point(423, 18);
-            lblRulesTitle.Name = "lblRulesTitle";
-            lblRulesTitle.Size = new Size(128, 39);
-            lblRulesTitle.TabIndex = 4;
-            lblRulesTitle.Text = "Справка";
+            this.lblRulesTitle.AutoSize = true;
+            this.lblRulesTitle.Font = new System.Drawing.Font("Calibri Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRulesTitle.Location = new System.Drawing.Point(399, 18);
+            this.lblRulesTitle.Name = "lblRulesTitle";
+            this.lblRulesTitle.Size = new System.Drawing.Size(126, 39);
+            this.lblRulesTitle.TabIndex = 4;
+            this.lblRulesTitle.Text = "Справка";
             // 
             // lblRules
             // 
-            lblRules.AutoSize = true;
-            lblRules.Font = new Font("Calibri Light", 13F);
-            lblRules.Location = new Point(85, 68);
-            lblRules.Name = "lblRules";
-            lblRules.Size = new Size(804, 396);
-            lblRules.TabIndex = 3;
-            lblRules.Text = resources.GetString("lblRules.Text");
+            this.lblRules.AutoSize = true;
+            this.lblRules.Font = new System.Drawing.Font("Calibri Light", 13F);
+            this.lblRules.Location = new System.Drawing.Point(63, 68);
+            this.lblRules.Name = "lblRules";
+            this.lblRules.Size = new System.Drawing.Size(804, 396);
+            this.lblRules.TabIndex = 3;
+            this.lblRules.Text = resources.GetString("lblRules.Text");
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.FromArgb(133, 211, 109);
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.Font = new Font("Calibri", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(391, 488);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(193, 57);
-            btnClose.TabIndex = 3;
-            btnClose.Text = "Закрыть";
-            btnClose.UseVisualStyleBackColor = false;
-            btnClose.Click += btnClose_Click;
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(211)))), ((int)(((byte)(109)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(371, 480);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(165, 49);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Закрыть";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            ClientSize = new Size(1152, 648);
-            Controls.Add(tblLtPnlGame);
-            Controls.Add(pnlGreet);
-            Controls.Add(pnlRules);
-            MinimumSize = new Size(1168, 687);
-            Name = "MainForm";
-            Text = "Ханойские башни";
-            tblLtPnlGame.ResumeLayout(false);
-            pnlGameControls.ResumeLayout(false);
-            pnlGameControls.PerformLayout();
-            pnlGreet.ResumeLayout(false);
-            pnlGreet.PerformLayout();
-            pnlRules.ResumeLayout(false);
-            pnlRules.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1152, 648);
+            this.Controls.Add(this.tblLtPnlGame);
+            this.Controls.Add(this.pnlGreet);
+            this.Controls.Add(this.pnlRules);
+            this.MinimumSize = new System.Drawing.Size(1168, 687);
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ханойские башни";
+            this.tblLtPnlGame.ResumeLayout(false);
+            this.pnlGameControls.ResumeLayout(false);
+            this.pnlGameControls.PerformLayout();
+            this.pnlGreet.ResumeLayout(false);
+            this.pnlGreet.PerformLayout();
+            this.pnlRules.ResumeLayout(false);
+            this.pnlRules.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

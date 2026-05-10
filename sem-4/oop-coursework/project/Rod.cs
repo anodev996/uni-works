@@ -1,27 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace project;
-
-public class Rod
+namespace project
 {
-    public Stack<Disk> Disks { get; } = new();
-
-    public void Push(Disk disk)
+    public class Rod
     {
-        // TryPeek safely checks the top element without throwing exceptions
-        if (Disks.TryPeek(out Disk topDisk) && topDisk.Number > disk.Number)
-            throw new InvalidOperationException("Нельзя класть больший диск на меньший!");
+        public Stack<Disk> Disks { get; private set; }
 
-        Disks.Push(disk);
-    }
+        public Rod()
+        {
+            Disks = new Stack<Disk>();
+        }
 
-    public Disk Pop()
-    {
-        // TryPop attempts to remove and return the top element
-        if (!Disks.TryPop(out Disk disk))
-            throw new InvalidOperationException("Стержень пуст!");
+        public void Push(Disk disk)
+        {
+            if (Disks.Count > 0 && Disks.Peek().Number > disk.Number)
+            {
+                throw new InvalidOperationException("Нельзя класть больший диск на меньший!");
+            }
 
-        return disk;
+            Disks.Push(disk);
+        }
+
+        public Disk Pop()
+        {
+            if (Disks.Count == 0)
+            {
+                throw new InvalidOperationException("Стержень пуст!");
+            }
+
+            return Disks.Pop();
+        }
     }
 }

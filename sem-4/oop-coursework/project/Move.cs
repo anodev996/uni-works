@@ -1,4 +1,14 @@
-﻿namespace project;
+﻿namespace project
+{
+    public struct Move
+    {
+        public int FromRod { get; private set; }
+        public int ToRod { get; private set; }
 
-// Represents a logical move between two rods.
-public readonly record struct Move(int FromRod, int ToRod);
+        public Move(int fromRod, int toRod)
+        {
+            FromRod = fromRod;
+            ToRod = toRod;
+        }
+    }
+}
