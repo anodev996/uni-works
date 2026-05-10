@@ -1,6 +1,13 @@
 # VSCode & Visual Studio
 .vscode/
 .vs/
+obj/
+Debug/
+sem-4/oop-coursework/project/bin/*
+!sem-4/oop-coursework/project/bin/BuildMisc/
+!sem-4/oop-coursework/project/bin/Release/
+sem-4/oop-coursework/project/bin/Release/*
+*.user
 
 # C/C++
 *.o
@@ -18,4 +25,4 @@
 
 # Binaries
 *.exe
-!sem-4/oop-coursework/project/**/*.exe
+!sem-4/oop-coursework/project/bin/Release/project.exe
