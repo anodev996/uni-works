@@ -25,4 +25,4 @@ sem-4/oop-coursework/project/bin/Release/*
 
 # Binaries
 *.exe
-!sem-4/oop-coursework/project/bin/Release/project.exe
+!sem-4/oop-coursework/project/bin/Release/*.exe
