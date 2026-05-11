@@ -11,8 +11,11 @@ namespace project
         [STAThread]
         static void Main()
         {
+            // Enable visual styles for the Windows Forms application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            // Start the application and open the main form
             Application.Run(new MainForm());
         }
     }

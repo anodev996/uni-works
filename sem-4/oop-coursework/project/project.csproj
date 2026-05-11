@@ -7,7 +7,7 @@
     <ProjectGuid>{C53F5D19-1BAA-4014-ACD5-13869DC23198}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>project</RootNamespace>
-    <AssemblyName>project</AssemblyName>
+    <AssemblyName>HanoiGame</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
