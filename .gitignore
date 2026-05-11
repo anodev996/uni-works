@@ -3,6 +3,7 @@
 .vs/
 obj/
 Debug/
+packages/
 sem-4/oop-coursework/project/bin/*
 !sem-4/oop-coursework/project/bin/BuildMisc/
 !sem-4/oop-coursework/project/bin/Release/
