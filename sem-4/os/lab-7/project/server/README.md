@@ -6,14 +6,7 @@
 gcc \
 -Wall \
 -Wextra \
--I./lib/shared/include \
-src/client/main.c \
--o bin/client \
-&&\
-gcc \
--Wall \
--Wextra \
--I./lib/shared/include \
+-I./src \
 src/server/main.c \
 -o bin/server
 ```
