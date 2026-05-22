@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/bubsage/220-tusur/uni-works/sem-4/os/lab-7/project/server",
+    "arguments": ["gcc", "-I./src", "src/main.c", "-o", "bin/server"],
+    "file": "src/main.c"
+  }
+]
