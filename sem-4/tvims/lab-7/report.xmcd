@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?validation-md5-digest d43f9ac6cc7d8c349e17f5ddb49618be?>
+<?validation-md5-digest afafcc3478e59ad399cdc970f4e0c6bb?>
 <worksheet version="3.0.3" xmlns="http://schemas.mathsoft.com/worksheet30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://schemas.mathsoft.com/worksheet30" xmlns:ml="http://schemas.mathsoft.com/math30" xmlns:u="http://schemas.mathsoft.com/units10" xmlns:p="http://schemas.mathsoft.com/provenance10">
 	<pointReleaseData/>
 	<metadata>
@@ -13,9 +13,9 @@
 			<revisedBy>anodev996@outlook.com</revisedBy>
 		</userData>
 		<identityInfo>
-			<revision>761</revision>
+			<revision>762</revision>
 			<documentID>5F476550-1807-4FAD-9528-C639B0BF909E</documentID>
-			<versionID>732F8EC5-7E72-4216-AEA6-987FDB43AA91</versionID>
+			<versionID>69D04C1E-337E-43C3-BBF9-6FA4402FB481</versionID>
 			<parentVersionID>00000000-0000-0000-0000-000000000000</parentVersionID>
 			<branchID>00000000-0000-0000-0000-000000000000</branchID>
 		</identityInfo>
@@ -96,7 +96,7 @@
 					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
 				</results>
 			</mathRendering>
-			<pageModel show-page-frame="false" show-header-frame="false" show-footer-frame="false" header-footer-start-page="1" paper-code="9" orientation="portrait" print-single-page-width="false" page-width="595.5" page-height="841.5">
+			<pageModel show-page-frame="false" show-header-frame="false" show-footer-frame="false" header-footer-start-page="1" paper-code="9" orientation="portrait" print-single-page-width="false" page-width="595.5" page-height="842.25">
 				<margins left="28.296" right="28.296" top="28.296" bottom="28.296"/>
 				<header use-full-page-width="false"/>
 				<footer use-full-page-width="false"/>
@@ -199,11 +199,11 @@
 		<region region-id="5228" left="642" top="456.75" width="38.25" height="15.75" align-x="660" align-y="468" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
+					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590372" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
+					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590732" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</parentRef>
 					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
 					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
@@ -282,11 +282,11 @@
 			<math optimize="false" disable-calc="false">
 				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
 					<ml:provenance expr-id="1">
-						<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-							<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
+						<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397591132" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+							<hash/>
 						</originRef>
-						<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-							<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
+						<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590372" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+							<hash/>
 						</parentRef>
 						<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
 						<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
@@ -334,11 +334,11 @@
 			<math optimize="false" disable-calc="false">
 				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
 					<ml:provenance expr-id="1">
-						<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-							<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
+						<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590852" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+							<hash/>
 						</originRef>
-						<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-							<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
+						<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590452" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+							<hash/>
 						</parentRef>
 						<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
 						<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
@@ -387,315 +387,6 @@
 				<p style="Normal" margin-left="0" margin-right="0" text-indent="0" text-align="left" list-style-type="none" tabs="inherit">Видим, что при возведении в четную и нечетную степени матрица перехода кардинально меняется. Это подтверждает, что ЦМ не является регулярной (имеет период 2), стационарного режима в строгом смысле не существует, а матрица не сходится к единой предельной матрице (вектор предельных вероятностей не может быть найден).</p>
 			</text>
 		</region>
-		<region region-id="7023" left="558" top="1230.75" width="519" height="28.5" align-x="574.5" align-y="1242" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">
-					<b>Найдем вектор предельных вероятностей</b>
-				</p>
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">
-					<inlineAttr font-weight="normal">(долю времени, которую частица проводит в каждом состоянии в долгосрочной перспективе)</inlineAttr>
-				</p>
-			</text>
-		</region>
-		<region region-id="7024" left="558" top="1275.75" width="88.5" height="17.25" align-x="563.25" align-y="1290" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<text use-page-width="false" push-down="false" lock-width="true">
-				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">U<sup>T</sup> = [u1 u2 u3 u4]</p>
-			</text>
-		</region>
-		<region region-id="7025" left="558" top="1308.75" width="37.5" height="15.75" align-x="579" align-y="1320" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">daa877e4515afcdb278aa69c0d7567a2</contentHash>
-					<ml:define>
-						<ml:id xml:space="preserve">u1</ml:id>
-						<ml:real>0</ml:real>
-					</ml:define>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="11">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="36" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7026" left="612" top="1308.75" width="37.5" height="15.75" align-x="633" align-y="1320" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">701dcef0e0c88a3946a0829357f8b98e</contentHash>
-					<ml:define>
-						<ml:id xml:space="preserve">u2</ml:id>
-						<ml:real>0</ml:real>
-					</ml:define>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="12">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="36" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7027" left="678" top="1308.75" width="37.5" height="15.75" align-x="699" align-y="1320" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">26da28e5c3cb45daec51c19fb5fb6e06</contentHash>
-					<ml:define>
-						<ml:id xml:space="preserve">u3</ml:id>
-						<ml:real>0</ml:real>
-					</ml:define>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="13">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="36" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7028" left="744" top="1308.75" width="37.5" height="15.75" align-x="765" align-y="1320" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">f5f06c3032ec5f15b8a18e68024e28d6</contentHash>
-					<ml:define>
-						<ml:id xml:space="preserve">u4</ml:id>
-						<ml:real>0</ml:real>
-					</ml:define>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="14">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="36" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7029" left="558" top="1332.75" width="27.75" height="15.75" align-x="570.75" align-y="1344" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">d6bc5283b2d6d86072e53b538b5ea6ed</contentHash>
-					<ml:id xml:space="preserve">Given</ml:id>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="15">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="26.25" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7030" left="558" top="1356.75" width="60" height="15.75" align-x="577.5" align-y="1368" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:apply xmlns:ml="http://schemas.mathsoft.com/math30">
-					<ml:equal/>
-					<ml:id xml:space="preserve">u1</ml:id>
-					<ml:apply>
-						<ml:mult/>
-						<ml:real>0.6</ml:real>
-						<ml:id xml:space="preserve">u2</ml:id>
-					</ml:apply>
-				</ml:apply>
-			</math>
-			<rendering item-idref="16"/>
-		</region>
-		<region region-id="7031" left="558" top="1380.75" width="95.25" height="15.75" align-x="577.5" align-y="1392" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:apply xmlns:ml="http://schemas.mathsoft.com/math30">
-					<ml:equal/>
-					<ml:id xml:space="preserve">u2</ml:id>
-					<ml:apply>
-						<ml:plus/>
-						<ml:apply>
-							<ml:mult/>
-							<ml:real>1</ml:real>
-							<ml:id xml:space="preserve">u1</ml:id>
-						</ml:apply>
-						<ml:apply>
-							<ml:mult/>
-							<ml:real>0.6</ml:real>
-							<ml:id xml:space="preserve">u3</ml:id>
-						</ml:apply>
-					</ml:apply>
-				</ml:apply>
-			</math>
-			<rendering item-idref="17"/>
-		</region>
-		<region region-id="7032" left="558" top="1404.75" width="95.25" height="15.75" align-x="577.5" align-y="1416" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:apply xmlns:ml="http://schemas.mathsoft.com/math30">
-					<ml:equal/>
-					<ml:id xml:space="preserve">u3</ml:id>
-					<ml:apply>
-						<ml:plus/>
-						<ml:apply>
-							<ml:mult/>
-							<ml:real>0.4</ml:real>
-							<ml:id xml:space="preserve">u2</ml:id>
-						</ml:apply>
-						<ml:apply>
-							<ml:mult/>
-							<ml:real>1</ml:real>
-							<ml:id xml:space="preserve">u4</ml:id>
-						</ml:apply>
-					</ml:apply>
-				</ml:apply>
-			</math>
-			<rendering item-idref="18"/>
-		</region>
-		<region region-id="7033" left="558" top="1428.75" width="60" height="15.75" align-x="577.5" align-y="1440" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:apply xmlns:ml="http://schemas.mathsoft.com/math30">
-					<ml:equal/>
-					<ml:id xml:space="preserve">u4</ml:id>
-					<ml:apply>
-						<ml:mult/>
-						<ml:real>0.4</ml:real>
-						<ml:id xml:space="preserve">u3</ml:id>
-					</ml:apply>
-				</ml:apply>
-			</math>
-			<rendering item-idref="19"/>
-		</region>
-		<region region-id="7034" left="558" top="1452.75" width="111.75" height="15.75" align-x="654" align-y="1464" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">22580cfd513012aefa34eb7448c2667c</contentHash>
-					<ml:apply>
-						<ml:equal/>
-						<ml:apply>
-							<ml:plus/>
-							<ml:apply>
-								<ml:plus/>
-								<ml:apply>
-									<ml:plus/>
-									<ml:id xml:space="preserve">u1</ml:id>
-									<ml:id xml:space="preserve">u2</ml:id>
-								</ml:apply>
-								<ml:id xml:space="preserve">u3</ml:id>
-							</ml:apply>
-							<ml:id xml:space="preserve">u4</ml:id>
-						</ml:apply>
-						<ml:real>1</ml:real>
-					</ml:apply>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="20">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="110.25" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7035" left="558" top="1500.75" width="124.5" height="15.75" align-x="575.25" align-y="1512" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</originRef>
-					<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-					</parentRef>
-					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-					<contentHash xmlns="http://schemas.mathsoft.com/provenance10">26132c1c9950a12d9e51e18e5f49e451</contentHash>
-					<ml:define warning="WarnRedefinedBIUnit">
-						<ml:id xml:space="preserve">R</ml:id>
-						<ml:apply>
-							<ml:Find auto-method="true" method="levenberg" derivative-estimation="central" variable-estimation="tangent" linear-check="false" multistart="false" evolutionary="false"/>
-							<ml:sequence>
-								<ml:id xml:space="preserve">u1</ml:id>
-								<ml:id xml:space="preserve">u2</ml:id>
-								<ml:id xml:space="preserve">u3</ml:id>
-								<ml:id xml:space="preserve">u4</ml:id>
-							</ml:sequence>
-						</ml:apply>
-					</ml:define>
-				</ml:provenance>
-			</math>
-			<rendering item-idref="21">
-				<element-image-map>
-					<box left="1.5" top="0.75" width="123" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
-		<region region-id="7036" left="558" top="1523.25" width="63.75" height="150.75" align-x="573.75" align-y="1602" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
-			<math optimize="false" disable-calc="false">
-				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<ml:provenance expr-id="1">
-						<originRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-							<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-						</originRef>
-						<parentRef doc-id="7C72BE96-4C1F-4C52-AEA9-5BEE5FDF0668" version-id="AA89BC3A-D48D-4592-8A8C-2ACD7F4A4348" branch-id="00000000-0000-0000-0000-000000000000" revision-num="2" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 1.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-							<hash>7cc9bb9e8657ba63da8a43d393fc3eeb</hash>
-						</parentRef>
-						<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
-						<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
-						<contentHash xmlns="http://schemas.mathsoft.com/provenance10">5f9a721e95485904fb4db2d524f1e20e</contentHash>
-						<ml:id xml:space="preserve">R</ml:id>
-					</ml:provenance>
-					<result xmlns="http://schemas.mathsoft.com/math30">
-						<ml:matrix rows="4" cols="1">
-							<ml:real>0.23684210526315788</ml:real>
-							<ml:real>0.39473684210526316</ml:real>
-							<ml:real>0.26315789473684209</ml:real>
-							<ml:real>0.10526315789473685</ml:real>
-						</ml:matrix>
-					</result>
-				</ml:eval>
-				<resultFormat numeric-only="true">
-					<fraction precision="12" use-mixed-numbers="false" radix="dec" complex-threshold="10" zero-threshold="15" imaginary-value="i"/>
-					<matrix display-style="auto" expand-nested-arrays="false"/>
-					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
-				</resultFormat>
-			</math>
-			<rendering item-idref="22">
-				<element-image-map>
-					<box left="1.5" top="68.25" width="7.5" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
-				</element-image-map>
-			</rendering>
-		</region>
 		<region region-id="8594" left="558" top="1716.75" width="50.25" height="14.25" align-x="578.25" align-y="1728" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
 				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Задание 2</p>
@@ -703,9 +394,9 @@
 		</region>
 		<region region-id="8588" left="1104" top="1746" width="499.5" height="228.75" align-x="1104" align-y="1746" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<picture>
-				<png item-idref="23" display-width="498" display-height="227.25"/>
+				<png item-idref="11" display-width="498" display-height="227.25"/>
 			</picture>
-			<rendering item-idref="24"/>
+			<rendering item-idref="12"/>
 		</region>
 		<region region-id="8547" left="558" top="1746.75" width="519" height="28.5" align-x="606" align-y="1758" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -715,11 +406,11 @@
 		<region region-id="8548" left="558" top="1800.75" width="66.75" height="15.75" align-x="608.25" align-y="1812" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="3" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>49c52fd54af62e2c063b614bfceee198</hash>
+					<originRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397591092" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</originRef>
-					<parentRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="3" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>49c52fd54af62e2c063b614bfceee198</hash>
+					<parentRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590372" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</parentRef>
 					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
 					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
@@ -730,7 +421,7 @@
 					</ml:define>
 				</ml:provenance>
 			</math>
-			<rendering item-idref="25">
+			<rendering item-idref="13">
 				<element-image-map>
 					<box left="1.5" top="0.75" width="65.25" height="14.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
 				</element-image-map>
@@ -745,9 +436,9 @@
 		</region>
 		<region region-id="8550" left="558" top="1854" width="384" height="258" align-x="558" align-y="1854" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<picture>
-				<png item-idref="26" display-width="382.5" display-height="256.5"/>
+				<png item-idref="14" display-width="382.5" display-height="256.5"/>
 			</picture>
-			<rendering item-idref="27"/>
+			<rendering item-idref="15"/>
 		</region>
 		<region region-id="8551" left="558" top="2153.25" width="103.5" height="114.75" align-x="573.75" align-y="2214" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
@@ -797,7 +488,7 @@
 					</ml:matrix>
 				</ml:define>
 			</math>
-			<rendering item-idref="28"/>
+			<rendering item-idref="16"/>
 		</region>
 		<region region-id="8621" left="684" top="2202.75" width="126" height="14.25" align-x="706.5" align-y="2214" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -864,16 +555,16 @@
 					</ml:matrix>
 				</ml:define>
 			</math>
-			<rendering item-idref="29"/>
+			<rendering item-idref="17"/>
 		</region>
 		<region region-id="8554" left="558" top="2510.25" width="63" height="36.75" align-x="573.75" align-y="2532" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="3" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>49c52fd54af62e2c063b614bfceee198</hash>
+					<originRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590052" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</originRef>
-					<parentRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="3" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>49c52fd54af62e2c063b614bfceee198</hash>
+					<parentRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590732" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</parentRef>
 					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
 					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
@@ -889,7 +580,7 @@
 					</ml:define>
 				</ml:provenance>
 			</math>
-			<rendering item-idref="30">
+			<rendering item-idref="18">
 				<element-image-map>
 					<box left="1.5" top="0.75" width="61.5" height="35.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
 				</element-image-map>
@@ -925,7 +616,7 @@
 					</ml:matrix>
 				</ml:define>
 			</math>
-			<rendering item-idref="31"/>
+			<rendering item-idref="19"/>
 		</region>
 		<region region-id="8661" left="648" top="2676.75" width="395.25" height="28.5" align-x="675.75" align-y="2688" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -934,7 +625,7 @@
 		</region>
 		<region region-id="8556" left="558" top="2654.25" width="70.5" height="72.75" align-x="575.25" align-y="2694" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
-				<ml:define xmlns:ml="http://schemas.mathsoft.com/math30">
+				<ml:define warning="WarnRedefinedBIUnit" xmlns:ml="http://schemas.mathsoft.com/math30">
 					<ml:id xml:space="preserve">R</ml:id>
 					<ml:matrix rows="2" cols="2">
 						<ml:apply>
@@ -960,7 +651,7 @@
 					</ml:matrix>
 				</ml:define>
 			</math>
-			<rendering item-idref="32"/>
+			<rendering item-idref="20"/>
 		</region>
 		<region region-id="8557" left="558" top="2754.75" width="233.25" height="14.25" align-x="579.75" align-y="2766" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -1001,7 +692,7 @@
 					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
 				</resultFormat>
 			</math>
-			<rendering item-idref="33"/>
+			<rendering item-idref="21"/>
 		</region>
 		<region region-id="8559" left="558" top="2862.75" width="531.75" height="57" align-x="558" align-y="2874" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -1048,7 +739,7 @@
 					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
 				</resultFormat>
 			</math>
-			<rendering item-idref="34"/>
+			<rendering item-idref="22"/>
 		</region>
 		<region region-id="8563" left="558" top="3168.75" width="393.75" height="14.25" align-x="579" align-y="3180" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -1073,7 +764,7 @@
 					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
 				</resultFormat>
 			</math>
-			<rendering item-idref="35"/>
+			<rendering item-idref="23"/>
 		</region>
 		<region region-id="8565" left="558" top="3318.75" width="345.75" height="14.25" align-x="589.5" align-y="3330" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<text use-page-width="false" push-down="false" lock-width="true">
@@ -1090,11 +781,11 @@
 		<region region-id="8566" left="558" top="3350.25" width="114" height="72.75" align-x="574.5" align-y="3390" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
 			<math optimize="false" disable-calc="false">
 				<ml:provenance expr-id="1" xmlns:ml="http://schemas.mathsoft.com/math30">
-					<originRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="3" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>49c52fd54af62e2c063b614bfceee198</hash>
+					<originRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397591012" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</originRef>
-					<parentRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="3" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
-						<hash>49c52fd54af62e2c063b614bfceee198</hash>
+					<parentRef doc-id="29A860B0-2245-4E15-A5E5-1AB5105F9579" version-id="E4FEE278-DBD9-447F-9FB6-0741D95E8247" branch-id="00000000-0000-0000-0000-000000000000" revision-num="397590172" is-modified="false" region-id="0" href="D:\desktop-bubsage\220-tusur\uni-works\sem-4\tvims\lab-7\reference\ТВИМС - Лаб7 - 2.xmcd" xmlns="http://schemas.mathsoft.com/provenance10">
+						<hash/>
 					</parentRef>
 					<comment xmlns="http://schemas.mathsoft.com/provenance10"/>
 					<originComment xmlns="http://schemas.mathsoft.com/provenance10"/>
@@ -1124,7 +815,7 @@
 					<unit format-units="true" simplify-units="true" fractional-unit-exponent="false"/>
 				</resultFormat>
 			</math>
-			<rendering item-idref="36">
+			<rendering item-idref="24">
 				<element-image-map>
 					<box left="1.5" top="0.75" width="112.5" height="71.25" expr-idref="1" xmlns="http://schemas.mathsoft.com/worksheet30"/>
 				</element-image-map>
@@ -3714,150 +3405,7 @@ cfAHj5B5MX6uoz4SZu4ofBCjsVna95TOW6HxoQI3PorjL+IrhLeGe+UZJ/3rhdT7CbazSeF9
 KMz0SPvQjrTNqN22vdMRmsdts+y3MucbkvZBS93Yi/kS4W2zjm2LAlDERTySYfc1wnOsjfCp
 ORT8dSQh5s5XCc8B8YFP8BqHeRCKzvF1wnO8pnEeFY0CQJrXPI3DPCon968UHgBX53+zi3r7
 X3NLFQAAAABJRU5ErkJggg==</item>
-		<item item-id="11">iVBORw0KGgoAAAANSUhEUgAAADIAAAAVCAYAAAAElr0/AAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADiSURBVFhH7ZXhDcQgCIWZi4GYx2lc
-xmG4VNCzxOZitVd750v8IY2VT58A/CMCG3iqFshs+leQwA6BAR0H++mLCg4ZAOIgL7EGEM+k
-i28F8cQAxJK/5LTBNICI4mncBiKOSLcQtYGhuxpksBWDYwRkV/5MYwISr6vwnJ3v1rWADNbO
-Vjkols/zSFYkbuc5fB7Ek76xo2E3s5oFpFs1EM3zWSAf30gOXAvSba1K1Ur5FFVLvIaKm5qO
-/XdM5iTIEGm5lf0P+kh5Ykgk3jPN532C5oqrGlx+VZ2dfW4tkNm0QGbTCy6ATqYIP7NnAAAA
-AElFTkSuQmCC</item>
-		<item item-id="12">iVBORw0KGgoAAAANSUhEUgAAADIAAAAVCAYAAAAElr0/AAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD/SURBVFhH7ZVtDsMgCIY5FwfiPJzG
-y3gYFr86RJfadnFu65v4Q5rU90EEkB8R2MC36gZZTf8I4oQABPIiZ7/Pk2dsfAyCeGEkKd7L
-jz4C40gAipeU3OBjDMSxsNeBAAYC00nSudWxAQx5EKQjRyMgGRhZqjyclWdBwDqpOZZA4nWp
-mrP7Rp3MzFBVVlswvd1tH8mUObvXCt9OZDneomoYzeoepvRuEEfmemepB5J9HgYJHcvGpmn3
-jWyBHRBHgvovnoUPQF0urc7bjKOg7lqp1orRZlaoBvBctl4nKLfb5PLFHNEZQ6JUe0DCapKe
-yeDb2m/Whcm+vm6Q1XSDrKYHU0g7g5gLMgAAAAAASUVORK5CYII=</item>
-		<item item-id="13">iVBORw0KGgoAAAANSUhEUgAAADIAAAAVCAYAAAAElr0/AAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD4SURBVFhH7ZXhDYQgDIWZqwN1HqZh
-GYbppRQQKkbuJBzn+RJ+UCPtV1/R0E1kdOBX9YCspn8EcYTGkIkLnX4+T97Cro5OEIZASrXL
-Qdt+qhwWuaW5DNMH4j35KsAHANk6OEGeLCg3MBjYThAtbwm6vCWJOdEQZs6rGxhjAhI+V+E5
-vS/FL44q7F1VtspBmd28D2RF4Xqvhmx/4LkcbpdFc+26pjQKJCkBwewhaYHEOj8CSd6fDnI6
-IznQCyI2OXp2pMvWatxawR31rSVeS11O9mme/e2Bz7kP/iNlxwBRvMeeLG6xsLohBl+/URf+
-7OvrAVlND8hqegHGwEdCuiyKVAAAAABJRU5ErkJggg==</item>
-		<item item-id="14">iVBORw0KGgoAAAANSUhEUgAAADIAAAAVCAYAAAAElr0/AAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD7SURBVFhH7ZXhDYQgDIU7VwfqPJ2G
-ZRimFygiElREcnIeL+EHFWu/8gSQlwjywK9qgoymPwcxJIAsNo9/SZZRAMAPMhprADFCLslT
-IK6JQKL1ay0O5jKIIRJ2HXkExArjugtewR3XQAz5JH5rq0D0w3VrK2RZEFA4TRZiCuK3K/Fc
-PtdFQmFSD9JZG1vFoFo9zj1ZUng2d5ZaH7WBGNLm7I6NZwq6DWJZOHm7FeS2SiChziqQo06e
-NbGrTv+RGCiD5GrdkaOGVFmrcGottSSnlnoNA+5y6ZRyt4J00eYy3rlH0o4hkXov9+QlkM7H
-b1Cnm31MTZDRNEFG0we9H0LDLv+aywAAAABJRU5ErkJggg==</item>
-		<item item-id="15">iVBORw0KGgoAAAANSUhEUgAAACUAAAAVCAYAAADB5CeuAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEiSURBVEhL7ZSLDcMgDESZywN5HqZh
-GYZxhT9gHNKmUtOmUk5CLTi5PBtDogsqxYUr6IY6qv+BqhkopdQHFiIqKL+sQmjrJyhAVcrQ
-QJD89wo6OFn5HpRUCChXv6oqSLAMfF4OSrJPZ6X/hgZUwbBFzyQJAPjesy23FjCvMW9jVNta
-wMX14x3KmnsDVTOBa/qEKBW1Zzk+b3nzGkAupl5YdFd4aJyLIv83lVr3jWZjxN1cpnwQejaV
-MmZiF/WMg78RPHxyA8oqAmo46TmUz3K6Otr60m/h4ebT6dsefdMLqB7Po0pNDDtfL13RYw+q
-n8AN2CuovYOi7/lq2dUSPfahRPFG59GNF00qb1GGVVX885ZY8CjaOjpfQv1aN9RR3VBH9QDX
-BMacNI9KoQAAAABJRU5ErkJggg==</item>
-		<item item-id="16">iVBORw0KGgoAAAANSUhEUgAAAFAAAAAVCAYAAADRhGlyAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGPSURBVFhH7ZfZrcQgDEWpywVRj6uh
-mRTDE1uwb1geYjKaD47EByQYOGyJ8YctDBYc1jgCNzkCNzkCN1kUeHkm4w2xv/DRy1xM3hgT
-k3X4tE+tZ/1CNcB5m9vG9hcEiiDfFuisEJD6MZdY+rsjLhAWTY1RJqS0vyAwEQN8VWBa9UpY
-EDrsQ5Y3tzzHsWfVUN6FOfbvC7zYkyE9iFaZwNlPrLw+Mb4SGLeI2N+YF6wILDFmaYjavnfh
-YBunZ8Qszi2sL8CxYv6B3hG193FWRSXM38U/LjALIOJcJ2+5RwwBjhXzkvBMjP9VgR+hJbDT
-t0jr/Sy1+X4A42Fe4Kw+On5fYOu8a5UVWgIfKxYuGRwr5u9iepS9KhC3ai+Ned7C4z6grInw
-AI4V8wFnPckAF3t26hYuh296Cb937rfCDdTtvAZF9dIU9dnSEASkvtdVKG/NNpOxi4ulphRf
-9T5d/ymRtXEW8AO2BhjM6Av0/0Taf0dyLGN5id7YWbSrUo75j+k/jDgCNzkCNzkCNzkCN/kD
-2vLmp3thqXUAAAAASUVORK5CYII=</item>
-		<item item-id="17">iVBORw0KGgoAAAANSUhEUgAAAH8AAAAVCAYAAABv0jEvAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIzSURBVGhD7ZjdsYQgDIWti4Koh2ps
-xmK4w6/hEDCwel/gm+EhoCHJAWT3sJtlObBjsw5b/IXZ4i/MFn9hBsQ/rT4Oe8SmTxz/mssa
-ddhDGXvh0BRv+2tzGTVVt/s9bQdeA9q6CcV3hboDSEGNJPIbJIFXxHrbX4dTE/HCvM91S/H9
-IrrD+UHdblsm/mmsKSoUd81zFq/ig39RrDl/5UboE+pUlMkthu6cUfg3antdMI/zrbKWMvEZ
-Tv1SgAPMidVmzt+A+JexihS72Ufwdf15xzdwcxPNgvj+aCLfBLQrmBXNkHw8NSkisTB2tAki
-fxUD4hdHfu7sHP1hTBlDvtP4PgFzQ5vihIdc78r7FUleQpvCOOJAkVtNilgsjB3t3C30V/Ch
-+FE8V9swHD+vlQ8C5oZ2ypNZTFPin7p9bH2JWCyMHe3cLfMXjuJOQ8cJTvxGLB7u+bgg2Ocd
-6A9tQloEKoo3LL5zgH3/RVssuCRh7Gjn7pa/HgM738878M3nxK9OirlcA+EkmRP/1PnF9Ixh
-JwlUO6TRpIjFwtjRzt1CfwUD4jN3o/6cKPTDYnFgbmgD7hRLY6Ty6bIRZklHRHZCLhN36xeh
-fp5vUvzx2ywc5SGX9JTYH2VE/Fi3PAcjLhBivf0//6qS5RoHi7taUXn6bVNa+xXkAjHFhYE0
-doYvSH96pNbZCZFWLiHicX83g+ITQWpR+H8ZizuGoMbNXHHDNm/7m+XY4i/MFn9htvgLs8Vf
-mD8m8FU0InelMAAAAABJRU5ErkJggg==</item>
-		<item item-id="18">iVBORw0KGgoAAAANSUhEUgAAAH8AAAAVCAYAAABv0jEvAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIcSURBVGhD7ZjrjcQgDISpi4Koh2po
-JsVwMoQEhpdDyEl38En8MMmCx8Njd4XdLIvAjs06bPMXZpu/MNv8hXlgvrFKCCvOpgw+/5ZD
-y7G5jbJCantg/yN+W/thtRQT8gagFkzzSbyyQbM34o4/h5K+5vNG8Aw4TXtVRDICtXPnHyFa
-aK/yRvJa8Mw/DkiCBpJWz8usgd8FSbGZu9koZTWZxXi3itGg89yVbPfTxcPFLbI3eQOlWvDM
-Rw5tJVv8S2guXGilPsQot2BmF5Ew6o+ZX6mFN98dq9F9hnEMFZ6ZVBij15okR/7V2Tn6jVXn
-QxScgVoxziicRE0+NB9zxdi/VK3FXXm3m6IPYRw+fJnWF4Qm11qTAfPpiLtlMIqIWjGOebD4
-PR+aT2CuELdq8cj8QFgEsnnuTqJkfiM3eqZxwfaKiONhHGFU57px7+QLPGmlgQFW3gTmGsed
-WgyZH46+XzHf5cG/81uFv7Wc33xDB2rF+OqWWV+f2Tufn3uvFoPm+4FrzwI4Ya21ye/YemFy
-WO+iVowJo9LFDruqzmzzAcwV4wgcM6q8X1FBYDjaS4O4CRiJocm11iX5ade+7xEUXKajPfoi
-dTeuoWPmu13bzZvo5B6BtUgqHx8TUim3gpxIFM9Kai5BVC6s/W8YCq5R0+5+G2fG8+5tz1Pz
-038TReV6i6nljnNiLRjbbvNf2eYvzDZ/Ybb5C7PNX5gfiYReTzvpWVoAAAAASUVORK5C
-YII=</item>
-		<item item-id="19">iVBORw0KGgoAAAANSUhEUgAAAFAAAAAVCAYAAADRhGlyAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGBSURBVFhH7ZXbEYUgDESpi4Koh2po
-hmJyh9c1rojB4B9nho8EDcvyMrRRYTCxmWMbqGQbqGQbqOSdgcGRsZ4i5j8kekvGmNxcwN4B
-S7QGcnVsHP+FgbWYWtQEyQTjqOgu48tMXKE11Whjt4U84mkDg3PkUxGVqBkieQuGCXfVEq0x
-wr/JUEu+JucMDC5PJK+CRtQM0ZNlgm9zyFda09hsNYuB+Yiw841x+YhcDaSiWo2nNuR0fP/J
-h2M8oRXnijEnmQe1DvV5VdlPEKfjcLoHRqIqaNRdG/LCwGmtD3MvqeMR69+B+BOPoyePxZ5E
-raJnIGqFvmmtWA9jRjPS1vtDZGBw113TWm+QpfTuu16uItNaX+eWGMz9SnnUpgxERKu66gh3
-XmHp+AnRtzhXjIG0SK2PqS+r0pxtW7VXRCRqmYH1GP/HG99/iEyrfO7ZXFbvpJ5vf+tcXoXL
-/SMWtRZ+iZ8nVnbonR6p1tu5s1c5t9tXePOKbaCSbaCSbaCSbaCSH1d7+4G0vmx9AAAAAElF
-TkSuQmCC</item>
-		<item item-id="20">iVBORw0KGgoAAAANSUhEUgAAAJUAAAAVCAYAAABPEqyXAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHuSURBVGhD7ZjhrYQgEISpi4Koh2po
-hmJ4AeSEEXTxFn2X7JfwA1EYd0YlqiAIzCg8IAjfIqES2JFQCexIqAR2JkPlg9UqKG2Dx6HH
-cMEoFdTWjMPxp/gvOiqcecGbYyYmQlUV8XHhhXgDJhT/vNUvGRprgTr2/jts/jzqTT8TE6HK
-pAJOC2/DcBtng20W3p4ScqqYdHgP9x+Lq0HbGUw6Kpwxwd7y5nswE78Vqg7OvBAqxNugyRoi
-zDqcSW/re958D66bQxW/xfXeAPsVOAENYhFxXewfyG+q/liPBTpioF6thwtm61C9KXNcNSq4
-7n5lLE4tFvufwzThLcQiRnBd7NdMG8qro+zpciPOm+DTET97+xDNGwzPqFHBdZeFKn2WOkI/
-DScu4LrYr3Dmeh/zhI4SLn0iZokOb4OtLqN6ww2uuyxULXxP5n6aPhy7hl9HJn+Gz0LVwqPj
-LKh9nWvATPxmqJxpDYQndgyzjopo8GjsyBodVG8wgKNGBdetrsz/HIpZ5ZWO4tPTQRDeMlHE
-Kx3VZnVv1LkZddREo6dqskYHmjviWL9+o4KZaK6sX6famPRE7Ia1f5DVwv8yIx3pP0zn5of7
-kQM8OhwGm2BkC5MOOI8aKj76maDHURCISKgEdiRUAjsSKoEdCZXAzh9Mb1x4wUc1qgAAAABJ
-RU5ErkJggg==</item>
-		<item item-id="21">iVBORw0KGgoAAAANSUhEUgAAAKYAAAAVCAYAAADM1pWsAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMcSURBVGhD7ZmBkYQgDEWty4Ko40qg
-GpqxGG5AkPAJEVmYc294M84dKjH8fIHd3exi8UI2PLFYvIFlzMUrWcZcvJJlzMUrCcY8rN43
-u23MsWt7YK/pCPn4Y7faJ2Ws2jarDPZv4NB2F/u62MpWLxeEnKfodY4zjr+ecy+z4xOMAo14
-nbMZ89B73skF+TNzxudHEyYOrT4zZhxXra+/XopVhxR2uFbO8CkXX6Na3l3kxjjjPxn7E4JO
-qJGfJPI6y8b0NXKCz0r0hooxh1CdMfk3uAVOv48xGsYfZuYy8T6OA/J145+juVHK6ppGvh5J
-9xtjxiW1pVATlrLCmIfV+j6TJirGdC/i3lmVUr85+MkCEx+F02VGbKO81pJG/lp4tmjMuGz0
-FupjCmMaqzLR6FIe/yf7UxD4nP3zI7+FmS1w2cc2AfVrAuNhu+AcH3+NAeNhm+JMOSX/VDdR
-IzJrlsakhasFaIAzQXYUqjCQQZb90r5OGbp5D8YCU/t8yHhifrnPK3tLnF2xfZ0WRJfAeNim
-9JgH42G7qD2jgQTGg7ZbwtMlSaM00ZTGDJ3mboIbuZsxqQCsOKEv/Z/re52qjBnvxfZ1WhJd
-AONhm2BUx/4P42Gb0LVKYjyoC919yRqdxnTPrhpz+Ca7h8KYsMe8NebZZg2H919Fea8xXXw8
-1wTGw3bGWfdRxpRWzvL5TcZkHvgAKSF/tAQtjAk0GpONg/c73ryUG5WbBWYiEYyHbcDVrnaN
-BeNhmyBrJC3lUJiuqX0UnKEorca89qNkbHi/h/nwc51PGkRNUHjcx7ZzE5/ba3MvUJWb+BSn
-y+MxtMcXjelrkn34KX9pSUHpNa5okZFfF5X5lDMs/cBDj91qc5ouz7l2fy5g7esiugLsSoX4
-0RwYu6ZTuI/RqBbff+/H5Fzq4aM8jm/Q9EzfREd8uE8ypr8WxrV+Ky+ozZrjSL9czeE74zvd
-k5EvY24/uUeftv8VfkmZZc7DavL1yXi+MX7aW0a8u5zJqNGetv8n+Rs8hsMara2ZYnjHN8bn
-db6M+cnfxWI0mzQTtrQXixn8AoVUZb8Xh7+qAAAAAElFTkSuQmCC</item>
-		<item item-id="22">iVBORw0KGgoAAAANSUhEUgAAAFUAAADJCAYAAABSUX5iAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAYsSURBVHhe7Z3dtasqFEZt4PaRGuzi
-NGEf6cBqfDqdWAx3IJIIYoSFn4dkfXMMHzY7WYlTflRwpTPkcrq4oEXmaTTjOMfFAGYzjYMZ
-p7rPal7qNPRmqNzJUuZxMEPFQWxa6r8Q6pnH3vRCse1KnQbTD1NceivuoMal5zQqdTJDPxjB
-/ixMQ2e6zm3S2uaQfY8mpdqmJ6khlkXo682TGSrFSrqBBqXKasfCPJq+i947DaaLy4qwB6bs
-/e1JtRLk1XQvcBHdiWu+xdb+kvc3J7V0BwIWqb0JWusFUpdBs6ALaEzqbMY+klKE60O7fjSv
-ECnRpdgDs415QmNSy/uvHWvN9KO/2ypjFn6vtqQW1ohzbM2vG/0dNs43S63q/ELs6VDQFVRg
-LwRyj01bUmtG/gBXQ+ub/Ru9Ujf9aX2TD9ErFQilAqBUAN8r9fkw3eMZlzbB8/Gf+fM3Lk3T
-llTWVACUCqBAangZKttKUCH1bigVAKUCoFQAlAqAUgEok7pOoaxb6u3bdQDl8R2KpIbTHMtN
-6ege6iJ0c6M6XBeQjx6p8xzd1beStzufmE6xnyGYDdAjNWY3HbPOAGwkSlacWHRKPZo09LMB
-S1y7+iXxmgzUSXV9qR+MEvNSNu7R/zJRJ9Xj5YbN208v+7MEmVi1UlMDkx3t4785UBUSrsVy
-tTMMWbbaxKNX6m6w2o/+PKU64zUArVtSll9Y8ek15+iReiOUCoBSAVAqAEoFQKkAKBUApQKg
-VACUCoBSAVAqAEoFQKkAKBUApQKgVAAKpSamTbbET1YLPkOZ1M0CtQOp4bqAeCIwD2VSHcdP
-TE9mEMbcQqlbbMyKGuqh1HdpOJMq7E8tlJrkLVjyEZT6AS76LSBXqvQzKPUT08Dmn0vWar7d
-Wqt8lEkNn04JEnvFV1JCoRZlUu+BUgFQKgBKBUCpACgVgAqpwU0S4VaCCql3Q6kAKBUApQKg
-VACUCkCZVOZQ+UyxVOZQOadUKnOoZFAqNYY5VBLUSD2aKmEOFZlU5lD5hFCqhzlUUlRKTQ1M
-zKFSLdVJe4dgDpV6qbvBaj/685TqjNcAtG5JWcyhUib1RigVAKUCEEhNrDiu7INE/JZUx245
-oh8I7hKrQuoSTH4VUowOqb5boNTLpKavpYH8rNSKQSqYtkhtZ8J+VuoqMjU1AefXpb760zt3
-8velrjcodnd5jmHzd+ylRk3+1sHqt6Tur6je+7b9X35gEb8ltREoFQClAqBUAFdJjZ/0uyCm
-eqnxleEFIbVLvSZnSoxuqTbGhTXUo1jq/ny7Lt4bxVK31OVMiaHUDdJFvjGUuuWimJS6RZgz
-JYZSPbu1VXL0So2vpC4SatErFQilAqBUAJQKgFIBUCoAFVKDmybCrQQVUu+GUgFQKgBKBUCp
-ACgVgEKpicclN2xXI0oX2imT+vm3U8LpFPdaiVhlUh27tbWu0PTxanD7GXFZBpTqSQksXMjs
-oVTPIjWSQan5JKX6/nZbnhKdAaWG/wjnrZaNfWoWh1ID9jlWcqHUA3Jec4RKqZ+z+NQ/Y6tM
-at5vp0ia/BZlUu+BUgFQKgBKBUCpACgVAKUCoFQAlAqAUgFQKgBKBUCpACgVAKUCoFQAlApA
-udTz36eSoFiq/0mP9a81l0pVyBW9Uqcx2vHrkkDqlZqASRQul+pq6hUhKdXD5/2vl1oi4oyS
-WD8r1Y78F4VaoNRpCFekzKMZK8PqlmpjXLB0Mkat1Dhx4muriOlRKxUJpQKgVACUCoBSAVAq
-ABVSd6dNgq0EFVLvhlIBfK/U58N0j2dc2gTPx3/mz9+4NE1bUllTAVAqAEoFIJbKHCrHiKQy
-h8pn7ERdsVRH8gnpy3Ko2JbwzVJjMZkkpaYEitJ9fLNU2zxjMZkcS41kiKTabiO/djcmtaxG
-bElKvSqHSmELakyqG1jKapEjLfVdM8ObKfm1biGenT2hOamyM4APUgNkOVRKD3R7Ugv7L0+O
-1JzX7Cn/Pg1KdeeEktp0LEyeQ8UeiNLv0qRUdxaQKwCZQ6Xke7xpVOpaQ0o6MgC2xUi+QrNS
-LW6nJDWsHkmz9zQt1fIvxM7jYAahUEvzUi2zXctfsZP5zGYaBzNWHsSvkPpt/A/pd+plzjpM
-LgAAAABJRU5ErkJggg==</item>
-		<item item-id="23">iVBORw0KGgoAAAANSUhEUgAAApgAAAEvCAYAAADhFrGZAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="11">iVBORw0KGgoAAAANSUhEUgAAApgAAAEvCAYAAADhFrGZAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADW7SURBVHhe7d2xcetI+vVhJTDG3/oC
 WGcCGIsJrD3WZMCqTWG8MdeTORlsbQAja7xNYHzVZrA58Ksj6ei+91V3EyQAim/r91Shri4B
 At2NRuMQJMiHEwAAALChh/wAAAAAsAYBEwAAAJsiYAIAAGBTBEwAAABsioAJAACATREwAQAA
@@ -4114,7 +3662,7 @@ MdyJrbAZfzf7rjx//32dCmffhc37cy5cbvH1SgRMADMjYKKwrx0wURsBE8DMCJgo7NuXjven
 1s0wwP5ebmD60B+/nwiYAGZFwAQAAMCmCJgAAADYFAETAAAAmyJgAgAAYFMETAAAAGyKgAkA
 AIBNETABAACwKQImAAAANkXABAAAwKYImAAAANgUARMAAACbImACAABgUwRMAAAAbIqACQAA
 gE0RMAEAALApAiYAAAA29f8BgByk8mIu3boAAAAASUVORK5CYII=</item>
-		<item item-id="24">iVBORw0KGgoAAAANSUhEUgAAApoAAAExCAYAAADcPwJPAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="12">iVBORw0KGgoAAAANSUhEUgAAApoAAAExCAYAAADcPwJPAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADXCSURBVHhe7d2xketG+vXhSUDG3/oC
 WEcByGICa8tSBqzaFOTJXG9MZbC1AWgseZuAfNZmsDnwqzPDM/ed93Y3QQLNQff8nirUnUuA
 QKPR3TgECfLpDAAAAHTwlB8AAAAAtkDQBAAAQBcETQAAAHRB0AQAAEAXBE0AAAB0QdAEAABA
@@ -4371,7 +3919,7 @@ DZpyeg53bit0xt/l3pXTx+/7VEj7EDr351rI3OJrmQiaAGZH0MTgvnbQxNgImgBmR9DE4L59
 eXl9Kt00A/T3eqPTd+3x40TQBDAzgiYAAAC6IGgCAACgC4ImAAAAuiBoAgAAoAuCJgAAALog
 aAIAAKALgiYAAAC6IGgCAACgC4ImAAAAuiBoAgAAoAuCJgAAALogaAIAAKALgiYAAAC6IGgC
 AACgC4ImAAAAuiBoAgAAoAuCJgAAALr4/7Nd0GzmMp22AAAAAElFTkSuQmCC</item>
-		<item item-id="25">iVBORw0KGgoAAAANSUhEUgAAAFkAAAAVCAYAAAAtkUK4AAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="13">iVBORw0KGgoAAAANSUhEUgAAAFkAAAAVCAYAAAAtkUK4AAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH0SURBVFhH7ZeBjcMgDEWZi4E8x43A
 NFmmw3CCALG/TdJcE1r1+BJqg8GGhwPExanb5bBi6npNyAM0IQ/QhDxANuRHiN656FihRTSI
 wUt7Kz7EB28ZvLD7wK3anuMs1OKh3YcQiceTA0udpR3Gc78KGxZXQV4oDc5HwaJChwllAHwS
@@ -4383,7 +3931,7 @@ pJqxZizDD/av7QAyPxPCZ0LWmSpkZDo6q23U5AxI5lUt6xXIbAFN332N2S6KTt+TjVNdbQUm
 pO1OKd0+C3mJZL4JfzhYL1ZmuAc5q35UtIIT1F9824S4zUci/GKDFxwPz1SMGwvvj3UWzOM9
 +Y4rHHxtFm425KlL1SC7H8n7259HKkdOA+CD+Pbn0WqQ/9PvaDkeOP3/9ud36BeuP1vqjntA
 6gAAAABJRU5ErkJggg==</item>
-		<item item-id="26">iVBORw0KGgoAAAANSUhEUgAAApUAAAG8CAYAAACPGl7EAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="14">iVBORw0KGgoAAAANSUhEUgAAApUAAAG8CAYAAACPGl7EAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAHMJSURBVHhe7d0LeBTV+T9wfq6NAkIq
 AQoFuUQxGhMqxktFuXgDMVoRkNboL1CtaculFlvXAtoaLPmjFipERcSINsViEdQfFSlqQSm0
 GKoIUhFBi2AxUkCpoUat7//5TjKzZ85eZ68zu9/P85xHyczO7ia7Z98957zvaSNERERERAlq
@@ -4931,7 +4479,7 @@ JCIiIqKEMagkIiIiooQxqCQiIiKihDGoJCIiIqKEMagkIiIiooQxqCQiIiKihDGoJCIiIqKE
 MagkIiIiooQxqCQiIiKihDGoJCIiIqKEMagkIiIiooQxqCQiIiKihDGoJCIiIqKEMagkIiIi
 ooQxqCQiIiKihDGoJCIiIqKEMagkIiIiooQxqCQiIiKihDGoJCIiIqKEMagkIiIiooT9fw7Q
 7Fr3mMZJAAAAAElFTkSuQmCC</item>
-		<item item-id="27">iVBORw0KGgoAAAANSUhEUgAAAgAAAAFYCAYAAAAlTUT9AAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="15">iVBORw0KGgoAAAANSUhEUgAAAgAAAAFYCAYAAAAlTUT9AAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAE1NSURBVHhe7d0LeBTV+T/w6GpUoqQS
 QfAGRDE1Ahqj2CIBtAraaIuAWKM/oP4VLYFWqq4iWkUlP6z1gtEiYko1Uu+oP9RavIBFsIiX
 CGJR8YKgNiLBW9T10vN/vrN7Zs+cnd2d2evszvfzPOdRMrO7k81c3jlzzvuWCCIiIvKdEv0H
@@ -5300,7 +4848,7 @@ REREPsQAgIiIyIcYABAREfkQAwAiIiIfYgBARETkQwwAiIiIfIgBABERkQ8xACAiIvIhBgBE
 REQ+xACAiIjIhxgAEBER+RADACIiIh9iAEBERORDDACIiIh8iAEAERGRDzEAICIi8iEGAERE
 RD7EAICIiMiHGAAQERH5EAMAIiIiH2IAQERE5EMMAIiIiHyIAQAREZEPMQAgIiLyIQYARERE
 PvT/AdgqiU1kNFSCAAAAAElFTkSuQmCC</item>
-		<item item-id="28">iVBORw0KGgoAAAANSUhEUgAAAIoAAACZCAYAAADwxaJRAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="16">iVBORw0KGgoAAAANSUhEUgAAAIoAAACZCAYAAADwxaJRAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAc/SURBVHhe7Z3bsaMwDIZpYPtIDeli
 m6CPdEA1PG0nFOMdcwlgBJFlKUf4/N8MD+uZaIX9+ZrAaQIADJq0wCtD34WuG9JioMIQ+q4N
 XX9ev7cQpW+fob24CaDD0LWhPemM7kWBJN9l6J7hScjiW5S+Dc+2T0uBMVPn3Jc5FqUP7bMN
@@ -5337,7 +4885,7 @@ wTRaaYsSBZTmuu2wPkVJto4/ByGF4TfT6iPpZkQYGbrQsePv28CpKNNwqd27JKTnG7LdAwPp
 OuKMeYrcX/zOF+97W/9uRZl2P/wbs2TaIs+XliRpQypKsl8gS3I/1r1jUWar2TcHtIijeVrt
 rkWJTElr9TXwiXTKWXAvSgSyfIeha0NLSBK5hSiRIX5/cXIToJQh9F0buovOeBtRwM/yH8Ym
 YP84pbPHAAAAAElFTkSuQmCC</item>
-		<item item-id="29">iVBORw0KGgoAAAANSUhEUgAAAIoAAACZCAYAAADwxaJRAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="17">iVBORw0KGgoAAAANSUhEUgAAAIoAAACZCAYAAADwxaJRAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAdBSURBVHhe7Z3bkaMwEEVJYPNwDM5i
 kyCPyYBo+NpMCEZb4mGD3OCW1G23eu6p4kc1viOkgwQymC4AwKBLC6wyjUMYhiktBiJMYRz6
 MIzn7duEKGN/D/3FTgAZpqEP/cnBaF4USPJZpuEe7oQstkUZ+3Dvx7QUKLMcnMcyw6KMob/3
@@ -5374,7 +4922,7 @@ hy+jVUuiRLlL22F/wNoUJbksvYaQQvFb2KzR7tvsRoSZaQgDu+7HPjAqyjJcco/cdH2j7Ayf
 Qelc/w3W6fe4cQ++pU337W9WlOXqh79jyyXyuklJkjZ2I5IcT75L2uW17Q2LslrN3jkgRRzN
 02Y3LUpkqXQLx7EP0ilnw7woEcjyGaahDz0hSaQJUSJT/P7iZCdALVMYhz4MFwdjM6KA7/If
 OLxg/2glc6QAAAAASUVORK5CYII=</item>
-		<item item-id="30">iVBORw0KGgoAAAANSUhEUgAAAFQAAAAxCAYAAABEUo4oAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="18">iVBORw0KGgoAAAANSUhEUgAAAFQAAAAxCAYAAABEUo4oAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVHhe7ZvZkcMgDEBpYPtIDXSx
 TdBHOqAavrYTF6Md+YgNyEEc8cosb8Y/TMbBDwkwURQMmqLCBqlMzoK1U9h8MRM4a8C6837c
 QqgzGsybh7iayRowJ4MrXqg0mRuT1aAJqbKFOgPauLBVDMtg+22ChTow2kBa5wRWK1DaQhwv
@@ -5389,7 +4937,7 @@ xgyhjckUWnPKHlO+HvQhFD9bUI9EU1cnJVco+1dPYjuHggtkHKG3jin24gyZQjkPRP1uTrVl
 vAq8eJUvkRGSf487VDCv+zrqbyse3japfv5EcuukcABuUGOP8Ors270phSdunKkj7qNgoevo
 11n6KJhFYfdEC0WWTidD5XLCVN8QLxSRJvXW//XcGP9G/qf8Ak0nau+gZHd6AAAAAElFTkSu
 QmCC</item>
-		<item item-id="31">iVBORw0KGgoAAAANSUhEUgAAAF8AAABhCAYAAACwPH0oAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="19">iVBORw0KGgoAAAANSUhEUgAAAF8AAABhCAYAAACwPH0oAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQGSURBVHhe7Z3rsaUgDIBtYPu4NdjF
 NkEfpwOq8dd2YjHsBHwgogeCXBLMN+OPZec68BlC9PgYjNCMIWzgwDxpo/UcNhNjNpNWRk/X
 /WQnf1KjUTcDosaslVEXgcJKPjfxK7MezRg5AHzkT8qMagpb2eAC59jGRP5k1KhMuvrZ6HEw
@@ -5411,29 +4959,29 @@ yIGdld7fEZfvpnZ+dNVnXTSz4fNVUGoVjwMqHWyXWH0P18+RJPAi1zJro5M7dxwLA/luiqc9
 kFcZ+3tBeC0/PTBgxjD7BjqA+w76k8Se0LRbcv45j4GJ/CVqkgdKD5i9YffZyAfcAAikn0zC
 dLPCSj7A7QDMWhkVEQ+wkw/McJ3lYkB0mM2kldE3gcJSfi/8B8ud8IGX/F53AAAAAElFTkSu
 QmCC</item>
-		<item item-id="32">iVBORw0KGgoAAAANSUhEUgAAAF4AAABhCAYAAABf/hYWAAAAAXNSR0IArs4c6QAAAARnQU1B
-AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQBSURBVHhe7Z3RkaQgEEBN4PKYGMzi
-kiCPyYBo+LpMCIarFl0R0YFuZhuwX5Uf645d8mwbnFGZnMDCFK9oHWu009rGqxvDOqOV0+Z6
-P7sSb9Ts1E1jWsNq5dRFknQjvjfpG1bPbk7I70O8UW5WJl7bDT5pjus6EG+cmpXL026cmiY3
-rUvcWDrW6Xly06zdOYfvOLehefFwquYJBOl742C7KfibTnBQi8WfS07j4s+Zcom1kQwQNbtE
-eSWxHFCE+Dgx2hZvlJvy0v2M1V/pF/DioTl7+WtafLijRYB0pJxPUMQvg4T1FGxYPHRk5aXC
-1/atg80sUwWQxAcJ0bD4Y00sZTsAqTE0BZL4oE3tiieXCz/0a0s87FMP4lEFfgfdR9xAE+8v
-piAX2hVPGdEA5DMmDRxMER8Cnw+uWily0hyviifkNcJ44jtBxDMh4ploX/z75abXO17bPe/X
-H/f3X8viJeOZEPFMFIg/DCMvFixxnNRSwlDie0LEMyHimRDxTIh4JkQ8E+OKh6+Dw+EeJsYV
-FWIPK/74m2vdH0JqxB5UvHGqeJtc6sQeUzxsQ8jGWyrFHlD8el8jsQanqRd7QPEhuyh0iEto
-sQcX71l+mCbGuAIb+xHiq8S4Ahn7MeKpIS5Bxh5f/Jfuq1kgxB5PfHxViRSTpGLs8cR3gohn
-QsQzEYlPXJlVqGckniHec7oFeft+gkP+o8UvH4TMxz+ZgebZ4rcSlCMe+/DtBU8W/63niLJ4
-nPhKHasvUTfLJ6mPE7/K9gchp8R8iaeK/6nZXI1/rvj9OwpM+6XUpLkWH5UXtg72GeLPV657
-m8P/+Y3SyHAyh2TGN4WIZ0LEMyHimUCLr9zXHKDHHlQ87b1h99SJPah4z+l6pCLU2CIeCTW2
-iEdCjS3ikVBji3gk1NgiHgk1tohHQo09tHjqe8PuoMYeVHyd94alqRN7UPHtI+KZEPFMiHgm
-RDwTIp6JocSfbh1JLFjiOKmlhKHE94SIZ6J98fKmVSYk45kQ8UyIeCaI4rebbeObcPHUmUdw
-YPGboFrCgXrzCLYvHjUrziq9eLsPVJtHcJ9UrG3xhb/0/NqjoaikAHoQD1lVJN5n+6x1UIu/
-cBAQCbHTw8xnQXZkAX0CiJ/1KrvkGd089g4bGbePuf586cg+oxfxkYz1YGTHyGQ7AMWPJ/Ux
-u2XhyCYlfi0/uSHy8WdTqfhu5nONh3H3JCQvTy0WlKsCis7GhWNbGhfvx725mRWPr7GvKPwI
-ooOFfetozm6gYN7uTfbWAdaSvvYVP0uh9FQbOhC/ZkstiQzAWRvvfhfiAb/zZXnWAnGJ2ehG
-PNCbfKuVUwnpQFfiAWu00xeNaQfrjFZO3yRJd+JH4T/jguDFL+v9qwAAAABJRU5ErkJg
-gg==</item>
-		<item item-id="33">iVBORw0KGgoAAAANSUhEUgAAAL8AAABJCAYAAABsIfcCAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="20">iVBORw0KGgoAAAANSUhEUgAAAF4AAABhCAYAAABf/hYWAAAAAXNSR0IArs4c6QAAAARnQU1B
+AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQaSURBVHhe7Z3tkZwwDEBpIH1cDXSR
+JlxHrgNX41/phGKcEYbDGMPakon8oTfDZCCHBj+EbHZhPVmBhSncUDuL0VbrJdxcGYs1Wllt
+7o+zKfFGzVY9NKY2Fq2sukmSZsS3Jn1n0bOdI/LbEG+UnZUJtzaDS5rztgbEG6tmZdO0G6um
+yU7bEjaWzmL1PNlp1vaaw09c21C9eLhU0wSC9KNxsN/krdPxTmq2+GvJqVz8NVNuWZZABoia
+baS8klhPKEJ8mBh1izfKTmnpfmXRr/QLePHQnKP8VS3eP9AsQDpSzico4tdBwnYJViweOrL8
+UuFq+97BJpapDEjivYSoWPy5Juayn4DYGJoCSbzXpnrFk8uFG/rVJR6OqQXxqAJ/gO4jHqCJ
+dzdTkAv1iqeMaADyFRMHTqaI94G/9+5aKXLinO+KJ+Q9Qn/iG0HEMyHimahf/PeXnb6+w63N
+8/31y/7+W7N4yXgmRDwTGeJPw8ibBUsYJ7bk0JX4lhDxTIh4JkQ8EyKeCRHPRL/i4eNgf7iH
+iXFHgdjdij9/51r2i5ASsTsVb6zK3ieVMrH7FA/7ELLxkUKxOxS/PddIrMFxysXuULzPIQod
+4hZa7M7FO9Yvpokx7sDGHkJ8kRh3IGMPI54a4hZk7P7Fv/RczQohdn/iw7tKpJgoBWP3J74R
+RDwTIp6JQHzkzqxAPSMxhnjH5RHk/fMJDvlDi1//EDIf/2YGmrHF7yUoRTz25dsbRhb/1ntE
+SQwnvlDH6krUw/JJ6nDiN9nuJKSUmJcYVfxPzeZq/Ljij88oMO2XUhPnXnxQXtg62DHEX+9c
+jzb7/+d2iiPDyRSiGV8Vo4if/pzPQe56cUYQDxJ9kbnrrzCKeMq/r4AWX7ivOUGP/SP+KZNT
+1l8DJZ72u2HPlIkdFQ/krr8GSrzjcj9SEGrsS+daHSKeCRHPhIhnQsQzIeKZEPFMEMRTfzfs
+CWrsTsWX+d2wOGVidyq+fkQ8EyKeCRHPhIhnQsQz0ZX4y6MjkQVLGCe25NCV+JYQ8UzUL15+
+aZUJyXgmRDwTIp4Jovj9YdvwIVw8ZeYR7Fj8LqiUcKDcPIL1i0fNirNJz97vA8XmETwmFatb
+fOY3Pf/t1VBUUgAtiIesyhLvsn3W2qvFL5wEREIctDDzmZcdSUCfAOJnvcnOeUc3jaPDRsZt
+Y64/VzqSr+hVfCBjOxnJMRLZT0D260ltzG6ZObKJid/KT2qIdNzVlCu+mflcw2HcMxHJ61uL
+GeUqg6yrceXclsrFu3FvamaF42vsTxR+BNHBwrE1NGc3kDFv9y577wBLSd/6ip8lU3qsDQ2I
+37KllEQG4KoND78J8YA7+Lw8q4GwxOw0Ix5oTf6ilVUR6UBT4oHFaKtvGlMPizVaWf2QJM2J
+74V/XDuRJcu3+b0AAAAASUVORK5CYII=</item>
+		<item item-id="21">iVBORw0KGgoAAAANSUhEUgAAAL8AAABJCAYAAABsIfcCAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAV0SURBVHhe7Z39saMsFIdt4O3j1mAX
 bxPUsbcDquGv7cRi2OHLIB7RAxhJ+D0zzk7YJBfxAQ4oZNIADMqUJgAQsyippVzS5IdZtJJC
 S1WXL8gPDlFi1qJSsDtZpNCiomJCfkDSu/iBRc56LqwAkB/sUULPQqWp3eIqapp6DuQHCUqL
@@ -5461,7 +5009,7 @@ q/kW+Ut6I8b7IT9YMSHGZXEp+f1WLpe/4wTO4NWixOFuGhSQH7zgzPhQ8T2VVsj5Njl7WJUX
 8oMtnJh5H4/TG4kVkLbgyY7QNJy8OyA/2GBCjcuhw2Zqs1G8b8Mp/kZkpuJdzrcH8oMEM+tz
 Llug5R1eakc8e5x+MS/PAcgPdthW9FS4fjC9VUl2IT8gcULxwognKAl3ApAfHNJ7BVik0KJQ
 fAPkB1kW87xNhWD3sGglhZaVFRPyg2H5B/+FJZdbkU4LAAAAAElFTkSuQmCC</item>
-		<item item-id="34">iVBORw0KGgoAAAANSUhEUgAAAGIAAAAtCAYAAABVq763AAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="22">iVBORw0KGgoAAAANSUhEUgAAAGIAAAAtCAYAAABVq763AAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAILSURBVHhe7ZjZrYYgEEapy4Koh2po
 xmK4UVHZN2Wcm/87iS9EI8xhmxEGsECEDeAbIIIJEMEEiGBCXsSqzCKEEecjdfgGeJGsiFUt
 twQhDDzMJSNCG4nIk5IWoSVWAjEJEatRi3M24HwgISHC5ZYCF3OpiDjQEqtiNk0i9jMDIqbS
@@ -5473,7 +5021,7 @@ S0OeiGgwiSfHcGBSIuzNI/fJ24yI0LK+dUZbV4F8ZB/RsSJS50GqbSK9Irb3m+LbURr6XkS0
 ODoJfqYsvO3Qz7jDRC1aeWFG3SFhY5II0AtEMKEugrjc8KtURNg9FCKmUxShpTSq52oHhsmL
 sHfgrjs2GCYj4i7nQgQNSRHblnRe5SGChlhEkLJDBA2RiFINhy7j/T0iESFYETRABBMggglV
 EYAGiGACRDABIpgAEUz4A5jcgX9LmOjkAAAAAElFTkSuQmCC</item>
-		<item item-id="35">iVBORw0KGgoAAAANSUhEUgAAAEoAAAAVCAYAAADhCHhTAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="23">iVBORw0KGgoAAAANSUhEUgAAAEoAAAAVCAYAAADhCHhTAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEaSURBVFhH7ZbbDcMgDEU9FwMxD9Ow
 DMO4gjQJL6XX4LY/PlJ+qPClB0xCbEBQP2DMMVEgJgrERIEMolJwTETl8bH/VYvI/p3x3Zye
 9dxWVPRM5PmYfxSVFMNIHNyZcW+Mfk7PXm4lKhfqJmZxLnCqhua0i3gkBg5NwSOX0BWvspl7
@@ -5481,7 +5029,7 @@ i0qBHbm22GxsikDUhOjxBWsiyb1FNW13DYLttyNqcpJ/giz3/6LyqQXau+x+dREPz+dFtoC5
 J8+iSuvNRWktPHqktfWR5v71jspvHtCnKiu5j2+98gqFjueCqOjZ1TuQAoeHAlonWJp7Mn5H
 XWLQ+ykjFFXavP+zgvmrbOQqfZnjour6Sydikd3cQZQxx0SBmCgQEwViokBeCh/uxR8Xu3kA
 AAAASUVORK5CYII=</item>
-		<item item-id="36">iVBORw0KGgoAAAANSUhEUgAAAJgAAABhCAYAAAAqX2jwAAAAAXNSR0IArs4c6QAAAARnQU1B
+		<item item-id="24">iVBORw0KGgoAAAANSUhEUgAAAJgAAABhCAYAAAAqX2jwAAAAAXNSR0IArs4c6QAAAARnQU1B
 AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAWISURBVHhe7Z3bsaMwDIZp4PSRGuhi
 m3Af6cDV8HQ6oRjviEsCxgFLQl5l5/9meFg26NjR50scQ7oEgCFdfgLYMw4xxTjmp50xpiGG
 FAddOSFYY4bQp6BMWkvGGFJQNAYI1pBvk2tljH3qhZJBsFYMIfVhyM9+DXPjyM9eA8GaMKTQ
