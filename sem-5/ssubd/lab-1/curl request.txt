@@ -1,0 +1,670 @@
+curl --location 'http://127.0.0.1:5984/car-dealership/_bulk_docs' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic YWRtaW46' \
+--data-raw '{
+  "docs": [
+    {
+      "_id": "car:10",
+      "type": "car",
+      "id": 10,
+      "vin": "XTA12345678900005",
+      "price": 4800000.0,
+      "production_year": 2023,
+      "mileage": 20000,
+      "color": {
+        "id": 2,
+        "title": "Серебристый"
+      },
+      "model": {
+        "id": 5,
+        "title": "Q5",
+        "brand": {
+          "id": 5,
+          "title": "Audi",
+          "country": {
+            "id": 4,
+            "title": "Германия"
+          }
+        },
+        "body_type": {
+          "id": 5,
+          "title": "Кроссовер"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:11",
+      "type": "car",
+      "id": 11,
+      "vin": "XTA12345678900006",
+      "price": 5000000.0,
+      "production_year": 2021,
+      "mileage": 200,
+      "color": {
+        "id": 3,
+        "title": "Черный"
+      },
+      "model": {
+        "id": 5,
+        "title": "Q5",
+        "brand": {
+          "id": 5,
+          "title": "Audi",
+          "country": {
+            "id": 4,
+            "title": "Германия"
+          }
+        },
+        "body_type": {
+          "id": 5,
+          "title": "Кроссовер"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:12",
+      "type": "car",
+      "id": 12,
+      "vin": "XTA12345678900007",
+      "price": 2145000.0,
+      "production_year": 2025,
+      "mileage": 0,
+      "color": {
+        "id": 2,
+        "title": "Серебристый"
+      },
+      "model": {
+        "id": 3,
+        "title": "Megane",
+        "brand": {
+          "id": 3,
+          "title": "Renault",
+          "country": {
+            "id": 3,
+            "title": "Франция"
+          }
+        },
+        "body_type": {
+          "id": 2,
+          "title": "Хэтчбек"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:15",
+      "type": "car",
+      "id": 15,
+      "vin": "XTA12345678900008",
+      "price": 2145000.0,
+      "production_year": 2025,
+      "mileage": 0,
+      "color": {
+        "id": 2,
+        "title": "Серебристый"
+      },
+      "model": {
+        "id": 1,
+        "title": "Калина",
+        "brand": {
+          "id": 1,
+          "title": "Lada",
+          "country": {
+            "id": 1,
+            "title": "Россия"
+          }
+        },
+        "body_type": {
+          "id": 1,
+          "title": "Седан"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:16",
+      "type": "car",
+      "id": 16,
+      "vin": "XTA12345678900009",
+      "price": 2145000.0,
+      "production_year": 2026,
+      "mileage": 0,
+      "color": {
+        "id": 4,
+        "title": "Синий"
+      },
+      "model": {
+        "id": 3,
+        "title": "Megane",
+        "brand": {
+          "id": 3,
+          "title": "Renault",
+          "country": {
+            "id": 3,
+            "title": "Франция"
+          }
+        },
+        "body_type": {
+          "id": 2,
+          "title": "Хэтчбек"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:5",
+      "type": "car",
+      "id": 5,
+      "vin": "XTA12345678900001",
+      "price": 1350000.0,
+      "production_year": 2017,
+      "mileage": 5000,
+      "color": {
+        "id": 1,
+        "title": "Белый"
+      },
+      "model": {
+        "id": 1,
+        "title": "Калина",
+        "brand": {
+          "id": 1,
+          "title": "Lada",
+          "country": {
+            "id": 1,
+            "title": "Россия"
+          }
+        },
+        "body_type": {
+          "id": 1,
+          "title": "Седан"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:6",
+      "type": "car",
+      "id": 6,
+      "vin": "XTA12345678900002",
+      "price": 2100000.0,
+      "production_year": 2022,
+      "mileage": 15000,
+      "color": {
+        "id": 3,
+        "title": "Черный"
+      },
+      "model": {
+        "id": 2,
+        "title": "Corolla",
+        "brand": {
+          "id": 2,
+          "title": "Toyota",
+          "country": {
+            "id": 2,
+            "title": "Япония"
+          }
+        },
+        "body_type": {
+          "id": 1,
+          "title": "Седан"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:7",
+      "type": "car",
+      "id": 7,
+      "vin": "XTA12345678900003",
+      "price": 2500000.0,
+      "production_year": 2023,
+      "mileage": 5000,
+      "color": {
+        "id": 4,
+        "title": "Синий"
+      },
+      "model": {
+        "id": 3,
+        "title": "Megane",
+        "brand": {
+          "id": 3,
+          "title": "Renault",
+          "country": {
+            "id": 3,
+            "title": "Франция"
+          }
+        },
+        "body_type": {
+          "id": 2,
+          "title": "Хэтчбек"
+        },
+        "engine_type": {
+          "id": 1,
+          "title": "Бензиновый"
+        }
+      }
+    },
+    {
+      "_id": "car:9",
+      "type": "car",
+      "id": 9,
+      "vin": "XTA12345678900004",
+      "price": 2145000.0,
+      "production_year": 2024,
+      "mileage": 0,
+      "color": {
+        "id": 5,
+        "title": "Красный"
+      },
+      "model": {
+        "id": 4,
+        "title": "308 SW",
+        "brand": {
+          "id": 4,
+          "title": "Peugeot",
+          "country": {
+            "id": 3,
+            "title": "Франция"
+          }
+        },
+        "body_type": {
+          "id": 3,
+          "title": "Универсал"
+        },
+        "engine_type": {
+          "id": 2,
+          "title": "Дизельный"
+        }
+      }
+    },
+    {
+      "_id": "customer:5",
+      "type": "customer",
+      "id": 5,
+      "first_name": "Елена",
+      "last_name": "Попова",
+      "phone_number": "79004566543",
+      "email": "popova@mail.ru",
+      "address": {
+        "house": "54",
+        "country": {
+          "id": 1,
+          "title": "Россия"
+        },
+        "region": {
+          "id": 4,
+          "title": "Московская область"
+        },
+        "city": {
+          "id": 5,
+          "title": "Балашиха"
+        },
+        "street": {
+          "id": 6,
+          "title": "Баумана"
+        }
+      }
+    },
+    {
+      "_id": "customer:1",
+      "type": "customer",
+      "id": 1,
+      "first_name": "Алексей",
+      "last_name": "Иванов",
+      "phone_number": "79004445566",
+      "email": "ivanov@mail.ru",
+      "address": {
+        "house": "8",
+        "country": {
+          "id": 1,
+          "title": "Россия"
+        },
+        "region": {
+          "id": 1,
+          "title": "Томская область"
+        },
+        "city": {
+          "id": 1,
+          "title": "Томск"
+        },
+        "street": {
+          "id": 1,
+          "title": "Пушкина"
+        }
+      }
+    },
+    {
+      "_id": "customer:2",
+      "type": "customer",
+      "id": 2,
+      "first_name": "Мария",
+      "last_name": "Кузнецова",
+      "phone_number": "79006667788",
+      "email": "kuznetsova@mail.ru",
+      "address": {
+        "house": "102/2",
+        "country": {
+          "id": 1,
+          "title": "Россия"
+        },
+        "region": {
+          "id": 1,
+          "title": "Томская область"
+        },
+        "city": {
+          "id": 1,
+          "title": "Томск"
+        },
+        "street": {
+          "id": 2,
+          "title": "Проспект Ленина"
+        }
+      }
+    },
+    {
+      "_id": "customer:3",
+      "type": "customer",
+      "id": 3,
+      "first_name": "Сергей",
+      "last_name": "Орлов",
+      "phone_number": "79007778899",
+      "email": "orlov@mail.ru",
+      "address": {
+        "house": "2A",
+        "country": {
+          "id": 1,
+          "title": "Россия"
+        },
+        "region": {
+          "id": 3,
+          "title": "Новосибирская область"
+        },
+        "city": {
+          "id": 3,
+          "title": "Новосибирск"
+        },
+        "street": {
+          "id": 5,
+          "title": "Ленина"
+        }
+      }
+    },
+    {
+      "_id": "customer:4",
+      "type": "customer",
+      "id": 4,
+      "first_name": "Павел",
+      "last_name": "Соколов",
+      "phone_number": "79003457654",
+      "email": "sokolov@mail.ru",
+      "address": {
+        "house": "23/1",
+        "country": {
+          "id": 1,
+          "title": "Россия"
+        },
+        "region": {
+          "id": 1,
+          "title": "Томская область"
+        },
+        "city": {
+          "id": 1,
+          "title": "Томск"
+        },
+        "street": {
+          "id": 4,
+          "title": "Красная"
+        }
+      }
+    },
+    {
+      "_id": "employee:1",
+      "type": "employee",
+      "id": 1,
+      "first_name": "Иван",
+      "last_name": "Петров",
+      "phone_number": "79001112233",
+      "email": "petrov@sever-auto.ru",
+      "hire_date": "2022-03-15",
+      "position": {
+        "id": 1,
+        "title": "Менеджер по продажам"
+      }
+    },
+    {
+      "_id": "employee:2",
+      "type": "employee",
+      "id": 2,
+      "first_name": "Ольга",
+      "last_name": "Смирнова",
+      "phone_number": "79002223344",
+      "email": "smirnova@ural-auto.ru",
+      "hire_date": "2021-07-10",
+      "position": {
+        "id": 2,
+        "title": "Менеджер по закупкам"
+      }
+    },
+    {
+      "_id": "employee:3",
+      "type": "employee",
+      "id": 3,
+      "first_name": "Дмитрий",
+      "last_name": "Волков",
+      "phone_number": "79003334455",
+      "email": "volkov@neva-auto.ru",
+      "hire_date": "2023-01-20",
+      "position": {
+        "id": 3,
+        "title": "Руководитель отдела продаж"
+      }
+    },
+    {
+      "_id": "employee:4",
+      "type": "employee",
+      "id": 4,
+      "first_name": "Андрей",
+      "last_name": "Морозов",
+      "phone_number": "79001239876",
+      "email": "morozov@volga-auto.ru",
+      "hire_date": "2022-09-01",
+      "position": {
+        "id": 5,
+        "title": "Мойщик автомобилей"
+      }
+    },
+    {
+      "_id": "employee:5",
+      "type": "employee",
+      "id": 5,
+      "first_name": "Наталья",
+      "last_name": "Федорова",
+      "phone_number": "79002348765",
+      "email": "fedorova@sibir-auto.ru",
+      "hire_date": "2023-06-12",
+      "position": {
+        "id": 4,
+        "title": "Финансовый консультант"
+      }
+    },
+    {
+      "_id": "sale:2",
+      "type": "sale",
+      "id": 2,
+      "sale_date": "2024-05-10",
+      "total_price": 1330000.0,
+      "payment_method": {
+        "id": 2,
+        "title": "Банковская карта"
+      },
+      "car": {
+        "id": 5,
+        "ref": "car:5",
+        "vin": "XTA12345678900001",
+        "model": "Калина",
+        "brand": "Lada"
+      },
+      "customer": {
+        "id": 1,
+        "ref": "customer:1",
+        "first_name": "Алексей",
+        "last_name": "Иванов"
+      },
+      "employee": {
+        "id": 1,
+        "ref": "employee:1",
+        "first_name": "Иван",
+        "last_name": "Петров",
+        "position": "Менеджер по продажам"
+      }
+    },
+    {
+      "_id": "sale:3",
+      "type": "sale",
+      "id": 3,
+      "sale_date": "2024-11-22",
+      "total_price": 2450000.0,
+      "payment_method": {
+        "id": 1,
+        "title": "Наличные"
+      },
+      "car": {
+        "id": 6,
+        "ref": "car:6",
+        "vin": "XTA12345678900002",
+        "model": "Corolla",
+        "brand": "Toyota"
+      },
+      "customer": {
+        "id": 3,
+        "ref": "customer:3",
+        "first_name": "Сергей",
+        "last_name": "Орлов"
+      },
+      "employee": {
+        "id": 1,
+        "ref": "employee:1",
+        "first_name": "Иван",
+        "last_name": "Петров",
+        "position": "Менеджер по продажам"
+      }
+    },
+    {
+      "_id": "sale:4",
+      "type": "sale",
+      "id": 4,
+      "sale_date": "2025-01-15",
+      "total_price": 2050000.0,
+      "payment_method": {
+        "id": 2,
+        "title": "Банковская карта"
+      },
+      "car": {
+        "id": 7,
+        "ref": "car:7",
+        "vin": "XTA12345678900003",
+        "model": "Megane",
+        "brand": "Renault"
+      },
+      "customer": {
+        "id": 2,
+        "ref": "customer:2",
+        "first_name": "Мария",
+        "last_name": "Кузнецова"
+      },
+      "employee": {
+        "id": 3,
+        "ref": "employee:3",
+        "first_name": "Дмитрий",
+        "last_name": "Волков",
+        "position": "Руководитель отдела продаж"
+      }
+    },
+    {
+      "_id": "sale:5",
+      "type": "sale",
+      "id": 5,
+      "sale_date": "2025-04-18",
+      "total_price": 1900000.0,
+      "payment_method": {
+        "id": 3,
+        "title": "Банковский перевод"
+      },
+      "car": {
+        "id": 9,
+        "ref": "car:9",
+        "vin": "XTA12345678900004",
+        "model": "308 SW",
+        "brand": "Peugeot"
+      },
+      "customer": {
+        "id": 4,
+        "ref": "customer:4",
+        "first_name": "Павел",
+        "last_name": "Соколов"
+      },
+      "employee": {
+        "id": 1,
+        "ref": "employee:1",
+        "first_name": "Иван",
+        "last_name": "Петров",
+        "position": "Менеджер по продажам"
+      }
+    },
+    {
+      "_id": "sale:6",
+      "type": "sale",
+      "id": 6,
+      "sale_date": "2025-06-02",
+      "total_price": 4700000.0,
+      "payment_method": {
+        "id": 4,
+        "title": "Кредит"
+      },
+      "car": {
+        "id": 10,
+        "ref": "car:10",
+        "vin": "XTA12345678900005",
+        "model": "Q5",
+        "brand": "Audi"
+      },
+      "customer": {
+        "id": 5,
+        "ref": "customer:5",
+        "first_name": "Елена",
+        "last_name": "Попова"
+      },
+      "employee": {
+        "id": 3,
+        "ref": "employee:3",
+        "first_name": "Дмитрий",
+        "last_name": "Волков",
+        "position": "Руководитель отдела продаж"
+      }
+    }
+  ]
+}'
