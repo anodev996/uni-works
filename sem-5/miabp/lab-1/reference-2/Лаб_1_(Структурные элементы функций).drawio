@@ -1,0 +1,202 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="KwrcuoF3z-yBPJk8eQU_">
+    <mxGraphModel dx="1364" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-41" parent="1" style="childLayout=tableLayout;recursiveResize=0;shadow=0;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="270" width="400" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-42" parent="D_sr9FjFAeG_52l-eiUl-41" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="91" width="400" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-43" parent="D_sr9FjFAeG_52l-eiUl-42" style="connectable=0;recursiveResize=0;strokeColor=#2D7600;fillColor=#60a917;align=center;whiteSpace=wrap;html=1;fontColor=#ffffff;" value="Функция" vertex="1">
+          <mxGeometry height="91" width="133" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-44" parent="D_sr9FjFAeG_52l-eiUl-42" style="connectable=0;recursiveResize=0;strokeColor=#2D7600;fillColor=#60a917;align=center;whiteSpace=wrap;html=1;fontColor=#ffffff;" value="Вход" vertex="1">
+          <mxGeometry height="91" width="134" x="133" as="geometry">
+            <mxRectangle height="91" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-45" parent="D_sr9FjFAeG_52l-eiUl-42" style="connectable=0;recursiveResize=0;strokeColor=#2D7600;fillColor=#60a917;align=center;whiteSpace=wrap;html=1;fontColor=#ffffff;" value="Исполнитель" vertex="1">
+          <mxGeometry height="91" width="133" x="267" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-46" parent="D_sr9FjFAeG_52l-eiUl-41" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="88" width="400" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-47" parent="D_sr9FjFAeG_52l-eiUl-46" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Организация детских спортивных мероприятий" vertex="1">
+          <mxGeometry height="88" width="133" as="geometry">
+            <mxRectangle height="88" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-48" parent="D_sr9FjFAeG_52l-eiUl-46" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Распоряжение о проведении мероприятий" vertex="1">
+          <mxGeometry height="88" width="134" x="133" as="geometry">
+            <mxRectangle height="88" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-49" parent="D_sr9FjFAeG_52l-eiUl-46" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Учебное заведение" vertex="1">
+          <mxGeometry height="88" width="133" x="267" as="geometry">
+            <mxRectangle height="88" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-50" parent="D_sr9FjFAeG_52l-eiUl-41" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="91" width="400" y="179" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-51" parent="D_sr9FjFAeG_52l-eiUl-50" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Подготовка распоряжения о проведении мероприятий&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="91" width="133" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-52" parent="D_sr9FjFAeG_52l-eiUl-50" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Запланированное мероприятие" vertex="1">
+          <mxGeometry height="91" width="134" x="133" as="geometry">
+            <mxRectangle height="91" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-53" parent="D_sr9FjFAeG_52l-eiUl-50" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Директор" vertex="1">
+          <mxGeometry height="91" width="133" x="267" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-54" parent="1" style="childLayout=tableLayout;recursiveResize=0;shadow=0;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="270" width="400" x="399" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-55" parent="D_sr9FjFAeG_52l-eiUl-54" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="91" width="400" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-56" parent="D_sr9FjFAeG_52l-eiUl-55" style="connectable=0;recursiveResize=0;strokeColor=#2D7600;fillColor=#60a917;align=center;whiteSpace=wrap;html=1;fontColor=#ffffff;" value="Оборудование" vertex="1">
+          <mxGeometry height="91" width="133" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-57" parent="D_sr9FjFAeG_52l-eiUl-55" style="connectable=0;recursiveResize=0;strokeColor=#2D7600;fillColor=#60a917;align=center;whiteSpace=wrap;html=1;fontColor=#ffffff;" value="Регламент" vertex="1">
+          <mxGeometry height="91" width="134" x="133" as="geometry">
+            <mxRectangle height="91" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-58" parent="D_sr9FjFAeG_52l-eiUl-55" style="connectable=0;recursiveResize=0;strokeColor=#2D7600;fillColor=#60a917;align=center;whiteSpace=wrap;html=1;fontColor=#ffffff;" value="Выход" vertex="1">
+          <mxGeometry height="91" width="133" x="267" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-59" parent="D_sr9FjFAeG_52l-eiUl-54" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="88" width="400" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-60" parent="D_sr9FjFAeG_52l-eiUl-59" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Спортивное оборудования, канцелярские принадлежности, украшения" vertex="1">
+          <mxGeometry height="88" width="133" as="geometry">
+            <mxRectangle height="88" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-61" parent="D_sr9FjFAeG_52l-eiUl-59" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Сценарий проведения мероприятий" vertex="1">
+          <mxGeometry height="88" width="134" x="133" as="geometry">
+            <mxRectangle height="88" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-62" parent="D_sr9FjFAeG_52l-eiUl-59" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Состоявшееся мероприятие" vertex="1">
+          <mxGeometry height="88" width="133" x="267" as="geometry">
+            <mxRectangle height="88" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-63" parent="D_sr9FjFAeG_52l-eiUl-54" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="91" width="400" y="179" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-64" parent="D_sr9FjFAeG_52l-eiUl-63" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Канцелярские принадлежности" vertex="1">
+          <mxGeometry height="91" width="133" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-65" parent="D_sr9FjFAeG_52l-eiUl-63" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Положение о соревновании, правила видов спорта, действующие законы страны" vertex="1">
+          <mxGeometry height="91" width="134" x="133" as="geometry">
+            <mxRectangle height="91" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-66" parent="D_sr9FjFAeG_52l-eiUl-63" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Распоряжение о проведении мероприятий" vertex="1">
+          <mxGeometry height="91" width="133" x="267" as="geometry">
+            <mxRectangle height="91" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-67" parent="1" style="childLayout=tableLayout;recursiveResize=0;shadow=0;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="220" width="400" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-68" parent="D_sr9FjFAeG_52l-eiUl-67" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="111" width="400" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-69" parent="D_sr9FjFAeG_52l-eiUl-68" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Подготовка к мероприятиям" vertex="1">
+          <mxGeometry height="111" width="133" as="geometry">
+            <mxRectangle height="111" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-70" parent="D_sr9FjFAeG_52l-eiUl-68" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Утвержденное распоряжение&amp;nbsp;" vertex="1">
+          <mxGeometry height="111" width="134" x="133" as="geometry">
+            <mxRectangle height="111" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-71" parent="D_sr9FjFAeG_52l-eiUl-68" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Организационный комитет" vertex="1">
+          <mxGeometry height="111" width="133" x="267" as="geometry">
+            <mxRectangle height="111" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-72" parent="D_sr9FjFAeG_52l-eiUl-67" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="109" width="400" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-73" parent="D_sr9FjFAeG_52l-eiUl-72" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="&#xa;Проведение мероприятий&#xa;&#xa;" vertex="1">
+          <mxGeometry height="109" width="133" as="geometry">
+            <mxRectangle height="109" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-74" parent="D_sr9FjFAeG_52l-eiUl-72" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Списки участников, готовые площадки" vertex="1">
+          <mxGeometry height="109" width="134" x="133" as="geometry">
+            <mxRectangle height="109" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-75" parent="D_sr9FjFAeG_52l-eiUl-72" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Судьи, медицинский персонал, волонтеры-сопровождающие" vertex="1">
+          <mxGeometry height="109" width="133" x="267" as="geometry">
+            <mxRectangle height="109" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-171" parent="1" style="childLayout=tableLayout;recursiveResize=0;shadow=0;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="220" width="400" x="400" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-172" parent="D_sr9FjFAeG_52l-eiUl-171" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="111" width="400" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-173" parent="D_sr9FjFAeG_52l-eiUl-172" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Спортивное оборудование, призы, поощрительные наборы&amp;nbsp;" vertex="1">
+          <mxGeometry height="111" width="133" as="geometry">
+            <mxRectangle height="111" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-174" parent="D_sr9FjFAeG_52l-eiUl-172" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Сценарий проведения мероприятий" vertex="1">
+          <mxGeometry height="111" width="134" x="133" as="geometry">
+            <mxRectangle height="111" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-175" parent="D_sr9FjFAeG_52l-eiUl-172" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Готовые к проведению мероприятия" vertex="1">
+          <mxGeometry height="111" width="133" x="267" as="geometry">
+            <mxRectangle height="111" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-176" parent="D_sr9FjFAeG_52l-eiUl-171" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;fillColor=none;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="109" width="400" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-177" parent="D_sr9FjFAeG_52l-eiUl-176" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Спортивный инвентарь, медицинские наборы, канцелярские принадлежности, призы, поощрительные наборы" vertex="1">
+          <mxGeometry height="109" width="133" as="geometry">
+            <mxRectangle height="109" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-178" parent="D_sr9FjFAeG_52l-eiUl-176" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Правила проведения соревнований" vertex="1">
+          <mxGeometry height="109" width="134" x="133" as="geometry">
+            <mxRectangle height="109" width="134" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D_sr9FjFAeG_52l-eiUl-179" parent="D_sr9FjFAeG_52l-eiUl-176" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=none;align=center;whiteSpace=wrap;html=1;" value="Результаты соревнований, церемония награждений" vertex="1">
+          <mxGeometry height="109" width="133" x="267" as="geometry">
+            <mxRectangle height="109" width="133" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="JObZpC4HtC29TVj2MBAP">
+    <mxGraphModel dx="1364" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-3" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-11" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-20" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Организация детских спортивных мероприятий" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-5" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-7" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-9" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Распоряжение директора о проведении мероприятий" vertex="1">
+          <mxGeometry height="60" width="120" x="140" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Утверждение состава организационного комитета" vertex="1">
+          <mxGeometry height="60" width="120" x="140" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Проработка сценария проведения мероприятий" vertex="1">
+          <mxGeometry height="60" width="120" x="140" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Проведение репетиционных мероприятий" vertex="1">
+          <mxGeometry height="60" width="120" x="140" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-16" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-17" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-18" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Подготовка к мероприятиям" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Расклейка объявлений" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Подбор сопровождающих" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Подготовка спортзала/площадки" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-24" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-25" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-26" edge="1" parent="1" source="z3FrwxyMjDNCL_3SGw08-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="z3FrwxyMjDNCL_3SGw08-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Проведение мероприятий" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Пересчет участников" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Проведение соревнований" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="z3FrwxyMjDNCL_3SGw08-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Церемония награждения" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="410" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
