@@ -36,6 +36,7 @@
             this.txtBxCoordMatrix = new System.Windows.Forms.TextBox();
             this.lblEnterMatrix = new System.Windows.Forms.Label();
             this.txtBxEnterMatrix = new System.Windows.Forms.TextBox();
+            this.btnResetMatrix = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -45,12 +46,14 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Click += new System.EventHandler(this.splitContainer1_Panel1_Click);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
+            this.splitContainer1.Panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel1_MouseClick);
             // 
             // splitContainer1.Panel2
             // 
@@ -69,6 +72,7 @@
             this.flowLayoutPanel1.Controls.Add(this.txtBxCoordMatrix);
             this.flowLayoutPanel1.Controls.Add(this.lblEnterMatrix);
             this.flowLayoutPanel1.Controls.Add(this.txtBxEnterMatrix);
+            this.flowLayoutPanel1.Controls.Add(this.btnResetMatrix);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -85,7 +89,7 @@
             this.btnDraw.Name = "btnDraw";
             this.btnDraw.Size = new System.Drawing.Size(164, 39);
             this.btnDraw.TabIndex = 0;
-            this.btnDraw.Text = "Построить / Сбросить";
+            this.btnDraw.Text = "Построить/сбросить фигуру";
             this.btnDraw.UseVisualStyleBackColor = true;
             this.btnDraw.Click += new System.EventHandler(this.BtnDraw_Click);
             // 
@@ -99,6 +103,7 @@
             this.btnModify.TabIndex = 1;
             this.btnModify.Text = "Выполнить аффинные преобразования";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // lblCoordMatrix
             // 
@@ -145,6 +150,18 @@
             this.txtBxEnterMatrix.Text = "1 0 0\r\n0 1 0\r\n0 0 1";
             this.txtBxEnterMatrix.WordWrap = false;
             // 
+            // btnResetMatrix
+            // 
+            this.btnResetMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResetMatrix.Location = new System.Drawing.Point(20, 406);
+            this.btnResetMatrix.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.btnResetMatrix.Name = "btnResetMatrix";
+            this.btnResetMatrix.Size = new System.Drawing.Size(164, 39);
+            this.btnResetMatrix.TabIndex = 8;
+            this.btnResetMatrix.Text = "Сбросить матрицу ввода";
+            this.btnResetMatrix.UseVisualStyleBackColor = true;
+            this.btnResetMatrix.Click += new System.EventHandler(this.btnResetMatrix_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,7 +169,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -176,6 +193,7 @@
         private System.Windows.Forms.TextBox txtBxCoordMatrix;
         private System.Windows.Forms.Label lblEnterMatrix;
         private System.Windows.Forms.TextBox txtBxEnterMatrix;
+        private System.Windows.Forms.Button btnResetMatrix;
     }
 }
 
