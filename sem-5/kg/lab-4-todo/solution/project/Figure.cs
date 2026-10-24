@@ -1,0 +1,17 @@
+﻿namespace project
+{
+    internal static class Figure
+    {
+        public static readonly double[,] InitialPoints =
+        {
+            { -4, -4,  1, 1 },
+            { -4,  3,  1, 1 },
+            {  3,  3,  1, 1 },
+            { -1,  1,  1, 1 },
+            { -4, -4, -1, 1 },
+            { -4,  3, -1, 1 },
+            {  3,  3, -1, 1 },
+            { -1,  1, -1, 1 }
+        };
+    }
+}
