@@ -1,0 +1,32 @@
+/* Светлая тема (по умолчанию) */
+:root {
+  --bg-main: #f5f5f5;
+  --bg-card: #ffffff;
+  --text-main: #000000;
+  --text-muted: #888888;
+  --border-color: #eeeeee;
+  --input-bg: #ffffff;
+  --btn-bg: #dddddd;
+  --btn-bg-hover: #cccccc;
+  --danger-color: #ff4444;
+}
+
+/* Темная тема (включается, когда мы вешаем этот класс на главный div) */
+.dark-theme {
+  --bg-main: #1a1a1a;
+  --bg-card: #2d2d2d;
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --border-color: #444444;
+  --input-bg: #333333;
+  --btn-bg: #555555;
+  --btn-bg-hover: #666666;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}

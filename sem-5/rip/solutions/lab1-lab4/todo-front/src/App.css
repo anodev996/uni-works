@@ -1,0 +1,113 @@
+/* --- Стили главного экрана (App) --- */
+.app-wrapper {
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.content-card {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-card);
+  transition: background-color 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.theme-btn {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--text-main);
+}
+.theme-btn:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/* --- Стили формы (TaskForm) --- */
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-main);
+}
+
+.add-btn {
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--btn-bg);
+  color: var(--text-main);
+}
+.add-btn:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/* --- Стили списка и задач (TaskItem) --- */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty-msg {
+  color: var(--text-muted);
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.task-text {
+  color: var(--text-main);
+}
+.task-text.completed {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.delete-btn {
+  color: var(--danger-color);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
