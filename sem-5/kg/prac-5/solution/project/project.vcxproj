@@ -23,6 +23,7 @@
     <ClCompile Include="src\display.c" />
     <ClCompile Include="src\main.c" />
     <ClCompile Include="src\reshape.c" />
+    <ClCompile Include="src\init_gl.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\constants.h" />
