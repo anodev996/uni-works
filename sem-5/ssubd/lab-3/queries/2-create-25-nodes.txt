@@ -1,0 +1,30 @@
+CREATE 
+  (emp1:Employee {id: 'E01', name: 'Алексей Смирнов', position: 'Tech Lead', salary: 320000}),
+  (emp2:Employee {id: 'E02', name: 'Елена Кузнецова', position: 'Backend Developer', salary: 220000}),
+  (emp3:Employee {id: 'E03', name: 'Дмитрий Попов', position: 'Data Engineer', salary: 240000}),
+  (emp4:Employee {id: 'E04', name: 'Ольга Соколова', position: 'Frontend Developer', salary: 190000}),
+  (emp5:Employee {id: 'E05', name: 'Иван Морозов', position: 'DevOps Engineer', salary: 260000}),
+
+  (dept1:Department {code: 'D01', name: 'Отдел бэкенд-разработки', floor: 4}),
+  (dept2:Department {code: 'D02', name: 'Отдел фронтенда', floor: 4}),
+  (dept3:Department {code: 'D03', name: 'Отдел анализа данных', floor: 5}),
+  (dept4:Department {code: 'D04', name: 'Отдел инфраструктуры и Cloud', floor: 3}),
+  (dept5:Department {code: 'D05', name: 'Отдел обеспечения качества', floor: 3}),
+
+  (proj1:Project {code: 'P01', title: 'Финтех-платформа', budget: 15000000, status: 'Active'}),
+  (proj2:Project {code: 'P02', title: 'Мобильный банк', budget: 8500000, status: 'Active'}),
+  (proj3:Project {code: 'P03', title: 'Система антифрода', budget: 12000000, status: 'Active'}),
+  (proj4:Project {code: 'P04', title: 'Витрина маркетплейса', budget: 6000000, status: 'Planning'}),
+  (proj5:Project {code: 'P05', title: 'Архивный шлюз интеграции', budget: 2000000, status: 'Completed'}),
+
+  (tech1:Technology {id: 'T01', name: 'Neo4j', category: 'Database', stableVersion: '5.x'}),
+  (tech2:Technology {id: 'T02', name: 'Python', category: 'Programming Language', stableVersion: '3.12'}),
+  (tech3:Technology {id: 'T03', name: 'Go', category: 'Programming Language', stableVersion: '1.22'}),
+  (tech4:Technology {id: 'T04', name: 'TypeScript', category: 'Frontend', stableVersion: '5.4'}),
+  (tech5:Technology {id: 'T05', name: 'Kubernetes', category: 'Infrastructure', stableVersion: '1.30'}),
+
+  (cli1:Client {regNo: 'C01', companyName: 'Альфа-Инвест', industry: 'Финансы', tier: 'Enterprise'}),
+  (cli2:Client {regNo: 'C02', companyName: 'СберТехнологии', industry: 'Банкинг', tier: 'Enterprise'}),
+  (cli3:Client {regNo: 'C03', companyName: 'РитейлСити', industry: 'Электронная коммерция', tier: 'Middle'}),
+  (cli4:Client {regNo: 'C04', companyName: 'МедКонсалт', industry: 'Здравоохранение', tier: 'Small'}),
+  (cli5:Client {regNo: 'C05', companyName: 'ПромЛогистика', industry: 'Транспорт', tier: 'Middle'});

@@ -1,0 +1,184 @@
+// MATCH (n) находит абсолютно все узлы графа в рабочей базе данных, связывая каждый узел с переменной n.
+MATCH (n)
+// DETACH DELETE n принудительно удаляет найденные узлы вместе со всеми входящими и исходящими связями.
+// Если опустить ключевое слово DETACH, Neo4j вернет ошибку при попытке удалить узел, имеющий активные связи.
+DETACH DELETE n;
+
+
+// Команда CREATE формирует новые структуры в базе данных без предварительной сверки их существования.
+// Каждый узел описывается в круглых скобках: (псевдоним:Метка {ключ: значение}).
+// Псевдонимы (emp1, dept1 и т.д.) действуют локально в рамках одной транзакции выполнения запроса.
+CREATE 
+  // ---------------------------------------------------------------------------
+  // ТИП 1: Employee (Сотрудники компании) - 5 узлов
+  // ---------------------------------------------------------------------------
+  (emp1:Employee {id: 'E01', name: 'Алексей Смирнов', position: 'Tech Lead', salary: 320000}),
+  (emp2:Employee {id: 'E02', name: 'Елена Кузнецова', position: 'Backend Developer', salary: 220000}),
+  (emp3:Employee {id: 'E03', name: 'Дмитрий Попов', position: 'Data Engineer', salary: 240000}),
+  (emp4:Employee {id: 'E04', name: 'Ольга Соколова', position: 'Frontend Developer', salary: 190000}),
+  (emp5:Employee {id: 'E05', name: 'Иван Морозов', position: 'DevOps Engineer', salary: 260000}),
+
+  // ---------------------------------------------------------------------------
+  // ТИП 2: Department (Департаменты / подразделения) - 5 узлов
+  // ---------------------------------------------------------------------------
+  (dept1:Department {code: 'D01', name: 'Отдел бэкенд-разработки', floor: 4}),
+  (dept2:Department {code: 'D02', name: 'Отдел фронтенда', floor: 4}),
+  (dept3:Department {code: 'D03', name: 'Отдел анализа данных', floor: 5}),
+  (dept4:Department {code: 'D04', name: 'Отдел инфраструктуры и Cloud', floor: 3}),
+  // Данный отдел намеренно оставлен без прикрепленных сотрудников для демонстрации несвязанности графа
+  (dept5:Department {code: 'D05', name: 'Отдел обеспечения качества', floor: 3}),
+
+  // ---------------------------------------------------------------------------
+  // ТИП 3: Project (Проекты компании) - 5 узлов
+  // ---------------------------------------------------------------------------
+  (proj1:Project {code: 'P01', title: 'Финтех-платформа', budget: 15000000, status: 'Active'}),
+  (proj2:Project {code: 'P02', title: 'Мобильный банк', budget: 8500000, status: 'Active'}),
+  (proj3:Project {code: 'P03', title: 'Система антифрода', budget: 12000000, status: 'Active'}),
+  (proj4:Project {code: 'P04', title: 'Витрина маркетплейса', budget: 6000000, status: 'Planning'}),
+  (proj5:Project {code: 'P05', title: 'Архивный шлюз интеграции', budget: 2000000, status: 'Completed'}),
+
+  // ---------------------------------------------------------------------------
+  // ТИП 4: Technology (Технологический стек) - 5 узлов
+  // ---------------------------------------------------------------------------
+  (tech1:Technology {id: 'T01', name: 'Neo4j', category: 'Database', stableVersion: '5.x'}),
+  (tech2:Technology {id: 'T02', name: 'Python', category: 'Programming Language', stableVersion: '3.12'}),
+  (tech3:Technology {id: 'T03', name: 'Go', category: 'Programming Language', stableVersion: '1.22'}),
+  (tech4:Technology {id: 'T04', name: 'TypeScript', category: 'Frontend', stableVersion: '5.4'}),
+  (tech5:Technology {id: 'T05', name: 'Kubernetes', category: 'Infrastructure', stableVersion: '1.30'}),
+
+  // ---------------------------------------------------------------------------
+  // ТИП 5: Client (Клиенты и заказчики) - 5 узлов
+  // ---------------------------------------------------------------------------
+  (cli1:Client {regNo: 'C01', companyName: 'Альфа-Инвест', industry: 'Финансы', tier: 'Enterprise'}),
+  (cli2:Client {regNo: 'C02', companyName: 'СберТехнологии', industry: 'Банкинг', tier: 'Enterprise'}),
+  (cli3:Client {regNo: 'C03', companyName: 'РитейлСити', industry: 'Электронная коммерция', tier: 'Middle'}),
+  (cli4:Client {regNo: 'C04', companyName: 'МедКонсалт', industry: 'Здравоохранение', tier: 'Small'}),
+  // Данный клиент намеренно оставлен без активных заказов
+  (cli5:Client {regNo: 'C05', companyName: 'ПромЛогистика', industry: 'Транспорт', tier: 'Middle'});
+
+
+
+
+// 1. Привязка сотрудников к департаментам через отношение :WORKS_IN
+// MATCH отбирает узел сотрудника (e) и узел отдела (d) по их идентификаторам.
+// Конструкция -[:WORKS_IN {...}]-> создает направленное ребро с атрибутами должности и года.
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E01' AND d.code = 'D01'
+CREATE (e)-[:WORKS_IN {role: 'Lead Architect', since: 2021}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E02' AND d.code = 'D01'
+CREATE (e)-[:WORKS_IN {role: 'Senior Backend Engineer', since: 2022}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E03' AND d.code = 'D03'
+CREATE (e)-[:WORKS_IN {role: 'Data Engineer', since: 2023}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E04' AND d.code = 'D02'
+CREATE (e)-[:WORKS_IN {role: 'Middle UI Engineer', since: 2023}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E05' AND d.code = 'D04'
+CREATE (e)-[:WORKS_IN {role: 'Site Reliability Engineer', since: 2020}]->(d);
+
+// 2. Назначение сотрудников на проекты через отношение :CONTRIBUTES_TO
+// Свойство allocation задает долю занятости сотрудника на конкретном проекте (от 0.0 до 1.0).
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E01' AND p.code = 'P01'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.6}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E01' AND p.code = 'P03'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.4}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E02' AND p.code = 'P01'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 1.0}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E03' AND p.code = 'P03'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.8}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E04' AND p.code = 'P02'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 1.0}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E05' AND p.code = 'P01'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.5}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E05' AND p.code = 'P05'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.5}]->(p);
+
+// 3. Компетенции сотрудников: :HAS_SKILL
+// Оператор IN позволяет сопоставить узел e сразу с несколькими узлами t, удовлетворяющими списку имен.
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E01' AND t.name IN ['Neo4j', 'Go', 'Python']
+CREATE (e)-[:HAS_SKILL {proficiency: 'Expert'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E02' AND t.name IN ['Go', 'Python']
+CREATE (e)-[:HAS_SKILL {proficiency: 'Advanced'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E03' AND t.name IN ['Neo4j', 'Python']
+CREATE (e)-[:HAS_SKILL {proficiency: 'Advanced'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E04' AND t.name = 'TypeScript'
+CREATE (e)-[:HAS_SKILL {proficiency: 'Expert'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E05' AND t.name = 'Kubernetes'
+CREATE (e)-[:HAS_SKILL {proficiency: 'Expert'}]->(t);
+
+// 4. Использование технологий в проектах: :BUILT_WITH
+// Демонстрирует технологический стек каждого продукта.
+MATCH (p:Project), (t:Technology)
+WHERE p.code = 'P01' AND t.name IN ['Go', 'Kubernetes']
+CREATE (p)-[:BUILT_WITH]->(t);
+
+MATCH (p:Project), (t:Technology)
+WHERE p.code = 'P02' AND t.name = 'TypeScript'
+CREATE (p)-[:BUILT_WITH]->(t);
+
+MATCH (p:Project), (t:Technology)
+WHERE p.code = 'P03' AND t.name IN ['Python', 'Neo4j']
+CREATE (p)-[:BUILT_WITH]->(t);
+
+// 5. Заказы проектов клиентами: :ORDERED
+// Отношение содержит финансовые атрибуты договора: год подписания и сумму контракта.
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C01' AND p.code = 'P01'
+CREATE (c)-[:ORDERED {signedAt: 2023, contractVal: 15000000}]->(p);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C02' AND p.code = 'P03'
+CREATE (c)-[:ORDERED {signedAt: 2024, contractVal: 12000000}]->(p);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C03' AND p.code = 'P04'
+CREATE (c)-[:ORDERED {signedAt: 2024, contractVal: 6000000}]->(p);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C04' AND p.code = 'P02'
+CREATE (c)-[:ORDERED {signedAt: 2023, contractVal: 8500000}]->(p);
+
+// 6. Внутрикомандная связь между сотрудниками: :MENTORS
+// Отношение направлено от наставника (e1) к подопечному (e2).
+MATCH (e1:Employee), (e2:Employee)
+WHERE e1.id = 'E01' AND e2.id = 'E02'
+CREATE (e1)-[:MENTORS {started: 2023}]->(e2);
+
+
+
+
+// MATCH (n) находит абсолютно все узлы графа
+MATCH (n)
+// OPTIONAL MATCH гарантирует, что если у узла нет исходящих связей (изолированные узлы),
+// сам узел n все равно останется в результирующей выборке (аналог LEFT OUTER JOIN в SQL).
+OPTIONAL MATCH (n)-[r]->(m)
+// RETURN возвращает кортежи из узла-источника, связи и целевого узла для отрисовки в Neo4j Browser.
+RETURN n, r, m;

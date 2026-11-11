@@ -1,0 +1,99 @@
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E01' AND d.code = 'D01'
+CREATE (e)-[:WORKS_IN {role: 'Lead Architect', since: 2021}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E02' AND d.code = 'D01'
+CREATE (e)-[:WORKS_IN {role: 'Senior Backend Engineer', since: 2022}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E03' AND d.code = 'D03'
+CREATE (e)-[:WORKS_IN {role: 'Data Engineer', since: 2023}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E04' AND d.code = 'D02'
+CREATE (e)-[:WORKS_IN {role: 'Middle UI Engineer', since: 2023}]->(d);
+
+MATCH (e:Employee), (d:Department)
+WHERE e.id = 'E05' AND d.code = 'D04'
+CREATE (e)-[:WORKS_IN {role: 'Site Reliability Engineer', since: 2020}]->(d);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E01' AND p.code = 'P01'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.6}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E01' AND p.code = 'P03'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.4}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E02' AND p.code = 'P01'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 1.0}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E03' AND p.code = 'P03'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.8}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E04' AND p.code = 'P02'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 1.0}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E05' AND p.code = 'P01'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.5}]->(p);
+
+MATCH (e:Employee), (p:Project)
+WHERE e.id = 'E05' AND p.code = 'P05'
+CREATE (e)-[:CONTRIBUTES_TO {allocation: 0.5}]->(p);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E01' AND t.name IN ['Neo4j', 'Go', 'Python']
+CREATE (e)-[:HAS_SKILL {proficiency: 'Expert'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E02' AND t.name IN ['Go', 'Python']
+CREATE (e)-[:HAS_SKILL {proficiency: 'Advanced'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E03' AND t.name IN ['Neo4j', 'Python']
+CREATE (e)-[:HAS_SKILL {proficiency: 'Advanced'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E04' AND t.name = 'TypeScript'
+CREATE (e)-[:HAS_SKILL {proficiency: 'Expert'}]->(t);
+
+MATCH (e:Employee), (t:Technology)
+WHERE e.id = 'E05' AND t.name = 'Kubernetes'
+CREATE (e)-[:HAS_SKILL {proficiency: 'Expert'}]->(t);
+
+MATCH (p:Project), (t:Technology)
+WHERE p.code = 'P01' AND t.name IN ['Go', 'Kubernetes']
+CREATE (p)-[:BUILT_WITH]->(t);
+
+MATCH (p:Project), (t:Technology)
+WHERE p.code = 'P02' AND t.name = 'TypeScript'
+CREATE (p)-[:BUILT_WITH]->(t);
+
+MATCH (p:Project), (t:Technology)
+WHERE p.code = 'P03' AND t.name IN ['Python', 'Neo4j']
+CREATE (p)-[:BUILT_WITH]->(t);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C01' AND p.code = 'P01'
+CREATE (c)-[:ORDERED {signedAt: 2023, contractVal: 15000000}]->(p);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C02' AND p.code = 'P03'
+CREATE (c)-[:ORDERED {signedAt: 2024, contractVal: 12000000}]->(p);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C03' AND p.code = 'P04'
+CREATE (c)-[:ORDERED {signedAt: 2024, contractVal: 6000000}]->(p);
+
+MATCH (c:Client), (p:Project)
+WHERE c.regNo = 'C04' AND p.code = 'P02'
+CREATE (c)-[:ORDERED {signedAt: 2023, contractVal: 8500000}]->(p);
+
+MATCH (e1:Employee), (e2:Employee)
+WHERE e1.id = 'E01' AND e2.id = 'E02'
+CREATE (e1)-[:MENTORS {started: 2023}]->(e2);

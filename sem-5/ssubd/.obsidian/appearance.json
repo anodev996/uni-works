@@ -1,0 +1,10 @@
+{
+  "cssTheme": "Blue Topaz",
+  "theme": "system",
+  "showViewHeader": false,
+  "showRibbon": false,
+  "nativeMenus": false,
+  "accentColor": "",
+  "textFontFamily": "",
+  "monospaceFontFamily": ""
+}
