@@ -16,7 +16,7 @@
     }
   ],
   "workspace:edit-file-title": [],
-  "file-explorer:open": [
+  "file-explorer:reveal-active-file": [
     {
       "modifiers": [],
       "key": "F1"
