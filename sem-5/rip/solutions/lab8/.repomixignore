@@ -1,0 +1,3 @@
+*.svg
+**/mvnw
+**/mvnw.cmd

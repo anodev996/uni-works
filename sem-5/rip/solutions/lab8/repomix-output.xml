@@ -1,0 +1,1856 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app-back/
+  demo/
+    .mvn/
+      wrapper/
+        maven-wrapper.properties
+    src/
+      main/
+        java/
+          com/
+            example/
+              demo/
+                config/
+                  CorsConfig.java
+                  DatabaseCommands.java
+                  SecurityConfig.java
+                  WebSocketConfig.java
+                controller/
+                  AuthController.java
+                  ChatController.java
+                  TaskController.java
+                dto/
+                  AuthRequest.java
+                  AuthResponse.java
+                  ChatMessage.java
+                  TaskRequest.java
+                model/
+                  AppUser.java
+                  Task.java
+                repository/
+                  TaskRepository.java
+                  UserRepository.java
+                security/
+                  JwtFilter.java
+                  JwtUtil.java
+                service/
+                  TaskService.java
+                DemoApplication.java
+        resources/
+          application.properties
+      test/
+        java/
+          com/
+            example/
+              demo/
+                DemoApplicationTests.java
+    .dockerignore
+    .gitattributes
+    .gitignore
+    Dockerfile
+    pom.xml
+    README.md
+app-front/
+  src/
+    assets/
+      hero.png
+    components/
+      AuthForm.jsx
+      Chat.jsx
+      TaskForm.jsx
+      TaskItem.jsx
+      TodoList.jsx
+    App.css
+    App.jsx
+    index.css
+    main.jsx
+  .dockerignore
+  .gitignore
+  .oxlintrc.json
+  Dockerfile
+  index.html
+  nginx.conf
+  package.json
+  README.md
+  vite.config.js
+.repomixignore
+docker-compose.yml
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="app-back/demo/.mvn/wrapper/maven-wrapper.properties">
+wrapperVersion=3.3.4
+distributionType=only-script
+distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/config/CorsConfig.java">
+package com.example.demo.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class CorsConfig {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/api/**")
+                        .allowedOrigins("http://localhost:5173", "http://localhost:3000")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*");
+            }
+        };
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/config/DatabaseCommands.java">
+package com.example.demo.config;
+
+import com.example.demo.repository.TaskRepository;
+import com.example.demo.repository.UserRepository;
+import org.springframework.shell.standard.ShellComponent;
+import org.springframework.shell.standard.ShellMethod;
+
+@ShellComponent
+public class DatabaseCommands {
+
+    private final TaskRepository taskRepository;
+    private final UserRepository userRepository;
+
+    public DatabaseCommands(TaskRepository taskRepository, UserRepository userRepository) {
+        this.taskRepository = taskRepository;
+        this.userRepository = userRepository;
+    }
+
+    @ShellMethod(key = "clear-db", value = "Fully clears all DB tables")
+    public String clearDatabase() {
+        long count = taskRepository.count() + userRepository.count();
+        taskRepository.deleteAll();
+        userRepository.deleteAll();
+
+        return "Success! The DB tables are fully cleared. Entries deleted: " + count;
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/config/SecurityConfig.java">
+package com.example.demo.config;
+
+import com.example.demo.security.JwtFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private final JwtFilter jwtFilter;
+
+    public SecurityConfig(JwtFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .cors(Customizer.withDefaults())
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/ws/**").permitAll()
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/config/WebSocketConfig.java">
+package com.example.demo.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws")
+                .setAllowedOrigins("http://localhost:5173", "http://localhost:3000")
+                .withSockJS();
+    }
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.enableSimpleBroker("/topic");
+        registry.setApplicationDestinationPrefixes("/app");
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/controller/AuthController.java">
+package com.example.demo.controller;
+
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.model.AppUser;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.security.JwtUtil;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
+
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@Valid @RequestBody AuthRequest request) {
+        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Пользователь уже существует");
+        }
+
+        String encodedPassword = passwordEncoder.encode(request.getPassword());
+        AppUser newUser = new AppUser(request.getUsername(), encodedPassword);
+        userRepository.save(newUser);
+
+        String token = jwtUtil.generateToken(newUser.getUsername());
+        return ResponseEntity.ok(new AuthResponse(token, newUser.getUsername()));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@Valid @RequestBody AuthRequest request) {
+        Optional<AppUser> userOpt = userRepository.findByUsername(request.getUsername());
+
+        if (userOpt.isPresent() && passwordEncoder.matches(request.getPassword(), userOpt.get().getPassword())) {
+            String token = jwtUtil.generateToken(request.getUsername());
+            return ResponseEntity.ok(new AuthResponse(token, request.getUsername()));
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Неверный логин или пароль");
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/controller/ChatController.java">
+package com.example.demo.controller;
+
+import com.example.demo.dto.ChatMessage;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ChatController {
+
+    @MessageMapping("/chat.sendMessage")
+    @SendTo("/topic/public")
+    public ChatMessage sendMessage(ChatMessage message) {
+        return message;
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/controller/TaskController.java">
+package com.example.demo.controller;
+
+import com.example.demo.dto.TaskRequest;
+import com.example.demo.model.Task;
+import com.example.demo.service.TaskService;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/tasks")
+public class TaskController {
+
+    private final TaskService service;
+
+    public TaskController(TaskService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public List<Task> getAllTasks() {
+        return service.getAllTasks();
+    }
+
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable Long id) {
+        return service.getTaskById(id);
+    }
+
+    @PostMapping
+    public Task createTask(@Valid @RequestBody TaskRequest request) {
+        Task task = new Task(request.getTitle());
+        task.setCompleted(request.isCompleted());
+        return service.createTask(task);
+    }
+
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable Long id, @Valid @RequestBody TaskRequest request) {
+        Task taskDetails = new Task(request.getTitle());
+        taskDetails.setCompleted(request.isCompleted());
+        return service.updateTask(id, taskDetails);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        service.deleteTask(id);
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/dto/AuthRequest.java">
+package com.example.demo.dto;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class AuthRequest {
+    @NotBlank
+    private String username;
+    
+    @NotBlank
+    private String password;
+
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/dto/AuthResponse.java">
+package com.example.demo.dto;
+
+public class AuthResponse {
+    private String token;
+    private String username;
+
+    public AuthResponse(String token, String username) {
+        this.token = token;
+        this.username = username;
+    }
+
+    public String getToken() { return token; }
+    public String getUsername() { return username; }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/dto/ChatMessage.java">
+package com.example.demo.dto;
+
+public class ChatMessage {
+
+    private String sender;
+    private String content;
+
+    public ChatMessage() {}
+
+    public ChatMessage(String sender, String content) {
+        this.sender = sender;
+        this.content = content;
+    }
+
+    public String getSender() { return sender; }
+    public void setSender(String sender) { this.sender = sender; }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/dto/TaskRequest.java">
+package com.example.demo.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public class TaskRequest {
+
+    @NotBlank(message = "Название задачи не может быть пустым")
+    @Size(min = 1, max = 100, message = "Название должно содержать от 1 до 100 символов")
+    private String title;
+
+    private boolean completed;
+
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public boolean isCompleted() { return completed; }
+    public void setCompleted(boolean completed) { this.completed = completed; }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/model/AppUser.java">
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "app_users")
+public class AppUser {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    public AppUser() {}
+
+    public AppUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/model/Task.java">
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tasks")
+public class Task {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String title;
+
+    private boolean completed = false;
+
+    public Task() {}
+
+    public Task(String title) {
+        this.title = title;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public boolean isCompleted() { return completed; }
+    public void setCompleted(boolean completed) { this.completed = completed; }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/repository/TaskRepository.java">
+package com.example.demo.repository;
+
+import com.example.demo.model.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/repository/UserRepository.java">
+package com.example.demo.repository;
+
+import com.example.demo.model.AppUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<AppUser, Long> {
+    Optional<AppUser> findByUsername(String username);
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/security/JwtFilter.java">
+package com.example.demo.security;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+import java.util.Collections;
+
+@Component
+public class JwtFilter extends OncePerRequestFilter {
+
+    private final JwtUtil jwtUtil;
+
+    public JwtFilter(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            if (jwtUtil.validateToken(token)) {
+                String username = jwtUtil.extractUsername(token);
+
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                        username, null, Collections.emptyList()
+                );
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+            }
+        }
+
+        filterChain.doFilter(request, response);
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/security/JwtUtil.java">
+package com.example.demo.security;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
+
+@Component
+public class JwtUtil {
+
+    private static final String SECRET = "MySuperSecretKeyForJwtAuthentication1234567890";
+    private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
+
+    public String generateToken(String username) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String extractUsername(String token) {
+        return getClaims(token).getSubject();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Claims claims = getClaims(token);
+            return !claims.getExpiration().before(new Date());
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/service/TaskService.java">
+package com.example.demo.service;
+
+import com.example.demo.model.Task;
+import com.example.demo.repository.TaskRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TaskService {
+
+    private final TaskRepository repository;
+
+    public TaskService(TaskRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<Task> getAllTasks() {
+        return repository.findAll();
+    }
+
+    public Task getTaskById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Задача с id " + id + " не найдена"));
+    }
+
+    public Task createTask(Task task) {
+        return repository.save(task);
+    }
+
+    public Task updateTask(Long id, Task taskDetails) {
+        Task task = getTaskById(id);
+        task.setTitle(taskDetails.getTitle());
+        task.setCompleted(taskDetails.isCompleted());
+        return repository.save(task);
+    }
+
+    public void deleteTask(Long id) {
+        repository.deleteById(id);
+    }
+}
+</file>
+
+<file path="app-back/demo/src/main/java/com/example/demo/DemoApplication.java">
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+}
+</file>
+
+<file path="app-back/demo/src/main/resources/application.properties">
+spring.application.name=demo
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/todo_db
+spring.datasource.username=postgres
+spring.datasource.password=Qawsed123!
+
+spring.jpa.hibernate.ddl-auto=update
+
+spring.jpa.show-sql=true
+</file>
+
+<file path="app-back/demo/src/test/java/com/example/demo/DemoApplicationTests.java">
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class DemoApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+</file>
+
+<file path="app-back/demo/.dockerignore">
+target/
+.git/
+.idea/
+*.iml
+</file>
+
+<file path="app-back/demo/.gitattributes">
+/mvnw text eol=lf
+*.cmd text eol=crlf
+</file>
+
+<file path="app-back/demo/.gitignore">
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+</file>
+
+<file path="app-back/demo/Dockerfile">
+FROM maven:3.9-eclipse-temurin-17 AS build
+WORKDIR /app
+
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+</file>
+
+<file path="app-back/demo/pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.1.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name/>
+	<description/>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.shell</groupId>
+    		<artifactId>spring-shell-starter</artifactId>
+    		<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<!-- Безопасность Spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Работа с JWT токенами -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+</file>
+
+<file path="app-back/demo/README.md">
+# run
+
+```cmd
+mvnw.cmd spring-boot:run
+```
+</file>
+
+<file path="app-front/src/components/AuthForm.jsx">
+import { useState } from "react";
+
+const AUTH_URL = "http://localhost:8080/api/auth";
+
+export default function AuthForm({ onAuthSuccess }) {
+  const [isLogin, setIsLogin] = useState(true);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!username.trim() || !password.trim()) return;
+
+    const endpoint = isLogin ? "/login" : "/register";
+
+    try {
+      const response = await fetch(`${AUTH_URL}${endpoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: username.trim(), password }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        setError(errorText || "Ошибка авторизации");
+        return;
+      }
+
+      const data = await response.json();
+      onAuthSuccess(data.token, data.username);
+    } catch (err) {
+      console.error("Auth error:", err);
+      setError(
+        err instanceof TypeError
+          ? "Внутренняя ошибка приложения"
+          : "Не удалось подключиться к серверу",
+      );
+    }
+  };
+
+  return (
+    <div
+      className="content-card"
+      style={{ width: "100%", maxWidth: "380px", marginTop: "60px" }}
+    >
+      <div className="header">
+        <h2>{isLogin ? "Вход в систему" : "Регистрация"}</h2>
+      </div>
+
+      {error && (
+        <p
+          style={{
+            color: "var(--danger-color)",
+            marginBottom: "15px",
+            fontSize: "14px",
+          }}
+        >
+          {error}
+        </p>
+      )}
+
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+      >
+        <input
+          className="task-input"
+          type="text"
+          placeholder="Имя пользователя"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          className="task-input"
+          type="password"
+          placeholder="Пароль"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          className="add-btn"
+          type="submit"
+          style={{ marginTop: "8px", padding: "10px" }}
+        >
+          {isLogin ? "Войти" : "Зарегистрироваться"}
+        </button>
+      </form>
+
+      <div style={{ marginTop: "16px", textAlign: "center" }}>
+        <button
+          type="button"
+          onClick={() => {
+            setIsLogin(!isLogin);
+            setError("");
+          }}
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "var(--text-muted)",
+            cursor: "pointer",
+            textDecoration: "underline",
+          }}
+        >
+          {isLogin ? "Нет аккаунта? Создать" : "Уже есть аккаунт? Войти"}
+        </button>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="app-front/src/components/Chat.jsx">
+import { useState, useEffect, useRef } from "react";
+import SockJS from "sockjs-client";
+import { Stomp } from "@stomp/stompjs";
+
+export default function Chat({ username }) {
+  const [messages, setMessages] = useState([]);
+  const [currentMessage, setCurrentMessage] = useState("");
+  const stompClientRef = useRef(null);
+
+  useEffect(() => {
+    const socket = new SockJS("http://localhost:8080/ws");
+    const client = Stomp.over(socket);
+    client.debug = () => {};
+
+    client.connect(
+      {},
+      () => {
+        client.subscribe("/topic/public", (payload) => {
+          const message = JSON.parse(payload.body);
+          setMessages((prev) => [...prev, message]);
+        });
+      },
+      (error) => {
+        console.error("Ошибка сокетов:", error);
+      },
+    );
+
+    stompClientRef.current = client;
+
+    return () => {
+      if (stompClientRef.current) {
+        stompClientRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    if (currentMessage.trim() && stompClientRef.current) {
+      const chatMessage = {
+        sender: username,
+        content: currentMessage,
+      };
+
+      stompClientRef.current.send(
+        "/app/chat.sendMessage",
+        {},
+        JSON.stringify(chatMessage),
+      );
+
+      setCurrentMessage("");
+    }
+  };
+
+  return (
+    <div
+      className="content-card"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "600px",
+        width: "100%",
+        maxWidth: "600px",
+      }}
+    >
+      <div className="header">
+        <h2>Глобальный чат</h2>
+        <span style={{ fontSize: "14px", color: "var(--text-muted)" }}>
+          Вы: <b>{username}</b>
+        </span>
+      </div>
+
+      <div className="chat-messages">
+        {messages.length === 0 ? (
+          <p className="empty-msg">Сообщений пока нет. Напишите первым!</p>
+        ) : (
+          messages.map((msg, index) => (
+            <div key={index} className="chat-message">
+              <b>{msg.sender}:</b> {msg.content}
+            </div>
+          ))
+        )}
+      </div>
+
+      <form
+        className="task-form"
+        onSubmit={sendMessage}
+        style={{ marginBottom: 0 }}
+      >
+        <input
+          className="task-input"
+          type="text"
+          placeholder="Введите сообщение..."
+          value={currentMessage}
+          onChange={(e) => setCurrentMessage(e.target.value)}
+        />
+        <button className="add-btn" type="submit">
+          Отправить
+        </button>
+      </form>
+    </div>
+  );
+}
+</file>
+
+<file path="app-front/src/components/TaskForm.jsx">
+import { useState } from "react";
+
+export default function TaskForm({ onAddTask }) {
+  const [title, setTitle] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim()) return;
+
+    onAddTask(title.trim());
+    setTitle("");
+  };
+
+  return (
+    <form className="task-form" onSubmit={handleSubmit}>
+      <input
+        className="task-input"
+        type="text"
+        placeholder="Что нужно сделать?"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <button className="add-btn" type="submit">
+        Добавить
+      </button>
+    </form>
+  );
+}
+</file>
+
+<file path="app-front/src/components/TaskItem.jsx">
+export default function TaskItem({ task, onToggleTask, onDeleteTask }) {
+  return (
+    <li className="task-item">
+      <label className="task-label">
+        <input
+          type="checkbox"
+          checked={task.completed}
+          onChange={() => onToggleTask(task.id)}
+        />
+        <span className={`task-text ${task.completed ? "completed" : ""}`}>
+          {task.title}
+        </span>
+      </label>
+      <button className="delete-btn" onClick={() => onDeleteTask(task.id)}>
+        ✕
+      </button>
+    </li>
+  );
+}
+</file>
+
+<file path="app-front/src/components/TodoList.jsx">
+import { useEffect, useState } from "react";
+import TaskForm from "./TaskForm";
+import TaskItem from "./TaskItem";
+
+const API_URL = "http://localhost:8080/api/tasks";
+
+export default function TodoList({ token, onLogout }) {
+  const [tasks, setTasks] = useState([]);
+
+  const getAuthHeaders = () => ({
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  });
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch(API_URL, {
+        headers: getAuthHeaders(),
+      });
+      if (response.status === 401 || response.status === 403) {
+        onLogout();
+        return;
+      }
+      const data = await response.json();
+      setTasks(data);
+    } catch (error) {
+      console.error("Ошибка загрузки:", error);
+    }
+  };
+
+  const addTask = async (title) => {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ title, completed: false }),
+    });
+    if (response.ok) {
+      const newTask = await response.json();
+      setTasks([...tasks, newTask]);
+    }
+  };
+
+  const toggleTask = async (id) => {
+    const taskToUpdate = tasks.find((task) => task.id === id);
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify({
+        title: taskToUpdate.title,
+        completed: !taskToUpdate.completed,
+      }),
+    });
+    if (response.ok) {
+      const updatedTask = await response.json();
+      setTasks(tasks.map((task) => (task.id === id ? updatedTask : task)));
+    }
+  };
+
+  const deleteTask = async (id) => {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+      headers: getAuthHeaders(),
+    });
+    if (response.ok) {
+      setTasks(tasks.filter((task) => task.id !== id));
+    }
+  };
+
+  return (
+    <div className="content-card" style={{ width: "100%", maxWidth: "450px" }}>
+      <div className="header">
+        <h2>Глобальный To-Do Список</h2>
+      </div>
+      <TaskForm onAddTask={addTask} />
+      <ul className="task-list">
+        {tasks.length === 0 ? (
+          <p className="empty-msg">Задач пока нет</p>
+        ) : (
+          tasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              onDeleteTask={deleteTask}
+              onToggleTask={toggleTask}
+              task={task}
+            />
+          ))
+        )}
+      </ul>
+    </div>
+  );
+}
+</file>
+
+<file path="app-front/src/App.css">
+.app-wrapper {
+  min-height: 100vh;
+  padding: 20px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.content-card {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-card);
+  transition: background-color 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.theme-btn {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--text-main);
+}
+.theme-btn:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-main);
+}
+
+.add-btn {
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--btn-bg);
+  color: var(--text-main);
+}
+.add-btn:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty-msg {
+  color: var(--text-muted);
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.task-text {
+  color: var(--text-main);
+}
+.task-text.completed {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.delete-btn {
+  color: var(--danger-color);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--bg-card);
+  border-right: 1px solid var(--border-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar h1 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.nav-btn {
+  padding: 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: var(--bg-main);
+}
+
+.nav-btn.active {
+  background-color: var(--btn-bg);
+  font-weight: bold;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: var(--bg-main);
+}
+
+.chat-message {
+  padding: 4px 0;
+  color: var(--text-main);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+.chat-message b {
+  color: var(--text-muted);
+}
+</file>
+
+<file path="app-front/src/App.jsx">
+import { useState } from "react";
+import TodoList from "./components/TodoList";
+import Chat from "./components/Chat";
+import AuthForm from "./components/AuthForm";
+import "./App.css";
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState("todo");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || "",
+  );
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
+  const handleAuthSuccess = (newToken, newUsername) => {
+    localStorage.setItem("token", newToken);
+    localStorage.setItem("username", newUsername);
+    setToken(newToken);
+    setUsername(newUsername);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setToken(null);
+    setUsername("");
+  };
+
+  return (
+    <div className={`app-layout ${isDarkMode ? "dark-theme" : ""}`}>
+      {token && (
+        <div className="sidebar">
+          <h1>Выбор приложения</h1>
+
+          <button
+            className={`nav-btn ${activeTab === "todo" ? "active" : ""}`}
+            onClick={() => setActiveTab("todo")}
+          >
+            &gt; Заметки
+          </button>
+
+          <button
+            className={`nav-btn ${activeTab === "chat" ? "active" : ""}`}
+            onClick={() => setActiveTab("chat")}
+          >
+            &gt; Чат
+          </button>
+
+          <div className="spacer"></div>
+
+          <button
+            className="theme-btn"
+            onClick={toggleTheme}
+            style={{ marginBottom: "8px" }}
+          >
+            Тема | {isDarkMode ? "Тёмная" : "Светлая"}
+          </button>
+
+          <button
+            className="theme-btn"
+            onClick={handleLogout}
+            style={{ backgroundColor: "#ff00008e", color: "#fff" }}
+          >
+            Выйти
+          </button>
+        </div>
+      )}
+
+      <div className="main-content">
+        {!token ? (
+          <AuthForm onAuthSuccess={handleAuthSuccess} />
+        ) : (
+          <>
+            {activeTab === "todo" && (
+              <TodoList onLogout={handleLogout} token={token} />
+            )}
+            {activeTab === "chat" && <Chat username={username} />}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="app-front/src/index.css">
+:root {
+  --bg-main: #f5f5f5;
+  --bg-card: #ffffff;
+  --text-main: #000000;
+  --text-muted: #888888;
+  --border-color: #eeeeee;
+  --input-bg: #ffffff;
+  --btn-bg: #dddddd;
+  --btn-bg-hover: #cccccc;
+  --danger-color: #ff4444;
+}
+
+.dark-theme {
+  --bg-main: #1a1a1a;
+  --bg-card: #2d2d2d;
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --border-color: #444444;
+  --input-bg: #333333;
+  --btn-bg: #555555;
+  --btn-bg-hover: #666666;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+</file>
+
+<file path="app-front/src/main.jsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+</file>
+
+<file path="app-front/.dockerignore">
+node_modules/
+build/
+dist/
+.git/
+</file>
+
+<file path="app-front/.gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="app-front/.oxlintrc.json">
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "oxc"],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+</file>
+
+<file path="app-front/Dockerfile">
+FROM node:20-alpine AS build
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+</file>
+
+<file path="app-front/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app-frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="app-front/nginx.conf">
+server {
+    listen 80;
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+</file>
+
+<file path="app-front/package.json">
+{
+  "name": "todo-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stomp/stompjs": "^7.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sockjs-client": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.89.0",
+    "vite": "^8.3.5"
+  }
+}
+</file>
+
+<file path="app-front/README.md">
+# Run web server
+
+```pwsh
+npm run dev
+```
+
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+</file>
+
+<file path="app-front/vite.config.js">
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  define: {
+    global: "window",
+  },
+});
+</file>
+
+<file path=".repomixignore">
+*.svg
+**/mvnw
+**/mvnw.cmd
+</file>
+
+<file path="docker-compose.yml">
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: app-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myuser -d mydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./app-back/demo
+    container_name: app-backend
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydb
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./app-front
+    container_name: app-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  pgdata:
+</file>
+
+</files>
