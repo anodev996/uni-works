@@ -29,6 +29,11 @@ namespace project
             return result;
         }
 
+        public static double[,] ComposeTransform(double[,] first, double[,] second)
+        {
+            return Multiply(first, second);
+        }
+
         public static bool TryParseMatrix(string text, int rows, int cols, out double[,] matrix)
         {
             matrix = null;
@@ -70,6 +75,11 @@ namespace project
             return sb.ToString();
         }
 
+        public static double[,] RotationYOZ(double a)
+        {
+            return RotationX(a);
+        }
+
         public static double[,] RotationX(double a)
         {
             double c = Math.Cos(a), s = Math.Sin(a);
@@ -103,6 +113,22 @@ namespace project
                 { s,  c, 0, 0 },
                 { 0,  0, 1, 0 },
                 { 0,  0, 0, 1 }
+            };
+        }
+
+        public static double[,] DimetricProjection()
+        {
+            double sinPhi = -1.0 / 3.0;
+            double cosPhi = 2.0 * Math.Sqrt(2.0) / 3.0;
+            double sinPsi = 1.0 / (2.0 * Math.Sqrt(2.0));
+            double cosPsi = Math.Sqrt(7.0 / 8.0);
+
+            return new double[,]
+            {
+                {  cosPsi,  sinPsi * sinPhi, 0, 0 },
+                {  0,       cosPhi,          0, 0 },
+                { -sinPsi,  cosPsi * sinPhi, 0, 0 },
+                {  0,       0,               0, 1 }
             };
         }
     }
