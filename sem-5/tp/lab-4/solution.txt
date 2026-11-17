@@ -1,0 +1,8 @@
+Проект MindMaze / MaidMaze / МКПГ(Многопользовательская Кроссплатформенная Платформер-Головоломка)
+
+Ссылка на проект GitHub:
+https://github.com/anim3-coder/MaidMaze
+
+Участник проекта - Бадулин Илья, гр.424-1
+Ссылка на профиль GitHub:
+https://github.com/anodev996
