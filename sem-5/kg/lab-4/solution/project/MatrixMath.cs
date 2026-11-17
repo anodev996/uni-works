@@ -26,11 +26,6 @@ namespace project
             return result;
         }
 
-        public static double[,] ComposeTransform(double[,] first, double[,] second)
-        {
-            return Multiply(first, second);
-        }
-
         public static bool TryParseMatrix(string text, int rows, int cols, out double[,] matrix)
         {
             matrix = null;
@@ -70,11 +65,6 @@ namespace project
                 if (i < rows - 1) sb.AppendLine();
             }
             return sb.ToString();
-        }
-
-        public static double[,] RotationYOZ(double a)
-        {
-            return RotationX(a);
         }
 
         public static double[,] RotationX(double a)

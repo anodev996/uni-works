@@ -9,12 +9,6 @@ namespace project
             return new PointF(cx + (float)(sx * scale), cy - (float)(sy * scale));
         }
 
-        public static PointF[] Project3DPoints(double[,] points3D, int cx, int cy, float scale)
-        {
-            double[,] projected = MatrixMath.Multiply(points3D, MatrixMath.DimetricProjection());
-            return ProjectedMatrixToScreen(projected, cx, cy, scale);
-        }
-
         public static PointF[] ProjectedMatrixToScreen(double[,] projectedMatrix, int cx, int cy, float scale)
         {
             int n = projectedMatrix.GetLength(0);

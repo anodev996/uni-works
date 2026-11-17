@@ -12,7 +12,6 @@ namespace project
         private const float Margin = 25f;
 
         private bool _drawFigure;
-        private double _accumulatedAngle;
         private double[,] _points;
         private double[,] _inputBoxPoints;
         private double[,] _projectedPoints;
@@ -27,7 +26,6 @@ namespace project
 
         private void ResetFigureState()
         {
-            _accumulatedAngle = 0;
             _points = (double[,])Points.InitialPoints.Clone();
             _projectedPoints = MatrixMath.Multiply(_points, MatrixMath.DimetricProjection());
             txtBxCoordMatrix.Text = MatrixMath.MatrixToString(_points);
@@ -147,22 +145,7 @@ namespace project
                 return;
             }
 
-            bool isProjectionMatrix =
-                Math.Abs(transform[0, 2]) < 1e-9 &&
-                Math.Abs(transform[1, 2]) < 1e-9 &&
-                Math.Abs(transform[2, 2]) < 1e-9 &&
-                Math.Abs(transform[3, 2]) < 1e-9;
-
-            if (isProjectionMatrix)
-            {
-                _projectedPoints = MatrixMath.Multiply(_points, transform);
-                _drawFigure = true;
-                splitContainer1.Panel1.Invalidate();
-            }
-            else
-            {
-                ApplyAffineTransform(transform);
-            }
+            ApplyAffineTransform(transform);
         }
 
         private void btnResetMatrix_Click(object sender, EventArgs e)
@@ -172,9 +155,7 @@ namespace project
 
         private void btnRotYOZ_Click(object sender, EventArgs e)
         {
-            double angle = GetAngle();
-            _accumulatedAngle += angle;
-            ApplyAffineTransform(MatrixMath.RotationYOZ(angle));
+            ApplyAffineTransform(MatrixMath.RotationX(GetAngle()));
         }
 
         private void btnRotY_Click(object sender, EventArgs e)
