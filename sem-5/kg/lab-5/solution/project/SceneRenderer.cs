@@ -1,5 +1,4 @@
 ﻿using OpenTK.Graphics.OpenGL;
-using project;
 using System;
 
 namespace project
@@ -8,7 +7,7 @@ namespace project
     {
         public void Init(int width, int height)
         {
-            GL.ClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            GL.ClearColor(255 / 255.0f, 255 / 255.0f, 255 / 255.0f, 255 / 255.0f);
             GL.Enable(EnableCap.PointSmooth);
             GL.Enable(EnableCap.LineSmooth);
             Resize(width, height);

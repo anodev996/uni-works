@@ -1,5 +1,4 @@
-﻿using project;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -133,16 +132,16 @@ namespace project
                     }
                     break;
 
-                case Keys.Up:
+                case Keys.K:
                     state.By += moveStep;
                     break;
-                case Keys.Down:
+                case Keys.J:
                     state.By -= moveStep;
                     break;
-                case Keys.Left:
+                case Keys.H:
                     state.Bx -= moveStep;
                     break;
-                case Keys.Right:
+                case Keys.L:
                     state.Bx += moveStep;
                     break;
                 case Keys.N:
@@ -154,7 +153,7 @@ namespace project
                 case Keys.I:
                     state.ScaleB += scaleStep;
                     break;
-                case Keys.K:
+                case Keys.O:
                     if (state.ScaleB > 0.2f)
                     {
                         state.ScaleB -= scaleStep;

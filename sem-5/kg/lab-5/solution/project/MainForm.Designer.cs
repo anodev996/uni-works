@@ -35,7 +35,7 @@
             // 
             // glControl
             // 
-            this.glControl.BackColor = System.Drawing.Color.White;
+            this.glControl.BackColor = System.Drawing.Color.Transparent;
             this.glControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.glControl.Location = new System.Drawing.Point(0, 0);
             this.glControl.Name = "glControl";
@@ -64,7 +64,7 @@
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sem5KgLab5";
+            this.Text = "KgLab5";
             this.ResumeLayout(false);
             this.PerformLayout();
 

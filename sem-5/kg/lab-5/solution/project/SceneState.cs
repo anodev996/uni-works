@@ -22,7 +22,7 @@
 
         public void Reset()
         {
-            Ax = -1.25f;
+            Ax = 1.25f;
             Ay = 0.0f;
             AngleA = 0.0f;
             ScaleA = 1.0f;
