@@ -67,7 +67,7 @@ namespace project
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    sb.Append(m[i, j].ToString("0.###", CultureInfo.InvariantCulture));
+                    sb.Append(m[i, j].ToString("0.0", CultureInfo.InvariantCulture).PadLeft(5));
                     if (j < cols - 1) sb.Append(' ');
                 }
                 if (i < rows - 1) sb.AppendLine();

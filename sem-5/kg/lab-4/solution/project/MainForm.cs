@@ -14,6 +14,7 @@ namespace project
         private bool _drawFigure;
         private double _accumulatedAngle;
         private double[,] _points;
+        private double[,] _inputBoxPoints;
         private double[,] _projectedPoints;
 
         public MainForm()
@@ -25,9 +26,11 @@ namespace project
         private void ResetFigureState()
         {
             _accumulatedAngle = 0;
-            _points = (double[,])Figure.InitialPoints.Clone();
+            _points = (double[,])Points.InitialPoints.Clone();
+            _inputBoxPoints = (double[,])Points.InitialInputBoxPoints.Clone();
             _projectedPoints = MatrixMath.Multiply(_points, MatrixMath.DimetricProjection());
             txtBxCoordMatrix.Text = MatrixMath.MatrixToString(_points);
+            txtBxEnterMatrix.Text = MatrixMath.MatrixToString(_inputBoxPoints);
         }
 
         private void splitContainer1_Panel1_MouseClick(object sender, MouseEventArgs e)
@@ -137,8 +140,8 @@ namespace project
 
             txtBxEnterMatrix.Text = MatrixMath.MatrixToString(composition);
 
-            _points = MatrixMath.Multiply(Figure.InitialPoints, rotationYOZ);
-            _projectedPoints = MatrixMath.Multiply(Figure.InitialPoints, composition);
+            _points = MatrixMath.Multiply(Points.InitialPoints, rotationYOZ);
+            _projectedPoints = MatrixMath.Multiply(Points.InitialPoints, composition);
 
             txtBxCoordMatrix.Text = MatrixMath.MatrixToString(_points);
             _drawFigure = true;

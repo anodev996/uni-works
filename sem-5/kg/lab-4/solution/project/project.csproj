@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Figure.cs" />
+    <Compile Include="Points.cs" />
     <Compile Include="DimetricProjector.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
