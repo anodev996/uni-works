@@ -21,16 +21,16 @@ namespace project
         {
             InitializeComponent();
             ResetFigureState();
+            _inputBoxPoints = (double[,])Points.InitialInputBoxPoints.Clone();
+            txtBxEnterMatrix.Text = MatrixMath.MatrixToString(_inputBoxPoints);
         }
 
         private void ResetFigureState()
         {
             _accumulatedAngle = 0;
             _points = (double[,])Points.InitialPoints.Clone();
-            _inputBoxPoints = (double[,])Points.InitialInputBoxPoints.Clone();
             _projectedPoints = MatrixMath.Multiply(_points, MatrixMath.DimetricProjection());
             txtBxCoordMatrix.Text = MatrixMath.MatrixToString(_points);
-            txtBxEnterMatrix.Text = MatrixMath.MatrixToString(_inputBoxPoints);
         }
 
         private void splitContainer1_Panel1_MouseClick(object sender, MouseEventArgs e)
@@ -130,24 +130,6 @@ namespace project
             splitContainer1.Panel1.Invalidate();
         }
 
-        private void btnComposition_Click(object sender, EventArgs e)
-        {
-            _accumulatedAngle += GetAngle();
-
-            double[,] rotationYOZ = MatrixMath.RotationYOZ(_accumulatedAngle);
-            double[,] dimetric = MatrixMath.DimetricProjection();
-            double[,] composition = MatrixMath.ComposeTransform(rotationYOZ, dimetric);
-
-            txtBxEnterMatrix.Text = MatrixMath.MatrixToString(composition);
-
-            _points = MatrixMath.Multiply(Points.InitialPoints, rotationYOZ);
-            _projectedPoints = MatrixMath.Multiply(Points.InitialPoints, composition);
-
-            txtBxCoordMatrix.Text = MatrixMath.MatrixToString(_points);
-            _drawFigure = true;
-            splitContainer1.Panel1.Invalidate();
-        }
-
         private void btnModify_Click(object sender, EventArgs e)
         {
             if (!MatrixMath.TryParseMatrix(txtBxEnterMatrix.Text, 4, 4, out double[,] transform))
@@ -185,7 +167,7 @@ namespace project
 
         private void btnResetMatrix_Click(object sender, EventArgs e)
         {
-            txtBxEnterMatrix.Text = MatrixMath.IdentityText;
+            txtBxEnterMatrix.Text = MatrixMath.MatrixToString(_inputBoxPoints);
         }
 
         private void btnRotYOZ_Click(object sender, EventArgs e)

@@ -6,9 +6,6 @@ namespace project
 {
     internal static class MatrixMath
     {
-        public const string IdentityText =
-            "1 0 0 0\r\n0 1 0 0\r\n0 0 1 0\r\n0 0 0 1";
-
         public static double[,] Multiply(double[,] a, double[,] b)
         {
             int rowsA = a.GetLength(0), colsA = a.GetLength(1);
