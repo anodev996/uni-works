@@ -36,12 +36,7 @@ namespace project
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.LoadIdentity();
 
-            GL.PushMatrix();
-            GL.Translate(state.Bx, state.By, 0.0f);
-            GL.Rotate(state.AngleB, 0.0f, 0.0f, 1.0f);
-            GL.Scale(state.ScaleB, state.ScaleB, 1.0f);
-            DrawFigureB();
-            GL.PopMatrix();
+            DrawTransformedFigureB(state);
 
             if (state.LoopMode)
             {
@@ -62,12 +57,21 @@ namespace project
         private void DrawTransformedFigureA(SceneState state, float currentOrbitAngle)
         {
             GL.PushMatrix();
-            GL.Translate(state.Bx, state.By, 0.0f);
             GL.Rotate(currentOrbitAngle, 0.0f, 0.0f, 1.0f);
             GL.Translate(state.Ax, state.Ay, 0.0f);
             GL.Rotate(state.AngleA, 0.0f, 0.0f, 1.0f);
             GL.Scale(state.ScaleA, state.ScaleA, 1.0f);
             DrawFigureA();
+            GL.PopMatrix();
+        }
+
+        private void DrawTransformedFigureB(SceneState state)
+        {
+            GL.PushMatrix();
+            GL.Translate(state.Bx, state.By, 0.0f);
+            GL.Rotate(state.AngleB, 0.0f, 0.0f, 1.0f);
+            GL.Scale(state.ScaleB, state.ScaleB, 1.0f);
+            DrawFigureB();
             GL.PopMatrix();
         }
 
