@@ -1,0 +1,1744 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: ./project/bin/Release/OpenTK.xml
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+project/
+  bin/
+    Release/
+      OpenTK.dll
+      OpenTK.GLControl.dll
+      OpenTK.GLControl.pdb
+      OpenTK.GLControl.xml
+      OpenTK.pdb
+      project.exe
+      project.exe.config
+      project.pdb
+  Properties/
+    AssemblyInfo.cs
+    Resources.Designer.cs
+    Resources.resx
+    Settings.Designer.cs
+    Settings.settings
+  App.config
+  MainForm.cs
+  MainForm.Designer.cs
+  MainForm.resx
+  OpenTK.dll.config
+  packages.config
+  Program.cs
+  project.csproj
+  README.md
+  RotationController.cs
+  SceneRenderer.cs
+  TruncatedPyramid.cs
+solution.slnx
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="project/bin/Release/OpenTK.GLControl.xml">
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTK.GLControl</name>
+    </assembly>
+    <members>
+        <member name="T:OpenTK.GLControl">
+            <summary>
+            OpenGL-aware WinForms control.
+            The WinForms designer will always call the default constructor.
+            Inherit from this class and call one of its specialized constructors
+            to enable antialiasing or custom <see cref="P:OpenTK.GLControl.GraphicsMode"/>s.
+            </summary>
+        </member>
+        <member name="F:OpenTK.GLControl.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenTK.GLControl.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.#ctor">
+            <summary>
+            Constructs a new instance.
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.#ctor(OpenTK.Graphics.GraphicsMode)">
+            <summary>
+            Constructs a new instance with the specified GraphicsMode.
+            </summary>
+            <param name="mode">The OpenTK.Graphics.GraphicsMode of the control.</param>
+        </member>
+        <member name="M:OpenTK.GLControl.#ctor(OpenTK.Graphics.GraphicsMode,System.Int32,System.Int32,OpenTK.Graphics.GraphicsContextFlags)">
+            <summary>
+            Constructs a new instance with the specified GraphicsMode.
+            </summary>
+            <param name="mode">The OpenTK.Graphics.GraphicsMode of the control.</param>
+            <param name="major">The major version for the OpenGL GraphicsContext.</param>
+            <param name="minor">The minor version for the OpenGL GraphicsContext.</param>
+            <param name="flags">The GraphicsContextFlags for the OpenGL GraphicsContext.</param>
+        </member>
+        <member name="P:OpenTK.GLControl.HasValidContext">
+            <summary>
+            Gets a value indicating whether [failed to create OpenGL context].
+            So that the application stays running and is able to recover.
+            </summary>
+            <value>
+            <c>true</c> if [failed create context]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:OpenTK.GLControl.CreateParams">
+            <summary>
+            Gets the <c>CreateParams</c> instance for this <c>GLControl</c>
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.OnHandleCreated(System.EventArgs)">
+            <summary>Raises the HandleCreated event.</summary>
+            <param name="e">Not used.</param>
+        </member>
+        <member name="M:OpenTK.GLControl.OnHandleDestroyed(System.EventArgs)">
+            <summary>Raises the HandleDestroyed event.</summary>
+            <param name="e">Not used.</param>
+        </member>
+        <member name="M:OpenTK.GLControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.Paint event.
+            </summary>
+            <param name="e">A System.Windows.Forms.PaintEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:OpenTK.GLControl.OnResize(System.EventArgs)">
+            <summary>
+            Raises the Resize event.
+            Note: this method may be called before the OpenGL context is ready.
+            Check that IsHandleCreated is true before using any OpenGL methods.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="T:OpenTK.GLControl.DelayUpdate">
+            <summary>
+            Needed to delay the invoke on OS X. Also needed because OpenTK is .NET 2, otherwise I'd use an inline Action.
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.PerformContextUpdate">
+            <summary>
+            Execute the delayed context update
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.OnParentChanged(System.EventArgs)">
+            <summary>
+            Raises the ParentChanged event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:OpenTK.GLControl.SwapBuffers">
+            <summary>
+            Swaps the front and back buffers, presenting the rendered scene to the screen.
+            This method will have no effect on a single-buffered <c>GraphicsMode</c>.
+            </summary>
+        </member>
+        <member name="M:OpenTK.GLControl.MakeCurrent">
+            <summary>
+            <para>
+            Makes <see cref="P:OpenTK.GLControl.Context"/> current in the calling thread.
+            All OpenGL commands issued are hereafter interpreted by this context.
+            </para>
+            <para>
+            When using multiple <c>GLControl</c>s, calling <c>MakeCurrent</c> on
+            one control will make all other controls non-current in the calling thread.
+            </para>
+            <seealso cref="P:OpenTK.GLControl.Context"/>
+            <para>
+            A <c>GLControl</c> can only be current in one thread at a time.
+            To make a control non-current, call <c>GLControl.Context.MakeCurrent(null)</c>.
+            </para>
+            </summary>
+        </member>
+        <member name="P:OpenTK.GLControl.IsIdle">
+            <summary>
+            Gets a value indicating whether the current thread contains pending system messages.
+            </summary>
+        </member>
+        <member name="P:OpenTK.GLControl.Context">
+            <summary>
+            Gets the <c>IGraphicsContext</c> instance that is associated with the <c>GLControl</c>.
+            The associated <c>IGraphicsContext</c> is updated whenever the <c>GLControl</c>
+            handle is created or recreated.
+            When using multiple <c>GLControl</c>s, ensure that <c>Context</c>
+            is current before performing any OpenGL operations.
+            <seealso cref="M:OpenTK.GLControl.MakeCurrent"/>
+            </summary>
+        </member>
+        <member name="P:OpenTK.GLControl.AspectRatio">
+            <summary>
+            Gets the aspect ratio of this GLControl.
+            </summary>
+        </member>
+        <member name="P:OpenTK.GLControl.VSync">
+            <summary>
+            Gets or sets a value indicating whether vsync is active for this <c>GLControl</c>.
+            When using multiple <c>GLControl</c>s, ensure that <see cref="P:OpenTK.GLControl.Context"/>
+            is current before accessing this property.
+            <seealso cref="P:OpenTK.GLControl.Context"/>
+            <seealso cref="M:OpenTK.GLControl.MakeCurrent"/>
+            </summary>
+        </member>
+        <member name="P:OpenTK.GLControl.GraphicsMode">
+            <summary>
+            Gets the <c>GraphicsMode</c> of the <c>IGraphicsContext</c> associated with
+            this <c>GLControl</c>. If you wish to change <c>GraphicsMode</c>, you must
+            destroy and recreate the <c>GLControl</c>.
+            </summary>
+        </member>
+        <member name="P:OpenTK.GLControl.WindowInfo">
+            <summary>
+            Gets the <see cref="T:OpenTK.Platform.IWindowInfo"/> for this instance.
+            </summary>
+        </member>
+        <member name="M:OpenTK.Platform.MacOS.Agl.aglChoosePixelFormat(System.IntPtr,System.Int32,System.Int32[])">
+            <summary>
+            Use this overload only with IntPtr.Zero for the first argument.
+            </summary>
+            <param name="gdevs">
+            </param>
+            <param name="ndev">
+            </param>
+            <param name="attribs">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:OpenTK.Platform.MacOS.AglContext">
+            <summary>
+            AGL context implementation for WinForms compatibility.
+            </summary>
+        </member>
+    </members>
+</doc>
+</file>
+
+<file path="project/bin/Release/project.exe.config">
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+</configuration>
+</file>
+
+<file path="project/Properties/AssemblyInfo.cs">
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("project")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("project")]
+[assembly: AssemblyCopyright("Copyright ©  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("9317b89e-d95a-4e10-82a7-94f768d5b5f0")]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version
+//      Build Number
+//      Revision
+//
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+</file>
+
+<file path="project/Properties/Resources.Designer.cs">
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.42000
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace project.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("project.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+</file>
+
+<file path="project/Properties/Resources.resx">
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>
+</file>
+
+<file path="project/Properties/Settings.Designer.cs">
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.42000
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace project.Properties
+{
+
+
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}
+</file>
+
+<file path="project/Properties/Settings.settings">
+<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>
+</file>
+
+<file path="project/App.config">
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+</configuration>
+</file>
+
+<file path="project/MainForm.cs">
+using System;
+using System.Windows.Forms;
+
+namespace project
+{
+    public partial class MainForm : Form
+    {
+        private readonly SceneRenderer _renderer;
+        private readonly RotationController _controller;
+        private readonly Timer _animationTimer;
+
+        public MainForm()
+        {
+            InitializeComponent();
+
+            TruncatedPyramid pyramid = new TruncatedPyramid();
+            _renderer = new SceneRenderer(pyramid);
+            _controller = new RotationController();
+
+            _animationTimer = new Timer();
+            _animationTimer.Interval = 30;
+            _animationTimer.Tick += AnimationTimer_Tick;
+
+            glControl.Load += GlControl_Load;
+            glControl.Resize += GlControl_Resize;
+            glControl.Paint += GlControl_Paint;
+            glControl.PreviewKeyDown += GlControl_PreviewKeyDown;
+            KeyDown += MainForm_KeyDown;
+            FormClosing += MainForm_FormClosing;
+        }
+
+        private void GlControl_Load(object sender, EventArgs e)
+        {
+            glControl.MakeCurrent();
+            _renderer.Initialize();
+            _renderer.UpdateProjection(glControl.Width, glControl.Height);
+            _animationTimer.Start();
+        }
+
+        private void GlControl_Resize(object sender, EventArgs e)
+        {
+            if (!glControl.IsHandleCreated)
+            {
+                return;
+            }
+
+            glControl.MakeCurrent();
+            _renderer.UpdateProjection(glControl.Width, glControl.Height);
+            glControl.Invalidate();
+        }
+
+        private void GlControl_Paint(object sender, PaintEventArgs e)
+        {
+            if (!glControl.IsHandleCreated)
+            {
+                return;
+            }
+
+            glControl.MakeCurrent();
+            _renderer.Render(_controller);
+            glControl.SwapBuffers();
+        }
+
+        private void AnimationTimer_Tick(object sender, EventArgs e)
+        {
+            _controller.OnTimerTick();
+            glControl.Invalidate();
+        }
+
+        private void GlControl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||
+                e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+            {
+                e.IsInputKey = true;
+            }
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
+                return;
+            }
+
+            if (_controller.HandleKeyDown(e.KeyCode))
+            {
+                glControl.Invalidate();
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _animationTimer.Stop();
+            _animationTimer.Dispose();
+        }
+    }
+}
+</file>
+
+<file path="project/MainForm.Designer.cs">
+namespace project
+{
+    partial class MainForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.glControl = new OpenTK.GLControl();
+            this.SuspendLayout();
+            // 
+            // glControl
+            // 
+            this.glControl.BackColor = System.Drawing.Color.Transparent;
+            this.glControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControl.Location = new System.Drawing.Point(0, 0);
+            this.glControl.MinimumSize = new System.Drawing.Size(1024, 576);
+            this.glControl.Name = "glControl";
+            this.glControl.Size = new System.Drawing.Size(1024, 576);
+            this.glControl.TabIndex = 0;
+            this.glControl.VSync = false;
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1024, 576);
+            this.Controls.Add(this.glControl);
+            this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(1040, 615);
+            this.Name = "MainForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "KgPrac6";
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private OpenTK.GLControl glControl;
+    }
+}
+</file>
+
+<file path="project/MainForm.resx">
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>
+</file>
+
+<file path="project/OpenTK.dll.config">
+<configuration>
+  <dllmap os="linux" dll="opengl32.dll" target="libGL.so.1"/>
+  <dllmap os="linux" dll="glu32.dll" target="libGLU.so.1"/>
+  <dllmap os="linux" dll="openal32.dll" target="libopenal.so.1"/>
+  <dllmap os="linux" dll="alut.dll" target="libalut.so.0"/>
+  <dllmap os="linux" dll="opencl.dll" target="libOpenCL.so"/>
+  <dllmap os="linux" dll="libX11" target="libX11.so.6"/>
+  <dllmap os="linux" dll="libXi" target="libXi.so.6"/>
+  <dllmap os="linux" dll="SDL2.dll" target="libSDL2-2.0.so.0"/>
+  <dllmap os="osx" dll="opengl32.dll" target="/System/Library/Frameworks/OpenGL.framework/OpenGL"/>
+  <dllmap os="osx" dll="openal32.dll" target="/System/Library/Frameworks/OpenAL.framework/OpenAL" />
+  <dllmap os="osx" dll="alut.dll" target="/System/Library/Frameworks/OpenAL.framework/OpenAL" />
+  <dllmap os="osx" dll="libGLES.dll" target="/System/Library/Frameworks/OpenGLES.framework/OpenGLES" />
+  <dllmap os="osx" dll="libGLESv1_CM.dll" target="/System/Library/Frameworks/OpenGLES.framework/OpenGLES" />
+  <dllmap os="osx" dll="libGLESv2.dll" target="/System/Library/Frameworks/OpenGLES.framework/OpenGLES" />
+  <dllmap os="osx" dll="opencl.dll" target="/System/Library/Frameworks/OpenCL.framework/OpenCL"/>
+  <dllmap os="osx" dll="SDL2.dll" target="libSDL2.dylib"/>
+  <!-- XQuartz compatibility (X11 on Mac) -->
+  <dllmap os="osx" dll="libGL.so.1" target="/usr/X11/lib/libGL.dylib"/>
+  <dllmap os="osx" dll="libX11" target="/usr/X11/lib/libX11.dylib"/>
+  <dllmap os="osx" dll="libXcursor.so.1" target="/usr/X11/lib/libXcursor.dylib"/>
+  <dllmap os="osx" dll="libXi" target="/usr/X11/lib/libXi.dylib"/>
+  <dllmap os="osx" dll="libXinerama" target="/usr/X11/lib/libXinerama.dylib"/>
+  <dllmap os="osx" dll="libXrandr.so.2" target="/usr/X11/lib/libXrandr.dylib"/>
+</configuration>
+</file>
+
+<file path="project/packages.config">
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="OpenTK" version="3.3.3" targetFramework="net472" />
+  <package id="OpenTK.GLControl" version="3.3.3" targetFramework="net472" />
+</packages>
+</file>
+
+<file path="project/Program.cs">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace project
+{
+    internal static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
+        }
+    }
+}
+</file>
+
+<file path="project/project.csproj">
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9317B89E-D95A-4E10-82A7-94F768D5B5F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>project</RootNamespace>
+    <AssemblyName>project</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=3.3.3.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.3.3.3\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.3.3.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.3.3.3\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SceneRenderer.cs" />
+    <Compile Include="RotationController.cs" />
+    <Compile Include="TruncatedPyramid.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
+</file>
+
+<file path="project/README.md">
+# Практика #6, вариант 2
+
+```csharp
+// ============================================================================
+// МОДУЛЬ 1: TruncatedPyramid.cs
+// Назначение: Геометрическая модель усечённой треугольной пирамиды (вариант 2)
+// и её построение из простейших 2D-примитивов OpenGL (Triangles, Quads, Lines).
+// ============================================================================
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
+
+namespace project
+{
+    public class TruncatedPyramid
+    {
+        // Массивы трёхмерных вершин (X, Y, Z) для нижнего и верхнего треугольных оснований.
+        // Хранение вершин в полях класса избавляет от пересчёта тригонометрии при каждом кадре.
+        private readonly Vector3[] _bottomVertices;
+        private readonly Vector3[] _topVertices;
+
+        // Конструктор задаёт габариты фигуры:
+        // bottomRadius — радиус описанной окружности нижнего (большого) основания;
+        // topRadius    — радиус описанной окружности верхнего (малого) основания;
+        // halfHeight   — половина высоты пирамиды (центр фигуры располагается в (0, 0, 0),
+        //                благодаря чему вращение происходит строго вокруг центра объекта).
+        public TruncatedPyramid(float bottomRadius = 1.3f, float topRadius = 0.55f, float halfHeight = 0.8f)
+        {
+            _bottomVertices = CreateTriangleRing(bottomRadius, -halfHeight);
+            _topVertices = CreateTriangleRing(topRadius, halfHeight);
+        }
+
+        // Вычисление координат вершин правильного треугольника, лежащего в плоскости Y = const.
+        private static Vector3[] CreateTriangleRing(float radius, float y)
+        {
+            Vector3[] vertices = new Vector3[3];
+            // Углы 90°, 210° и 330° формируют равносторонний треугольник,
+            // симметричный относительно оси Z.
+            double[] anglesDeg = { 90.0, 210.0, 330.0 };
+
+            for (int i = 0; i < 3; i++)
+            {
+                double rad = anglesDeg[i] * Math.PI / 180.0;
+                float x = (float)(radius * Math.Cos(rad));
+                float z = (float)(radius * Math.Sin(rad));
+                vertices[i] = new Vector3(x, y, z);
+            }
+
+            return vertices;
+        }
+
+        // Основной метод отрисовки объёмного тела.
+        public void Draw()
+        {
+            // Включаем смещение полигонов (PolygonOffsetFill), чтобы при отрисовке
+            // чёрных рёбер поверх залитых граней не возникало «мерцания» (Z-fighting)
+            // из-за совпадения значений глубины в Z-буфере.
+            GL.Enable(EnableCap.PolygonOffsetFill);
+            GL.PolygonOffset(1.0f, 1.0f);
+
+            DrawFilledFaces();
+
+            GL.Disable(EnableCap.PolygonOffsetFill);
+
+            DrawEdges();
+        }
+
+        // Отрисовка всех 5 граней усечённой пирамиды с помощью 2D-примитивов OpenGL.
+        private void DrawFilledFaces()
+        {
+            // 1. Верхнее и нижнее основания строятся из треугольных примитивов (GL_TRIANGLES).
+            // Порядок обхода вершин задаётся против часовой стрелки (CCW) при взгляде снаружи.
+            GL.Begin(PrimitiveType.Triangles);
+
+            // Верхнее основание
+            SetTopColor();
+            GL.Vertex3(_topVertices[0]);
+            GL.Vertex3(_topVertices[1]);
+            GL.Vertex3(_topVertices[2]);
+
+            // Нижнее основание
+            SetBottomColor();
+            GL.Vertex3(_bottomVertices[0]);
+            GL.Vertex3(_bottomVertices[2]);
+            GL.Vertex3(_bottomVertices[1]);
+
+            GL.End();
+
+            // 2. Три боковые грани (равнобедренные трапеции) строятся из четырёхугольников (GL_QUADS).
+            // Разный цвет у нижних и верхних вершин при включённой интерполяции (ShadingModel.Smooth)
+            // создаёт плавный светотеневой градиент, подчёркивающий объём граней.
+            GL.Begin(PrimitiveType.Quads);
+            for (int i = 0; i < 3; i++)
+            {
+                int next = (i + 1) % 3;
+
+                SetBottomColor();
+                GL.Vertex3(_bottomVertices[i]);
+                GL.Vertex3(_bottomVertices[next]);
+
+                SetTopColor();
+                GL.Vertex3(_topVertices[next]);
+                GL.Vertex3(_topVertices[i]);
+            }
+            GL.End();
+        }
+
+        // Отрисовка рёбер многогранника линиями для чёткого выделения геометрии.
+        private void DrawEdges()
+        {
+            GL.LineWidth(2.0f);
+            GL.Color3(0.12f, 0.12f, 0.12f);
+
+            // Замкнутый контур верхнего основания (GL_LINE_LOOP)
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 0; i < 3; i++)
+            {
+                GL.Vertex3(_topVertices[i]);
+            }
+            GL.End();
+
+            // Замкнутый контур нижнего основания (GL_LINE_LOOP)
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 0; i < 3; i++)
+            {
+                GL.Vertex3(_bottomVertices[i]);
+            }
+            GL.End();
+
+            // Три боковых ребра, соединяющих нижние и верхние вершины (GL_LINES)
+            GL.Begin(PrimitiveType.Lines);
+            for (int i = 0; i < 3; i++)
+            {
+                GL.Vertex3(_bottomVertices[i]);
+                GL.Vertex3(_topVertices[i]);
+            }
+            GL.End();
+        }
+
+        private static void SetTopColor()
+        {
+            GL.Color3(0.84f, 0.16f, 0.16f);
+        }
+
+        private static void SetBottomColor()
+        {
+            GL.Color3(0.96f, 0.56f, 0.54f);
+        }
+    }
+
+    // ============================================================================
+    // МОДУЛЬ 2: SceneRenderer.cs
+    // Назначение: Инициализация состояния OpenGL, работа с Z-буфером, настройка
+    // перспективной проекции glFrustum и управление матричным стеком.
+    // ============================================================================
+    public class SceneRenderer
+    {
+        private readonly TruncatedPyramid _pyramid;
+
+        public SceneRenderer(TruncatedPyramid pyramid)
+        {
+            _pyramid = pyramid;
+        }
+
+        // Начальная конфигурация графического конвейера OpenGL (вызывается один раз при загрузке).
+        public void Initialize()
+        {
+            // Цвет очистки буфера кадра (белый фон сцены).
+            GL.ClearColor(Color.White);
+
+            // Включение теста глубины (алгоритм Z-буфера):
+            // каждый пиксель проверяется по координате глубины, и невидимые задние грани отсекаются.
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthFunc(DepthFunction.Less);
+
+            // Плавная интерполяция цветов между вершинами примитива (закраска по Гуро).
+            GL.ShadeModel(ShadingModel.Smooth);
+            GL.Enable(EnableCap.LineSmooth);
+        }
+
+        // Настройка области вывода и матрицы перспективной проекции при создании/изменении окна.
+        public void UpdateProjection(int width, int height)
+        {
+            if (height <= 0)
+            {
+                height = 1;
+            }
+
+            // Привязка области вывода OpenGL к размерам клиентской области GLControl.
+            GL.Viewport(0, 0, width, height);
+
+            // Вычисляем соотношение сторон окна, чтобы при растягивании формы
+            // геометрические пропорции пирамиды не искажались.
+            double aspectRatio = (double)width / height;
+            double near = 1.5;   // Расстояние до ближней плоскости отсечения (> 0)
+            double far = 20.0;   // Расстояние до дальней плоскости отсечения (> near)
+            double top = 1.0;
+            double bottom = -1.0;
+            double left = -top * aspectRatio;
+            double right = top * aspectRatio;
+
+            // Переключаемся на матрицу проекций и сбрасываем её в единичную перед заданием объёма видимости.
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+
+            // Задаём усечённую пирамиду видимости (перспективная проекция).
+            GL.Frustum(left, right, bottom, top, near, far);
+
+            // Возвращаемся в режим видовой матрицы (GL_MODELVIEW) для дальнейшей работы со сценой.
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+        }
+
+        // Отрисовка одного кадра сцены.
+        public void Render(RotationController controller)
+        {
+            // Очищаем одновременно буфер цвета и Z-буфер (буфер глубины) перед рисованием нового кадра.
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            // Сохраняем текущую видовую матрицу в стек (glPushMatrix),
+            // чтобы преобразования текущего объекта не накапливались между кадрами.
+            GL.PushMatrix();
+
+            // Переносим систему координат вглубь экрана (по отрицательной оси Z),
+            // чтобы фигура попала внутрь усечённой пирамиды видимости [ -far; -near ].
+            GL.Translate(0.0f, 0.0f, -4.5f);
+
+            // Выполняем последовательные повороты системы координат вокруг осей X, Y и Z
+            // на углы, накопленные в контроллере вращения.
+            GL.Rotate(controller.AngleX, 1.0f, 0.0f, 0.0f);
+            GL.Rotate(controller.AngleY, 0.0f, 1.0f, 0.0f);
+            GL.Rotate(controller.AngleZ, 0.0f, 0.0f, 1.0f);
+
+            // Отрисовываем пирамиду в преобразованной системе координат.
+            _pyramid.Draw();
+
+            // Восстанавливаем исходную матрицу из стека (glPopMatrix).
+            GL.PopMatrix();
+        }
+    }
+
+    // ============================================================================
+    // МОДУЛЬ 3: RotationController.cs
+    // Назначение: Хранение углов ориентации объекта в пространстве, обработка
+    // шага анимации по таймеру и обработка нажатий клавиш управления курсором.
+    // ============================================================================
+    public class RotationController
+    {
+        private const float ManualStep = 5.0f;  // Шаг поворота при нажатии клавиши (в градусах)
+        private const float TimerStepY = 1.5f;  // Шаг автоповорота за один тик таймера (в градусах)
+
+        public float AngleX { get; private set; }
+        public float AngleY { get; private set; }
+        public float AngleZ { get; private set; }
+        public bool IsAutoRotating { get; private set; }
+
+        public RotationController()
+        {
+            Reset();
+        }
+
+        // Установка начального ракурса, при котором хорошо видны верхнее основание и боковые грани.
+        public void Reset()
+        {
+            AngleX = 32.0f;
+            AngleY = -28.0f;
+            AngleZ = 0.0f;
+            IsAutoRotating = true;
+        }
+
+        // Обновление угла при срабатывании события Timer.Tick.
+        public void OnTimerTick()
+        {
+            if (!IsAutoRotating)
+            {
+                return;
+            }
+
+            AngleY = NormalizeAngle(AngleY + TimerStepY);
+        }
+
+        // Обработка клавиш управления курсором и вспомогательных клавиш управления сценой.
+        public bool HandleKeyDown(Keys keyCode)
+        {
+            switch (keyCode)
+            {
+                case Keys.Up:
+                    AngleX = NormalizeAngle(AngleX - ManualStep);
+                    return true;
+                case Keys.Down:
+                    AngleX = NormalizeAngle(AngleX + ManualStep);
+                    return true;
+                case Keys.Left:
+                    AngleY = NormalizeAngle(AngleY - ManualStep);
+                    return true;
+                case Keys.Right:
+                    AngleY = NormalizeAngle(AngleY + ManualStep);
+                    return true;
+                case Keys.PageUp:
+                    AngleZ = NormalizeAngle(AngleZ + ManualStep);
+                    return true;
+                case Keys.PageDown:
+                    AngleZ = NormalizeAngle(AngleZ - ManualStep);
+                    return true;
+                case Keys.Space:
+                    // Пауза / возобновление вращения по таймеру
+                    IsAutoRotating = !IsAutoRotating;
+                    return true;
+                case Keys.R:
+                    // Возврат фигуры в исходное положение
+                    Reset();
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        // Нормализация угла в диапазон [0; 360) для предотвращения переполнения значений.
+        private static float NormalizeAngle(float angle)
+        {
+            angle %= 360.0f;
+            if (angle < 0.0f)
+            {
+                angle += 360.0f;
+            }
+            return angle;
+        }
+    }
+
+    // ============================================================================
+    // МОДУЛЬ 4: MainForm.cs
+    // Назначение: Главная форма Windows Forms, связывающая компонент OpenTK.GLControl,
+    // компонент System.Windows.Forms.Timer и события клавиатуры.
+    // ============================================================================
+    public partial class MainForm : Form
+    {
+        private readonly SceneRenderer _renderer;
+        private readonly RotationController _controller;
+        private readonly Timer _animationTimer;
+
+        public MainForm()
+        {
+            InitializeComponent();
+
+            TruncatedPyramid pyramid = new TruncatedPyramid();
+            _renderer = new SceneRenderer(pyramid);
+            _controller = new RotationController();
+
+            // Настройка таймера анимации (интервал 30 мс обеспечивает плавные ~33 кадра/с).
+            _animationTimer = new Timer();
+            _animationTimer.Interval = 30;
+            _animationTimer.Tick += AnimationTimer_Tick;
+
+            // Подписка на события жизненного цикла OpenGL-холста и клавиатуры.
+            glControl.Load += GlControl_Load;
+            glControl.Resize += GlControl_Resize;
+            glControl.Paint += GlControl_Paint;
+            glControl.PreviewKeyDown += GlControl_PreviewKeyDown;
+            KeyDown += MainForm_KeyDown;
+            FormClosing += MainForm_FormClosing;
+        }
+
+        // Срабатывает при создании OpenGL-контекста элемента управления glControl.
+        private void GlControl_Load(object sender, EventArgs e)
+        {
+            glControl.MakeCurrent();
+            _renderer.Initialize();
+            _renderer.UpdateProjection(glControl.Width, glControl.Height);
+            _animationTimer.Start();
+        }
+
+        // Срабатывает при изменении размеров окна формы.
+        private void GlControl_Resize(object sender, EventArgs e)
+        {
+            if (!glControl.IsHandleCreated)
+            {
+                return;
+            }
+
+            glControl.MakeCurrent();
+            _renderer.UpdateProjection(glControl.Width, glControl.Height);
+            glControl.Invalidate();
+        }
+
+        // Срабатывает при перерисовке элемента glControl.
+        private void GlControl_Paint(object sender, PaintEventArgs e)
+        {
+            if (!glControl.IsHandleCreated)
+            {
+                return;
+            }
+
+            glControl.MakeCurrent();
+            _renderer.Render(_controller);
+
+            // Переключение переднего и заднего буферов (двойная буферизация устраняет мерцание).
+            glControl.SwapBuffers();
+        }
+
+        // Обработчик тика таймера: обновляет угол поворота и запрашивает перерисовку окна.
+        private void AnimationTimer_Tick(object sender, EventArgs e)
+        {
+            _controller.OnTimerTick();
+            glControl.Invalidate();
+        }
+
+        // Разрешаем передачу нажатий клавиш-стрелок в стандартное событие KeyDown
+        // (по умолчанию WinForms использует стрелки для навигации фокуса между контролами).
+        private void GlControl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||
+                e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+            {
+                e.IsInputKey = true;
+            }
+        }
+
+        // Обработчик нажатий клавиш клавиатуры.
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Выход из программы по клавише Escape (согласно примеру в методических указаниях).
+            if (e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
+                return;
+            }
+
+            if (_controller.HandleKeyDown(e.KeyCode))
+            {
+                glControl.Invalidate();
+            }
+        }
+
+        // Корректная остановка и освобождение ресурсов таймера при закрытии формы.
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _animationTimer.Stop();
+            _animationTimer.Dispose();
+        }
+    }
+}
+```
+</file>
+
+<file path="project/RotationController.cs">
+using System.Windows.Forms;
+
+namespace project
+{
+    public class RotationController
+    {
+        private const float ManualStep = 5.0f;
+        private const float TimerStepY = 0.5f;
+
+        public float AngleX { get; private set; }
+        public float AngleY { get; private set; }
+        public float AngleZ { get; private set; }
+        public bool IsAutoRotating { get; private set; }
+
+        public RotationController()
+        {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            AngleX = 32.0f;
+            AngleY = -28.0f;
+            AngleZ = 0.0f;
+            IsAutoRotating = true;
+        }
+
+        public void OnTimerTick()
+        {
+            if (!IsAutoRotating)
+            {
+                return;
+            }
+
+            AngleY = NormalizeAngle(AngleY + TimerStepY);
+        }
+
+        public bool HandleKeyDown(Keys keyCode)
+        {
+            switch (keyCode)
+            {
+                case Keys.Up:
+                    AngleX = NormalizeAngle(AngleX - ManualStep);
+                    return true;
+                case Keys.Down:
+                    AngleX = NormalizeAngle(AngleX + ManualStep);
+                    return true;
+                case Keys.Left:
+                    AngleY = NormalizeAngle(AngleY - ManualStep);
+                    return true;
+                case Keys.Right:
+                    AngleY = NormalizeAngle(AngleY + ManualStep);
+                    return true;
+                case Keys.PageUp:
+                    AngleZ = NormalizeAngle(AngleZ + ManualStep);
+                    return true;
+                case Keys.PageDown:
+                    AngleZ = NormalizeAngle(AngleZ - ManualStep);
+                    return true;
+                case Keys.Space:
+                    IsAutoRotating = !IsAutoRotating;
+                    return true;
+                case Keys.R:
+                    Reset();
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        private static float NormalizeAngle(float angle)
+        {
+            angle %= 360.0f;
+            if (angle < 0.0f)
+            {
+                angle += 360.0f;
+            }
+            return angle;
+        }
+    }
+}
+</file>
+
+<file path="project/SceneRenderer.cs">
+using System.Drawing;
+using OpenTK.Graphics.OpenGL;
+
+namespace project
+{
+    public class SceneRenderer
+    {
+        private readonly TruncatedPyramid _pyramid;
+
+        public SceneRenderer(TruncatedPyramid pyramid)
+        {
+            _pyramid = pyramid;
+        }
+
+        public void Initialize()
+        {
+            GL.ClearColor(Color.White);
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthFunc(DepthFunction.Less);
+            GL.ShadeModel(ShadingModel.Smooth);
+            GL.Enable(EnableCap.LineSmooth);
+        }
+
+        public void UpdateProjection(int width, int height)
+        {
+            if (height <= 0)
+            {
+                height = 1;
+            }
+
+            GL.Viewport(0, 0, width, height);
+
+            double aspectRatio = (double)width / height;
+            double near = 1.5;
+            double far = 20.0;
+            double top = 1.0;
+            double bottom = -1.0;
+            double left = -top * aspectRatio;
+            double right = top * aspectRatio;
+
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            GL.Frustum(left, right, bottom, top, near, far);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+        }
+
+        public void Render(RotationController controller)
+        {
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            GL.PushMatrix();
+
+            GL.Translate(0.0f, 0.0f, -4.5f);
+            GL.Rotate(controller.AngleX, 1.0f, 0.0f, 0.0f);
+            GL.Rotate(controller.AngleY, 0.0f, 1.0f, 0.0f);
+            GL.Rotate(controller.AngleZ, 0.0f, 0.0f, 1.0f);
+
+            _pyramid.Draw();
+
+            GL.PopMatrix();
+        }
+    }
+}
+</file>
+
+<file path="project/TruncatedPyramid.cs">
+using System;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
+
+namespace project
+{
+    public class TruncatedPyramid
+    {
+        private readonly Vector3[] _bottomVertices;
+        private readonly Vector3[] _topVertices;
+
+        public TruncatedPyramid(float bottomRadius = 1.3f, float topRadius = 0.55f, float halfHeight = 0.8f)
+        {
+            _bottomVertices = CreateTriangleRing(bottomRadius, -halfHeight);
+            _topVertices = CreateTriangleRing(topRadius, halfHeight);
+        }
+
+        private static Vector3[] CreateTriangleRing(float radius, float y)
+        {
+            Vector3[] vertices = new Vector3[3];
+            double[] anglesDeg = { 90.0, 210.0, 330.0 };
+
+            for (int i = 0; i < 3; i++)
+            {
+                double rad = anglesDeg[i] * Math.PI / 180.0;
+                float x = (float)(radius * Math.Cos(rad));
+                float z = (float)(radius * Math.Sin(rad));
+                vertices[i] = new Vector3(x, y, z);
+            }
+
+            return vertices;
+        }
+
+        public void Draw()
+        {
+            GL.Enable(EnableCap.PolygonOffsetFill);
+            GL.PolygonOffset(1.0f, 1.0f);
+
+            DrawFilledFaces();
+
+            GL.Disable(EnableCap.PolygonOffsetFill);
+
+            DrawEdges();
+        }
+
+        private void DrawFilledFaces()
+        {
+            GL.Begin(PrimitiveType.Triangles);
+
+            SetTopColor();
+            GL.Vertex3(_topVertices[0]);
+            GL.Vertex3(_topVertices[1]);
+            GL.Vertex3(_topVertices[2]);
+
+            SetBottomColor();
+            GL.Vertex3(_bottomVertices[0]);
+            GL.Vertex3(_bottomVertices[2]);
+            GL.Vertex3(_bottomVertices[1]);
+
+            GL.End();
+
+            GL.Begin(PrimitiveType.Quads);
+            for (int i = 0; i < 3; i++)
+            {
+                int next = (i + 1) % 3;
+
+                SetBottomColor();
+                GL.Vertex3(_bottomVertices[i]);
+                GL.Vertex3(_bottomVertices[next]);
+
+                SetTopColor();
+                GL.Vertex3(_topVertices[next]);
+                GL.Vertex3(_topVertices[i]);
+            }
+            GL.End();
+        }
+
+        private void DrawEdges()
+        {
+            GL.LineWidth(2.0f);
+            GL.Color3(0.12f, 0.12f, 0.12f);
+
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 0; i < 3; i++)
+            {
+                GL.Vertex3(_topVertices[i]);
+            }
+            GL.End();
+
+            GL.Begin(PrimitiveType.LineLoop);
+            for (int i = 0; i < 3; i++)
+            {
+                GL.Vertex3(_bottomVertices[i]);
+            }
+            GL.End();
+
+            GL.Begin(PrimitiveType.Lines);
+            for (int i = 0; i < 3; i++)
+            {
+                GL.Vertex3(_bottomVertices[i]);
+                GL.Vertex3(_topVertices[i]);
+            }
+            GL.End();
+        }
+
+        private static void SetTopColor()
+        {
+            GL.Color3(0.84f, 0.16f, 0.16f);
+        }
+
+        private static void SetBottomColor()
+        {
+            GL.Color3(0.96f, 0.56f, 0.54f);
+        }
+    }
+}
+</file>
+
+<file path="solution.slnx">
+<Solution>
+  <Project Path="project/project.csproj" Id="9317b89e-d95a-4e10-82a7-94f768d5b5f0" />
+</Solution>
+</file>
+
+</files>
